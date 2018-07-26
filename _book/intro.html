@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introducción a las finanzas quantitativas</title>
+  <meta name="description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introducción a las finanzas quantitativas" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introducción a las finanzas quantitativas" />
+  
+  <meta name="twitter:description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile" />
+  
+
+<meta name="author" content="Gabriel Cabrera G.">
+
+
+<meta name="date" content="2018-07-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="sobre-el-autor.html">
+
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding/datatables.js"></script>
+<link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Finance Rocks!!</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el Autor</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#un-poco-de-historia"><i class="fa fa-check"></i><b>1.1.1</b> Un poco de historia</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#los-primeros-pasos"><i class="fa fa-check"></i><b>1.1.2</b> Los primeros pasos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Partes de RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>1.3</b> <em>Scripts</em></a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#por-que-esto-es-util"><i class="fa fa-check"></i><b>1.4.1</b> ¿Por qué esto es útil?</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#como-crear-un-projecto"><i class="fa fa-check"></i><b>1.4.2</b> ¿Cómo crear un projecto?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.5</b> <em>Packages</em></a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#ejemplo"><i class="fa fa-check"></i><b>1.6</b> Ejemplo</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a las finanzas quantitativas</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introducción</h1>
+<p>Antes de comenzar tú viaje a través del lenguaje de programación R, necesitaras cuatro “herramientas” básicas para trabajar con este apunte, R (lenguaje), Rstudio(IDE<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>), una megalibrería que contiene <em>R packages</em> llamada <em>tidyverse</em> y librerías extras para trabajar en finanzas<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<div id="r" class="section level2">
+<h2><span class="header-section-number">1.1</span> R</h2>
+<div id="un-poco-de-historia" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Un poco de historia</h3>
+<p>R es un lenguaje de programación creado por Ross Ihaka y Robert Gentleman del departamento de estadística de la universidad de Auckland en 1992 (Nueva Zelanda), teniendo su versión estable el 29 de Febrero del 2000.</p>
+</div>
+<div id="los-primeros-pasos" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Los primeros pasos</h3>
+<p>El primer paso es descargar R, para esto debes ir a CRAN<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, <em>comprehensive R archive network</em>. CRAN esta compuesto por un conjunto de <em>mirror servers</em> distribuidos alrededor del mundo y se usa para compartir los <em>R packages</em>. Como recomendación no elegir un <em>mirror</em> lejano a tú posición geográfica, por ende, usa <a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a> que los seleccionará automáticamente.</p>
+<p>Como aún no instalas RStudio solo tendras el lenguaje, que puede ser ejecutado desde el <em>command Shell</em> o <em>prompt</em>, no obstante, esto es ineficiente desde el punto de vista que no tendrenmos todas las opciones que Rstudio nos entrega.</p>
+<div class="figure" style="text-align: center"><span id="fig:fig1"></span>
+<img src="images/R_logo.png" alt="logo de R" width="33.3%" />
+<p class="caption">
+Figure 1.1: logo de R
+</p>
+</div>
+<p>Si trabajas sin IDE veras algo como en la Figura <a href="intro.html#fig:fig2">1.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:fig2"></span>
+<img src="images/r_propmt.png" alt="R desde la terminal" width="50%" />
+<p class="caption">
+Figure 1.2: R desde la terminal
+</p>
+</div>
+<p>Las versiones de R cambian una vez al año, y de 2 a 3 veces con cambios pequeños, por eso es una buena idea que mantengas actualizada tu versión.</p>
+</div>
+</div>
+<div id="rstudio" class="section level2">
+<h2><span class="header-section-number">1.2</span> RStudio</h2>
+<p>¿Qué es una IDE? IDE es el acrónimo de <em>Integrated Development Environment (Entorno de Desarrollo Integrado)</em>. Esto quiere decir que RStudio es una aplicación que nos entrega herramientas para hacer más fácil el desarrollo de proyectos usando R y sobre todo cuando estemos trabajando con datos.</p>
+<p>Para descargar e instalar Rstudio debes ir a <a href="http//www.rstudio.com/download" class="uri">http//www.rstudio.com/download</a> y seleccionar <em>RStudio Desktop Open Source License</em> (gratuita) , cuando exista una actualización Rstudio te avisará.</p>
+<p>Si quedó todo bien instalado, cuando abras Rstudio deberías ver algo así:</p>
+<div class="figure" style="text-align: center"><span id="fig:fig3"></span>
+<img src="images/rstudio.png" alt="Rstudio" width="50%" />
+<p class="caption">
+Figure 1.3: Rstudio
+</p>
+</div>
+<blockquote>
+<p>IMPORTANTE: Si te aparece algún error durante este proceso, lo más probabable es que sea por alguna configuración de tu sistema operativo. En ese caso, la mejor manera de buscar una solución es copiar el error que arroja R, pegarlo en tu motor de búsqueda favorito y ver cómo alguien que se enfrentó a eso antes lo resolvió.</p>
+</blockquote>
+<div id="partes-de-rstudio" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Partes de RStudio</h3>
+<p>¿Para qué sirven estos paneles? Comentemos primero el panel de abajo a la derecha. Si te fijas, el panel tiene varias ventanas:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Files</strong> muestra el directorio (la carpeta) en la que te encuentras actualmente. En mi caso, no hay nada ahí porque por defecto RStudio me muestra el Escritorio (Desktop) y no tengo nada en él. Es posible que a ti te muestre otra carpeta (por ejemplo, Documentos).</p></li>
+<li><p><strong>Plots</strong> es el lugar donde aparecerán los gráficos que vayas creando. No hemos hecho ninguno por ahora, así que este panel también está vacío.</p></li>
+<li><p><strong>Packages</strong> muestra la lista de paquetes que tienes instalados en tu computador. Si recorres el panel verás que algunos tiene una marca al lado izquierdo. Eso quiere decir que el paquete está activo en ese momento (ya veremos cómo hacer eso). Solo los paquetes vinculados a R base se activan al abrir RStudio.</p></li>
+<li><p><strong>Help</strong>, como su nombre lo indica, es la pestaña en la que podemos encontrar ayuda. Si buscamos el nombre de un paquete o de una función, RStudio nos remitirá a la documentación asociada.</p></li>
+<li><p><strong>Viewer</strong> es el panel para ver contenido web generado por algún paquete de R (gráficos para la web o aplicaciones interactivas). Por el momento no lo utilizaremos.</p></li>
+</ol>
+<p>El panel de arriba a la derecha, por su parte, contiene el historial de funciones que hemos ejecutado (History), la opción para generar conexiones a bases de datos externas (Connections) y el Environment. Este último panel es muy importante y entender lo que nos muestra es fundamental para comprender cómo funciona R.</p>
+</div>
+</div>
+<div id="scripts" class="section level2">
+<h2><span class="header-section-number">1.3</span> <em>Scripts</em></h2>
+<p>El script podemos decir que es un cuarto panel<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, en donde escribiras tus códigos que queremos que ejecute R, para crear un script debes:</p>
+<ol style="list-style-type: decimal">
+<li>ir a <code>file &gt; New File &gt; R Script</code></li>
+<li>Otra forma es un atajo de teclado, <code>control + shift + n</code> (Linux/Windows) y <code>comando + shift + n</code> (Mac OS).</li>
+<li>O bien ir a la barra superior de la ventana y seleccionar el tipo de archivo a trabajar.</li>
+</ol>
+</div>
+<div id="proyectos" class="section level2">
+<h2><span class="header-section-number">1.4</span> Proyectos</h2>
+<p>Una de las ventajas de RStudio es que permite crear “proyectos”. Un projecto es un espacio o contexto de trabajo asociado a una carpeta en particular, en la que se guardan nuestro(s) script(s), archivos de datos, etc. Cuando creamos un proyecto en RStudio, se crea un tipo especial de archivo (.Rproj) que lo que hace es vincular todo lo que se encuentra dentro de esa carpeta.</p>
+<div id="por-que-esto-es-util" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> ¿Por qué esto es útil?</h3>
+<p>Si parte de nuestro script, por ejemplo, implica abrir un archivo que está en la carpeta de nuestro proyecto, no necesito indicar en mi código toda la ruta del archivo: lo que hará RStudio será buscarlo en el entorno/carpeta del proyecto. Si movemos la carpeta a otro lugar de nuestro computador o la compartimos con otra persona, nuestro código seguirá funcionando, ya que el archivo .Rproj mantendrá todo unido. Si no creara un proyecto, tendría que indicar al inicio de mi script cuál es la ruta de la carpeta que ocuparé como espacio de trabajo. El problema de esa opción es que si muevo la carpeta o le cambio el nombre, tendría que volver a escribir la ruta para que todo funcione. Al crear un proyecto eso deja de ser una preocupación.</p>
+</div>
+<div id="como-crear-un-projecto" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> ¿Cómo crear un projecto?</h3>
+<ol style="list-style-type: decimal">
+<li>Puedes hacerlo desde el menú File &gt; New Proyect.</li>
+<li>Lo primero que nos pregunta es si queremos crearlo en una carpeta nueva o en una ya existente. Elegiremos esta vez una carpeta nueva, así que seleccionaremos New Directory.</li>
+<li>La siguiente pregunta es qué tipo de proyecto queremos crear. En esta ocasión, elegiremos la primera: <em>New Project</em>.</li>
+<li>Finalmente, le damos un nombre al proyecto y decidimos en qué parte de nuestro computador queremos que viva la carpeta que lo contiene.</li>
+<li>Luego de apretar Create Project, RStudio se reinicia y se producen algunos cambios. El panel Files (abajo a la derecha) ahora nos muestra la carpeta de nuestro proyecto y el único archivo que hay en ella por ahora. Ese es el archivo mágico que mantiene unido todo lo que hay dentro de la carpeta. Cuando queramos volver a trabajar en nuestro proyecto, solo tenemos que abrir ese archivo.</li>
+</ol>
+<blockquote>
+<p>IMPORTANTE: RStudio ejecuta sesiones independientes de R para cada proyecto. Es decir, si tuvieras otro proyecto abierto te aparecería otro ícono, con su respectivo nombre. Esto nos permite trabajar en dos proyectos en paralelo sin que se nos mezclen los objetos del entorno, el código, los archivos, etc. Cada cosa en su lugar.</p>
+</blockquote>
+</div>
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">1.5</span> <em>Packages</em></h2>
+<p>Cuando instalamos R por primera vez en nuestro computador, lo que estamos instalando es lo que se conoce como “R Base”, es decir, los elementos centrales del lenguaje de programación. Una de las ventajas de R es que se trata de un lenguaje extensible: la propia comunidad de usuarios puede desarrollar nuevas posibilidades para utilizarlo. La manera de compartir estos nuevos desarrollos es a través de “paquetes”, que incluyen, entre otras cosas, código y datos. Una analogía que se suele utilizar para explicar esto es que R Base es un teléfono celular tal como viene de fábrica y los paquetes las apps que descargamos para que tenga más funcionalidades.</p>
+<p>Para usar las librerias (“packages”) debemos usar el siguiente código:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># instala el package</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;acá va el package&quot;</span>)
+
+<span class="co"># lo llama</span>
+<span class="kw">library</span>(<span class="st">&quot;acá va el package&quot;</span>)</code></pre></div>
+<div id="tidyverse" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> <em>tidyverse</em></h3>
+<p><strong>tidyverse</strong> es un “megapaquete” que incluye otros paquetes en su interior. Todos los paquetes que conforman “el Tidyverse” comparten la misma visión sobre el trabajo con datos y la escritura de código. Viene a formar parte de la nueva forma de programar en R, cuyo enfoque es netamente en realizar Data Science. Algunas librerias relevantes son:</p>
+<ol style="list-style-type: decimal">
+<li>ggplot2: Esta librería te permite realizar graficos avanzados.</li>
+<li>dplyr: Su objetivo es la manipulación de datos (filtrar, seleccionar, generar, renombrar,etc).</li>
+<li>magrittr: Contiene la denominada <em>pipe</em> ( %&gt;% ), se explicará más adelante</li>
+<li>purrr: Para realizar iteraciones.</li>
+<li>readr: Para cargar datos en csv, lo importante que los transforma en tibble.</li>
+</ol>
+<p>Para instalarlo basta escribir:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># instala el package</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
+
+<span class="co"># lo llama</span>
+<span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>Si te vas a la pestaña de <em>Packages</em> verás que estan seleccionadas aquellas librerias que se encuentran en el tidyverse.</p>
+</div>
+</div>
+<div id="ejemplo" class="section level2">
+<h2><span class="header-section-number">1.6</span> Ejemplo</h2>
+<p>Este paquete contiene una parte de los datos de Gapminder, una base de datos que incluye información mundial sobre población, expectativa de vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias charlas <a href="https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo">TED</a> que vale la pena mirar.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># instala el package</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;gapminder&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># lo llama</span>
+<span class="kw">library</span>(<span class="st">&quot;gapminder&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">world.data &lt;-<span class="st"> </span>gapminder
+
+mean.lifeExp &lt;-<span class="st"> </span>world.data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span>
+<span class="st">                </span><span class="kw">summarize</span>(<span class="kw">mean</span>(lifeExp))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">amean.lifeExp</code></pre></div>
+<div id="htmlwidget-61632ecf83304aa0a762" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-61632ecf83304aa0a762">{"x":{"filter":"none","data":[["1","2","3","4","5"],["Africa","Americas","Asia","Europe","Oceania"],[54.8060384615385,73.60812,70.7284848484849,77.6486,80.7195]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>continent<\/th>\n      <th>mean(lifeExp)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">world.data &lt;-<span class="st"> </span>world.data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">              </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Bolivia&quot;</span>, <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Chile&quot;</span>, <span class="st">&quot;Colombia&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>, <span class="st">&quot;Paraguay&quot;</span>, <span class="st">&quot;Peru&quot;</span>, <span class="st">&quot;Uruguay&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>))
+
+g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(world.data) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(year,lifeExp, <span class="dt">colour=</span> country), <span class="dt">size =</span> <span class="fl">1.2</span>)
+g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Expectativa de vida para America del Sur&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Desde 1952 a 2007&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;&quot;</span>) 
+g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Años&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Expectativa de vida&quot;</span>)
+g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>) 
+g1</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;Grafico.png&quot;</span>)</code></pre></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><em>Integrated Development Environment</em><a href="intro.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Estas librerías las iremos cargando/utilizando a medida que avancemos en los capítulos<a href="intro.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Existe otra distribución de R por parte del area de <em>open source</em> de Microsoft , la ventaja de MRAN es que si bien funciona con CRAN, su objetivo va más orientado a computación en paralelo (paralleling computing)<a href="intro.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>El tercer panel es la consola<a href="intro.html#fnref4">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sobre-el-autor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

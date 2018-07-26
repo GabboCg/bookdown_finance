@@ -1,0 +1,592 @@
+\documentclass[12pt,]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmonofont[Mapping=tex-ansi,Scale=0.7]{Source Code Pro}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{
+            pdftitle={Introducción a las finanzas quantitativas},
+            pdfauthor={Gabriel Cabrera G.},
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\title{Introducción a las finanzas quantitativas}
+\providecommand{\subtitle}[1]{}
+\subtitle{Aplicaciones \& ejemplos usando R}
+\author{Gabriel Cabrera G.}
+\date{2018-07-26}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\listoftables
+\listoffigures
+\chapter*{Prefacio}\label{prefacio}
+
+
+Este es un apunte en proceso pensado en el curso de Finanzas I de
+Ingeniería Comercial de la Universidad de Chile, las aplicaciones en R
+son pensados con un enfoque pedagógico y cualquier comentario o
+sugerencias son bienvenidas.
+
+La información de la sesión de R cuando se compila este apunte es la
+siguiente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sessionInfo}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## R version 3.4.4 (2018-03-15)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 18.04.1 LTS
+## 
+## Matrix products: default
+## BLAS: /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.7.1
+## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.7.1
+## 
+## locale:
+##  [1] LC_CTYPE=es_CL.UTF-8      
+##  [2] LC_NUMERIC=C              
+##  [3] LC_TIME=es_CL.UTF-8       
+##  [4] LC_COLLATE=es_CL.UTF-8    
+##  [5] LC_MONETARY=es_CL.UTF-8   
+##  [6] LC_MESSAGES=es_CL.UTF-8   
+##  [7] LC_PAPER=es_CL.UTF-8      
+##  [8] LC_NAME=C                 
+##  [9] LC_ADDRESS=C              
+## [10] LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=es_CL.UTF-8
+## [12] LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets 
+## [6] methods   base     
+## 
+## other attached packages:
+##  [1] bindrcpp_0.2.2  forcats_0.3.0   stringr_1.3.1  
+##  [4] dplyr_0.7.6     purrr_0.2.5     readr_1.1.1    
+##  [7] tidyr_0.8.1     tibble_1.4.2    ggplot2_3.0.0  
+## [10] tidyverse_1.2.1 gapminder_0.3.0
+## 
+## loaded via a namespace (and not attached):
+##  [1] tidyselect_0.2.4 xfun_0.3         haven_1.1.2     
+##  [4] lattice_0.20-35  colorspace_1.3-2 htmltools_0.3.6 
+##  [7] yaml_2.1.19      rlang_0.2.1      later_0.7.3     
+## [10] pillar_1.3.0     glue_1.3.0       withr_2.1.2     
+## [13] modelr_0.1.2     readxl_1.1.0     bindr_0.1.1     
+## [16] plyr_1.8.4       munsell_0.5.0    gtable_0.2.0    
+## [19] cellranger_1.1.0 rvest_0.3.2      htmlwidgets_1.2 
+## [22] evaluate_0.11    labeling_0.3     knitr_1.20      
+## [25] httpuv_1.4.5     crosstalk_1.0.0  highr_0.7       
+## [28] broom_0.5.0      Rcpp_0.12.18     xtable_1.8-2    
+## [31] promises_1.0.1   scales_0.5.0     backports_1.1.2 
+## [34] DT_0.4           jsonlite_1.5     mime_0.5        
+## [37] hms_0.4.2        digest_0.6.15    stringi_1.2.4   
+## [40] shiny_1.1.0      bookdown_0.7     grid_3.4.4      
+## [43] rprojroot_1.3-2  cli_1.0.0        tools_3.4.4     
+## [46] magrittr_1.5     lazyeval_0.2.1   crayon_1.3.4    
+## [49] pkgconfig_2.0.1  xml2_1.2.0       lubridate_1.7.4 
+## [52] assertthat_0.2.0 rmarkdown_1.10   httr_1.3.1      
+## [55] rstudioapi_0.7   R6_2.2.2         nlme_3.1-131    
+## [58] compiler_3.4.4
+\end{verbatim}
+
+\chapter*{Sobre el Autor}\label{sobre-el-autor}
+
+
+Aún no hay mucho que decir, pero te invito a visitar mi \href{}{página
+web} donde la mayoría del tiempo estoy publicando post sobre
+programación y/o data science con aplicaciones a las finanzas y al mundo
+real.
+
+Me agradan las citas\ldots{}
+
+\begin{quote}
+``It is a capital mistake to theorize before one has data. Insensibly
+one begins to twist facts to suit theories, instead of theories to suit
+facts.''
+
+Sir Arthur Conan Doyle
+\end{quote}
+
+\chapter{Introducción}\label{intro}
+
+Antes de comenzar tú viaje a través del lenguaje de programación R,
+necesitaras cuatro ``herramientas'' básicas para trabajar con este
+apunte, R (lenguaje), Rstudio(IDE\footnote{\emph{Integrated Development
+  Environment}}), una megalibrería que contiene \emph{R packages}
+llamada \emph{tidyverse} y librerías extras para trabajar en
+finanzas\footnote{Estas librerías las iremos cargando/utilizando a
+  medida que avancemos en los capítulos}.
+
+\section{R}\label{r}
+
+\subsection{Un poco de historia}\label{un-poco-de-historia}
+
+R es un lenguaje de programación creado por Ross Ihaka y Robert
+Gentleman del departamento de estadística de la universidad de Auckland
+en 1992 (Nueva Zelanda), teniendo su versión estable el 29 de Febrero
+del 2000.
+
+\subsection{Los primeros pasos}\label{los-primeros-pasos}
+
+El primer paso es descargar R, para esto debes ir a CRAN\footnote{Existe
+  otra distribución de R por parte del area de \emph{open source} de
+  Microsoft , la ventaja de MRAN es que si bien funciona con CRAN, su
+  objetivo va más orientado a computación en paralelo (paralleling
+  computing)}, \emph{comprehensive R archive network}. CRAN esta
+compuesto por un conjunto de \emph{mirror servers} distribuidos
+alrededor del mundo y se usa para compartir los \emph{R packages}. Como
+recomendación no elegir un \emph{mirror} lejano a tú posición
+geográfica, por ende, usa \url{https://cloud.r-project.org} que los
+seleccionará automáticamente.
+
+Como aún no instalas RStudio solo tendras el lenguaje, que puede ser
+ejecutado desde el \emph{command Shell} o \emph{prompt}, no obstante,
+esto es ineficiente desde el punto de vista que no tendrenmos todas las
+opciones que Rstudio nos entrega.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/R_logo.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.333\linewidth]{images/R_logo} 
+
+}
+
+\caption{logo de R}\label{fig:fig1}
+\end{figure}
+
+Si trabajas sin IDE veras algo como en la Figura \ref{fig:fig2}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/r_propmt.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/r_propmt} 
+
+}
+
+\caption{R desde la terminal}\label{fig:fig2}
+\end{figure}
+
+Las versiones de R cambian una vez al año, y de 2 a 3 veces con cambios
+pequeños, por eso es una buena idea que mantengas actualizada tu
+versión.
+
+\section{RStudio}\label{rstudio}
+
+¿Qué es una IDE? IDE es el acrónimo de \emph{Integrated Development
+Environment (Entorno de Desarrollo Integrado)}. Esto quiere decir que
+RStudio es una aplicación que nos entrega herramientas para hacer más
+fácil el desarrollo de proyectos usando R y sobre todo cuando estemos
+trabajando con datos.
+
+Para descargar e instalar Rstudio debes ir a
+\url{http//www.rstudio.com/download} y seleccionar \emph{RStudio Desktop
+Open Source License} (gratuita) , cuando exista una actualización
+Rstudio te avisará.
+
+Si quedó todo bien instalado, cuando abras Rstudio deberías ver algo
+así:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/rstudio.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/rstudio} 
+
+}
+
+\caption{Rstudio}\label{fig:fig3}
+\end{figure}
+
+\begin{quote}
+IMPORTANTE: Si te aparece algún error durante este proceso, lo más
+probabable es que sea por alguna configuración de tu sistema operativo.
+En ese caso, la mejor manera de buscar una solución es copiar el error
+que arroja R, pegarlo en tu motor de búsqueda favorito y ver cómo
+alguien que se enfrentó a eso antes lo resolvió.
+\end{quote}
+
+\subsection{Partes de RStudio}\label{partes-de-rstudio}
+
+¿Para qué sirven estos paneles? Comentemos primero el panel de abajo a
+la derecha. Si te fijas, el panel tiene varias ventanas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Files} muestra el directorio (la carpeta) en la que te
+  encuentras actualmente. En mi caso, no hay nada ahí porque por defecto
+  RStudio me muestra el Escritorio (Desktop) y no tengo nada en él. Es
+  posible que a ti te muestre otra carpeta (por ejemplo, Documentos).
+\item
+  \textbf{Plots} es el lugar donde aparecerán los gráficos que vayas
+  creando. No hemos hecho ninguno por ahora, así que este panel también
+  está vacío.
+\item
+  \textbf{Packages} muestra la lista de paquetes que tienes instalados
+  en tu computador. Si recorres el panel verás que algunos tiene una
+  marca al lado izquierdo. Eso quiere decir que el paquete está activo
+  en ese momento (ya veremos cómo hacer eso). Solo los paquetes
+  vinculados a R base se activan al abrir RStudio.
+\item
+  \textbf{Help}, como su nombre lo indica, es la pestaña en la que
+  podemos encontrar ayuda. Si buscamos el nombre de un paquete o de una
+  función, RStudio nos remitirá a la documentación asociada.
+\item
+  \textbf{Viewer} es el panel para ver contenido web generado por algún
+  paquete de R (gráficos para la web o aplicaciones interactivas). Por
+  el momento no lo utilizaremos.
+\end{enumerate}
+
+El panel de arriba a la derecha, por su parte, contiene el historial de
+funciones que hemos ejecutado (History), la opción para generar
+conexiones a bases de datos externas (Connections) y el Environment.
+Este último panel es muy importante y entender lo que nos muestra es
+fundamental para comprender cómo funciona R.
+
+\section{\texorpdfstring{\emph{Scripts}}{Scripts}}\label{scripts}
+
+El script podemos decir que es un cuarto panel\footnote{El tercer panel
+  es la consola}, en donde escribiras tus códigos que queremos que
+ejecute R, para crear un script debes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ir a
+  \texttt{file\ \textgreater{}\ New\ File\ \textgreater{}\ R\ Script}
+\item
+  Otra forma es un atajo de teclado, \texttt{control\ +\ shift\ +\ n}
+  (Linux/Windows) y \texttt{comando\ +\ shift\ +\ n} (Mac OS).
+\item
+  O bien ir a la barra superior de la ventana y seleccionar el tipo de
+  archivo a trabajar.
+\end{enumerate}
+
+\section{Proyectos}\label{proyectos}
+
+Una de las ventajas de RStudio es que permite crear ``proyectos''. Un
+projecto es un espacio o contexto de trabajo asociado a una carpeta en
+particular, en la que se guardan nuestro(s) script(s), archivos de
+datos, etc. Cuando creamos un proyecto en RStudio, se crea un tipo
+especial de archivo (.Rproj) que lo que hace es vincular todo lo que se
+encuentra dentro de esa carpeta.
+
+\subsection{¿Por qué esto es útil?}\label{por-que-esto-es-util}
+
+Si parte de nuestro script, por ejemplo, implica abrir un archivo que
+está en la carpeta de nuestro proyecto, no necesito indicar en mi código
+toda la ruta del archivo: lo que hará RStudio será buscarlo en el
+entorno/carpeta del proyecto. Si movemos la carpeta a otro lugar de
+nuestro computador o la compartimos con otra persona, nuestro código
+seguirá funcionando, ya que el archivo .Rproj mantendrá todo unido. Si
+no creara un proyecto, tendría que indicar al inicio de mi script cuál
+es la ruta de la carpeta que ocuparé como espacio de trabajo. El
+problema de esa opción es que si muevo la carpeta o le cambio el nombre,
+tendría que volver a escribir la ruta para que todo funcione. Al crear
+un proyecto eso deja de ser una preocupación.
+
+\subsection{¿Cómo crear un projecto?}\label{como-crear-un-projecto}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Puedes hacerlo desde el menú File \textgreater{} New Proyect.
+\item
+  Lo primero que nos pregunta es si queremos crearlo en una carpeta
+  nueva o en una ya existente. Elegiremos esta vez una carpeta nueva,
+  así que seleccionaremos New Directory.
+\item
+  La siguiente pregunta es qué tipo de proyecto queremos crear. En esta
+  ocasión, elegiremos la primera: \emph{New Project}.
+\item
+  Finalmente, le damos un nombre al proyecto y decidimos en qué parte de
+  nuestro computador queremos que viva la carpeta que lo contiene.
+\item
+  Luego de apretar Create Project, RStudio se reinicia y se producen
+  algunos cambios. El panel Files (abajo a la derecha) ahora nos muestra
+  la carpeta de nuestro proyecto y el único archivo que hay en ella por
+  ahora. Ese es el archivo mágico que mantiene unido todo lo que hay
+  dentro de la carpeta. Cuando queramos volver a trabajar en nuestro
+  proyecto, solo tenemos que abrir ese archivo.
+\end{enumerate}
+
+\begin{quote}
+IMPORTANTE: RStudio ejecuta sesiones independientes de R para cada
+proyecto. Es decir, si tuvieras otro proyecto abierto te aparecería otro
+ícono, con su respectivo nombre. Esto nos permite trabajar en dos
+proyectos en paralelo sin que se nos mezclen los objetos del entorno, el
+código, los archivos, etc. Cada cosa en su lugar.
+\end{quote}
+
+\section{\texorpdfstring{\emph{Packages}}{Packages}}\label{packages}
+
+Cuando instalamos R por primera vez en nuestro computador, lo que
+estamos instalando es lo que se conoce como ``R Base'', es decir, los
+elementos centrales del lenguaje de programación. Una de las ventajas de
+R es que se trata de un lenguaje extensible: la propia comunidad de
+usuarios puede desarrollar nuevas posibilidades para utilizarlo. La
+manera de compartir estos nuevos desarrollos es a través de
+``paquetes'', que incluyen, entre otras cosas, código y datos. Una
+analogía que se suele utilizar para explicar esto es que R Base es un
+teléfono celular tal como viene de fábrica y los paquetes las apps que
+descargamos para que tenga más funcionalidades.
+
+Para usar las librerias (``packages'') debemos usar el siguiente código:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# instala el package}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"acá va el package"}\NormalTok{)}
+
+\CommentTok{# lo llama}
+\KeywordTok{library}\NormalTok{(}\StringTok{"acá va el package"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{\texorpdfstring{\emph{tidyverse}}{tidyverse}}\label{tidyverse}
+
+\textbf{tidyverse} es un ``megapaquete'' que incluye otros paquetes en
+su interior. Todos los paquetes que conforman ``el Tidyverse'' comparten
+la misma visión sobre el trabajo con datos y la escritura de código.
+Viene a formar parte de la nueva forma de programar en R, cuyo enfoque
+es netamente en realizar Data Science. Algunas librerias relevantes son:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ggplot2: Esta librería te permite realizar graficos avanzados.
+\item
+  dplyr: Su objetivo es la manipulación de datos (filtrar, seleccionar,
+  generar, renombrar,etc).
+\item
+  magrittr: Contiene la denominada \emph{pipe} ( \%\textgreater{}\% ),
+  se explicará más adelante
+\item
+  purrr: Para realizar iteraciones.
+\item
+  readr: Para cargar datos en csv, lo importante que los transforma en
+  tibble.
+\end{enumerate}
+
+Para instalarlo basta escribir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# instala el package}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+
+\CommentTok{# lo llama}
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si te vas a la pestaña de \emph{Packages} verás que estan seleccionadas
+aquellas librerias que se encuentran en el tidyverse.
+
+\section{Ejemplo}\label{ejemplo}
+
+Este paquete contiene una parte de los datos de Gapminder, una base de
+datos que incluye información mundial sobre población, expectativa de
+vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias
+charlas
+\href{https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo}{TED}
+que vale la pena mirar.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# instala el package}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# lo llama}
+\KeywordTok{library}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world.data <-}\StringTok{ }\NormalTok{gapminder}
+
+\NormalTok{mean.lifeExp <-}\StringTok{ }\NormalTok{world.data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{                }\KeywordTok{filter}\NormalTok{(year }\OperatorTok{==}\StringTok{ }\DecValTok{2007}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{                }\KeywordTok{group_by}\NormalTok{(continent) }\OperatorTok{%>%}
+\StringTok{                }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{mean}\NormalTok{(lifeExp))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{amean.lifeExp}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-4-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world.data <-}\StringTok{ }\NormalTok{world.data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{              }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Argentina"}\NormalTok{, }\StringTok{"Bolivia"}\NormalTok{, }\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Chile"}\NormalTok{, }\StringTok{"Colombia"}\NormalTok{, }\StringTok{"Ecuador"}\NormalTok{, }\StringTok{"Paraguay"}\NormalTok{, }\StringTok{"Peru"}\NormalTok{, }\StringTok{"Uruguay"}\NormalTok{, }\StringTok{"Venezuela"}\NormalTok{))}
+
+\NormalTok{g1 <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(world.data) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(year,lifeExp, }\DataTypeTok{colour=}\NormalTok{ country), }\DataTypeTok{size =} \FloatTok{1.2}\NormalTok{)}
+\NormalTok{g1 <-}\StringTok{ }\NormalTok{g1 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Expectativa de vida para America del Sur"}\NormalTok{, }\DataTypeTok{subtitle =} \StringTok{"Desde 1952 a 2007"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{""}\NormalTok{) }
+\NormalTok{g1 <-}\StringTok{ }\NormalTok{g1 }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Años"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Expectativa de vida"}\NormalTok{)}
+\NormalTok{g1 <-}\StringTok{ }\NormalTok{g1 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"bottom"}\NormalTok{) }
+\NormalTok{g1}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggsave}\NormalTok{(}\StringTok{"Grafico.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\bibliography{book.bib,packages.bib}
+
+\end{document}

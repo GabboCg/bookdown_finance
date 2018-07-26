@@ -1,0 +1,9 @@
+# Sobre el Autor {-}
+
+Aún no hay mucho que decir, pero te invito a visitar mi [página web]() donde la mayoría del tiempo estoy publicando post sobre programación y/o data science con aplicaciones a las finanzas y al mundo real. 
+
+Me agradan las citas...
+
+> “It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.”
+>
+> Sir Arthur Conan Doyle

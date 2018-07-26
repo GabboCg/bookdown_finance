@@ -1,0 +1,47 @@
+--- 
+title: "Introducción a las finanzas quantitativas"
+subtitle: "Aplicaciones & ejemplos usando R"
+author: "Gabriel Cabrera G."
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+geometry: 'margin=1in'
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+monofont: "Source Code Pro"
+# sirve para el mono font https://gist.github.com/veggiemonk/43d81e1cbab06ed8e92a
+monofontoptions: "Scale=0.7"
+graphics: yes # solucinoa el problea que tengo con yihui template
+github-repo: rstudio/bookdown-demo
+description: "Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile"
+---
+
+```{r setup, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, formatR.indent = 2,
+  width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
+)
+
+if (!length(getOption('repos'))) options(repos = c(CRAN = 'https://cran.rstudio.com'))
+
+lapply(c('DT', 'citr', 'formatR', 'svglite'), function(pkg) {
+  if (system.file(package = pkg) == '') install.packages(pkg)
+})
+```
+
+# Prefacio {-}
+
+Este es un apunte en proceso pensado en el curso de Finanzas I de Ingeniería Comercial de la Universidad de Chile, las aplicaciones en R son pensados con un enfoque pedagógico y cualquier comentario o sugerencias son bienvenidas. 
+
+La información de la sesión de R cuando se compila este apunte es la siguiente:
+
+```{r}
+sessionInfo()
+```
+
