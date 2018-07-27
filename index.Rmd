@@ -16,6 +16,7 @@ lof: yes
 fontsize: 12pt
 monofont: "Source Code Pro"
 # sirve para el mono font https://gist.github.com/veggiemonk/43d81e1cbab06ed8e92a
+# https://www.howtoinstall.co/es/ubuntu/xenial/pandoc-citeproc para pandoc-citeproc
 monofontoptions: "Scale=0.7"
 graphics: yes # solucinoa el problea que tengo con yihui template
 github-repo: rstudio/bookdown-demo

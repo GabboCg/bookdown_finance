@@ -161,7 +161,7 @@ DT::datatable(mean.lifeExp)
 ```
 
 
-Construimos la base de dato y graficamos la evolución de la expectativa de vida para los países de America del Sur desde 1952 a 2007.
+Construimos la base de datos y graficamos la evolución de la expectativa de vida para los países de America del Sur desde 1952 a 2007.
 ```{r}
 world.data <- world.data %>% 
               filter(country %in% c("Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela"))
