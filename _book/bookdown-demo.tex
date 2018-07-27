@@ -200,8 +200,8 @@ siguiente:
 ## [22] evaluate_0.11    labeling_0.3     knitr_1.20      
 ## [25] httpuv_1.4.5     crosstalk_1.0.0  highr_0.7       
 ## [28] broom_0.5.0      Rcpp_0.12.18     xtable_1.8-2    
-## [31] promises_1.0.1   scales_0.5.0     backports_1.1.2 
-## [34] DT_0.4           jsonlite_1.5     mime_0.5        
+## [31] promises_1.0.1   DT_0.4           scales_0.5.0    
+## [34] backports_1.1.2  jsonlite_1.5     mime_0.5        
 ## [37] hms_0.4.2        digest_0.6.15    stringi_1.2.4   
 ## [40] shiny_1.1.0      bookdown_0.7     grid_3.4.4      
 ## [43] rprojroot_1.3-2  cli_1.0.0        tools_3.4.4     
@@ -267,12 +267,6 @@ ejecutado desde el \emph{command Shell} o \emph{prompt}, no obstante,
 esto es ineficiente desde el punto de vista que no tendrenmos todas las
 opciones que Rstudio nos entrega.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/R_logo.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 
 {\centering \includegraphics[width=0.333\linewidth]{images/R_logo} 
@@ -283,12 +277,6 @@ opciones que Rstudio nos entrega.
 \end{figure}
 
 Si trabajas sin IDE veras algo como en la Figura \ref{fig:fig2}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/r_propmt.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}
 
@@ -318,12 +306,6 @@ Rstudio te avisará.
 
 Si quedó todo bien instalado, cuando abras Rstudio deberías ver algo
 así:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/rstudio.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}
 
@@ -525,12 +507,14 @@ aquellas librerias que se encuentran en el tidyverse.
 
 \section{Ejemplo}\label{ejemplo}
 
-Este paquete contiene una parte de los datos de Gapminder, una base de
-datos que incluye información mundial sobre población, expectativa de
-vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias
-charlas
+En este ejemplo vamos a trabajar con \texttt{gapminder}, un paquete que
+contiene una parte de los datos de Gapminder, una base de datos que
+incluye información mundial sobre población, expectativa de vida, PIB
+per cápita y otros. Su autor, Hans Rosling, ha hecho varias charlas
 \href{https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo}{TED}
 que vale la pena mirar.
+
+Instalamos la librería
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -539,6 +523,8 @@ que vale la pena mirar.
 \end{Highlighting}
 \end{Shaded}
 
+Cargamos tanto \texttt{gapminder} como \texttt{tidyverse}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# lo llama}
@@ -546,6 +532,9 @@ que vale la pena mirar.
 \KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+Calculamos el promedio de la expectativa de vida para los continentes en
+el 2007:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -560,11 +549,15 @@ que vale la pena mirar.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{amean.lifeExp}
+\NormalTok{mean.lifeExp}
 \end{Highlighting}
 \end{Shaded}
 
+Lo visualizamos
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-4-1.png}
+
+Construimos la base de dato y graficamos la evolución de la expectativa
+de vida para los países de America del Sur desde 1952 a 2007.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -580,6 +573,8 @@ que vale la pena mirar.
 \end{Shaded}
 
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Finalmente lo guardamos.
 
 \begin{Shaded}
 \begin{Highlighting}[]

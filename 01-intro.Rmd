@@ -124,18 +124,22 @@ Si te vas a la pestaña de *Packages* verás que estan seleccionadas aquellas li
 
 ## Ejemplo
 
-Este paquete contiene una parte de los datos de Gapminder, una base de datos que incluye información mundial sobre población, expectativa de vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias charlas [TED](https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo) que vale la pena mirar.
+En este ejemplo vamos a trabajar con `gapminder`, un paquete que contiene una parte de los datos de Gapminder, una base de datos que incluye información mundial sobre población, expectativa de vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias charlas [TED](https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo) que vale la pena mirar.
 
+Instalamos la librería 
 ```r
 # instala el package
 install.packages("gapminder")
 ```
 
+Cargamos tanto `gapminder` como `tidyverse` 
 ```{r, message=FALSE} 
 # lo llama
 library("gapminder")
 library("tidyverse")
 ```
+
+Calculamos el promedio de la expectativa de vida para los continentes en el 2007:
 
 ```{r}
 
@@ -148,14 +152,16 @@ mean.lifeExp <- world.data %>%
 ```
 
 ```r
-amean.lifeExp
+mean.lifeExp
 ```
 
+Lo visualizamos
 ```{r, echo = FALSE}
 DT::datatable(mean.lifeExp) 
 ```
 
 
+Construimos la base de dato y graficamos la evolución de la expectativa de vida para los países de America del Sur desde 1952 a 2007.
 ```{r}
 world.data <- world.data %>% 
               filter(country %in% c("Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela"))
@@ -167,7 +173,7 @@ g1 <- g1 + theme(legend.position="bottom")
 g1
 ```
 
-
+Finalmente lo guardamos.
 ```{r, message=FALSE}
 ggsave("Grafico.png")
 ```
