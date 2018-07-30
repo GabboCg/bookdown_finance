@@ -1,0 +1,59 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Quantmod  {#quantmod}
+
+El paquete quantmod para R esta diseñado para la asistencia quantitativa de los traders en el desarrollo de sus estrategias y modelos financieros.
+
+## ¿Que es quantmod?
+
+Un entorno rápido, donde los operadores cuantitativos pueden explorar y construir modelos de negociación rápida y limpiamente. A través de la función getSymbols podemos extraer datos financieros desde varias fuentes: Google Finance, Yahoo Finance, Federal Reserve Bank of St. Louis FRED (más de 11,000 series !!!) y Oanda. Incluso desde fuentes propias: MySQL , R (Rdata) y Comma Separated Value files (csv).
+
+No es el paquete definitivo dado que se complementa con otros, tales como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más usadas en el mercado y usan todas las propiedades que hacen al lenguaje R útil para realizar análisis de datos.
+
+## Obtención de Datos
+
+Para comenzar, como todo paquete en R se debe instalar:
+
+```{r, message=FALSE, eval=FALSE}
+# Instalación package
+install.packages("quantmod")
+``` 
+
+Una vez que esté instalado, creamos nuestro script usando `ctrl/cmd + shift + n` y lo “llamamos” con:
+
+```{r, message=FALSE}
+# Cargamos "quantmod"
+library("quantmod")
+```
+
+> HINT: con `ctrl + R` en windows/Linux y `cmd + R` en MAC OS agregamos más rapido comentarios
+(sección) en Rstudio.
+
+**quantmod** provee una función para descargar datos desde fuentes externas. Esta función se llama `getSymbols`, para mayor información escribir en la linea de comandos `?getSymbols`^[No solo funcióna con `getSymbols`, si no que con todas las funciones de distintas librerias, basta con ante poner `?` y luego el nombre la función]. Por defecto, se crea un objeto en el workspace (*Global Environment*) con el nombre del ticker/nemotécnico seleccionado. Imaginemos por un momento  que necesitamos analizar el S&P 500 desde el 2010 hasta la fecha con periocidad diaria. Lo primero que debemos hacer es pensar desde que fuente vamos a descargar los datos, como es un índice accionario se recomienda usar *yahoo finance*, luego buscar el nemotécnico, en este caso es "^GSPC".
+
+```{r, message=FALSE}
+getSymbols("^GSPC", src = "yahoo", from = "2010-01-01", to = "2010-07-30", periodicity = "daily")
+```
+
+### ¿Qué hizo la función `getSymbols`?
+
+La función `getSymbols` se construye basicamente de cinco opciones^[Por el momento solo trabajaremos con estas opciones, exiten más.]:
+
+1. El ticker/nemotécnico, eg. ^GSPC.
+2. `src`, que es la abreviación de "source", eg. yahoo, FRED...
+3. `from`, es el inicio de la fecha a descargar, tener presente que se incluye la fecha en nuestros datos.
+4. `to`, es el final del periodo para los datos, este no se incluye.
+5. `periodicity`, es la periodicidad de los datos, eg. daily, monthly o yearly, solo algunos datos se ajustan a las tres periodicidades.
+
+En el ejemplo anterior se descargo desde yahoo los datos del S&P 500 desde Enero del 2010 hasta el viernes 27 de Julio del 2018 con periodicidad diaria, construyendo un objeto en formato **xts** cuyo nombre es GSPC.
+
+```{r, echo = FALSE}
+DT::datatable(GSPC) 
+```
+
+
+

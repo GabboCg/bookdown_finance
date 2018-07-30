@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-07-27">
+<meta name="date" content="2018-07-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="sobre-el-autor.html">
-
+<link rel="next" href="quantmod.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -125,6 +125,12 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#ejemplo"><i class="fa fa-check"></i><b>1.6</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quantmod.html"><a href="quantmod.html"><i class="fa fa-check"></i><b>2</b> Quantmod</a><ul>
+<li class="chapter" data-level="2.1" data-path="quantmod.html"><a href="quantmod.html#que-es-quantmod"><i class="fa fa-check"></i><b>2.1</b> ¿Que es quantmod?</a></li>
+<li class="chapter" data-level="2.2" data-path="quantmod.html"><a href="quantmod.html#obtencion-de-datos"><i class="fa fa-check"></i><b>2.2</b> Obtención de Datos</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="quantmod.html"><a href="quantmod.html#que-hizo-la-funcion-getsymbols"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué hizo la función <code>getSymbols</code>?</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -278,8 +284,8 @@ mean.lifeExp &lt;-<span class="st"> </span>world.data <span class="op">%&gt;%</s
 <span class="st">                </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span>
 <span class="st">                </span><span class="kw">summarize</span>(<span class="kw">mean</span>(lifeExp))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean.lifeExp</code></pre></div>
-<p>Lo visualizamos <div id="htmlwidget-bffa158f33f86cf7e7e9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bffa158f33f86cf7e7e9">{"x":{"filter":"none","data":[["1","2","3","4","5"],["Africa","Americas","Asia","Europe","Oceania"],[54.8060384615385,73.60812,70.7284848484849,77.6486,80.7195]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>continent<\/th>\n      <th>mean(lifeExp)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
+<p>Lo visualizamos <div id="htmlwidget-11c23cef6ccacb880b2f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-11c23cef6ccacb880b2f">{"x":{"filter":"none","data":[["1","2","3","4","5"],["Africa","Americas","Asia","Europe","Oceania"],[54.8060384615385,73.60812,70.7284848484849,77.6486,80.7195]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>continent<\/th>\n      <th>mean(lifeExp)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
 <p>Construimos la base de datos y graficamos la evolución de la expectativa de vida para los países de America del Sur desde 1952 a 2007.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">world.data &lt;-<span class="st"> </span>world.data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">              </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Bolivia&quot;</span>, <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Chile&quot;</span>, <span class="st">&quot;Colombia&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>, <span class="st">&quot;Paraguay&quot;</span>, <span class="st">&quot;Peru&quot;</span>, <span class="st">&quot;Uruguay&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>))
@@ -295,15 +301,6 @@ g1</code></pre></div>
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -318,8 +315,8 @@ g1</code></pre></div>
           </div>
         </div>
       </div>
-<a href="sobre-el-autor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="sobre-el-autor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="quantmod.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

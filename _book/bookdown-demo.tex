@@ -127,7 +127,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{Aplicaciones \& ejemplos usando R}
 \author{Gabriel Cabrera G.}
-\date{2018-07-27}
+\date{2018-07-29}
 
 \begin{document}
 \maketitle
@@ -184,32 +184,33 @@ siguiente:
 ## [6] methods   base     
 ## 
 ## other attached packages:
-##  [1] bindrcpp_0.2.2  forcats_0.3.0   stringr_1.3.1  
-##  [4] dplyr_0.7.6     purrr_0.2.5     readr_1.1.1    
-##  [7] tidyr_0.8.1     tibble_1.4.2    ggplot2_3.0.0  
-## [10] tidyverse_1.2.1 gapminder_0.3.0
+##  [1] quantmod_0.4-13 TTR_0.23-3      xts_0.11-0     
+##  [4] zoo_1.8-3       bindrcpp_0.2.2  forcats_0.3.0  
+##  [7] stringr_1.3.1   dplyr_0.7.6     purrr_0.2.5    
+## [10] readr_1.1.1     tidyr_0.8.1     tibble_1.4.2   
+## [13] ggplot2_3.0.0   tidyverse_1.2.1 gapminder_0.3.0
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_0.2.4 xfun_0.3         haven_1.1.2     
-##  [4] lattice_0.20-35  colorspace_1.3-2 htmltools_0.3.6 
-##  [7] yaml_2.1.19      rlang_0.2.1      later_0.7.3     
-## [10] pillar_1.3.0     glue_1.3.0       withr_2.1.2     
-## [13] modelr_0.1.2     readxl_1.1.0     bindr_0.1.1     
-## [16] plyr_1.8.4       munsell_0.5.0    gtable_0.2.0    
-## [19] cellranger_1.1.0 rvest_0.3.2      htmlwidgets_1.2 
-## [22] evaluate_0.11    labeling_0.3     knitr_1.20      
-## [25] httpuv_1.4.5     crosstalk_1.0.0  highr_0.7       
-## [28] broom_0.5.0      Rcpp_0.12.18     xtable_1.8-2    
-## [31] promises_1.0.1   DT_0.4           scales_0.5.0    
-## [34] backports_1.1.2  jsonlite_1.5     mime_0.5        
-## [37] hms_0.4.2        digest_0.6.15    stringi_1.2.4   
-## [40] shiny_1.1.0      bookdown_0.7     grid_3.4.4      
-## [43] rprojroot_1.3-2  cli_1.0.0        tools_3.4.4     
-## [46] magrittr_1.5     lazyeval_0.2.1   crayon_1.3.4    
-## [49] pkgconfig_2.0.1  xml2_1.2.0       lubridate_1.7.4 
-## [52] assertthat_0.2.0 rmarkdown_1.10   httr_1.3.1      
-## [55] rstudioapi_0.7   R6_2.2.2         nlme_3.1-131    
-## [58] compiler_3.4.4
+##  [1] Rcpp_0.12.18     lubridate_1.7.4  lattice_0.20-35 
+##  [4] assertthat_0.2.0 rprojroot_1.3-2  digest_0.6.15   
+##  [7] mime_0.5         R6_2.2.2         cellranger_1.1.0
+## [10] plyr_1.8.4       backports_1.1.2  evaluate_0.11   
+## [13] httr_1.3.1       highr_0.7        pillar_1.3.0    
+## [16] rlang_0.2.1      curl_3.2         lazyeval_0.2.1  
+## [19] readxl_1.1.0     rstudioapi_0.7   DT_0.4          
+## [22] rmarkdown_1.10   labeling_0.3     htmlwidgets_1.2 
+## [25] munsell_0.5.0    shiny_1.1.0      broom_0.5.0     
+## [28] compiler_3.4.4   httpuv_1.4.5     modelr_0.1.2    
+## [31] xfun_0.3         pkgconfig_2.0.1  htmltools_0.3.6 
+## [34] tidyselect_0.2.4 bookdown_0.7     crayon_1.3.4    
+## [37] withr_2.1.2      later_0.7.3      grid_3.4.4      
+## [40] nlme_3.1-131     jsonlite_1.5     xtable_1.8-2    
+## [43] gtable_0.2.0     magrittr_1.5     scales_0.5.0    
+## [46] cli_1.0.0        stringi_1.2.4    promises_1.0.1  
+## [49] xml2_1.2.0       tools_3.4.4      glue_1.3.0      
+## [52] hms_0.4.2        crosstalk_1.0.0  yaml_2.1.19     
+## [55] colorspace_1.3-2 rvest_0.3.2      knitr_1.20      
+## [58] bindr_0.1.1      haven_1.1.2
 \end{verbatim}
 
 \chapter*{Sobre el Autor}\label{sobre-el-autor}
@@ -581,6 +582,110 @@ Finalmente lo guardamos.
 \KeywordTok{ggsave}\NormalTok{(}\StringTok{"Grafico.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\chapter{Quantmod}\label{quantmod}
+
+El paquete quantmod para R esta diseñado para la asistencia quantitativa
+de los traders en el desarrollo de sus estrategias y modelos
+financieros.
+
+\section{¿Que es quantmod?}\label{que-es-quantmod}
+
+Un entorno rápido, donde los operadores cuantitativos pueden explorar y
+construir modelos de negociación rápida y limpiamente. A través de la
+función getSymbols podemos extraer datos financieros desde varias
+fuentes: Google Finance, Yahoo Finance, Federal Reserve Bank of
+St.~Louis FRED (más de 11,000 series !!!) y Oanda. Incluso desde fuentes
+propias: MySQL , R (Rdata) y Comma Separated Value files (csv).
+
+No es el paquete definitivo dado que se complementa con otros, tales
+como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más
+usadas en el mercado y usan todas las propiedades que hacen al lenguaje
+R útil para realizar análisis de datos.
+
+\section{Obtención de Datos}\label{obtencion-de-datos}
+
+Para comenzar, como todo paquete en R se debe instalar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Instalación package}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"quantmod"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Una vez que esté instalado, creamos nuestro script usando
+\texttt{ctrl/cmd\ +\ shift\ +\ n} y lo ``llamamos'' con:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Cargamos "quantmod"}
+\KeywordTok{library}\NormalTok{(}\StringTok{"quantmod"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+HINT: con \texttt{ctrl\ +\ R} en windows/Linux y \texttt{cmd\ +\ R} en
+MAC OS agregamos más rapido comentarios (sección) en Rstudio.
+\end{quote}
+
+\textbf{quantmod} provee una función para descargar datos desde fuentes
+externas. Esta función se llama \texttt{getSymbols}, para mayor
+información escribir en la linea de comandos
+\texttt{?getSymbols}\footnote{No solo funcióna con \texttt{getSymbols},
+  si no que con todas las funciones de distintas librerias, basta con
+  ante poner \texttt{?} y luego el nombre la función}. Por defecto, se
+crea un objeto en el workspace (\emph{Global Environment}) con el nombre
+del ticker/nemotécnico seleccionado. Imaginemos por un momento que
+necesitamos analizar el S\&P 500 desde el 2010 hasta la fecha con
+periocidad diaria. Lo primero que debemos hacer es pensar desde que
+fuente vamos a descargar los datos, como es un índice accionario se
+recomienda usar \emph{yahoo finance}, luego buscar el nemotécnico, en
+este caso es ``\^{}GSPC''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getSymbols}\NormalTok{(}\StringTok{"^GSPC"}\NormalTok{, }\DataTypeTok{src =} \StringTok{"yahoo"}\NormalTok{, }\DataTypeTok{from =} \StringTok{"2010-01-01"}\NormalTok{, }\DataTypeTok{to =} \StringTok{"2010-07-30"}\NormalTok{, }\DataTypeTok{periodicity =} \StringTok{"daily"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "GSPC"
+\end{verbatim}
+
+\subsection{\texorpdfstring{¿Qué hizo la función
+\texttt{getSymbols}?}{¿Qué hizo la función getSymbols?}}\label{que-hizo-la-funcion-getsymbols}
+
+La función \texttt{getSymbols} se construye basicamente de cinco
+opciones\footnote{Por el momento solo trabajaremos con estas opciones,
+  exiten más.}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  El ticker/nemotécnico, eg. \^{}GSPC.
+\item
+  \texttt{src}, que es la abreviación de ``source'', eg. yahoo,
+  FRED\ldots{}
+\item
+  \texttt{from}, es el inicio de la fecha a descargar, tener presente
+  que se incluye la fecha en nuestros datos.
+\item
+  \texttt{to}, es el final del periodo para los datos, este no se
+  incluye.
+\item
+  \texttt{periodicity}, es la periodicidad de los datos, eg. daily,
+  monthly o yearly, solo algunos datos se ajustan a las tres
+  periodicidades.
+\end{enumerate}
+
+En el ejemplo anterior se descargo desde yahoo los datos del S\&P 500
+desde Enero del 2010 hasta el viernes 27 de Julio del 2018 con
+periodicidad diaria, construyendo un objeto en formato \textbf{xts} cuyo
+nombre es GSPC.
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-10-1.png}
 
 \bibliography{book.bib,packages.bib}
 
