@@ -235,4 +235,6 @@ summary <- basicStats(retornos[1:4])[c("Mean", "Stdev", "Median", "Minimum", "Va
 
 ## Test de JarqueBera 
 
+El test de jarque bera se...
+
 
