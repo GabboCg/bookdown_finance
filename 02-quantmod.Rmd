@@ -55,5 +55,29 @@ En el ejemplo anterior se descargo desde yahoo los datos del S&P 500 desde Enero
 DT::datatable(GSPC) 
 ```
 
+## Funciones para graficar
 
+Aún no introducimos la librería `ggplot2`, sin embargo, `quantmod` también nos permite graficar.
+
+
+### `chartSeries`  
+
+Para graficar basta con escribir el nombre del objeto con clase (`class`) xts, en nuestro caso es `GSPC` que representa al Standard and Poor 500. Si escribimos `TA = NULL`, `charSeries` no mostrará el volume^[`TA` proviene de *Technical Analysis*]
+
+```{r, out.width="75%", fig.align='center', fig.cap="Gráfico con chartSeries con TA = NULL"}
+chartSeries(GSPC, TA=NULL)
+```
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Gráfico con chartSeries sin TA = NULL"}
+chartSeries(GSPC, TA=NULL)
+```
+
+Pero cuando las series son muy largas, podemos ver tendencias pero dificulta ver cambios
+importantes a nivel de análisis técnico.
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Los últimos 3 meses de GSPC"}
+chartSeries(GSPC, subset = "last 3 months")
+```
+
+Con el código anterior nos enfocamos solo en los tres meses anteriores.
 

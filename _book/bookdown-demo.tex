@@ -688,6 +688,69 @@ nombre es GSPC.
 
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-10-1.png}
 
+\section{Funciones para graficar}\label{funciones-para-graficar}
+
+Aún no introducimos la librería \texttt{ggplot2}, sin embargo,
+\texttt{quantmod} también nos permite graficar.
+
+\subsection{\texorpdfstring{\texttt{chartSeries}}{chartSeries}}\label{chartseries}
+
+Para graficar basta con escribir el nombre del objeto con clase
+(\texttt{class}) xts, en nuestro caso es \texttt{GSPC} que representa al
+Standard and Poor 500. Si escribimos \texttt{TA\ =\ NULL},
+\texttt{charSeries} no mostrará el volume\footnote{\texttt{TA} proviene
+  de \emph{Technical Analysis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chartSeries}\NormalTok{(GSPC, }\DataTypeTok{TA=}\OtherTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-11-1} 
+
+}
+
+\caption{Gráfico con chartSeries con TA = NULL}\label{fig:unnamed-chunk-11}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chartSeries}\NormalTok{(GSPC, }\DataTypeTok{TA=}\OtherTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-12-1} 
+
+}
+
+\caption{Gráfico con chartSeries sin TA = NULL}\label{fig:unnamed-chunk-12}
+\end{figure}
+
+Pero cuando las series son muy largas, podemos ver tendencias pero
+dificulta ver cambios importantes a nivel de análisis técnico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chartSeries}\NormalTok{(GSPC, }\DataTypeTok{subset =} \StringTok{"last 3 months"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-13-1} 
+
+}
+
+\caption{Los últimos 3 meses de GSPC}\label{fig:unnamed-chunk-13}
+\end{figure}
+
+Con el código anterior nos enfocamos solo en los tres meses anteriores.
+
 \bibliography{book.bib,packages.bib}
 
 \end{document}
