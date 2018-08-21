@@ -127,7 +127,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{Aplicaciones \& ejemplos usando R}
 \author{Gabriel Cabrera G.}
-\date{2018-07-29}
+\date{2018-08-21}
 
 \begin{document}
 \maketitle
@@ -196,7 +196,7 @@ siguiente:
 ##  [7] mime_0.5         R6_2.2.2         cellranger_1.1.0
 ## [10] plyr_1.8.4       backports_1.1.2  evaluate_0.11   
 ## [13] httr_1.3.1       highr_0.7        pillar_1.3.0    
-## [16] rlang_0.2.1      curl_3.2         lazyeval_0.2.1  
+## [16] rlang_0.2.1      lazyeval_0.2.1   curl_3.2        
 ## [19] readxl_1.1.0     rstudioapi_0.7   DT_0.4          
 ## [22] rmarkdown_1.10   labeling_0.3     htmlwidgets_1.2 
 ## [25] munsell_0.5.0    shiny_1.1.0      broom_0.5.0     
@@ -601,11 +601,12 @@ propias: MySQL , R (Rdata) y Comma Separated Value files (csv).
 No es el paquete definitivo dado que se complementa con otros, tales
 como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más
 usadas en el mercado y usan todas las propiedades que hacen al lenguaje
-R útil para realizar análisis de datos.
+R útil para realizar análisis de datos\footnote{Proximamente incluire el
+  tidyquant}.
 
 \section{Obtención de Datos}\label{obtencion-de-datos}
 
-Para comenzar, como todo paquete en R se debe instalar:
+Para comenzar, como todo paquete en R se debe instalar
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -615,7 +616,7 @@ Para comenzar, como todo paquete en R se debe instalar:
 \end{Shaded}
 
 Una vez que esté instalado, creamos nuestro script usando
-\texttt{ctrl/cmd\ +\ shift\ +\ n} y lo ``llamamos'' con:
+\texttt{ctrl/cmd\ +\ shift\ +\ n} y lo ``llamamos'' con
 
 \begin{Shaded}
 \begin{Highlighting}[]

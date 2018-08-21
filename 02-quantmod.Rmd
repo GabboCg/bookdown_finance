@@ -12,18 +12,18 @@ El paquete quantmod para R esta diseñado para la asistencia quantitativa de los
 
 Un entorno rápido, donde los operadores cuantitativos pueden explorar y construir modelos de negociación rápida y limpiamente. A través de la función getSymbols podemos extraer datos financieros desde varias fuentes: Google Finance, Yahoo Finance, Federal Reserve Bank of St. Louis FRED (más de 11,000 series !!!) y Oanda. Incluso desde fuentes propias: MySQL , R (Rdata) y Comma Separated Value files (csv).
 
-No es el paquete definitivo dado que se complementa con otros, tales como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más usadas en el mercado y usan todas las propiedades que hacen al lenguaje R útil para realizar análisis de datos.
+No es el paquete definitivo dado que se complementa con otros, tales como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más usadas en el mercado y usan todas las propiedades que hacen al lenguaje R útil para realizar análisis de datos^[Proximamente incluire el tidyquant].
 
 ## Obtención de Datos
 
-Para comenzar, como todo paquete en R se debe instalar:
+Para comenzar, como todo paquete en R se debe instalar
 
 ```{r, message=FALSE, eval=FALSE}
 # Instalación package
 install.packages("quantmod")
 ``` 
 
-Una vez que esté instalado, creamos nuestro script usando `ctrl/cmd + shift + n` y lo “llamamos” con:
+Una vez que esté instalado, creamos nuestro script usando `ctrl/cmd + shift + n` y lo “llamamos” con
 
 ```{r, message=FALSE}
 # Cargamos "quantmod"
