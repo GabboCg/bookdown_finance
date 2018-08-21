@@ -123,6 +123,27 @@
 }
 \makeatother
 
+\usepackage{fontawesome}
+
+% declare overall beamer theme to use as baseline
+\usepackage{ragged2e}
+
+% make code-output smaller
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\scriptsize,commandchars=\\\{\}}
+
+% make console-output smaller:
+\makeatletter
+\def\verbatim{\scriptsize\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother
+
+% set vertical spacing between paragraphs:
+% \parskip{0pt}
+% \addtobeamertemplate{blocks}{}{\setlength{\parskip}{0pt}}
+% \addtobeamertemplate{block begin}{}{\setlength{\parskip}{0pt}}
+% \addtobeamertemplate{block end}{}{\setlength{\parskip}{0pt}}
+% % \setlength{\emergencystretch}{0em}
+\setlength{\parskip}{0pt}
+
 \title{Introducción a las finanzas quantitativas}
 \providecommand{\subtitle}[1]{}
 \subtitle{Aplicaciones \& ejemplos usando R}
@@ -184,11 +205,12 @@ siguiente:
 ## [6] methods   base     
 ## 
 ## other attached packages:
-##  [1] quantmod_0.4-13 TTR_0.23-3      xts_0.11-0     
-##  [4] zoo_1.8-3       bindrcpp_0.2.2  forcats_0.3.0  
-##  [7] stringr_1.3.1   dplyr_0.7.6     purrr_0.2.5    
-## [10] readr_1.1.1     tidyr_0.8.1     tibble_1.4.2   
-## [13] ggplot2_3.0.0   tidyverse_1.2.1 gapminder_0.3.0
+##  [1] reshape2_1.4.3  quantmod_0.4-13 TTR_0.23-3     
+##  [4] xts_0.11-0      zoo_1.8-3       bindrcpp_0.2.2 
+##  [7] forcats_0.3.0   stringr_1.3.1   dplyr_0.7.6    
+## [10] purrr_0.2.5     readr_1.1.1     tidyr_0.8.1    
+## [13] tibble_1.4.2    ggplot2_3.0.0   tidyverse_1.2.1
+## [16] gapminder_0.3.0
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.18     lubridate_1.7.4  lattice_0.20-35 
@@ -688,7 +710,8 @@ nombre es GSPC.
 
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-10-1.png}
 
-\section{Funciones para graficar}\label{funciones-para-graficar}
+\section{\texorpdfstring{Graficando con
+\texttt{chartSeries}}{Graficando con chartSeries}}\label{graficando-con-chartseries}
 
 Aún no introducimos la librería \texttt{ggplot2}, sin embargo,
 \texttt{quantmod} también nos permite graficar.
@@ -750,6 +773,298 @@ dificulta ver cambios importantes a nivel de análisis técnico.
 \end{figure}
 
 Con el código anterior nos enfocamos solo en los tres meses anteriores.
+
+\section{\texorpdfstring{Graficando con
+\texttt{ggplot2}}{Graficando con ggplot2}}\label{graficando-con-ggplot2}
+
+Si bien \texttt{chartSeries} es una alternativa a \texttt{plot} o
+\texttt{plotly}, este no nos permite realizar gráficos que se adapten a
+nuestras necesidades. ¿Qué pasa si queremos graficar retornos o retornos
+acumulados? la opción por exelencia es \texttt{ggplot2}.
+
+\subsection{\texorpdfstring{Breve introducción a
+\texttt{ggplot2}}{Breve introducción a ggplot2}}\label{breve-introduccion-a-ggplot2}
+
+Todo ggplot2 plot tiene tres componentes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Datos
+\item
+  Un conjunto de aesthetic mappings entre variables y propiedades de
+  visualización.
+\item
+  Al menos una layer que describe la observación, son usualmente creadas
+  con la función geom\_*
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+A continuación usaremos la base que viene pre cargada con R cuando lo
+instalamos, que es \texttt{cars}\footnote{Esta base es muy común en los
+  software estadísticos y presenta datos de autos.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-15-1} 
+
+}
+
+\caption{Ejemplo 1 usando ggplot2}\label{fig:unnamed-chunk-15}
+\end{figure}
+
+Esto produce el scatterplot definido como:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Datos: mpg
+\item
+  Aesthetic mapping: tamaño del motor en la posición x, gasolina en la
+  posición y.
+\item
+  Layer: puntos.
+\end{enumerate}
+
+\subsection{\texorpdfstring{Color, tamaño, forma y otros atributos del
+\emph{aesthetic}}{Color, tamaño, forma y otros atributos del aesthetic}}\label{color-tamano-forma-y-otros-atributos-del-aesthetic}
+
+Se debe usar otro aesthetics como \texttt{colour}, \texttt{shape} y
+\texttt{size} (ggplot acepta los nombres americanos como británicos)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-16-1} 
+
+}
+
+\caption{Ejemplo 2 usando ggplot2}\label{fig:unnamed-chunk-16}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Como se puede ver, se creo una guía con los valores, leyenda, así
+  podemos ``leer'' el gráfico.
+\item
+  Si se quiere aesthetic para valores fijos, sin scaling:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-17-1} 
+
+}
+
+\caption{Ejemplo 3 usando ggplot2}\label{fig:unnamed-chunk-171}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-17-2} 
+
+}
+
+\caption{Ejemplo 3 usando ggplot2}\label{fig:unnamed-chunk-172}
+\end{figure}
+
+Ejercicios:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)}
+\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{shape =}\NormalTok{ drv)}
+\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{size =}\NormalTok{ cyl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Se recomienda usar \texttt{colour} y \texttt{shape} con variables
+  categóricas.\\
+\item
+  Mientras que size funciona bien con variables continuas.
+\end{itemize}
+
+\subsection{\texorpdfstring{S\&P 500 con
+\texttt{ggplot2}}{S\&P 500 con ggplot2}}\label{sp-500-con-ggplot2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gspc <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(GSPC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g1 <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(gspc) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\KeywordTok{index}\NormalTok{(gspc),GSPC.Adjusted))}
+\NormalTok{g1 <-}\StringTok{ }\NormalTok{g1 }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"S&P 500"}\NormalTok{, }\DataTypeTok{subtitle =} \StringTok{"Desde Enero 2010 a 2018"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Fecha"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\NormalTok{g1 <-}\StringTok{ }\NormalTok{g1 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{()}
+\NormalTok{g1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-19-1} 
+
+}
+
+\caption{Standard and Poor 500 usando ggplot2}\label{fig:unnamed-chunk-19}
+\end{figure}
+
+\section{Multiples Datos}\label{multiples-datos}
+
+A continuación trabajaremos con las acciones de Oracle, Nvidia, IBM y
+AMD, comenzamos con crear un objeto con los nombres de los tickers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tickers <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ORCL"}\NormalTok{,}\StringTok{"AMD"}\NormalTok{,}\StringTok{"IBM"}\NormalTok{,}\StringTok{"NVDA"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+descargamos los datos con las características requeridas, que son las
+mismas que usamos anteriormente con S\&P 500
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getSymbols}\NormalTok{(tickers, }\DataTypeTok{src =} \StringTok{"yahoo"}\NormalTok{, }\DataTypeTok{from =} \StringTok{"2010-01-01"}\NormalTok{, }\DataTypeTok{to =} \StringTok{"2018-07-30"}\NormalTok{, }\DataTypeTok{periodicity =} \StringTok{"daily"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ORCL" "AMD"  "IBM"  "NVDA"
+\end{verbatim}
+
+Acá deben tener mucha atención:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list <-}\StringTok{ }\KeywordTok{lapply}\NormalTok{(tickers, }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{Cl}\NormalTok{(}\KeywordTok{get}\NormalTok{(x)))}
+\NormalTok{precio.cierre <-}\StringTok{ }\KeywordTok{do.call}\NormalTok{(merge,list)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Retornos}\label{retornos}
+
+La formula para calcular (log) retornos es
+
+\[
+r_t = log(1 + R_t) = log(\frac{P_t}{P_{t-1}}) = p_t - p_{t-1}
+\] donde \(p_t = log(P_t)\) es llamado ``log price''.
+
+Ahora pasamos a construir el retorno.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{retornos <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{apply}\NormalTok{(precio.cierre, }\DecValTok{2}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{Delt}\NormalTok{(x, }\DataTypeTok{type =} \StringTok{"log"}\NormalTok{)),}
+                       \DataTypeTok{fecha =} \KeywordTok{index}\NormalTok{(precio.cierre)) }\OperatorTok{%>%}
+\StringTok{            }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{orcl =}\NormalTok{ ORCL.Close, }\DataTypeTok{amd =}\NormalTok{ AMD.Close, }\DataTypeTok{ibm =}\NormalTok{ IBM.Close, }\DataTypeTok{nvda =}\NormalTok{ NVDA.Close) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{            }\KeywordTok{na.omit}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Retornos Acumulados}\label{retornos-acumulados}
+
+Si graficamos los retornos no será muy descriptivo, una forma es
+trabajar con su acumulado. Con la misma lógica usamos la función
+\texttt{cumsum()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{acumulados <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{apply}\NormalTok{(retornos[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DecValTok{2}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{cumsum}\NormalTok{(x)), }\DataTypeTok{fecha =} \KeywordTok{index}\NormalTok{(precio.cierre[}\OperatorTok{-}\DecValTok{1}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Gráfico retornos
+acumulados}\label{grafico-retornos-acumulados}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"reshape2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reshape <-}\StringTok{ }\KeywordTok{melt}\NormalTok{(acumulados, }\DataTypeTok{id.vars =} \StringTok{"fecha"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g2 <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(reshape) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(fecha,value, }\DataTypeTok{color =}\NormalTok{ variable))}
+\NormalTok{g2 <-}\StringTok{ }\NormalTok{g2 }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Retornos Acumulados"}\NormalTok{, }\DataTypeTok{subtitle =} \StringTok{"Oracle, AMD, IBM y Nvidia"}\NormalTok{)}
+\NormalTok{g2 <-}\StringTok{ }\NormalTok{g2 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Fecha"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Retornos Acumulados"}\NormalTok{)}
+\NormalTok{g2 <-}\StringTok{ }\NormalTok{g2 }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_color_manual}\NormalTok{(}\StringTok{"Tickers"}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\NormalTok{g2 <-}\StringTok{ }\NormalTok{g2 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
+\NormalTok{g2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{bookdown-demo_files/figure-latex/unnamed-chunk-27-1} 
+
+}
+
+\caption{Retornos Acumulados de los tickers}\label{fig:unnamed-chunk-27}
+\end{figure}
+
+\section{Estadística Descriptiva}\label{estadistica-descriptiva}
+
+Existe muchas formas de obtener la estadística descriptiva en R, un
+librería es \texttt{fBasics}, la que a su vez contiene test de
+normalidad.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"fBasics"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary <-}\StringTok{ }\KeywordTok{basicStats}\NormalTok{(retornos[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{])[}\KeywordTok{c}\NormalTok{(}\StringTok{"Mean"}\NormalTok{, }\StringTok{"Stdev"}\NormalTok{, }\StringTok{"Median"}\NormalTok{, }\StringTok{"Minimum"}\NormalTok{, }\StringTok{"Variance"}\NormalTok{,}
+                                       \StringTok{"Maximum"}\NormalTok{, }\StringTok{"nobs"}\NormalTok{,}\StringTok{"Skewness"}\NormalTok{,}\StringTok{"Kurtosis"}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Test de JarqueBera}\label{test-de-jarquebera}
 
 \bibliography{book.bib,packages.bib}
 

@@ -55,7 +55,7 @@ En el ejemplo anterior se descargo desde yahoo los datos del S&P 500 desde Enero
 DT::datatable(GSPC) 
 ```
 
-## Funciones para graficar
+## Graficando con `chartSeries`
 
 Aún no introducimos la librería `ggplot2`, sin embargo, `quantmod` también nos permite graficar.
 
@@ -80,4 +80,159 @@ chartSeries(GSPC, subset = "last 3 months")
 ```
 
 Con el código anterior nos enfocamos solo en los tres meses anteriores.
+
+## Graficando con `ggplot2`
+
+Si bien `chartSeries` es una alternativa a `plot` o `plotly`, este no nos permite realizar gráficos que se adapten a nuestras necesidades. ¿Qué pasa si queremos graficar retornos o retornos acumulados? la opción por exelencia es `ggplot2`.
+
+### Breve introducción a `ggplot2`
+
+Todo ggplot2 plot tiene tres componentes:
+
+1. Datos
+2. Un conjunto de aesthetic mappings entre variables y propiedades de visualización.
+3. Al menos una layer que describe la observación, son usualmente creadas con la función geom_*
+
+```{r,eval=TRUE, echo=TRUE}
+library(ggplot2)
+```
+
+A continuación usaremos la base que viene pre cargada con R cuando lo instalamos, que es `cars`^[Esta base es muy común en los software estadísticos y presenta datos de autos.]
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Ejemplo 1 usando ggplot2"}
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+```
+
+Esto produce el scatterplot definido como:
+
+1. Datos: mpg
+2. Aesthetic mapping: tamaño del motor en la posición x, gasolina en la posición y.
+3. Layer: puntos.
+
+### Color, tamaño, forma y otros atributos del *aesthetic*
+
+Se debe usar otro aesthetics como `colour`, `shape` y `size` (ggplot acepta los nombres americanos como británicos)
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Ejemplo 2 usando ggplot2"}
+ggplot(mpg, aes(displ, cty, colour = class)) +
+  geom_point() 
+```
+
+- Como se puede ver, se creo una guía con los valores, leyenda, así podemos "leer" el gráfico.
+- Si se quiere aesthetic para valores fijos, sin scaling: 
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Ejemplo 3 usando ggplot2"}
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
+ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+```
+
+Ejercicios:
+
+```r
+aes(displ, hwy, colour = class)
+aes(displ, hwy, shape = drv)
+aes(displ, hwy, size = cyl)
+```
+- Se recomienda usar `colour` y `shape` con variables categóricas.  
+- Mientras que size funciona bien con variables continuas.
+
+### S&P 500 con `ggplot2`
+
+```{r, eval = TRUE, echo = TRUE}
+gspc <- as.data.frame(GSPC)
+```
+
+
+```{r, eval = TRUE, echo = TRUE, out.width="75%", fig.align='center', fig.cap = "Standard and Poor 500 usando ggplot2"}
+g1 <- ggplot(gspc) + geom_line(mapping = aes(index(gspc),GSPC.Adjusted))
+g1 <- g1 + labs(title = "S&P 500", subtitle = "Desde Enero 2010 a 2018") + xlab("Fecha") + ylab("")
+g1 <- g1 + theme_bw()
+g1
+```
+
+
+## Multiples Datos
+
+A continuación trabajaremos con las acciones de Oracle, Nvidia, IBM y AMD, comenzamos con crear un objeto con los nombres de los tickers
+
+```{r, eval=TRUE, eval = TRUE}
+tickers <- c("ORCL","AMD","IBM","NVDA")
+```
+
+descargamos los datos con las características requeridas, que son las mismas que usamos anteriormente con S&P 500
+
+```{r, eval=TRUE, eval = TRUE}
+getSymbols(tickers, src = "yahoo", from = "2010-01-01", to = "2018-07-30", periodicity = "daily")
+```
+
+Acá deben tener mucha atención:
+
+```{r, eval=TRUE, eval = TRUE}
+list <- lapply(tickers, function(x) Cl(get(x)))
+precio.cierre <- do.call(merge,list)
+```
+
+### Retornos
+
+La formula para calcular (log) retornos es
+
+$$
+r_t = log(1 + R_t) = log(\frac{P_t}{P_{t-1}}) = p_t - p_{t-1}
+$$
+donde $p_t = log(P_t)$ es llamado "log price".
+
+Ahora pasamos a construir el retorno.
+
+```{r, eval = TRUE, echo = TRUE}
+retornos <- data.frame(apply(precio.cierre, 2, function(x) Delt(x, type = "log")),
+                       fecha = index(precio.cierre)) %>%
+            rename(orcl = ORCL.Close, amd = AMD.Close, ibm = IBM.Close, nvda = NVDA.Close) %>% 
+            na.omit() 
+```
+
+### Retornos Acumulados 
+
+Si graficamos los retornos no será muy descriptivo, una forma es trabajar con su acumulado. Con la misma lógica usamos la función `cumsum()`. 
+
+```{r}
+acumulados <- data.frame(apply(retornos[1:4], 2, function(x) cumsum(x)), fecha = index(precio.cierre[-1]))
+```
+
+#### Gráfico retornos acumulados
+
+```{r, eval=TRUE, echo = TRUE, warning=FALSE, message=FALSE}
+library("reshape2")
+```
+
+
+```{r, eval=TRUE, echo = TRUE}
+reshape <- melt(acumulados, id.vars = "fecha")
+```
+
+```{r, eval = TRUE, echo = TRUE, out.width="75%", fig.align='center', fig.cap = "Retornos Acumulados de los tickers"}
+g2 <- ggplot(reshape) + geom_line(mapping = aes(fecha,value, color = variable))
+g2 <- g2 + labs(title = "Retornos Acumulados", subtitle = "Oracle, AMD, IBM y Nvidia")
+g2 <- g2 + theme_bw() + xlab("Fecha") + ylab("Retornos Acumulados")
+g2 <- g2 + scale_color_manual("Tickers", values = c("red","blue","green","orange"))
+g2 <- g2 + theme(legend.position = "bottom")
+g2
+```
+
+
+## Estadística Descriptiva
+
+Existe muchas formas de obtener la estadística descriptiva en R, un librería es `fBasics`, la que a su vez contiene test de normalidad.
+
+```r
+library("fBasics")
+```
+
+```r
+summary <- basicStats(retornos[1:4])[c("Mean", "Stdev", "Median", "Minimum", "Variance",
+                                       "Maximum", "nobs","Skewness","Kurtosis"),]
+```
+
+
+## Test de JarqueBera 
+
 

@@ -131,9 +131,20 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="2.2" data-path="quantmod.html"><a href="quantmod.html#obtencion-de-datos"><i class="fa fa-check"></i><b>2.2</b> Obtención de Datos</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="quantmod.html"><a href="quantmod.html#que-hizo-la-funcion-getsymbols"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué hizo la función <code>getSymbols</code>?</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="quantmod.html"><a href="quantmod.html#funciones-para-graficar"><i class="fa fa-check"></i><b>2.3</b> Funciones para graficar</a><ul>
+<li class="chapter" data-level="2.3" data-path="quantmod.html"><a href="quantmod.html#graficando-con-chartseries"><i class="fa fa-check"></i><b>2.3</b> Graficando con <code>chartSeries</code></a><ul>
 <li class="chapter" data-level="2.3.1" data-path="quantmod.html"><a href="quantmod.html#chartseries"><i class="fa fa-check"></i><b>2.3.1</b> <code>chartSeries</code></a></li>
 </ul></li>
+<li class="chapter" data-level="2.4" data-path="quantmod.html"><a href="quantmod.html#graficando-con-ggplot2"><i class="fa fa-check"></i><b>2.4</b> Graficando con <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="2.4.1" data-path="quantmod.html"><a href="quantmod.html#breve-introduccion-a-ggplot2"><i class="fa fa-check"></i><b>2.4.1</b> Breve introducción a <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="quantmod.html"><a href="quantmod.html#color-tamano-forma-y-otros-atributos-del-aesthetic"><i class="fa fa-check"></i><b>2.4.2</b> Color, tamaño, forma y otros atributos del <em>aesthetic</em></a></li>
+<li class="chapter" data-level="2.4.3" data-path="quantmod.html"><a href="quantmod.html#sp-500-con-ggplot2"><i class="fa fa-check"></i><b>2.4.3</b> S&amp;P 500 con <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="quantmod.html"><a href="quantmod.html#multiples-datos"><i class="fa fa-check"></i><b>2.5</b> Multiples Datos</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="quantmod.html"><a href="quantmod.html#retornos"><i class="fa fa-check"></i><b>2.5.1</b> Retornos</a></li>
+<li class="chapter" data-level="2.5.2" data-path="quantmod.html"><a href="quantmod.html#retornos-acumulados"><i class="fa fa-check"></i><b>2.5.2</b> Retornos Acumulados</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="quantmod.html"><a href="quantmod.html#estadistica-descriptiva"><i class="fa fa-check"></i><b>2.6</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="2.7" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>2.7</b> Test de JarqueBera</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -212,6 +223,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

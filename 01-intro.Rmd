@@ -142,7 +142,6 @@ library("tidyverse")
 Calculamos el promedio de la expectativa de vida para los continentes en el 2007:
 
 ```{r}
-
 world.data <- gapminder
 
 mean.lifeExp <- world.data %>% 
