@@ -6,6 +6,9 @@ output:
 
 # Quantmod  {#quantmod}
 
+
+> IMPORTATE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
 El paquete quantmod para R esta diseñado para la asistencia quantitativa de los traders en el desarrollo de sus estrategias y modelos financieros.
 
 ## ¿Que es quantmod?
@@ -246,13 +249,34 @@ Donde $E(R_i) = \mu_i$ es el retorno del portafolio $i$, $r_f$ la tasa libre de 
 Para realizar el cálculo del ratio de Sharpe (SR) para Oracle
 
 ```r
-SR_orcl <- (mean(retornos[1]) - 0.005)/sd(retornos[1])
+SR_orcl <- (mean(retornos$orcl) - 0.0000 )/sd(retornos$orcl)
 ```
 
-con `mean(retornos[1])` vamos a obtener el promedio de la primera columna del objeto `retornos` que es Oracle, si quisieramos AMD debería ser 2 y asì sucesivamente. El 0.005 sería la tasa libre de riesgo que la asumimos mensual y `sd(retornos[1])` nos calcula la desviación estandar. Dado que poseemos 4 activos con sus respectivos retornos, deberiamos construir cuatro objetos que partan con `SR`.
+con `mean(retornos$orcl)` vamos a obtener el promedio de la primera columna del objeto `retornos` que es Oracle (en el `data.frame` la columna se llama orcl, si tuviese otro nombre como por ejemplo `perrito`, entonces hubiese sido `mean(retornos$perrito)`), si quisieramos AMD debería ser `amd` y asì sucesivamente. El 0.0000 sería la tasa libre de riesgo que la asumimos mensual y `sd(retornos[1])` nos calcula la desviación estandar. Dado que poseemos 4 activos con sus respectivos retornos, deberiamos construir cuatro objetos que partan con `SR`. 
 
 ## Test de JarqueBera 
 
-El test de jarque bera se...
+El test de jarque-bera  usa los coeficientes de la  *skewness* y *kurtosis* de la muestra y se usa para testar normalidad. Otros test comunes son el de Anderson–Darling, Cramér–von Mises, y Kolmogorov–Smirnov.
+
+En resumen compara que la *skewness* sea 0 y la *kurtosis* sea 3 bajo normalidad.
+
+$$
+JB = n{\widehat{Sk}^2 /6 + (\widehat{KUr} - 3)^2 /24}
+$$
+
+El test se encuentra en varias librerías, una de ellas es `fBasics` que deberíamos tener instalada y cargada. Para obtener los resultados del test para Oracle 
+
+```r
+jarqueberaTest(retornos$orcl)
+```
+
+Para los demàs activos hay que solo cambiar por el nombre de la columna correspondiente.
+
+## Recursos del capítulo
+
+
+
+
+
 
 

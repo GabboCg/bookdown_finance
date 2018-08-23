@@ -6,6 +6,8 @@ output:
 
 # Introducción a teoría de portafolio {#portafolio}
 
+> IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
 ## Librería IntroCompFinR
 
 Para la teoría de portfolio vamos a utilzar la librería IntroCompFinR (**Intro** to **Comp**utational **Fin**ance in **R**) creado por el profesor Eric Zivot. 
