@@ -122,6 +122,8 @@ library("tidyverse")
 
 Si te vas a la pestaña de *Packages* verás que estan seleccionadas aquellas librerias que se encuentran en el tidyverse.
 
+\vspace{-27pt}
+
 ## Ejemplo
 
 En este ejemplo vamos a trabajar con `gapminder`, un paquete que contiene una parte de los datos de Gapminder, una base de datos que incluye información mundial sobre población, expectativa de vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias charlas [TED](https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo) que vale la pena mirar.

@@ -148,7 +148,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{Aplicaciones \& ejemplos usando R}
 \author{Gabriel Cabrera G.}
-\date{2018-08-21}
+\date{2018-08-22}
 
 \begin{document}
 \maketitle
@@ -205,12 +205,16 @@ siguiente:
 ## [6] methods   base     
 ## 
 ## other attached packages:
-##  [1] reshape2_1.4.3  quantmod_0.4-13 TTR_0.23-3     
-##  [4] xts_0.11-0      zoo_1.8-3       bindrcpp_0.2.2 
-##  [7] forcats_0.3.0   stringr_1.3.1   dplyr_0.7.6    
-## [10] purrr_0.2.5     readr_1.1.1     tidyr_0.8.1    
-## [13] tibble_1.4.2    ggplot2_3.0.0   tidyverse_1.2.1
-## [16] gapminder_0.3.0
+##  [1] readxl_1.1.0      IntroCompFinR_1.0
+##  [3] pacman_0.4.6      reshape2_1.4.3   
+##  [5] quantmod_0.4-13   TTR_0.23-3       
+##  [7] xts_0.11-0        zoo_1.8-3        
+##  [9] bindrcpp_0.2.2    forcats_0.3.0    
+## [11] stringr_1.3.1     dplyr_0.7.6      
+## [13] purrr_0.2.5       readr_1.1.1      
+## [15] tidyr_0.8.1       tibble_1.4.2     
+## [17] ggplot2_3.0.0     tidyverse_1.2.1  
+## [19] gapminder_0.3.0  
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.18     lubridate_1.7.4  lattice_0.20-35 
@@ -218,21 +222,21 @@ siguiente:
 ##  [7] mime_0.5         R6_2.2.2         cellranger_1.1.0
 ## [10] plyr_1.8.4       backports_1.1.2  evaluate_0.11   
 ## [13] httr_1.3.1       highr_0.7        pillar_1.3.0    
-## [16] rlang_0.2.1      lazyeval_0.2.1   curl_3.2        
-## [19] readxl_1.1.0     rstudioapi_0.7   DT_0.4          
-## [22] rmarkdown_1.10   labeling_0.3     htmlwidgets_1.2 
-## [25] munsell_0.5.0    shiny_1.1.0      broom_0.5.0     
-## [28] compiler_3.4.4   httpuv_1.4.5     modelr_0.1.2    
-## [31] xfun_0.3         pkgconfig_2.0.1  htmltools_0.3.6 
-## [34] tidyselect_0.2.4 bookdown_0.7     crayon_1.3.4    
-## [37] withr_2.1.2      later_0.7.3      grid_3.4.4      
-## [40] nlme_3.1-131     jsonlite_1.5     xtable_1.8-2    
-## [43] gtable_0.2.0     magrittr_1.5     scales_0.5.0    
-## [46] cli_1.0.0        stringi_1.2.4    promises_1.0.1  
-## [49] xml2_1.2.0       tools_3.4.4      glue_1.3.0      
-## [52] hms_0.4.2        crosstalk_1.0.0  yaml_2.1.19     
-## [55] colorspace_1.3-2 rvest_0.3.2      knitr_1.20      
-## [58] bindr_0.1.1      haven_1.1.2
+## [16] rlang_0.2.1      curl_3.2         lazyeval_0.2.1  
+## [19] rstudioapi_0.7   DT_0.4           rmarkdown_1.10  
+## [22] labeling_0.3     htmlwidgets_1.2  munsell_0.5.0   
+## [25] shiny_1.1.0      broom_0.5.0      compiler_3.4.4  
+## [28] httpuv_1.4.5     modelr_0.1.2     xfun_0.3        
+## [31] pkgconfig_2.0.1  htmltools_0.3.6  tidyselect_0.2.4
+## [34] bookdown_0.7     crayon_1.3.4     withr_2.1.2     
+## [37] later_0.7.3      grid_3.4.4       nlme_3.1-131    
+## [40] jsonlite_1.5     xtable_1.8-2     gtable_0.2.0    
+## [43] magrittr_1.5     scales_0.5.0     cli_1.0.0       
+## [46] stringi_1.2.4    promises_1.0.1   xml2_1.2.0      
+## [49] tools_3.4.4      glue_1.3.0       hms_0.4.2       
+## [52] crosstalk_1.0.0  yaml_2.1.19      colorspace_1.3-2
+## [55] rvest_0.3.2      knitr_1.20       bindr_0.1.1     
+## [58] haven_1.1.2
 \end{verbatim}
 
 \chapter*{Sobre el Autor}\label{sobre-el-autor}
@@ -527,6 +531,8 @@ Para instalarlo basta escribir:
 
 Si te vas a la pestaña de \emph{Packages} verás que estan seleccionadas
 aquellas librerias que se encuentran en el tidyverse.
+
+\vspace{-27pt}
 
 \section{Ejemplo}\label{ejemplo}
 
@@ -1065,6 +1071,184 @@ normalidad.
 \end{Shaded}
 
 \section{Test de JarqueBera}\label{test-de-jarquebera}
+
+El test de jarque bera se\ldots{}
+
+\chapter{Introducción a teoría de portafolio}\label{portafolio}
+
+\section{Librería IntroCompFinR}\label{libreria-introcompfinr}
+
+Para la teoría de portfolio vamos a utilzar la librería IntroCompFinR
+(\textbf{Intro} to \textbf{Comp}utational \textbf{Fin}ance in
+\textbf{R}) creado por el profesor Eric Zivot.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Debemos instalar primero las librerías que utiliza IntroCompFinR:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)) }\KeywordTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)}
+\KeywordTok{p_load}\NormalTok{(}\StringTok{"PerformanceAnalytics"}\NormalTok{,}\StringTok{"quadprog"}\NormalTok{,}\StringTok{"xts"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Ya instaladas las dependencias, descargamos IntroCompFinR :
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"IntroCompFinR"}\NormalTok{, }\DataTypeTok{repos=}\StringTok{"http://R-Forge.R-project.org"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Funciones útiles de
+IntroCompFinR}\label{funciones-utiles-de-introcompfinr}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Funciones\strut
+\end{minipage} & \begin{minipage}[b]{0.70\columnwidth}\raggedright\strut
+Descripciones\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+getPortfolio\strut
+\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright\strut
+Crea un portafolio (objeto)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+globalMin.portfolio\strut
+\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright\strut
+Computa el portafolio de mímina varianza\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+efficient.portfolio\strut
+\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright\strut
+Computa el portafolio de mímina varianza sujeto a un retorno\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+tangency.portfolio\strut
+\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright\strut
+Computa el portafolio tangente\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+efficient.frontier\strut
+\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright\strut
+Computa la frontera eficiente\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Cargando la librería y la base de
+datos}\label{cargando-la-libreria-y-la-base-de-datos}
+
+Una vez la instalada la librería, procedemos a cargarla en conjunto con
+aquellas que utilizaremos en esta ayudantía:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)) }\KeywordTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)}
+\KeywordTok{p_load}\NormalTok{(}\StringTok{"IntroCompFinR"}\NormalTok{,}\StringTok{"readxl"}\NormalTok{,}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Como ya está cargado \texttt{readxl} cargamos el archivo
+\textbf{stocks.xlsx}, que ya posee los retornos\footnote{si quieren
+  replicarlo vean los videos}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# acá están los retornos ya calculados, para replicarlos vean el apunte}
+\NormalTok{stocks <-}\StringTok{ }\KeywordTok{read_xlsx}\NormalTok{(}\StringTok{"datasets/stocks.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Considerando tres activos riesgosos (Starbucks, Nordstrom y Microsoft),
+definimos un vector columna \(3x1\) el que tendrá los retornos y los
+pesos:
+
+\[
+\mathbf{R} = 
+\begin{pmatrix}
+    R_{a}  \\
+    R_{b}  \\
+    R_{c} 
+\end{pmatrix}
+,
+\mathbf{x} =
+\begin{pmatrix}
+    x_{a} \\
+    x_{b} \\
+    x_{c}
+\end{pmatrix}
+\]
+
+El vector de retornos esperados es:
+
+\[
+E[\mathbf{R}] = E 
+\begin{bmatrix} 
+\begin{pmatrix}
+    R_{a}  \\
+    R_{b}  \\
+    R_{c} 
+\end{pmatrix}
+\end{bmatrix}
+    = 
+\begin{pmatrix}
+  E[R_{a}]  \\
+  E[R_{b}]  \\
+  E[R_{c}] 
+\end{pmatrix}
+    =
+\begin{pmatrix}
+    \mu_{a}  \\
+    \mu_{b}  \\
+    \mu_{c} 
+\end{pmatrix}
+    =
+\mathbf{\mu}
+\]
+
+La matriz \(3x3\) de varianza y covarianza de los retornos es:
+
+\[
+var[\mathbf{R}] = 
+\begin{pmatrix}
+    \sigma^2_{a} & \sigma_{ab}  & \sigma_{ac} \\
+    \sigma_{ab}  & \sigma^2_{b} & \sigma_{bc} \\
+    \sigma_{ac}  & \sigma_{bc}  &  \sigma^2_{c}  
+\end{pmatrix}
+    =
+\Sigma
+\]
+
+Notar que la matriz de covarianza es simétrica
+(\(\Sigma = \Sigma^{'}\)).
+
+Para construir las matrices anteriores en R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Promedio}
+\NormalTok{mean <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(stocks[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DecValTok{2}\NormalTok{ , }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{mean}\NormalTok{(x)) }
+\CommentTok{# Desviación Estandar}
+\NormalTok{sd   <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(stocks[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\DecValTok{2}\NormalTok{ , }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{sd}\NormalTok{(x))}
+\CommentTok{# Covarianza}
+\NormalTok{cov  <-}\StringTok{ }\KeywordTok{cov}\NormalTok{(stocks[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{])   }
+\end{Highlighting}
+\end{Shaded}
 
 \bibliography{book.bib,packages.bib}
 

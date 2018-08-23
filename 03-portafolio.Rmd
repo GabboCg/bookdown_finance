@@ -1,0 +1,124 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Introducción a teoría de portafolio {#portafolio}
+
+## Librería IntroCompFinR
+
+Para la teoría de portfolio vamos a utilzar la librería IntroCompFinR (**Intro** to **Comp**utational **Fin**ance in **R**) creado por el profesor Eric Zivot. 
+
+1. Debemos instalar primero las librerías que utiliza IntroCompFinR:
+
+```r 
+if(!require("pacman")) install.packages("pacman")
+p_load("PerformanceAnalytics","quadprog","xts")
+```
+2. Ya instaladas las dependencias, descargamos IntroCompFinR :
+
+```r 
+install.packages("IntroCompFinR", repos="http://R-Forge.R-project.org")
+```
+
+### Funciones útiles de IntroCompFinR 
+
+ Funciones            | Descripciones                                                |
+|---------------------|--------------------------------------------------------------|
+| getPortfolio        | Crea un portafolio (objeto)                                  |
+| globalMin.portfolio | Computa el portafolio de mímina varianza                     |
+| efficient.portfolio | Computa el portafolio de mímina varianza sujeto a un retorno |
+| tangency.portfolio  | Computa el portafolio tangente                               |
+| efficient.frontier  | Computa la frontera eficiente                                |
+
+## Cargando la librería y la base de datos
+
+Una vez la instalada la librería, procedemos a cargarla en conjunto con aquellas que utilizaremos en esta ayudantía:
+
+```{r chunk3, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+if(!require("pacman")) install.packages("pacman")
+p_load("IntroCompFinR","readxl","tidyverse")
+```
+
+Como ya está cargado `readxl` cargamos el archivo **stocks.xlsx**, que ya posee los retornos^[si quieren replicarlo vean los videos].
+
+```{r chunk4, eval=TRUE, echo = TRUE}
+# acá están los retornos ya calculados, para replicarlos vean el apunte
+stocks <- read_xlsx("datasets/stocks.xlsx")
+```
+
+Considerando tres activos riesgosos (Starbucks, Nordstrom y Microsoft), definimos un vector columna $3x1$ el que tendrá los retornos y los pesos:
+
+$$
+\mathbf{R} = 
+\begin{pmatrix}
+    R_{a}  \\
+    R_{b}  \\
+    R_{c} 
+\end{pmatrix}
+,
+\mathbf{x} =
+\begin{pmatrix}
+    x_{a} \\
+    x_{b} \\
+    x_{c}
+\end{pmatrix}
+$$
+
+El vector de retornos esperados es:
+
+$$
+E[\mathbf{R}] = E 
+\begin{bmatrix} 
+\begin{pmatrix}
+    R_{a}  \\
+    R_{b}  \\
+    R_{c} 
+\end{pmatrix}
+\end{bmatrix}
+    = 
+\begin{pmatrix}
+  E[R_{a}]  \\
+  E[R_{b}]  \\
+  E[R_{c}] 
+\end{pmatrix}
+    =
+\begin{pmatrix}
+    \mu_{a}  \\
+    \mu_{b}  \\
+    \mu_{c} 
+\end{pmatrix}
+    =
+\mathbf{\mu}
+$$
+
+La matriz $3x3$ de varianza y covarianza de los retornos es:
+
+$$
+var[\mathbf{R}] = 
+\begin{pmatrix}
+    \sigma^2_{a} & \sigma_{ab}  & \sigma_{ac} \\
+    \sigma_{ab}  & \sigma^2_{b} & \sigma_{bc} \\
+    \sigma_{ac}  & \sigma_{bc}  &  \sigma^2_{c}  
+\end{pmatrix}
+    =
+\Sigma
+$$
+
+Notar que la matriz de covarianza  es simétrica ($\Sigma = \Sigma^{'}$).
+
+Para construir las matrices anteriores en R:
+
+```{r chunk5, echo=TRUE, eval=TRUE, message=FALSE}
+# Promedio
+mean <- apply(stocks[2:4], 2 , function(x) mean(x)) 
+# Desviación Estandar
+sd   <- apply(stocks[2:4], 2 , function(x) sd(x))
+# Covarianza
+cov  <- cov(stocks[2:4])   
+```
+
+
+
+
