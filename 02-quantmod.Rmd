@@ -233,6 +233,24 @@ summary <- basicStats(retornos[1:4])[c("Mean", "Stdev", "Median", "Minimum", "Va
 ```
 
 
+## Ratio de Sharpe 
+
+EL ratio de Sharpe es una medida de desempeño para portafolios, el que se define como
+
+$$
+SR = \frac{E(R_i) - r_f}{\sigma_i}
+$$
+
+Donde $E(R_i) = \mu_i$ es el retorno del portafolio $i$, $r_f$ la tasa libre de riesgo y $\sigma_i$ la desviaciòn estandar del portafolio $i$. Si asumimos como ejercicio que no diversificamos y "construimos" cuatro portafolios con el 100% es invertido en cada uno de los activos. 
+
+Para realizar el cálculo del ratio de Sharpe (SR) para Oracle
+
+```r
+SR_orcl <- (mean(retornos[1]) - 0.005)/sd(retornos[1])
+```
+
+con `mean(retornos[1])` vamos a obtener el promedio de la primera columna del objeto `retornos` que es Oracle, si quisieramos AMD debería ser 2 y asì sucesivamente. El 0.005 sería la tasa libre de riesgo que la asumimos mensual y `sd(retornos[1])` nos calcula la desviación estandar. Dado que poseemos 4 activos con sus respectivos retornos, deberiamos construir cuatro objetos que partan con `SR`.
+
 ## Test de JarqueBera 
 
 El test de jarque bera se...

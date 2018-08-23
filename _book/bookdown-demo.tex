@@ -148,7 +148,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{Aplicaciones \& ejemplos usando R}
 \author{Gabriel Cabrera G.}
-\date{2018-08-22}
+\date{2018-08-23}
 
 \begin{document}
 \maketitle
@@ -1069,6 +1069,37 @@ normalidad.
                                        \StringTok{"Maximum"}\NormalTok{, }\StringTok{"nobs"}\NormalTok{,}\StringTok{"Skewness"}\NormalTok{,}\StringTok{"Kurtosis"}\NormalTok{),]}
 \end{Highlighting}
 \end{Shaded}
+
+\section{Ratio de Sharpe}\label{ratio-de-sharpe}
+
+EL ratio de Sharpe es una medida de desempeño para portafolios, el que
+se define como
+
+\[
+SR = \frac{E(R_i) - r_f}{\sigma_i}
+\]
+
+Donde \(E(R_i) = \mu_i\) es el retorno del portafolio \(i\), \(r_f\) la
+tasa libre de riesgo y \(\sigma_i\) la desviaciòn estandar del
+portafolio \(i\). Si asumimos como ejercicio que no diversificamos y
+``construimos'' cuatro portafolios con el 100\% es invertido en cada uno
+de los activos.
+
+Para realizar el cálculo del ratio de Sharpe (SR) para Oracle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SR_orcl <-}\StringTok{ }\NormalTok{(}\KeywordTok{mean}\NormalTok{(retornos[}\DecValTok{1}\NormalTok{]) }\OperatorTok{-}\StringTok{ }\FloatTok{0.005}\NormalTok{)}\OperatorTok{/}\KeywordTok{sd}\NormalTok{(retornos[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+con \texttt{mean(retornos{[}1{]})} vamos a obtener el promedio de la
+primera columna del objeto \texttt{retornos} que es Oracle, si
+quisieramos AMD debería ser 2 y asì sucesivamente. El 0.005 sería la
+tasa libre de riesgo que la asumimos mensual y
+\texttt{sd(retornos{[}1{]})} nos calcula la desviación estandar. Dado
+que poseemos 4 activos con sus respectivos retornos, deberiamos
+construir cuatro objetos que partan con \texttt{SR}.
 
 \section{Test de JarqueBera}\label{test-de-jarquebera}
 
