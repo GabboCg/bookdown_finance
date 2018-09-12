@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="quantmod.html">
-<link rel="next" href="bonos.html">
+<link rel="prev" href="bonos.html">
+
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -176,145 +176,35 @@ code > span.in { color: #008000; } /* Information */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="portafolio" class="section level1">
-<h1><span class="header-section-number">Capítulo 3</span> Introducción a teoría de portafolio</h1>
+<div id="options" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Opciones, Derivados y Futuros</h1>
 <blockquote>
 <p>IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.</p>
 </blockquote>
-<div id="libreria-introcompfinr" class="section level2">
-<h2><span class="header-section-number">3.1</span> Librería IntroCompFinR</h2>
-<p>Para la teoría de portfolio vamos a utilzar la librería IntroCompFinR (<strong>Intro</strong> to <strong>Comp</strong>utational <strong>Fin</strong>ance in <strong>R</strong>) creado por el profesor Eric Zivot.</p>
-<ol style="list-style-type: decimal">
-<li>Debemos instalar primero las librerías que utiliza IntroCompFinR:</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)
-<span class="kw">p_load</span>(<span class="st">&quot;PerformanceAnalytics&quot;</span>,<span class="st">&quot;quadprog&quot;</span>,<span class="st">&quot;xts&quot;</span>)</code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Ya instaladas las dependencias, descargamos IntroCompFinR :</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;IntroCompFinR&quot;</span>, <span class="dt">repos=</span><span class="st">&quot;http://R-Forge.R-project.org&quot;</span>)</code></pre></div>
-<div id="funciones-utiles-de-introcompfinr" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Funciones útiles de IntroCompFinR</h3>
-<table>
-<colgroup>
-<col width="25%" />
-<col width="74%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Funciones</th>
-<th>Descripciones</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>getPortfolio</td>
-<td>Crea un portafolio (objeto)</td>
-</tr>
-<tr class="even">
-<td>globalMin.portfolio</td>
-<td>Computa el portafolio de mímina varianza</td>
-</tr>
-<tr class="odd">
-<td>efficient.portfolio</td>
-<td>Computa el portafolio de mímina varianza sujeto a un retorno</td>
-</tr>
-<tr class="even">
-<td>tangency.portfolio</td>
-<td>Computa el portafolio tangente</td>
-</tr>
-<tr class="odd">
-<td>efficient.frontier</td>
-<td>Computa la frontera eficiente</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="cargando-la-libreria-y-la-base-de-datos" class="section level2">
-<h2><span class="header-section-number">3.2</span> Cargando la librería y la base de datos</h2>
-<p>Una vez la instalada la librería, procedemos a cargarla en conjunto con aquellas que utilizaremos en esta ayudantía:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)
-<span class="kw">p_load</span>(<span class="st">&quot;IntroCompFinR&quot;</span>,<span class="st">&quot;readxl&quot;</span>,<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
-<p>Como ya está cargado <code>readxl</code> cargamos el archivo <strong>stocks.xlsx</strong>, que ya posee los retornos<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># acá están los retornos ya calculados, para replicarlos vean el apunte</span>
-stocks &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;datasets/stocks.xlsx&quot;</span>)</code></pre></div>
-<p>Considerando tres activos riesgosos (Starbucks, Nordstrom y Microsoft), definimos un vector columna <span class="math inline">\(3x1\)</span> el que tendrá los retornos y los pesos:</p>
-<p><span class="math display">\[
-\mathbf{R} = 
-\begin{pmatrix}
-    R_{a}  \\
-    R_{b}  \\
-    R_{c} 
-\end{pmatrix}
-,
-\mathbf{x} =
-\begin{pmatrix}
-    x_{a} \\
-    x_{b} \\
-    x_{c}
-\end{pmatrix}
-\]</span></p>
-<p>El vector de retornos esperados es:</p>
-<p><span class="math display">\[
-E[\mathbf{R}] = E 
-\begin{bmatrix} 
-\begin{pmatrix}
-    R_{a}  \\
-    R_{b}  \\
-    R_{c} 
-\end{pmatrix}
-\end{bmatrix}
-    = 
-\begin{pmatrix}
-  E[R_{a}]  \\
-  E[R_{b}]  \\
-  E[R_{c}] 
-\end{pmatrix}
-    =
-\begin{pmatrix}
-    \mu_{a}  \\
-    \mu_{b}  \\
-    \mu_{c} 
-\end{pmatrix}
-    =
-\mathbf{\mu}
-\]</span></p>
-<p>La matriz <span class="math inline">\(3x3\)</span> de varianza y covarianza de los retornos es:</p>
-<p><span class="math display">\[
-var[\mathbf{R}] = 
-\begin{pmatrix}
-    \sigma^2_{a} &amp; \sigma_{ab}  &amp; \sigma_{ac} \\
-    \sigma_{ab}  &amp; \sigma^2_{b} &amp; \sigma_{bc} \\
-    \sigma_{ac}  &amp; \sigma_{bc}  &amp;  \sigma^2_{c}  
-\end{pmatrix}
-    =
-\Sigma
-\]</span></p>
-<p>Notar que la matriz de covarianza es simétrica (<span class="math inline">\(\Sigma = \Sigma^{&#39;}\)</span>).</p>
-<p>Para construir las matrices anteriores en R:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Promedio</span>
-mean &lt;-<span class="st"> </span><span class="kw">apply</span>(stocks[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>], <span class="dv">2</span> , <span class="cf">function</span>(x) <span class="kw">mean</span>(x)) 
-<span class="co"># Desviación Estandar</span>
-sd   &lt;-<span class="st"> </span><span class="kw">apply</span>(stocks[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>], <span class="dv">2</span> , <span class="cf">function</span>(x) <span class="kw">sd</span>(x))
-<span class="co"># Covarianza</span>
-cov  &lt;-<span class="st"> </span><span class="kw">cov</span>(stocks[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])   </code></pre></div>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="10">
-<li id="fn10"><p>si quieren replicarlo vean los videos<a href="portafolio.html#fnref10">↩</a></p></li>
-</ol>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="quantmod.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bonos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bonos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -344,7 +234,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-portafolio.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-opciones.Rmd",
 "text": "Edit"
 },
 "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],

@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-08-23">
+<meta name="date" content="2018-09-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -154,6 +154,8 @@ code > span.in { color: #008000; } /* Information */
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="portafolio.html"><a href="portafolio.html#cargando-la-libreria-y-la-base-de-datos"><i class="fa fa-check"></i><b>3.2</b> Cargando la librería y la base de datos</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>4</b> Renta Fija</a></li>
+<li class="chapter" data-level="5" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>5</b> Opciones, Derivados y Futuros</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -178,53 +180,47 @@ code > span.in { color: #008000; } /* Information */
 <h1 class="title">Introducción a las finanzas quantitativas</h1>
 <h3 class="subtitle"><em>Aplicaciones &amp; ejemplos usando R</em></h3>
 <h4 class="author"><em>Gabriel Cabrera G.</em></h4>
-<h4 class="date"><em>2018-08-23</em></h4>
+<h4 class="date"><em>2018-09-11</em></h4>
 </div>
 <div id="prefacio" class="section level1 unnumbered">
 <h1>Prefacio</h1>
 <p>Este es un apunte en proceso pensado en el curso de Finanzas I de Ingeniería Comercial de la Universidad de Chile, las aplicaciones en R son pensados con un enfoque pedagógico y cualquier comentario o sugerencias son bienvenidas.</p>
 <p>La información de la sesión de R cuando se compila este apunte es la siguiente:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.4.4 (2018-03-15)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 18.04.1 LTS
+<pre><code>## R version 3.5.1 (2018-07-02)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows &gt;= 8 x64 (build 9200)
 ## 
 ## Matrix products: default
-## BLAS: /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.7.1
-## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.7.1
 ## 
 ## locale:
-##  [1] LC_CTYPE=es_CL.UTF-8      
-##  [2] LC_NUMERIC=C              
-##  [3] LC_TIME=es_CL.UTF-8       
-##  [4] LC_COLLATE=es_CL.UTF-8    
-##  [5] LC_MONETARY=es_CL.UTF-8   
-##  [6] LC_MESSAGES=es_CL.UTF-8   
-##  [7] LC_PAPER=es_CL.UTF-8      
-##  [8] LC_NAME=C                 
-##  [9] LC_ADDRESS=C              
-## [10] LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=es_CL.UTF-8
-## [12] LC_IDENTIFICATION=C       
+## [1] LC_COLLATE=Spanish_Chile.1252 
+## [2] LC_CTYPE=Spanish_Chile.1252   
+## [3] LC_MONETARY=Spanish_Chile.1252
+## [4] LC_NUMERIC=C                  
+## [5] LC_TIME=Spanish_Chile.1252    
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
+## other attached packages:
+## [1] RevoUtils_11.0.1     RevoUtilsMath_11.0.0
+## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.18     rstudioapi_0.7   knitr_1.20      
-##  [4] bindr_0.1.1      magrittr_1.5     tidyselect_0.2.4
-##  [7] munsell_0.5.0    colorspace_1.3-2 R6_2.2.2        
-## [10] rlang_0.2.1      stringr_1.3.1    plyr_1.8.4      
-## [13] dplyr_0.7.6      tools_3.4.4      grid_3.4.4      
-## [16] gtable_0.2.0     xfun_0.3         htmltools_0.3.6 
-## [19] yaml_2.1.19      lazyeval_0.2.1   assertthat_0.2.0
-## [22] digest_0.6.15    rprojroot_1.3-2  tibble_1.4.2    
-## [25] bookdown_0.7     crayon_1.3.4     bindrcpp_0.2.2  
-## [28] purrr_0.2.5      ggplot2_3.0.0    evaluate_0.11   
-## [31] glue_1.3.0       rmarkdown_1.10   stringi_1.2.4   
-## [34] compiler_3.4.4   pillar_1.3.0     scales_0.5.0    
-## [37] backports_1.1.2  pkgconfig_2.0.1</code></pre>
+##  [1] Rcpp_0.12.18     pillar_1.3.0     compiler_3.5.1  
+##  [4] plyr_1.8.4       bindr_0.1.1      tools_3.5.1     
+##  [7] digest_0.6.15    evaluate_0.11    tibble_1.4.2    
+## [10] gtable_0.2.0     pkgconfig_2.0.1  rlang_0.2.1     
+## [13] rstudioapi_0.7   yaml_2.2.0       xfun_0.3        
+## [16] bindrcpp_0.2.2   dplyr_0.7.6      stringr_1.3.1   
+## [19] knitr_1.20       rprojroot_1.3-2  grid_3.5.1      
+## [22] tidyselect_0.2.4 glue_1.3.0       R6_2.2.2        
+## [25] rmarkdown_1.8    bookdown_0.7     ggplot2_3.0.0   
+## [28] purrr_0.2.5      magrittr_1.5     scales_0.5.0    
+## [31] backports_1.1.2  htmltools_0.3.6  assertthat_0.2.0
+## [34] colorspace_1.3-2 stringi_1.1.7    lazyeval_0.2.1  
+## [37] munsell_0.5.0    crayon_1.3.4</code></pre>
 
 </div>
             </section>

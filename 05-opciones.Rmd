@@ -1,0 +1,10 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Opciones, Derivados y Futuros {#options}
+
+> IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
