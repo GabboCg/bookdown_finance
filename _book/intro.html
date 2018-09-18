@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-09-11">
+<meta name="date" content="2018-09-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -154,7 +154,24 @@ code > span.in { color: #008000; } /* Information */
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="portafolio.html"><a href="portafolio.html#cargando-la-libreria-y-la-base-de-datos"><i class="fa fa-check"></i><b>3.2</b> Cargando la librería y la base de datos</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>4</b> Renta Fija</a></li>
+<li class="chapter" data-level="4" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>4</b> Renta Fija</a><ul>
+<li class="chapter" data-level="4.1" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono"><i class="fa fa-check"></i><b>4.1</b> Precio de un Bono</a></li>
+<li class="chapter" data-level="4.2" data-path="bonos.html"><a href="bonos.html#dos-formas-de-hacer-lo-mismo"><i class="fa fa-check"></i><b>4.2</b> Dos formas de hacer lo mismo</a></li>
+<li class="chapter" data-level="4.3" data-path="bonos.html"><a href="bonos.html#funciones"><i class="fa fa-check"></i><b>4.3</b> funciones</a></li>
+<li class="chapter" data-level="4.4" data-path="bonos.html"><a href="bonos.html#relacion-precio-del-bono-y-yield"><i class="fa fa-check"></i><b>4.4</b> Relación precio del Bono y Yield</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="bonos.html"><a href="bonos.html#valorizacion"><i class="fa fa-check"></i><b>4.4.1</b> Valorización</a></li>
+<li class="chapter" data-level="4.4.2" data-path="bonos.html"><a href="bonos.html#construccion-yields"><i class="fa fa-check"></i><b>4.4.2</b> Construcción yields</a></li>
+<li class="chapter" data-level="4.4.3" data-path="bonos.html"><a href="bonos.html#loops"><i class="fa fa-check"></i><b>4.4.3</b> Loops</a></li>
+<li class="chapter" data-level="4.4.4" data-path="bonos.html"><a href="bonos.html#graficando"><i class="fa fa-check"></i><b>4.4.4</b> Graficando</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="bonos.html"><a href="bonos.html#trabajando-con-yields-reales"><i class="fa fa-check"></i><b>4.5</b> Trabajando con yields reales</a></li>
+<li class="chapter" data-level="4.6" data-path="bonos.html"><a href="bonos.html#duracion-y-convexidad-de-un-bono"><i class="fa fa-check"></i><b>4.6</b> Duración y Convexidad de un Bono</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="bonos.html"><a href="bonos.html#extracion-de-la-yield"><i class="fa fa-check"></i><b>4.6.1</b> Extración de la yield</a></li>
+<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion"><i class="fa fa-check"></i><b>4.6.2</b> Duración</a></li>
+<li class="chapter" data-level="4.6.3" data-path="bonos.html"><a href="bonos.html#duracion-con-libreria"><i class="fa fa-check"></i><b>4.6.3</b> Duración con librería</a></li>
+<li class="chapter" data-level="4.6.4" data-path="bonos.html"><a href="bonos.html#convexidad"><i class="fa fa-check"></i><b>4.6.4</b> Convexidad</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>5</b> Opciones, Derivados y Futuros</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -309,8 +326,8 @@ mean.lifeExp &lt;-<span class="st"> </span>world.data <span class="op">%&gt;%</s
 <span class="st">                </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span>
 <span class="st">                </span><span class="kw">summarize</span>(<span class="kw">mean</span>(lifeExp))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean.lifeExp</code></pre></div>
-<p>Lo visualizamos <div id="htmlwidget-a85734e88b5f8a162816" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a85734e88b5f8a162816">{"x":{"filter":"none","data":[["1","2","3","4","5"],["Africa","Americas","Asia","Europe","Oceania"],[54.8060384615385,73.60812,70.7284848484849,77.6486,80.7195]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>continent<\/th>\n      <th>mean(lifeExp)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
+<p>Lo visualizamos <div id="htmlwidget-a48c6818780cb30f39ab" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a48c6818780cb30f39ab">{"x":{"filter":"none","data":[["1","2","3","4","5"],["Africa","Americas","Asia","Europe","Oceania"],[54.8060384615385,73.60812,70.7284848484849,77.6486,80.7195]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>continent<\/th>\n      <th>mean(lifeExp)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
 <p>Construimos la base de datos y graficamos la evolución de la expectativa de vida para los países de America del Sur desde 1952 a 2007.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">world.data &lt;-<span class="st"> </span>world.data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">              </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Bolivia&quot;</span>, <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Chile&quot;</span>, <span class="st">&quot;Colombia&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>, <span class="st">&quot;Paraguay&quot;</span>, <span class="st">&quot;Peru&quot;</span>, <span class="st">&quot;Uruguay&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>))

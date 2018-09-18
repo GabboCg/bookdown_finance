@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introducción a las finanzas quantitativas</title>
+  <meta name="description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introducción a las finanzas quantitativas" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introducción a las finanzas quantitativas" />
+  
+  <meta name="twitter:description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile" />
+  
+
+<meta name="author" content="Gabriel Cabrera G.">
+
+
+<meta name="date" content="2018-09-18">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="trabajando-con-yields-reales.html">
+<link rel="next" href="options.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding/datatables.js"></script>
+<link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Finance Rocks!!</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el Autor</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#un-poco-de-historia"><i class="fa fa-check"></i><b>1.1.1</b> Un poco de historia</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#los-primeros-pasos"><i class="fa fa-check"></i><b>1.1.2</b> Los primeros pasos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Partes de RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>1.3</b> <em>Scripts</em></a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#por-que-esto-es-util"><i class="fa fa-check"></i><b>1.4.1</b> ¿Por qué esto es útil?</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#como-crear-un-projecto"><i class="fa fa-check"></i><b>1.4.2</b> ¿Cómo crear un projecto?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.5</b> <em>Packages</em></a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#ejemplo"><i class="fa fa-check"></i><b>1.6</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quantmod.html"><a href="quantmod.html"><i class="fa fa-check"></i><b>2</b> Quantmod</a><ul>
+<li class="chapter" data-level="2.1" data-path="quantmod.html"><a href="quantmod.html#que-es-quantmod"><i class="fa fa-check"></i><b>2.1</b> ¿Que es quantmod?</a></li>
+<li class="chapter" data-level="2.2" data-path="quantmod.html"><a href="quantmod.html#obtencion-de-datos"><i class="fa fa-check"></i><b>2.2</b> Obtención de Datos</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="quantmod.html"><a href="quantmod.html#que-hizo-la-funcion-getsymbols"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué hizo la función <code>getSymbols</code>?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="quantmod.html"><a href="quantmod.html#graficando-con-chartseries"><i class="fa fa-check"></i><b>2.3</b> Graficando con <code>chartSeries</code></a><ul>
+<li class="chapter" data-level="2.3.1" data-path="quantmod.html"><a href="quantmod.html#chartseries"><i class="fa fa-check"></i><b>2.3.1</b> <code>chartSeries</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="quantmod.html"><a href="quantmod.html#graficando-con-ggplot2"><i class="fa fa-check"></i><b>2.4</b> Graficando con <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="2.4.1" data-path="quantmod.html"><a href="quantmod.html#breve-introduccion-a-ggplot2"><i class="fa fa-check"></i><b>2.4.1</b> Breve introducción a <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="quantmod.html"><a href="quantmod.html#color-tamano-forma-y-otros-atributos-del-aesthetic"><i class="fa fa-check"></i><b>2.4.2</b> Color, tamaño, forma y otros atributos del <em>aesthetic</em></a></li>
+<li class="chapter" data-level="2.4.3" data-path="quantmod.html"><a href="quantmod.html#sp-500-con-ggplot2"><i class="fa fa-check"></i><b>2.4.3</b> S&amp;P 500 con <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="quantmod.html"><a href="quantmod.html#multiples-datos"><i class="fa fa-check"></i><b>2.5</b> Multiples Datos</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="quantmod.html"><a href="quantmod.html#retornos"><i class="fa fa-check"></i><b>2.5.1</b> Retornos</a></li>
+<li class="chapter" data-level="2.5.2" data-path="quantmod.html"><a href="quantmod.html#retornos-acumulados"><i class="fa fa-check"></i><b>2.5.2</b> Retornos Acumulados</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="quantmod.html"><a href="quantmod.html#estadistica-descriptiva"><i class="fa fa-check"></i><b>2.6</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="2.7" data-path="quantmod.html"><a href="quantmod.html#ratio-de-sharpe"><i class="fa fa-check"></i><b>2.7</b> Ratio de Sharpe</a></li>
+<li class="chapter" data-level="2.8" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>2.8</b> Test de JarqueBera</a></li>
+<li class="chapter" data-level="2.9" data-path="quantmod.html"><a href="quantmod.html#recursos-del-capitulo"><i class="fa fa-check"></i><b>2.9</b> Recursos del capítulo</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="portafolio.html"><a href="portafolio.html"><i class="fa fa-check"></i><b>3</b> Introducción a teoría de portafolio</a><ul>
+<li class="chapter" data-level="3.1" data-path="portafolio.html"><a href="portafolio.html#libreria-introcompfinr"><i class="fa fa-check"></i><b>3.1</b> Librería IntroCompFinR</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="portafolio.html"><a href="portafolio.html#funciones-utiles-de-introcompfinr"><i class="fa fa-check"></i><b>3.1.1</b> Funciones útiles de IntroCompFinR</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="portafolio.html"><a href="portafolio.html#cargando-la-libreria-y-la-base-de-datos"><i class="fa fa-check"></i><b>3.2</b> Cargando la librería y la base de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>4</b> Renta Fija</a><ul>
+<li class="chapter" data-level="4.1" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono"><i class="fa fa-check"></i><b>4.1</b> Precio de un Bono</a></li>
+<li class="chapter" data-level="4.2" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono-utilizando-r"><i class="fa fa-check"></i><b>4.2</b> Precio de un Bono: Utilizando R</a></li>
+<li class="chapter" data-level="4.3" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono-utilizando-r-1"><i class="fa fa-check"></i><b>4.3</b> Precio de un Bono: Utilizando R</a></li>
+<li class="chapter" data-level="4.4" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono-dos-formas-de-hacer-lo-mismo"><i class="fa fa-check"></i><b>4.4</b> Precio de un Bono: Dos formas de hacer lo mismo</a></li>
+<li class="chapter" data-level="4.5" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono-dos-formas-de-hacer-lo-mismo-1"><i class="fa fa-check"></i><b>4.5</b> Precio de un Bono: Dos formas de hacer lo mismo</a></li>
+<li class="chapter" data-level="4.6" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono-dos-formas-de-hacer-lo-mismo-2"><i class="fa fa-check"></i><b>4.6</b> Precio de un Bono: Dos formas de hacer lo mismo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="otra-cosa-es-con-funciones.html"><a href="otra-cosa-es-con-funciones.html"><i class="fa fa-check"></i><b>5</b> Otra cosa es con funciones</a><ul>
+<li class="chapter" data-level="5.1" data-path="otra-cosa-es-con-funciones.html"><a href="otra-cosa-es-con-funciones.html#otra-cosa-es-con-funciones-1"><i class="fa fa-check"></i><b>5.1</b> Otra cosa es con funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relacion-precio-del-bono-y-yield.html"><a href="relacion-precio-del-bono-y-yield.html"><i class="fa fa-check"></i><b>6</b> Relación precio del Bono y Yield</a><ul>
+<li class="chapter" data-level="6.1" data-path="relacion-precio-del-bono-y-yield.html"><a href="relacion-precio-del-bono-y-yield.html#relacion-precio-del-bono-y-yield-valorizacion"><i class="fa fa-check"></i><b>6.1</b> Relación precio del Bono y Yield: Valorización</a></li>
+<li class="chapter" data-level="6.2" data-path="relacion-precio-del-bono-y-yield.html"><a href="relacion-precio-del-bono-y-yield.html#relacion-precio-del-bono-y-yield-construccion-yields"><i class="fa fa-check"></i><b>6.2</b> Relación precio del Bono y Yield: Construcción yields</a></li>
+<li class="chapter" data-level="6.3" data-path="relacion-precio-del-bono-y-yield.html"><a href="relacion-precio-del-bono-y-yield.html#relacion-precio-del-bono-y-yield-loop"><i class="fa fa-check"></i><b>6.3</b> Relación precio del Bono y Yield: Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="graficar-nuestros-datos.html"><a href="graficar-nuestros-datos.html"><i class="fa fa-check"></i><b>7</b> Graficar nuestros datos</a><ul>
+<li class="chapter" data-level="7.1" data-path="graficar-nuestros-datos.html"><a href="graficar-nuestros-datos.html#graficar-nuestros-datos-con-ggplot2"><i class="fa fa-check"></i><b>7.1</b> Graficar nuestros datos: Con ggplot2</a></li>
+<li class="chapter" data-level="7.2" data-path="graficar-nuestros-datos.html"><a href="graficar-nuestros-datos.html#graficar-nuestros-datos-con-plot"><i class="fa fa-check"></i><b>7.2</b> Graficar nuestros datos: Con plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="trabajando-con-yields-reales.html"><a href="trabajando-con-yields-reales.html"><i class="fa fa-check"></i><b>8</b> Trabajando con yields reales</a><ul>
+<li class="chapter" data-level="8.1" data-path="trabajando-con-yields-reales.html"><a href="trabajando-con-yields-reales.html#trabajando-con-yields-reales-quantmod"><i class="fa fa-check"></i><b>8.1</b> Trabajando con yields reales: quantmod</a></li>
+<li class="chapter" data-level="8.2" data-path="trabajando-con-yields-reales.html"><a href="trabajando-con-yields-reales.html#section"><i class="fa fa-check"></i><b>8.2</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html"><i class="fa fa-check"></i><b>9</b> Duración y Convexidad de un Bono</a><ul>
+<li class="chapter" data-level="9.1" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-extracion-de-la-yield"><i class="fa fa-check"></i><b>9.1</b> Duración y Convexidad de un Bono: Extración de la yield</a></li>
+<li class="chapter" data-level="9.2" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-duracion"><i class="fa fa-check"></i><b>9.2</b> Duración y Convexidad de un Bono: Duración</a></li>
+<li class="chapter" data-level="9.3" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-duracion-macaulay"><i class="fa fa-check"></i><b>9.3</b> Duración y Convexidad de un Bono: Duración Macaulay</a></li>
+<li class="chapter" data-level="9.4" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-duracion-modificada"><i class="fa fa-check"></i><b>9.4</b> Duración y Convexidad de un Bono: Duración Modificada</a></li>
+<li class="chapter" data-level="9.5" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-aproximacion-duracion-modificada"><i class="fa fa-check"></i><b>9.5</b> Duración y Convexidad de un Bono: Aproximación Duración Modificada</a></li>
+<li class="chapter" data-level="9.6" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-duracion-con-libreria"><i class="fa fa-check"></i><b>9.6</b> Duración y Convexidad de un Bono: Duración con librería</a></li>
+<li class="chapter" data-level="9.7" data-path="duracion-y-convexidad-de-un-bono.html"><a href="duracion-y-convexidad-de-un-bono.html#duracion-y-convexidad-de-un-bono-convexidad"><i class="fa fa-check"></i><b>9.7</b> Duración y Convexidad de un Bono: Convexidad</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>10</b> Opciones, Derivados y Futuros</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a las finanzas quantitativas</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="duracion-y-convexidad-de-un-bono" class="section level1">
+<h1><span class="header-section-number">Capítulo 9</span> Duración y Convexidad de un Bono</h1>
+<div id="duracion-y-convexidad-de-un-bono-extracion-de-la-yield" class="section level2">
+<h2><span class="header-section-number">9.1</span> Duración y Convexidad de un Bono: Extración de la yield</h2>
+<p>La función subset se explica sola, permite extraer una parte de tu base según un criterio.  </p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extraemos un valor en específico</span>
+t10yr_yield &lt;-<span class="st"> </span>t10yr.df <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">               </span><span class="kw">subset</span>(fecha <span class="op">==</span><span class="st"> &quot;2017-03-03&quot;</span>) 
+
+t10yr_yield &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(t10yr_yield<span class="op">$</span>DGS10)<span class="op">*</span><span class="fl">0.01</span>  </code></pre></div>
+</div>
+<div id="duracion-y-convexidad-de-un-bono-duracion" class="section level2">
+<h2><span class="header-section-number">9.2</span> Duración y Convexidad de un Bono: Duración</h2>
+<p>Existen dos Duraciones, la de Macaulay y modificada (o de Hicks), las que miden sensibilidad del precio ante cambios de la yield.</p>
+<p>Macaulay:</p>
+
+
+<p>Modificada:</p>
+
+
+<p>Aprox. Duración Modificada:</p>
+
+</div>
+<div id="duracion-y-convexidad-de-un-bono-duracion-macaulay" class="section level2">
+<h2><span class="header-section-number">9.3</span> Duración y Convexidad de un Bono: Duración Macaulay</h2>
+<p>Duración Macaulay:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># duracion de Macaulay</span>
+macaulay &lt;-<span class="st"> </span><span class="cf">function</span>(y,n,c,t,T){
+         mac &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>y)<span class="op">/</span>y <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span>y<span class="op">+</span>(n<span class="op">*</span>(c<span class="op">-</span>y)))<span class="op">/</span>(c<span class="op">*</span>((<span class="dv">1</span><span class="op">+</span>y)<span class="op">^</span>n <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>y)
+         <span class="kw">print</span>(mac)
+} </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">macaulay &lt;-<span class="st"> </span><span class="kw">macaulay</span>(t10yr_yield,<span class="dv">10</span>,<span class="fl">0.03</span>)
+macaulay</code></pre></div>
+</div>
+<div id="duracion-y-convexidad-de-un-bono-duracion-modificada" class="section level2">
+<h2><span class="header-section-number">9.4</span> Duración y Convexidad de un Bono: Duración Modificada</h2>
+<p>Duración Modificada:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># duración modificada</span>
+modificada &lt;-<span class="st"> </span>macaulay<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>t10yr_yield)
+modificada </code></pre></div>
+</div>
+<div id="duracion-y-convexidad-de-un-bono-aproximacion-duracion-modificada" class="section level2">
+<h2><span class="header-section-number">9.5</span> Duración y Convexidad de un Bono: Aproximación Duración Modificada</h2>
+<p>Aproximación Duración Modificada:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la aproximación de la duración modificada</span>
+precio.arriba &lt;-<span class="st"> </span><span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.03</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> t10yr_yield <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span>)
+precio        &lt;-<span class="st"> </span><span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.03</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> t10yr_yield)
+precio.abajo  &lt;-<span class="st"> </span><span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.03</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> t10yr_yield <span class="op">-</span><span class="st"> </span><span class="fl">0.01</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculo de aproximación duración modificada</span>
+aprox.dur.mod &lt;-<span class="st"> </span>(precio.abajo <span class="op">-</span><span class="st"> </span>precio.arriba)<span class="op">/</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>precio <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)
+aprox.dur.mod</code></pre></div>
+</div>
+<div id="duracion-y-convexidad-de-un-bono-duracion-con-libreria" class="section level2">
+<h2><span class="header-section-number">9.6</span> Duración y Convexidad de un Bono: Duración con librería</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con librerias</span>
+<span class="kw">p_load</span>(<span class="st">&quot;derivmkts&quot;</span>)
+
+<span class="co"># Duración moficada </span>
+<span class="kw">duration</span>(precio, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1</span>, <span class="dt">modified =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Duración Macaulay</span>
+<span class="kw">duration</span>(precio, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1</span>, <span class="dt">modified =</span> <span class="ot">FALSE</span>)</code></pre></div>
+</div>
+<div id="duracion-y-convexidad-de-un-bono-convexidad" class="section level2">
+<h2><span class="header-section-number">9.7</span> Duración y Convexidad de un Bono: Convexidad</h2>
+<p>Cuando las tasa de interés (yield) varían en demasiados puntos base, deja de ser la duración (cualquier tipo) una buena medida de sensibilidad y se recurre a la convexidad.</p>
+
+
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculamos medida de convexidad</span>
+convexidad &lt;-<span class="st"> </span>(precio.arriba <span class="op">+</span><span class="st"> </span>precio.abajo  <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>precio)<span class="op">/</span>(precio <span class="op">*</span><span class="st"> </span>(<span class="fl">0.01</span>)<span class="op">^</span><span class="dv">2</span>)
+convexidad</code></pre></div>
+<p>Convexidad con librería:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">convexity</span>(precio, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1</span>)</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="trabajando-con-yields-reales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="options.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-Bonos.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
