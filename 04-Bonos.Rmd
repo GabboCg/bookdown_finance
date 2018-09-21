@@ -29,6 +29,7 @@ Donde:
 * $T$  : Números de períodos o madurez
 * $r$  : Tasa de descuento o yield-to-maturity semi-anual
 
+
 Considere el siguiente ejercicio: Calcular el precio de un bono con pago de cupón semestral, Madurez 25 años, Tasa cupón 6.5%, Yield semi-anual de 6.9% y Valor nominal de 100.
 
 Para desarrollar el ejercicio, vamos a construir por parte los componentes de nuestro bono.
@@ -185,7 +186,7 @@ t10yr <- subset(t10yr["2000-01-01/2018-04-17"])
 
 ```{r, eval = TRUE, echo = TRUE, fig.cap = "yield del tesoro de los Estados Unidos con chartSeries", fig.align = "center"}
 # Grafico con chartSeries de quantmod solo funciona con xts
-chartSeries(t10yr)
+chartSeries(t10yr,  theme = "white")
 ```
 
 ```{r, eval = TRUE, echo = TRUE, fig.cap = "yield del tesoro de los Estados Unidos con ggplot2", fig.align = "center"}
@@ -310,15 +311,16 @@ duration(precio, 3, 10, 100, 1, modified = FALSE)
 
 ### Convexidad
 
-\vspace{8pt}
+$$
+\text{Convexidad} = \frac{1}{P \times (1+y)^2} \sum_{t=1}^{T} \bigg[ \frac{CF_{t}}{(1 + y)^t } (t^2 + t) \bigg]
+$$
 
-\begin{center}
+Donde: 
 
-Aproximación Convexidad: $\frac{MV_{-}+MV_{+}-2*MV_{0}}{MV_{0}*\Delta y^2}$ 
-
-\end{center}
-
-\vspace{8pt}
+* $P$ : Precio Bono.
+* $y$ : *yield to maturity*.
+* $T$ : Madurez en años.
+* $CF_{t}$ : *Cash flow* en el tiempo $t$.
 
 
 ```{r, eval = TRUE, echo = TRUE}
@@ -327,8 +329,51 @@ convexidad <- (precio.arriba + precio.abajo  - 2 * precio)/(precio * (0.01)^2)
 convexidad
 ``` 
 
-Convexidad con librería:
+#### Aproximación Duración Modificada
+
+$$
+\text{Aproximacion Convexidad} = \frac{P_{+} - P_{-} - 2P_{0}}{2P_{0}(\Delta y)^2}
+$$
+
+donde: 
+
+* $P_{0}$ : Precio del Bono.
+* $P_{-}$ : Precio del Bono cuando la tasa de interes aumenta.
+* $P_{+}$ : Precio del Bono cuando la tasa de interes disminuye.
+* $\Delta y$ : Cambio en la tasa de interes.
+
+### Convexidad con librería:
 
 ```{r, eval = TRUE, echo = TRUE}
 convexity(precio, 3, 10, 100, 1)
 ```
+
+## Efecto Dolar
+
+$$
+\text{Efecto Dolar} = \Delta P_{duration} + \Delta P_{convexity}  
+$$
+Donde: 
+
+$$
+\text{Duration Dollar Change} = -D \times \Delta y \times P 
+$$
+
+Donde:
+
+* $D$ : Duración.
+* $\Delta y$ : Cambio en la *yield*.
+* $P$ : Precio Bono.
+
+$$
+\text{Convexity Dollar Change} = 0.5 \times C \times (\Delta y)^2 \times P 
+$$
+Donde:
+
+* $C$ : Convexidad.
+* $(\Delta y)^2$ : Cambio en la *yield* al cuadrado.
+* $P$ : Precio Bono.
+
+## Ejercicio
+
+## Recursos del capítulo 

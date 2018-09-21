@@ -148,7 +148,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{Aplicaciones \& ejemplos usando R}
 \author{Gabriel Cabrera G.}
-\date{2018-09-18}
+\date{2018-09-21}
 
 \begin{document}
 \maketitle
@@ -1629,7 +1629,7 @@ años:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Grafico con chartSeries de quantmod solo funciona con xts}
-\KeywordTok{chartSeries}\NormalTok{(t10yr)}
+\KeywordTok{chartSeries}\NormalTok{(t10yr,  }\DataTypeTok{theme =} \StringTok{"white"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1829,15 +1829,23 @@ Aproximación Duración Modificada:
 
 \subsection{Convexidad}\label{convexidad}
 
-\vspace{8pt}
+\[
+\text{Convexidad} = \frac{1}{P \times (1+y)^2} \sum_{t=1}^{T} \bigg[ \frac{CF_{t}}{(1 + y)^t } (t^2 + t) \bigg]
+\]
 
-\begin{center}
+Donde:
 
-Aproximación Convexidad: $\frac{MV_{-}+MV_{+}-2*MV_{0}}{MV_{0}*\Delta y^2}$ 
-
-\end{center}
-
-\vspace{8pt}
+\begin{itemize}
+\tightlist
+\item
+  \(P\) : Precio Bono.
+\item
+  \(y\) : \emph{yield to maturity}.
+\item
+  \(T\) : Madurez en años.
+\item
+  \(CF_{t}\) : \emph{Cash flow} en el tiempo \(t\).
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1851,7 +1859,28 @@ Aproximación Convexidad: $\frac{MV_{-}+MV_{+}-2*MV_{0}}{MV_{0}*\Delta y^2}$
 ## [1] 88.45
 \end{verbatim}
 
-Convexidad con librería:
+\subsubsection{Aproximación Duración
+Modificada}\label{aproximacion-duracion-modificada-1}
+
+\[
+\text{Aproximacion Convexidad} = \frac{P_{+} - P_{-} - 2P_{0}}{2P_{0}(\Delta y)^2}
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(P_{0}\) : Precio del Bono.
+\item
+  \(P_{-}\) : Precio del Bono cuando la tasa de interes aumenta.
+\item
+  \(P_{+}\) : Precio del Bono cuando la tasa de interes disminuye.
+\item
+  \(\Delta y\) : Cambio en la tasa de interes.
+\end{itemize}
+
+\subsection{Convexidad con librería:}\label{convexidad-con-libreria}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1862,6 +1891,46 @@ Convexidad con librería:
 \begin{verbatim}
 ## [1] 88.34
 \end{verbatim}
+
+\section{Efecto Dolar}\label{efecto-dolar}
+
+\[
+\text{Efecto Dolar} = \Delta P_{duration} + \Delta P_{convexity}  
+\] Donde:
+
+\[
+\text{Duration Dollar Change} = -D \times \Delta y \times P 
+\]
+
+Donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(D\) : Duración.
+\item
+  \(\Delta y\) : Cambio en la \emph{yield}.
+\item
+  \(P\) : Precio Bono.
+\end{itemize}
+
+\[
+\text{Convexity Dollar Change} = 0.5 \times C \times (\Delta y)^2 \times P 
+\] Donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(C\) : Convexidad.
+\item
+  \((\Delta y)^2\) : Cambio en la \emph{yield} al cuadrado.
+\item
+  \(P\) : Precio Bono.
+\end{itemize}
+
+\section{Ejercicio}\label{ejercicio}
+
+\section{Recursos del capítulo}\label{recursos-del-capitulo-1}
 
 \chapter{Opciones, Derivados y Futuros}\label{options}
 
