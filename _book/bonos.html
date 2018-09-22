@@ -157,7 +157,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="4" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>4</b> Renta Fija</a><ul>
 <li class="chapter" data-level="4.1" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono"><i class="fa fa-check"></i><b>4.1</b> Precio de un Bono</a></li>
 <li class="chapter" data-level="4.2" data-path="bonos.html"><a href="bonos.html#dos-formas-de-hacer-lo-mismo"><i class="fa fa-check"></i><b>4.2</b> Dos formas de hacer lo mismo</a></li>
-<li class="chapter" data-level="4.3" data-path="bonos.html"><a href="bonos.html#funciones"><i class="fa fa-check"></i><b>4.3</b> funciones</a></li>
+<li class="chapter" data-level="4.3" data-path="bonos.html"><a href="bonos.html#funciones"><i class="fa fa-check"></i><b>4.3</b> Funciones</a></li>
 <li class="chapter" data-level="4.4" data-path="bonos.html"><a href="bonos.html#relacion-precio-del-bono-y-yield"><i class="fa fa-check"></i><b>4.4</b> Relación precio del Bono y Yield</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="bonos.html"><a href="bonos.html#valorizacion"><i class="fa fa-check"></i><b>4.4.1</b> Valorización</a></li>
 <li class="chapter" data-level="4.4.2" data-path="bonos.html"><a href="bonos.html#construccion-yields"><i class="fa fa-check"></i><b>4.4.2</b> Construcción yields</a></li>
@@ -203,7 +203,7 @@ code > span.in { color: #008000; } /* Information */
 <p>IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.</p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)
-<span class="kw">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;tidyquant&quot;</span>)</code></pre></div>
+<span class="kw">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;quantmod&quot;</span>)</code></pre></div>
 <div id="precio-de-un-bono" class="section level2">
 <h2><span class="header-section-number">4.1</span> Precio de un Bono</h2>
 <p>El precio de un bono se calcula como:</p>
@@ -217,8 +217,9 @@ P_{B} = \sum_{t=1}^{T} \frac{C}{(1+r)^t} + \frac{\text{ValorNominal}}{(1+r)^t}
 <li><span class="math inline">\(T\)</span> : Números de períodos o madurez</li>
 <li><span class="math inline">\(r\)</span> : Tasa de descuento o yield-to-maturity semi-anual</li>
 </ul>
-<p>Considere el siguiente ejercicio: Calcular el precio de un bono con pago de cupón semestral, Madurez 25 años, Tasa cupón 6.5%, Yield semi-anual de 6.9% y Valor nominal de 100.</p>
-<p>Para desarrollar el ejercicio, vamos a construir por parte los componentes de nuestro bono.</p>
+<p>Consideremos el siguiente ejercicio:</p>
+<p>Calcular el precio de un bono con pago de cupón semestral, Madurez 25 años, Tasa cupón 6.5%, Yield semi-anual de 6.9% y Valor nominal de 100.</p>
+<p>Para desarrollar el ejercicio, debemos construir por “parte”&quot; los componentes de nuestro bono.</p>
 <ol style="list-style-type: decimal">
 <li>Construimos tanto la tasa cupón como la <em>Yield semi-anual</em>.</li>
 </ol>
@@ -228,23 +229,29 @@ y  &lt;-<span class="st"> </span><span class="fl">0.069</span></code></pre></div
 <li>Construimos un vector con los valores de los cupones más el principal</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pago &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(tc<span class="op">*</span><span class="dv">100</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">49</span>),(<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>tc<span class="op">*</span><span class="dv">100</span><span class="op">/</span><span class="dv">2</span>))</code></pre></div>
-<p>tanto <code>tc</code>, <code>r</code> y <code>pago</code> se encontraran en Values del global environment, en tipo <code>numeric</code>.</p>
+<p>tanto <code>tc</code>, <code>r</code> y <code>pago</code> se encontraran en <em>Values</em> del <em>global environment</em>, en tipo <code>numeric</code>. <code>c</code> es una función generica para crear vectores, <code>rep</code> hace una repetición de <code>tc*100/2</code> 49 veces y el numero 50, es igual al principal más <code>tc*100/2</code>. Recordar que como es semi-anual se divide por 2 el valor nominal de 100.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Para poder trabajar con nuestra base de datos, transformamos nuestro vector <code>pago</code> que está en forma <code>numeric</code> a <code>data frame</code>.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pago &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(pago)</code></pre></div>
-<p>Ahora existe un objeto con estructuración de datos <code>data frame</code> en nuestro global environment. Se podría haber llamado de cualquier forma a nuestro nuevo objeto <code>pago</code>.</p>
+<p>Ahora existe un objeto con una estructura de datos <code>data frame</code> en nuestro global environment. Nuestro nuevo objeto <code>pago</code> se podría haber llamado de cualquier forma.</p>
 </div>
 <div id="dos-formas-de-hacer-lo-mismo" class="section level2">
 <h2><span class="header-section-number">4.2</span> Dos formas de hacer lo mismo</h2>
 <p>Ya construido nuestro objeto <code>pago</code> veremos que en <strong>R</strong> existen muchas formas de hacer lo mismo:</p>
 <ol style="list-style-type: decimal">
-<li>Al principio de la sesión cargamos la libreria <code>tidyverse</code>, está nos permitirá trabajar con un “megapaquete” que incluye otros paquetes en su interior (ggplot2, dplyr, magittr, entre otros). Todos los paquetes que conforman “el Tidyverse” comparten la misma visión sobre el trabajo con datos y la escritura de código. Si va a la pestaña packages y escribe <code>dplyr</code> verá que está activa, pero nunca la “llamamos”, esto se debe a <code>tidyverse</code> lo hizo por nosotros.</li>
+<li>Al principio del capítulo cargamos la libreria <code>tidyverse</code>, está nos permitirá trabajar con un “megapaquete” que incluye otros paquetes en su interior (ggplot2, dplyr, magittr, entre otros). Todos los paquetes que conforman “el Tidyverse” comparten la misma visión sobre el trabajo con datos y la escritura de código. Si vamos a la pestaña packages y escribimos <code>dplyr</code> veremos que está activo, pero nunca lo “llamamos”, esto se debe a <code>tidyverse</code> lo hizo por nosotros.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pago1 &lt;-<span class="st"> </span>pago <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">         </span><span class="kw">mutate</span>(<span class="dt">t1 =</span> <span class="kw">as.numeric</span>(<span class="kw">index</span>(pago)),<span class="dt">factor_desc =</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>y<span class="op">/</span><span class="dv">2</span>)<span class="op">^</span>(t1),
                 <span class="dt">val_present =</span> pago<span class="op">*</span>factor_desc) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">         </span><span class="kw">summarise</span>(<span class="kw">sum</span>(val_present))</code></pre></div>
+<span class="st">         </span><span class="kw">summarise</span>(<span class="kw">sum</span>(val_present)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">         </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">Precio Bono</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">sum(val_present)</span><span class="st">`</span>)
+
+pago1</code></pre></div>
+<pre><code>##   Precio Bono
+## 1       95.27</code></pre>
+<p>El precio del bono es 95.2663.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>La otra forma es:</li>
 </ol>
@@ -254,18 +261,46 @@ pago2 &lt;-<span class="st"> </span>pago
 pago2<span class="op">$</span>t2 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(pago2))
 
 <span class="co"># Calculamos el factor de descuento</span>
-pago2<span class="op">$</span>factor_desc &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>r)<span class="op">^</span>(pago2<span class="op">$</span>t2)
+pago2<span class="op">$</span>factor_desc &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>y<span class="op">/</span><span class="dv">2</span>)<span class="op">^</span>(pago2<span class="op">$</span>t2)
 <span class="co"># Calculamos el valor presente</span>
-pago2<span class="op">$</span>val_present &lt;-<span class="st">  </span>pago<span class="op">$</span>pv_factor<span class="op">*</span>pago2<span class="op">$</span>pago
+pago2<span class="op">$</span>val_present &lt;-<span class="st">  </span>pago2<span class="op">$</span>factor_desc<span class="op">*</span>pago2<span class="op">$</span>pago
 <span class="co"># Calculamos el precio</span>
 <span class="kw">sum</span>(pago2<span class="op">$</span>val_present)</code></pre></div>
+<pre><code>## [1] 95.27</code></pre>
+<p>Como es de esperarse obtenemos el mismo precio del bono, 95.2663.</p>
 </div>
 <div id="funciones" class="section level2">
-<h2><span class="header-section-number">4.3</span> funciones</h2>
-<p>Ahora se contruirá una función para valorizar cualquiee bono que pague cupones iguales:</p>
+<h2><span class="header-section-number">4.3</span> Funciones</h2>
+<p>Dominar por completo las funciones en R lleva practica y dedicación, no obstante, la dificultad que utilizaremos en este capítulo es baja y es un buen ejemplo practico para comenzar.</p>
+<p>Toda función en R, tiene tres partes.</p>
+<ol style="list-style-type: decimal">
+<li>El <code>body()</code>, el código dentro de la función.</li>
+<li>El <code>formals()</code>, la lista de argumentos que controlan como puedes llamar la función.</li>
+<li>El <code>environment()</code>, el “mapa” de la locación de las variables de la función.</li>
+</ol>
+<p>A continuación vamos a crear un función que permita calcular el cuadrado de cualquier número:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+    x<span class="op">^</span><span class="dv">2</span>
+}</code></pre></div>
+<p>Para obtener el cuadrado de 2 y de 4:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">f</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">f</span>(<span class="dv">4</span>)</code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<p>En el ejemplo anterior el <code>formals()</code> de <code>f</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">formals</span>(f)</code></pre></div>
+<pre><code>## $x</code></pre>
+<p>el <code>body()</code> de <code>f</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">body</span>(f)</code></pre></div>
+<pre><code>## {
+##     x^2
+## }</code></pre>
+<p>y el <code>environment()</code> de <code>f</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">environment</span>(f)</code></pre></div>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>Ya visto una breve introducción a funciones en R, procedemos a construir una función que nos permitirá valorizar cualquier bono que <strong>pague cupones iguales</strong>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># p: valor nominal; tc: tasa cupón; t: madurez; y: yield to maturity</span>
 precio.bono &lt;-<span class="st"> </span><span class="cf">function</span>(p,tc,t,y){
-  <span class="co"># rep returns a vector with value = p * r and times = ttm -1 </span>
   pago   &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(tc<span class="op">*</span>p, t <span class="op">-</span><span class="st"> </span><span class="dv">1</span>),p<span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>tc))
   pago   &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(pago)
   pago<span class="op">$</span>t &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(pago))
@@ -275,6 +310,7 @@ precio.bono &lt;-<span class="st"> </span><span class="cf">function</span>(p,tc,
 }</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">precio.bono</span>(<span class="dv">100</span>,<span class="fl">0.065</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">50</span>,<span class="fl">0.069</span><span class="op">/</span><span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 95.27</code></pre>
+<p>Usando el mismo ejemplo de la sección anterior, obtenermos un precio igual a 95.2663.</p>
 </div>
 <div id="relacion-precio-del-bono-y-yield" class="section level2">
 <h2><span class="header-section-number">4.4</span> Relación precio del Bono y Yield</h2>
@@ -288,7 +324,7 @@ precio.bono &lt;-<span class="st"> </span><span class="cf">function</span>(p,tc,
 <li>Yield: 4.29%</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Valoramos el siguiente Bono</span>
-<span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span><span class="fl">0.05</span>, <span class="dt">t =</span><span class="dv">10</span>, <span class="dt">y =</span> <span class="fl">0.0429</span>)</code></pre></div>
+<span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.05</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="fl">0.0429</span>)</code></pre></div>
 <pre><code>## [1] 105.7</code></pre>
 </div>
 <div id="construccion-yields" class="section level3">
@@ -320,8 +356,8 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.border =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="ot">NA</span>, <span class="dt">size =</span> <span class="fl">.5</span>),
                  <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;#d3d3d3&quot;</span>))    
 g1</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-39"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-39-1.png" alt="Relación Bono vs Yield" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-45-1.png" alt="Relación Bono vs Yield" width="672" />
 <p class="caption">
 Figure 4.1: Relación Bono vs Yield
 </p>
@@ -336,14 +372,16 @@ Figure 4.1: Relación Bono vs Yield
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t10yr &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols =</span> <span class="st">&quot;DGS10&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;FRED&quot;</span>, <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)
 
 t10yr &lt;-<span class="st"> </span><span class="kw">subset</span>(t10yr[<span class="st">&quot;2000-01-01/2018-04-17&quot;</span>])</code></pre></div>
+<p>Con la función <code>subset</code> extramos una parte de los datos, especificamente desde 2000-01-01 hasta 2018-04-17. Luego graficamos usando la función <code>chartSeries</code> de <code>quantmod</code>. Tener cuidado con la función, dado que solo funciona con extensión xts.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Grafico con chartSeries de quantmod solo funciona con xts</span>
 <span class="kw">chartSeries</span>(t10yr,  <span class="dt">theme =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-41"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-41-1.png" alt="yield del tesoro de los Estados Unidos con chartSeries" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-47"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-47-1.png" alt="yield del tesoro de los Estados Unidos con chartSeries" width="672" />
 <p class="caption">
 Figure 4.2: yield del tesoro de los Estados Unidos con chartSeries
 </p>
 </div>
+<p>En caso que se quiera graficar usando <code>ggplot2</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t10yr.df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(t10yr)
 
 t10yr.df &lt;-<span class="st"> </span>t10yr.df <span class="op">%&gt;%</span><span class="st"> </span>
@@ -356,8 +394,8 @@ g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> <
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.border =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="ot">NA</span>, <span class="dt">size =</span> <span class="fl">.5</span>),
                               <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;#d3d3d3&quot;</span>))
 g3</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-42"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-42-1.png" alt="yield del tesoro de los Estados Unidos con ggplot2" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-48-1.png" alt="yield del tesoro de los Estados Unidos con ggplot2" width="672" />
 <p class="caption">
 Figure 4.3: yield del tesoro de los Estados Unidos con ggplot2
 </p>
@@ -369,7 +407,7 @@ Figure 4.3: yield del tesoro de los Estados Unidos con ggplot2
 <h2><span class="header-section-number">4.6</span> Duración y Convexidad de un Bono</h2>
 <div id="extracion-de-la-yield" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> Extración de la yield</h3>
-<p>La función subset se explica sola, permite extraer una parte de tu base según un criterio.</p>
+<p>La función <code>subset</code> permite extraer una parte de tu base según un criterio como vimos con anterioridad. En el código presentado a continuación, extraemos un valor de la yield para una fecha en especifico, 2017-03-03 y luego la dividimos por 100.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extraemos un valor en específico</span>
 t10yr_yield &lt;-<span class="st"> </span>t10yr.df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">               </span><span class="kw">subset</span>(fecha <span class="op">==</span><span class="st"> &quot;2017-03-03&quot;</span>) 
@@ -378,30 +416,33 @@ t10yr_yield &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(t10
 </div>
 <div id="duracion" class="section level3">
 <h3><span class="header-section-number">4.6.2</span> Duración</h3>
-<p>Existen dos Duraciones, la de Macaulay y modificada (o de Hicks), las que miden sensibilidad del precio ante cambios de la yield.</p>
-<p>Macaulay:</p>
-
-
-<p>Modificada:</p>
-
-
-<p>Aprox. Duración Modificada:</p>
-
+<p>Existen dos Duraciones, la de Macaulay y modificada (o de Hicks), las que miden sensibilidad del precio ante cambios de la yield. Dos bonos con la misma duración tendrá el mismo cambio en precio estimado.</p>
+<p><strong>Macaulay</strong>:</p>
+<p><span class="math display">\[
+\text{Duracion de Macaulay} =\bigg[ \frac{1 + y}{y} - \frac{1+y + [n \cdot (c - y)]}{[ c\cdot((1+y)^n - 1)]+y} \bigg]
+\]</span></p>
+<p><strong>Modificada</strong>:</p>
+<p><span class="math display">\[
+\text{Duracion Modificada} = \text{Duracion de Macaulay}/(1+y)
+\]</span> <strong>Aproximación Duración Modificada</strong>:</p>
+<p><span class="math display">\[
+Aprox.Dur.Mod.= \frac{MV_{-}-MV_{+}}{2 \cdot \Delta y \cdot MV_{0}}
+\]</span></p>
 <div id="duracion-macaulay" class="section level4">
 <h4><span class="header-section-number">4.6.2.1</span> Duración Macaulay</h4>
+<p>Como ya presentamos la formula de la duración de Macaulay, la construimos como una función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># duracion de Macaulay</span>
 macaulay &lt;-<span class="st"> </span><span class="cf">function</span>(y,n,c,t,T){
          mac &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>y)<span class="op">/</span>y <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span>y<span class="op">+</span>(n<span class="op">*</span>(c<span class="op">-</span>y)))<span class="op">/</span>(c<span class="op">*</span>((<span class="dv">1</span><span class="op">+</span>y)<span class="op">^</span>n <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>y)
          <span class="kw">print</span>(mac)
 } </code></pre></div>
+<p>Usandola con la yield extraida:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">macaulay &lt;-<span class="st"> </span><span class="kw">macaulay</span>(t10yr_yield,<span class="dv">10</span>,<span class="fl">0.03</span>)</code></pre></div>
-<pre><code>## [1] 8.817</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">macaulay</code></pre></div>
 <pre><code>## [1] 8.817</code></pre>
 </div>
 <div id="duracion-modificada" class="section level4">
 <h4><span class="header-section-number">4.6.2.2</span> Duración Modificada</h4>
-<p>Duración Modificada:</p>
+<p>La aplicación de la duración modificada es directa.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># duración modificada</span>
 modificada &lt;-<span class="st"> </span>macaulay<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>t10yr_yield)
 modificada </code></pre></div>
@@ -409,19 +450,24 @@ modificada </code></pre></div>
 </div>
 <div id="aproximacion-duracion-modificada" class="section level4">
 <h4><span class="header-section-number">4.6.2.3</span> Aproximación Duración Modificada</h4>
-<p>Aproximación Duración Modificada:</p>
+<p>Una aproximación a la duración Modificada se puede obtener como:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la aproximación de la duración modificada</span>
 precio.arriba &lt;-<span class="st"> </span><span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.03</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> t10yr_yield <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span>)
 precio        &lt;-<span class="st"> </span><span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.03</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> t10yr_yield)
 precio.abajo  &lt;-<span class="st"> </span><span class="kw">precio.bono</span>(<span class="dt">p =</span> <span class="dv">100</span>, <span class="dt">tc =</span> <span class="fl">0.03</span>, <span class="dt">t =</span> <span class="dv">10</span>, <span class="dt">y =</span> t10yr_yield <span class="op">-</span><span class="st"> </span><span class="fl">0.01</span>)</code></pre></div>
+<p>Uniendo los objetos creados.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculo de aproximación duración modificada</span>
 aprox.dur.mod &lt;-<span class="st"> </span>(precio.abajo <span class="op">-</span><span class="st"> </span>precio.arriba)<span class="op">/</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>precio <span class="op">*</span><span class="st"> </span><span class="fl">0.01</span>)
 aprox.dur.mod</code></pre></div>
 <pre><code>## [1] 8.62</code></pre>
+<p>Así obtenemos una diferencia de 0.0169.</p>
 </div>
 </div>
 <div id="duracion-con-libreria" class="section level3">
 <h3><span class="header-section-number">4.6.3</span> Duración con librería</h3>
+<p>Una librería útil para calcular las duraciones como la convexidad (en la siguiente secciòn) es <code>derivmkts</code>. Si no estamos usando la librería <code>pacman</code> recordar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;derivmkts&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;derivmkts&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con librerias</span>
 <span class="kw">p_load</span>(<span class="st">&quot;derivmkts&quot;</span>)
 
@@ -431,9 +477,11 @@ aprox.dur.mod</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Duración Macaulay</span>
 <span class="kw">duration</span>(precio, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1</span>, <span class="dt">modified =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>## [1] 8.817</code></pre>
+<p>Si escribimos <code>modified = TRUE</code>, la función <code>duration</code> computa la duración modificada, por otro lado, si <code>modified = FALSE</code> obtenemos la duración de Macaulay. Losa valores son los mismo obtenidos sin librería.</p>
 </div>
 <div id="convexidad" class="section level3">
 <h3><span class="header-section-number">4.6.4</span> Convexidad</h3>
+<p>La convexidad es la segunda derivada de la curva de rendimiento y es màs precisa que la duración cuando el cambio de la <em>yield</em> es màs “grande”. Esto es porque la duración es la línea tangente en el punto calculado de la curva de rendimientos, el problema es que a medida que nos alejamos por la curva de rendimientos la distancia entre la curva y esa línea calculada se vuelve cada vez más grande.</p>
 <p><span class="math display">\[
 \text{Convexidad} = \frac{1}{P \times (1+y)^2} \sum_{t=1}^{T} \bigg[ \frac{CF_{t}}{(1 + y)^t } (t^2 + t) \bigg]
 \]</span></p>
@@ -448,16 +496,16 @@ aprox.dur.mod</code></pre></div>
 convexidad &lt;-<span class="st"> </span>(precio.arriba <span class="op">+</span><span class="st"> </span>precio.abajo  <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>precio)<span class="op">/</span>(precio <span class="op">*</span><span class="st"> </span>(<span class="fl">0.01</span>)<span class="op">^</span><span class="dv">2</span>)
 convexidad</code></pre></div>
 <pre><code>## [1] 88.45</code></pre>
-<div id="aproximacion-duracion-modificada-1" class="section level4">
-<h4><span class="header-section-number">4.6.4.1</span> Aproximación Duración Modificada</h4>
+<div id="aproximacion-convexidad" class="section level4">
+<h4><span class="header-section-number">4.6.4.1</span> Aproximación Convexidad</h4>
 <p><span class="math display">\[
-\text{Aproximacion Convexidad} = \frac{P_{+} - P_{-} - 2P_{0}}{2P_{0}(\Delta y)^2}
+\text{Aproximacion Convexidad} = \frac{MV_{-}+MV_{+}-2*MV_{0}}{MV_{0}*\Delta y^2}
 \]</span></p>
 <p>donde:</p>
 <ul>
-<li><span class="math inline">\(P_{0}\)</span> : Precio del Bono.</li>
-<li><span class="math inline">\(P_{-}\)</span> : Precio del Bono cuando la tasa de interes aumenta.</li>
-<li><span class="math inline">\(P_{+}\)</span> : Precio del Bono cuando la tasa de interes disminuye.</li>
+<li><span class="math inline">\(MV_{0}\)</span> : Precio del Bono.</li>
+<li><span class="math inline">\(MV_{-}\)</span> : Precio del Bono cuando la tasa de interes aumenta.</li>
+<li><span class="math inline">\(MV_{+}\)</span> : Precio del Bono cuando la tasa de interes disminuye.</li>
 <li><span class="math inline">\(\Delta y\)</span> : Cambio en la tasa de interes.</li>
 </ul>
 </div>
