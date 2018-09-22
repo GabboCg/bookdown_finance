@@ -402,6 +402,8 @@ convexidad
 
 #### Aproximación Convexidad
 
+La aproximación a la convexidad se puede obtener usando:
+
 $$
 \text{Aproximacion Convexidad} = \frac{MV_{-}+MV_{+}-2*MV_{0}}{MV_{0}*\Delta y^2}
 $$
@@ -415,11 +417,15 @@ donde:
 
 ### Convexidad con librería:
 
+La función `convexity` de la librería `derivmkts` permite calcular la convexidad.
+
 ```{r, eval = TRUE, echo = TRUE}
 convexity(precio, 3, 10, 100, 1)
 ```
 
 ## Efecto Dolar
+
+El efecto dolar no es más que la suma del cambio (*dollar change*) del precio del bono ante un cambio marginal de la *yield*, tanto para la duración como la convexidad.
 
 $$
 \text{Efecto Dolar} = \Delta P_{duration} + \Delta P_{convexity}  
@@ -427,7 +433,7 @@ $$
 Donde: 
 
 $$
-\text{Duration Dollar Change} = -D \times \Delta y \times P 
+\text{Duration Dollar Change} = -D \times \Delta y \times P = \Delta P_{duration}
 $$
 
 Donde:
@@ -437,7 +443,7 @@ Donde:
 * $P$ : Precio Bono.
 
 $$
-\text{Convexity Dollar Change} = 0.5 \times C \times (\Delta y)^2 \times P 
+\text{Convexity Dollar Change} = 0.5 \times C \times (\Delta y)^2 \times P = \Delta P_{convexity}  
 $$
 Donde:
 
@@ -447,6 +453,64 @@ Donde:
 
 ## Ejercicio
 
+1. **Duración y Convexidad**
 
+Un portfolio manager de renta fija nacional ha invertido en un bono a cuatro años de ENERSIS. El instrumento cuenta con una tasa cupón anual de 3 % y un valor nominal de US $100 millones. Adicionalmente sabe que actualmente la tasa de descuento TIR anual es del 8 %. Debido a un aumento en el nivel de precios, el portfolio manager se encuentra preocupado por un eventual incremento en la tasa de interés que fija el Banco Central, por lo tanto recurre a Ud. para que lo asesore ante este posible escenario de alza de tasas.
+
+a. Calcule la duración y convexidad de este bono.
+
+Calculamos el precio del bono:
+
+```{r}
+precio <- precio.bono(p = 100, tc = 0.03, t = 4, y = 0.08)
+```
+
+La duración es: 
+
+```{r}
+duration_mac <- duration(precio, 3, 4, 100, 1, modified = FALSE)
+duration_mac
+```
+```{r}
+duration_mod <- duration(precio, 3, 4, 100, 1, modified = TRUE)
+duration_mod
+```
+
+La convexidad es: 
+
+```{r}
+convexity <- convexity(precio, 3, 4, 100, 1)
+```
+
+b. Utilizando la duración, calcule cuánto bajará de precio el bono ante un aumento de la TIR del 1 % y ante un aumento del 10%. Cómo cambia el resultado anterior si se utiliza convexidad.
+
+Si la variación es de 1 %, la regla de la duración entrega los siguientes resultados:
+
+```{r}
+-duration_mod*0.01
+```
+
+Si la variación es de 1 %, la regla de la convexidad entrega los siguientes
+resultados:
+
+```{r}
+-duration_mod*0.01 + 0.5*convexity*(0.01)^2
+```
+Se observa que para variaciones pequeñas ambas medidas entregan resultados muy similares
+
+Por otro lado, si la variación en la TIR es de 10 % la regla de duración arroja
+los siguientes resultados:
+
+```{r}
+-duration_mod*0.1
+```
+
+Mientras que para la convexidad se tiene lo siguiente:
+
+```{r}
+-duration_mod*0.1 + 0.5*convexity*(0.1)^2
+```
+
+Donde se observa que los resultados guardan una diferencia mucho mayor cuando se examina el efecto en el precio de una variación significativa en la tasa de interés
 
 ## Recursos del capítulo 
