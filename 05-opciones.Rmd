@@ -8,3 +8,83 @@ output:
 
 > IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
 
+```{r,echo = TRUE, results='hide', message= "FALSE", warning="FALSE"}
+if(!require("pacman")) install.packages("pacman")
+p_load("tidyverse","quantmod")
+```
+
+
+## Call & Put
+
+A modo de resumen, existen cuatro tipos de posiciones en las opciones:
+
+1. Posición larga en una opción de compra (call)
+2. Posición larga en una opción de venta (put)
+3. Posición corta en una opción de compra (call)
+4. Posición corta en una opción de venta (put)
+
+Simulamos nuestro $S_t$:
+
+```{r,echo=TRUE}
+# Valores para el ejemplo
+s <- seq(0,130,by=10) # Precio 
+```
+
+- Para la call usamos: v (precio de la call) = $5, precio de ejercicio (k) = 100.
+- Para la put usamos: v (precio de la put) = $7, precio de ejercicio (k) = 70. 
+
+### Posición Larga en Call: Payoff & Profit
+
+EL rendimiento proveniente de una opción larga en una opción de compra europea es:
+
+Payoff opción call larga
+ 
+$$
+\text{payoff} = \text{max}(S_t - k,0)
+$$
+
+Profit opción call larga
+$$
+\text{profit} = \text{payoff} - v*e^{-r*t}
+$$
+
+Construimos la función:
+
+```{r,echo = TRUE,eval=TRUE}
+long.callpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmax(0,s-k), "periodo" = s) %>% 
+    mutate("profit" = payoff - v*exp(-r*t))
+}
+```
+
+```{r,echo = TRUE}
+payoff.longcall <- long.callpayoff(s,100,5,0,0)
+```
+
+Gráfico posición larga en call: 
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g1 <- ggplot(payoff.longcall) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g1 <- g1 + theme_bw() + ggtitle("Payoff de una Option Call")
+g1 <- g1 + labs(subtitle = "Posicion Larga en Call")
+g1 <- g1 + scale_x_continuous(limits=c(70, 130)) + theme(panel.grid.major = element_blank(), panel.grid.minor =                 element_blank())
+g1
+```
+
+Para corroborar el gráfico ver la figura 9.1 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+
+Gráfico profit posición larga en call:
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g2 <- ggplot(payoff.longcall) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Profit")
+g2 <- g2 + theme_bw() + ggtitle("Profit de una Option Call") + labs(subtitle = "Posicion Larga en Call") 
+g2 <- g2 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g2 <- g2 + scale_x_continuous(breaks = round(seq(min(payoff.longcall$periodo), max(payoff.longcall$periodo), by =                   10),1),limits=c(70, 130)) + scale_y_continuous(breaks = round(seq(min(payoff.longcall$profit),                           max(payoff.longcall$profit), by = 10),1),limits = c(limits=c(-5, 30))) 
+g2 <- g2 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g2
+```
+
+### Posición larga en put: Payoff & Profit
