@@ -168,6 +168,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="6" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>6</b> Opciones, Derivados y Futuros</a><ul>
 <li class="chapter" data-level="6.1" data-path="options.html"><a href="options.html#call-put"><i class="fa fa-check"></i><b>6.1</b> Call &amp; Put</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="options.html"><a href="options.html#posicion-larga-en-call-payoff-profit"><i class="fa fa-check"></i><b>6.1.1</b> Posición Larga en Call: Payoff &amp; Profit</a></li>
+<li class="chapter" data-level="6.1.2" data-path="options.html"><a href="options.html#posicion-larga-en-put-payoff-profit"><i class="fa fa-check"></i><b>6.1.2</b> Posición larga en put: Payoff &amp; Profit</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -247,6 +248,38 @@ g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> <
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g2</code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-6-1.png" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<div id="posicion-larga-en-put-payoff-profit" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Posición larga en put: Payoff &amp; Profit</h3>
+<p>EL rendimiento para el tenedor de una opción larga en una opción de venta europea:</p>
+<p>Payoff opción put larga: <span class="math display">\[
+\text{payoff} = \text{max}(k - S_t,0)
+\]</span></p>
+<p>Profit opción put larga: <span class="math display">\[
+\text{profit} = \text{payoff} - v*e^{-r*t}
+\]</span></p>
+<p>Construimos la función:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long.putpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
+    <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmax</span>(k<span class="op">-</span>s,<span class="dv">0</span>), <span class="st">&quot;periodo&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">-</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">payoff.longput &lt;-<span class="st"> </span><span class="kw">long.putpayoff</span>(s,<span class="dv">70</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
+<p>Gráfico posición larga en put</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
+g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Put&quot;</span>)
+g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>))  <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span>                  <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
+g3</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Para corroborar el gráfico ver la figura 9.2 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
+<p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
+<p>Gráfico posición larga en put:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
+g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Profit de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Put&quot;</span>) 
+g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>)
+g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longput<span class="op">$</span>periodo), <span class="dt">by =</span>                     <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>profit),                            <span class="kw">max</span>(payoff.longput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">7</span>, <span class="dv">30</span>))) 
+g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
+g4</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="384" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

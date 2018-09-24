@@ -88,3 +88,54 @@ g2
 ```
 
 ### Posición larga en put: Payoff & Profit
+
+EL rendimiento para el tenedor de una opción larga en una opción de venta europea:
+
+Payoff opción put larga:
+$$
+\text{payoff} = \text{max}(k - S_t,0)
+$$
+
+
+Profit opción put larga:
+$$
+\text{profit} = \text{payoff} - v*e^{-r*t}
+$$
+
+
+Construimos la función:
+
+```{r,echo=TRUE,eval=TRUE}
+long.putpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmax(k-s,0), "periodo" = s) %>% 
+    mutate("profit" = payoff - v*exp(-r*t))
+}
+```
+
+```{r,echo=TRUE,eval=TRUE}
+payoff.longput <- long.putpayoff(s,70,7,0,0)
+```
+
+Gráfico posición larga en put
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g3 <- ggplot(payoff.longput) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g3 <- g3 + theme_bw() + ggtitle("Payoff de una Option Put") + labs(subtitle = "Posicion Larga en Put")
+g3 <- g3 + scale_x_continuous(limits=c(40, 100)) + scale_y_continuous(limits=c(0, 30))  + theme(panel.grid.major =                  element_blank(), panel.grid.minor = element_blank())
+g3
+```
+
+Para corroborar el gráfico ver la figura 9.2 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+Gráfico posición larga en put:
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g4 <- ggplot(payoff.longput) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Profit")
+g4 <- g4 + theme_bw() + ggtitle("Profit de una Option Put") + labs(subtitle = "Posicion Larga en Put") 
+g4 <- g4 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g4 <- g4 + scale_x_continuous(breaks = round(seq(min(payoff.longput$periodo), max(payoff.longput$periodo), by =                     10),1),limits=c(40, 100)) + scale_y_continuous(breaks = round(seq(min(payoff.longput$profit),                            max(payoff.longput$profit), by = 10),1),limits = c(limits=c(-7, 30))) 
+g4 <- g4 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g4
+```
