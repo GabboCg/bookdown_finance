@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-09-23">
+<meta name="date" content="2018-09-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,12 +34,12 @@
   
 <link rel="prev" href="bonos.html">
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 
 
 
@@ -47,6 +47,14 @@
 
 
 
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding/datatables.js"></script>
+<link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -98,110 +106,113 @@ code > span.in { color: #008000; } /* Information */
 <li><a href="./">Finance Rocks!!</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> sirve para el mono font <a href="https://gist.github.com/veggiemonk/43d81e1cbab06ed8e92a" class="uri">https://gist.github.com/veggiemonk/43d81e1cbab06ed8e92a</a></a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
 <li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el Autor</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introducción</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#un-poco-de-historia"><i class="fa fa-check"></i><b>2.1.1</b> Un poco de historia</a></li>
-<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#los-primeros-pasos"><i class="fa fa-check"></i><b>2.1.2</b> Los primeros pasos</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#un-poco-de-historia"><i class="fa fa-check"></i><b>1.1.1</b> Un poco de historia</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#los-primeros-pasos"><i class="fa fa-check"></i><b>1.1.2</b> Los primeros pasos</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Partes de RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Partes de RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>2.3</b> <em>Scripts</em></a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>2.4</b> Proyectos</a></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>2.5</b> <em>Packages</em></a><ul>
-<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>2.5.1</b> <em>tidyverse</em></a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>1.3</b> <em>Scripts</em></a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#por-que-esto-es-util"><i class="fa fa-check"></i><b>1.4.1</b> ¿Por qué esto es útil?</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#como-crear-un-projecto"><i class="fa fa-check"></i><b>1.4.2</b> ¿Cómo crear un projecto?</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#ejemplo"><i class="fa fa-check"></i><b>2.6</b> Ejemplo</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.5</b> <em>Packages</em></a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="quantmod.html"><a href="quantmod.html"><i class="fa fa-check"></i><b>3</b> Quantmod</a><ul>
-<li class="chapter" data-level="3.1" data-path="quantmod.html"><a href="quantmod.html#que-es-quantmod"><i class="fa fa-check"></i><b>3.1</b> ¿Que es quantmod?</a></li>
-<li class="chapter" data-level="3.2" data-path="quantmod.html"><a href="quantmod.html#obtencion-de-datos"><i class="fa fa-check"></i><b>3.2</b> Obtención de Datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="quantmod.html"><a href="quantmod.html#que-hizo-la-funcion-getsymbols"><i class="fa fa-check"></i><b>3.2.1</b> ¿Qué hizo la función <code>getSymbols</code>?</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#ejemplo"><i class="fa fa-check"></i><b>1.6</b> Ejemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="quantmod.html"><a href="quantmod.html#graficando-con-chartseries"><i class="fa fa-check"></i><b>3.3</b> Graficando con <code>chartSeries</code></a><ul>
-<li class="chapter" data-level="3.3.1" data-path="quantmod.html"><a href="quantmod.html#chartseries"><i class="fa fa-check"></i><b>3.3.1</b> <code>chartSeries</code></a></li>
+<li class="chapter" data-level="2" data-path="quantmod.html"><a href="quantmod.html"><i class="fa fa-check"></i><b>2</b> Quantmod</a><ul>
+<li class="chapter" data-level="2.1" data-path="quantmod.html"><a href="quantmod.html#que-es-quantmod"><i class="fa fa-check"></i><b>2.1</b> ¿Que es quantmod?</a></li>
+<li class="chapter" data-level="2.2" data-path="quantmod.html"><a href="quantmod.html#obtencion-de-datos"><i class="fa fa-check"></i><b>2.2</b> Obtención de Datos</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="quantmod.html"><a href="quantmod.html#que-hizo-la-funcion-getsymbols"><i class="fa fa-check"></i><b>2.2.1</b> ¿Qué hizo la función <code>getSymbols</code>?</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="quantmod.html"><a href="quantmod.html#graficando-con-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Graficando con <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="3.4.1" data-path="quantmod.html"><a href="quantmod.html#breve-introduccion-a-ggplot2"><i class="fa fa-check"></i><b>3.4.1</b> Breve introducción a <code>ggplot2</code></a></li>
-<li class="chapter" data-level="3.4.2" data-path="quantmod.html"><a href="quantmod.html#color-tamano-forma-y-otros-atributos-del-aesthetic"><i class="fa fa-check"></i><b>3.4.2</b> Color, tamaño, forma y otros atributos del <em>aesthetic</em></a></li>
-<li class="chapter" data-level="3.4.3" data-path="quantmod.html"><a href="quantmod.html#sp-500-con-ggplot2"><i class="fa fa-check"></i><b>3.4.3</b> S&amp;P 500 con <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.3" data-path="quantmod.html"><a href="quantmod.html#graficando-con-chartseries"><i class="fa fa-check"></i><b>2.3</b> Graficando con <code>chartSeries</code></a><ul>
+<li class="chapter" data-level="2.3.1" data-path="quantmod.html"><a href="quantmod.html#chartseries"><i class="fa fa-check"></i><b>2.3.1</b> <code>chartSeries</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="quantmod.html"><a href="quantmod.html#multiples-datos"><i class="fa fa-check"></i><b>3.5</b> Multiples Datos</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="quantmod.html"><a href="quantmod.html#retornos"><i class="fa fa-check"></i><b>3.5.1</b> Retornos</a></li>
-<li class="chapter" data-level="3.5.2" data-path="quantmod.html"><a href="quantmod.html#retornos-acumulados"><i class="fa fa-check"></i><b>3.5.2</b> Retornos Acumulados</a></li>
+<li class="chapter" data-level="2.4" data-path="quantmod.html"><a href="quantmod.html#graficando-con-ggplot2"><i class="fa fa-check"></i><b>2.4</b> Graficando con <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="2.4.1" data-path="quantmod.html"><a href="quantmod.html#breve-introduccion-a-ggplot2"><i class="fa fa-check"></i><b>2.4.1</b> Breve introducción a <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="quantmod.html"><a href="quantmod.html#color-tamano-forma-y-otros-atributos-del-aesthetic"><i class="fa fa-check"></i><b>2.4.2</b> Color, tamaño, forma y otros atributos del <em>aesthetic</em></a></li>
+<li class="chapter" data-level="2.4.3" data-path="quantmod.html"><a href="quantmod.html#sp-500-con-ggplot2"><i class="fa fa-check"></i><b>2.4.3</b> S&amp;P 500 con <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="quantmod.html"><a href="quantmod.html#estadistica-descriptiva"><i class="fa fa-check"></i><b>3.6</b> Estadística Descriptiva</a></li>
-<li class="chapter" data-level="3.7" data-path="quantmod.html"><a href="quantmod.html#ratio-de-sharpe"><i class="fa fa-check"></i><b>3.7</b> Ratio de Sharpe</a></li>
-<li class="chapter" data-level="3.8" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>3.8</b> Test de JarqueBera</a></li>
-<li class="chapter" data-level="3.9" data-path="quantmod.html"><a href="quantmod.html#recursos-del-capitulo"><i class="fa fa-check"></i><b>3.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="2.5" data-path="quantmod.html"><a href="quantmod.html#multiples-datos"><i class="fa fa-check"></i><b>2.5</b> Multiples Datos</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="quantmod.html"><a href="quantmod.html#retornos"><i class="fa fa-check"></i><b>2.5.1</b> Retornos</a></li>
+<li class="chapter" data-level="2.5.2" data-path="quantmod.html"><a href="quantmod.html#retornos-acumulados"><i class="fa fa-check"></i><b>2.5.2</b> Retornos Acumulados</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="portafolio.html"><a href="portafolio.html"><i class="fa fa-check"></i><b>4</b> Introducción a teoría de portafolio</a><ul>
-<li class="chapter" data-level="4.1" data-path="portafolio.html"><a href="portafolio.html#libreria-introcompfinr"><i class="fa fa-check"></i><b>4.1</b> Librería IntroCompFinR</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="portafolio.html"><a href="portafolio.html#funciones-utiles-de-introcompfinr"><i class="fa fa-check"></i><b>4.1.1</b> Funciones útiles de IntroCompFinR</a></li>
+<li class="chapter" data-level="2.6" data-path="quantmod.html"><a href="quantmod.html#estadistica-descriptiva"><i class="fa fa-check"></i><b>2.6</b> Estadística Descriptiva</a></li>
+<li class="chapter" data-level="2.7" data-path="quantmod.html"><a href="quantmod.html#ratio-de-sharpe"><i class="fa fa-check"></i><b>2.7</b> Ratio de Sharpe</a></li>
+<li class="chapter" data-level="2.8" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>2.8</b> Test de JarqueBera</a></li>
+<li class="chapter" data-level="2.9" data-path="quantmod.html"><a href="quantmod.html#recursos-del-capitulo"><i class="fa fa-check"></i><b>2.9</b> Recursos del capítulo</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="portafolio.html"><a href="portafolio.html#cargando-la-libreria-y-la-base-de-datos"><i class="fa fa-check"></i><b>4.2</b> Cargando la librería y la base de datos</a></li>
+<li class="chapter" data-level="3" data-path="portafolio.html"><a href="portafolio.html"><i class="fa fa-check"></i><b>3</b> Introducción a teoría de portafolio</a><ul>
+<li class="chapter" data-level="3.1" data-path="portafolio.html"><a href="portafolio.html#libreria-introcompfinr"><i class="fa fa-check"></i><b>3.1</b> Librería IntroCompFinR</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="portafolio.html"><a href="portafolio.html#funciones-utiles-de-introcompfinr"><i class="fa fa-check"></i><b>3.1.1</b> Funciones útiles de IntroCompFinR</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>5</b> Renta Fija</a><ul>
-<li class="chapter" data-level="5.1" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono"><i class="fa fa-check"></i><b>5.1</b> Precio de un Bono</a></li>
-<li class="chapter" data-level="5.2" data-path="bonos.html"><a href="bonos.html#dos-formas-de-hacer-lo-mismo"><i class="fa fa-check"></i><b>5.2</b> Dos formas de hacer lo mismo</a></li>
-<li class="chapter" data-level="5.3" data-path="bonos.html"><a href="bonos.html#funciones"><i class="fa fa-check"></i><b>5.3</b> Funciones</a></li>
-<li class="chapter" data-level="5.4" data-path="bonos.html"><a href="bonos.html#relacion-precio-del-bono-y-yield"><i class="fa fa-check"></i><b>5.4</b> Relación precio del Bono y Yield</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="bonos.html"><a href="bonos.html#valorizacion"><i class="fa fa-check"></i><b>5.4.1</b> Valorización</a></li>
-<li class="chapter" data-level="5.4.2" data-path="bonos.html"><a href="bonos.html#construccion-yields"><i class="fa fa-check"></i><b>5.4.2</b> Construcción yields</a></li>
-<li class="chapter" data-level="5.4.3" data-path="bonos.html"><a href="bonos.html#loops"><i class="fa fa-check"></i><b>5.4.3</b> Loops</a></li>
-<li class="chapter" data-level="5.4.4" data-path="bonos.html"><a href="bonos.html#graficando"><i class="fa fa-check"></i><b>5.4.4</b> Graficando</a></li>
+<li class="chapter" data-level="3.2" data-path="portafolio.html"><a href="portafolio.html#cargando-la-libreria-y-la-base-de-datos"><i class="fa fa-check"></i><b>3.2</b> Cargando la librería y la base de datos</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="bonos.html"><a href="bonos.html#trabajando-con-yields-reales"><i class="fa fa-check"></i><b>5.5</b> Trabajando con yields reales</a></li>
-<li class="chapter" data-level="5.6" data-path="bonos.html"><a href="bonos.html#duracion-y-convexidad-de-un-bono"><i class="fa fa-check"></i><b>5.6</b> Duración y Convexidad de un Bono</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="bonos.html"><a href="bonos.html#extracion-de-la-yield"><i class="fa fa-check"></i><b>5.6.1</b> Extración de la yield</a></li>
-<li class="chapter" data-level="5.6.2" data-path="bonos.html"><a href="bonos.html#duracion"><i class="fa fa-check"></i><b>5.6.2</b> Duración</a></li>
-<li class="chapter" data-level="5.6.3" data-path="bonos.html"><a href="bonos.html#duracion-con-libreria"><i class="fa fa-check"></i><b>5.6.3</b> Duración con librería</a></li>
-<li class="chapter" data-level="5.6.4" data-path="bonos.html"><a href="bonos.html#convexidad"><i class="fa fa-check"></i><b>5.6.4</b> Convexidad</a></li>
-<li class="chapter" data-level="5.6.5" data-path="bonos.html"><a href="bonos.html#convexidad-con-libreria"><i class="fa fa-check"></i><b>5.6.5</b> Convexidad con librería:</a></li>
+<li class="chapter" data-level="4" data-path="bonos.html"><a href="bonos.html"><i class="fa fa-check"></i><b>4</b> Renta Fija</a><ul>
+<li class="chapter" data-level="4.1" data-path="bonos.html"><a href="bonos.html#precio-de-un-bono"><i class="fa fa-check"></i><b>4.1</b> Precio de un Bono</a></li>
+<li class="chapter" data-level="4.2" data-path="bonos.html"><a href="bonos.html#dos-formas-de-hacer-lo-mismo"><i class="fa fa-check"></i><b>4.2</b> Dos formas de hacer lo mismo</a></li>
+<li class="chapter" data-level="4.3" data-path="bonos.html"><a href="bonos.html#funciones"><i class="fa fa-check"></i><b>4.3</b> Funciones</a></li>
+<li class="chapter" data-level="4.4" data-path="bonos.html"><a href="bonos.html#relacion-precio-del-bono-y-yield"><i class="fa fa-check"></i><b>4.4</b> Relación precio del Bono y Yield</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="bonos.html"><a href="bonos.html#valorizacion"><i class="fa fa-check"></i><b>4.4.1</b> Valorización</a></li>
+<li class="chapter" data-level="4.4.2" data-path="bonos.html"><a href="bonos.html#construccion-yields"><i class="fa fa-check"></i><b>4.4.2</b> Construcción yields</a></li>
+<li class="chapter" data-level="4.4.3" data-path="bonos.html"><a href="bonos.html#loops"><i class="fa fa-check"></i><b>4.4.3</b> Loops</a></li>
+<li class="chapter" data-level="4.4.4" data-path="bonos.html"><a href="bonos.html#graficando"><i class="fa fa-check"></i><b>4.4.4</b> Graficando</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>5.7</b> Efecto Dolar</a></li>
-<li class="chapter" data-level="5.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>5.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="5.9" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>5.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="4.5" data-path="bonos.html"><a href="bonos.html#trabajando-con-yields-reales"><i class="fa fa-check"></i><b>4.5</b> Trabajando con yields reales</a></li>
+<li class="chapter" data-level="4.6" data-path="bonos.html"><a href="bonos.html#duracion-y-convexidad-de-un-bono"><i class="fa fa-check"></i><b>4.6</b> Duración y Convexidad de un Bono</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="bonos.html"><a href="bonos.html#extracion-de-la-yield"><i class="fa fa-check"></i><b>4.6.1</b> Extración de la yield</a></li>
+<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion"><i class="fa fa-check"></i><b>4.6.2</b> Duración</a></li>
+<li class="chapter" data-level="4.6.3" data-path="bonos.html"><a href="bonos.html#duracion-con-libreria"><i class="fa fa-check"></i><b>4.6.3</b> Duración con librería</a></li>
+<li class="chapter" data-level="4.6.4" data-path="bonos.html"><a href="bonos.html#convexidad"><i class="fa fa-check"></i><b>4.6.4</b> Convexidad</a></li>
+<li class="chapter" data-level="4.6.5" data-path="bonos.html"><a href="bonos.html#convexidad-con-libreria"><i class="fa fa-check"></i><b>4.6.5</b> Convexidad con librería:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>6</b> Opciones, Derivados y Futuros</a><ul>
-<li class="chapter" data-level="6.1" data-path="options.html"><a href="options.html#call-put"><i class="fa fa-check"></i><b>6.1</b> Call &amp; Put</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="options.html"><a href="options.html#posicion-larga-en-call-payoff-profit"><i class="fa fa-check"></i><b>6.1.1</b> Posición Larga en Call: Payoff &amp; Profit</a></li>
-<li class="chapter" data-level="6.1.2" data-path="options.html"><a href="options.html#posicion-larga-en-put-payoff-profit"><i class="fa fa-check"></i><b>6.1.2</b> Posición larga en put: Payoff &amp; Profit</a></li>
-<li class="chapter" data-level="6.1.3" data-path="options.html"><a href="options.html#posicion-corta-en-call-payoff-profit"><i class="fa fa-check"></i><b>6.1.3</b> Posición corta en call: Payoff &amp; Profit</a></li>
-<li class="chapter" data-level="6.1.4" data-path="options.html"><a href="options.html#posicion-corta-en-put-payoff-profit"><i class="fa fa-check"></i><b>6.1.4</b> Posición corta en put: Payoff &amp; Profit</a></li>
+<li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
+<li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.9</b> Recursos del capítulo</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="options.html"><a href="options.html#estrategias"><i class="fa fa-check"></i><b>6.2</b> Estrategias</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="options.html"><a href="options.html#bull-spread-utilidades"><i class="fa fa-check"></i><b>6.2.1</b> Bull Spread Utilidades</a></li>
-<li class="chapter" data-level="6.2.2" data-path="options.html"><a href="options.html#funcion-bull-spread"><i class="fa fa-check"></i><b>6.2.2</b> Función Bull Spread</a></li>
-<li class="chapter" data-level="6.2.3" data-path="options.html"><a href="options.html#posicion-call-larga-corta-para-el-bull-spread-call"><i class="fa fa-check"></i><b>6.2.3</b> Posición call Larga &amp; Corta Para el Bull Spread Call</a></li>
-<li class="chapter" data-level="6.2.4" data-path="options.html"><a href="options.html#construccion-de-la-bull-spread-call"><i class="fa fa-check"></i><b>6.2.4</b> Construcción de la Bull Spread Call</a></li>
-<li class="chapter" data-level="6.2.5" data-path="options.html"><a href="options.html#grafico-bull-spread-call"><i class="fa fa-check"></i><b>6.2.5</b> Gráfico Bull Spread Call</a></li>
-<li class="chapter" data-level="6.2.6" data-path="options.html"><a href="options.html#con-libreria-la-bull-spread-call"><i class="fa fa-check"></i><b>6.2.6</b> Con librería la Bull Spread Call</a></li>
-<li class="chapter" data-level="6.2.7" data-path="options.html"><a href="options.html#con-libreria-el-grafico-bull-spread-call"><i class="fa fa-check"></i><b>6.2.7</b> Con librería El gráfico Bull Spread Call</a></li>
-<li class="chapter" data-level="6.2.8" data-path="options.html"><a href="options.html#payoff-inferior-bull-spread-call-de-la-libreria"><i class="fa fa-check"></i><b>6.2.8</b> Payoff inferior Bull Spread Call de la Librería</a></li>
-<li class="chapter" data-level="6.2.9" data-path="options.html"><a href="options.html#payoff-superior-bull-spread-call-de-la-libreria"><i class="fa fa-check"></i><b>6.2.9</b> Payoff superior Bull Spread Call de la Librería</a></li>
+<li class="chapter" data-level="5" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>5</b> Opciones, Derivados y Futuros</a><ul>
+<li class="chapter" data-level="5.1" data-path="options.html"><a href="options.html#call-put"><i class="fa fa-check"></i><b>5.1</b> Call &amp; Put</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="options.html"><a href="options.html#posicion-larga-en-call-payoff-profit"><i class="fa fa-check"></i><b>5.1.1</b> Posición Larga en Call: Payoff &amp; Profit</a></li>
+<li class="chapter" data-level="5.1.2" data-path="options.html"><a href="options.html#posicion-larga-en-put-payoff-profit"><i class="fa fa-check"></i><b>5.1.2</b> Posición larga en put: Payoff &amp; Profit</a></li>
+<li class="chapter" data-level="5.1.3" data-path="options.html"><a href="options.html#posicion-corta-en-call-payoff-profit"><i class="fa fa-check"></i><b>5.1.3</b> Posición corta en call: Payoff &amp; Profit</a></li>
+<li class="chapter" data-level="5.1.4" data-path="options.html"><a href="options.html#posicion-corta-en-put-payoff-profit"><i class="fa fa-check"></i><b>5.1.4</b> Posición corta en put: Payoff &amp; Profit</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="options.html"><a href="options.html#black-scholes"><i class="fa fa-check"></i><b>6.3</b> Black &amp; Scholes</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="options.html"><a href="options.html#black-scholes-de-la-formula-a-una-funcion"><i class="fa fa-check"></i><b>6.3.1</b> Black &amp; Scholes: de la formula a una función</a></li>
-<li class="chapter" data-level="6.3.2" data-path="options.html"><a href="options.html#black-scholes-ejercicio"><i class="fa fa-check"></i><b>6.3.2</b> Black &amp; Scholes: Ejercicio</a></li>
-<li class="chapter" data-level="6.3.3" data-path="options.html"><a href="options.html#black-scholes-funcion"><i class="fa fa-check"></i><b>6.3.3</b> Black &amp; Scholes: Función</a></li>
-<li class="chapter" data-level="6.3.4" data-path="options.html"><a href="options.html#black-scholes-ahora-con-librerias"><i class="fa fa-check"></i><b>6.3.4</b> Black &amp; Scholes: Ahora con librerías</a></li>
+<li class="chapter" data-level="5.2" data-path="options.html"><a href="options.html#estrategias"><i class="fa fa-check"></i><b>5.2</b> Estrategias</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="options.html"><a href="options.html#bull-spread-utilidades"><i class="fa fa-check"></i><b>5.2.1</b> Bull Spread Utilidades</a></li>
+<li class="chapter" data-level="5.2.2" data-path="options.html"><a href="options.html#funcion-bull-spread"><i class="fa fa-check"></i><b>5.2.2</b> Función Bull Spread</a></li>
+<li class="chapter" data-level="5.2.3" data-path="options.html"><a href="options.html#posicion-call-larga-corta-para-el-bull-spread-call"><i class="fa fa-check"></i><b>5.2.3</b> Posición call Larga &amp; Corta Para el Bull Spread Call</a></li>
+<li class="chapter" data-level="5.2.4" data-path="options.html"><a href="options.html#construccion-de-la-bull-spread-call"><i class="fa fa-check"></i><b>5.2.4</b> Construcción de la Bull Spread Call</a></li>
+<li class="chapter" data-level="5.2.5" data-path="options.html"><a href="options.html#grafico-bull-spread-call"><i class="fa fa-check"></i><b>5.2.5</b> Gráfico Bull Spread Call</a></li>
+<li class="chapter" data-level="5.2.6" data-path="options.html"><a href="options.html#con-libreria-la-bull-spread-call"><i class="fa fa-check"></i><b>5.2.6</b> Con librería la Bull Spread Call</a></li>
+<li class="chapter" data-level="5.2.7" data-path="options.html"><a href="options.html#con-libreria-el-grafico-bull-spread-call"><i class="fa fa-check"></i><b>5.2.7</b> Con librería El gráfico Bull Spread Call</a></li>
+<li class="chapter" data-level="5.2.8" data-path="options.html"><a href="options.html#payoff-inferior-bull-spread-call-de-la-libreria"><i class="fa fa-check"></i><b>5.2.8</b> Payoff inferior Bull Spread Call de la Librería</a></li>
+<li class="chapter" data-level="5.2.9" data-path="options.html"><a href="options.html#payoff-superior-bull-spread-call-de-la-libreria"><i class="fa fa-check"></i><b>5.2.9</b> Payoff superior Bull Spread Call de la Librería</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="options.html"><a href="options.html#black-scholes-con-datos-reales"><i class="fa fa-check"></i><b>6.4</b> Black &amp; Scholes con Datos Reales</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="options.html"><a href="options.html#black-scholes-con-datos-reales-pasos"><i class="fa fa-check"></i><b>6.4.1</b> Black &amp; Scholes con Datos Reales: Pasos</a></li>
-<li class="chapter" data-level="6.4.2" data-path="options.html"><a href="options.html#parte-a"><i class="fa fa-check"></i><b>6.4.2</b> Parte a</a></li>
-<li class="chapter" data-level="6.4.3" data-path="options.html"><a href="options.html#parte-b"><i class="fa fa-check"></i><b>6.4.3</b> Parte b</a></li>
-<li class="chapter" data-level="6.4.4" data-path="options.html"><a href="options.html#parte-c-y-d"><i class="fa fa-check"></i><b>6.4.4</b> Parte c y d</a></li>
-<li class="chapter" data-level="6.4.5" data-path="options.html"><a href="options.html#parte-e"><i class="fa fa-check"></i><b>6.4.5</b> Parte e</a></li>
+<li class="chapter" data-level="5.3" data-path="options.html"><a href="options.html#black-scholes"><i class="fa fa-check"></i><b>5.3</b> Black &amp; Scholes</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="options.html"><a href="options.html#black-scholes-de-la-formula-a-una-funcion"><i class="fa fa-check"></i><b>5.3.1</b> Black &amp; Scholes: de la formula a una función</a></li>
+<li class="chapter" data-level="5.3.2" data-path="options.html"><a href="options.html#black-scholes-ejercicio"><i class="fa fa-check"></i><b>5.3.2</b> Black &amp; Scholes: Ejercicio</a></li>
+<li class="chapter" data-level="5.3.3" data-path="options.html"><a href="options.html#black-scholes-funcion"><i class="fa fa-check"></i><b>5.3.3</b> Black &amp; Scholes: Función</a></li>
+<li class="chapter" data-level="5.3.4" data-path="options.html"><a href="options.html#black-scholes-ahora-con-librerias"><i class="fa fa-check"></i><b>5.3.4</b> Black &amp; Scholes: Ahora con librerías</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="options.html"><a href="options.html#arbol-binomial"><i class="fa fa-check"></i><b>6.5</b> Árbol Binomial</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="options.html"><a href="options.html#ejercicio-1"><i class="fa fa-check"></i><b>6.5.1</b> Ejercicio</a></li>
-<li class="chapter" data-level="6.5.2" data-path="options.html"><a href="options.html#call-europea"><i class="fa fa-check"></i><b>6.5.2</b> Call europea</a></li>
-<li class="chapter" data-level="6.5.3" data-path="options.html"><a href="options.html#call-europea-grafico"><i class="fa fa-check"></i><b>6.5.3</b> Call europea gráfico</a></li>
-<li class="chapter" data-level="6.5.4" data-path="options.html"><a href="options.html#call-americana"><i class="fa fa-check"></i><b>6.5.4</b> Call americana</a></li>
-<li class="chapter" data-level="6.5.5" data-path="options.html"><a href="options.html#call-americana-grafico"><i class="fa fa-check"></i><b>6.5.5</b> Call americana gráfico</a></li>
+<li class="chapter" data-level="5.4" data-path="options.html"><a href="options.html#black-scholes-con-datos-reales"><i class="fa fa-check"></i><b>5.4</b> Black &amp; Scholes con Datos Reales</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="options.html"><a href="options.html#black-scholes-con-datos-reales-pasos"><i class="fa fa-check"></i><b>5.4.1</b> Black &amp; Scholes con Datos Reales: Pasos</a></li>
+<li class="chapter" data-level="5.4.2" data-path="options.html"><a href="options.html#parte-a"><i class="fa fa-check"></i><b>5.4.2</b> Parte a</a></li>
+<li class="chapter" data-level="5.4.3" data-path="options.html"><a href="options.html#parte-b"><i class="fa fa-check"></i><b>5.4.3</b> Parte b</a></li>
+<li class="chapter" data-level="5.4.4" data-path="options.html"><a href="options.html#parte-c-y-d"><i class="fa fa-check"></i><b>5.4.4</b> Parte c y d</a></li>
+<li class="chapter" data-level="5.4.5" data-path="options.html"><a href="options.html#parte-e"><i class="fa fa-check"></i><b>5.4.5</b> Parte e</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="options.html"><a href="options.html#arbol-binomial"><i class="fa fa-check"></i><b>5.5</b> Árbol Binomial</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="options.html"><a href="options.html#ejercicio-1"><i class="fa fa-check"></i><b>5.5.1</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.5.2" data-path="options.html"><a href="options.html#call-europea"><i class="fa fa-check"></i><b>5.5.2</b> Call europea</a></li>
+<li class="chapter" data-level="5.5.3" data-path="options.html"><a href="options.html#call-europea-grafico"><i class="fa fa-check"></i><b>5.5.3</b> Call europea gráfico</a></li>
+<li class="chapter" data-level="5.5.4" data-path="options.html"><a href="options.html#call-americana"><i class="fa fa-check"></i><b>5.5.4</b> Call americana</a></li>
+<li class="chapter" data-level="5.5.5" data-path="options.html"><a href="options.html#call-americana-grafico"><i class="fa fa-check"></i><b>5.5.5</b> Call americana gráfico</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -225,15 +236,14 @@ code > span.in { color: #008000; } /* Information */
 
             <section class="normal" id="section-">
 <div id="options" class="section level1">
-<h1><span class="header-section-number">Capítulo 6</span> Opciones, Derivados y Futuros</h1>
+<h1><span class="header-section-number">Capítulo 5</span> Opciones, Derivados y Futuros</h1>
 <blockquote>
 <p>IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.</p>
 </blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</code></pre></div>
-<pre><code>## Loading required package: pacman</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;quantmod&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)
+<span class="kw">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;quantmod&quot;</span>)</code></pre></div>
 <div id="call-put" class="section level2">
-<h2><span class="header-section-number">6.1</span> Call &amp; Put</h2>
+<h2><span class="header-section-number">5.1</span> Call &amp; Put</h2>
 <p>A modo de resumen, existen cuatro tipos de posiciones en las opciones:</p>
 <ol style="list-style-type: decimal">
 <li>Posición larga en una opción de compra (call)</li>
@@ -249,7 +259,7 @@ s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</
 <li>Para la put usamos: v (precio de la put) = $7, precio de ejercicio (k) = 70.</li>
 </ul>
 <div id="posicion-larga-en-call-payoff-profit" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Posición Larga en Call: Payoff &amp; Profit</h3>
+<h3><span class="header-section-number">5.1.1</span> Posición Larga en Call: Payoff &amp; Profit</h3>
 <p>EL rendimiento proveniente de una opción larga en una opción de compra europea es:</p>
 <p>Payoff opción call larga</p>
 <p><span class="math display">\[
@@ -270,7 +280,7 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Call&quot;</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span>                 <span class="kw">element_blank</span>())
 g1</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-71-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.1 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico profit posición larga en call:</p>
@@ -280,10 +290,10 @@ g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> <
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longcall<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longcall<span class="op">$</span>periodo), <span class="dt">by =</span>                   <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longcall<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.longcall<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))) 
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g2</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-6-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-72-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-larga-en-put-payoff-profit" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Posición larga en put: Payoff &amp; Profit</h3>
+<h3><span class="header-section-number">5.1.2</span> Posición larga en put: Payoff &amp; Profit</h3>
 <p>EL rendimiento para el tenedor de una opción larga en una opción de venta europea:</p>
 <p>Payoff opción put larga: <span class="math display">\[
 \text{payoff} = \text{max}(k - S_t,0)
@@ -302,7 +312,7 @@ g2</code></pre></div>
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Put&quot;</span>)
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>))  <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span>                  <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g3</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.2 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico posición larga en put:</p>
@@ -312,10 +322,10 @@ g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> <
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longput<span class="op">$</span>periodo), <span class="dt">by =</span>                     <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>profit),                            <span class="kw">max</span>(payoff.longput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">7</span>, <span class="dv">30</span>))) 
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g4</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-76-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-corta-en-call-payoff-profit" class="section level3">
-<h3><span class="header-section-number">6.1.3</span> Posición corta en call: Payoff &amp; Profit</h3>
+<h3><span class="header-section-number">5.1.3</span> Posición corta en call: Payoff &amp; Profit</h3>
 <p>EL rendimiento para el tenedor de una posición corta en una opción de compra europea es:</p>
 <p>Payoff opción call corta:</p>
 <p><span class="math display">\[
@@ -337,7 +347,7 @@ g5 &lt;-<span class="st"> </span>g5 <span class="op">+</span><span class="st"> <
 g5 &lt;-<span class="st"> </span>g5 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g5</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.3 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico posición corta en call:</p>
@@ -348,10 +358,10 @@ g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> <
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortcall<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.shortcall<span class="op">$</span>periodo), <span class="dt">by =</span>                 <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortcall<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.shortcall<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">5</span>))) 
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g6</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-80-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-corta-en-put-payoff-profit" class="section level3">
-<h3><span class="header-section-number">6.1.4</span> Posición corta en put: Payoff &amp; Profit</h3>
+<h3><span class="header-section-number">5.1.4</span> Posición corta en put: Payoff &amp; Profit</h3>
 <p>EL rendimiento para el tenedor de una posición corta en una opción de venta europea es:</p>
 <p>Payoff opción put corta: <span class="math display">\[
 \text{payoff} = -\text{max}(k - S_t,0) = \text{min}(S_t - k,0)
@@ -372,7 +382,7 @@ g7 &lt;-<span class="st"> </span>g7 <span class="op">+</span><span class="st"> <
 g7 &lt;-<span class="st"> </span>g7 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(),<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g7</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.4 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g8 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
@@ -381,11 +391,11 @@ g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> <
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.shortput<span class="op">$</span>periodo), <span class="dt">by =</span>                   <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortput<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.shortput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">7</span>))) 
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>()) 
 g8  </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="estrategias" class="section level2">
-<h2><span class="header-section-number">6.2</span> Estrategias</h2>
+<h2><span class="header-section-number">5.2</span> Estrategias</h2>
 <p>Una estrategia de negociación de diferenciales implica tomar una posición en dos o más opciones del mismo tipo (dos o más opciones de compra o dos o más opciones de venta). Las más conocidas son:</p>
 <ul>
 <li><em>Diferenciales Alcistas (bull spreads)</em><br />
@@ -396,7 +406,7 @@ g8  </code></pre></div>
 <p><strong>Diferenciales Alcistas (bull spreads)</strong>:</p>
 <p>Este se crea mediante la adquisición de una opción de compra europea sobre una acción, con cierto precio de ejercicio, y la venta de una opción de compra europea sobre la misma acción con un precio de ejercicio más alto. Ambas opciones tienen la misma fecha de expiración.</p>
 <div id="bull-spread-utilidades" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Bull Spread Utilidades</h3>
+<h3><span class="header-section-number">5.2.1</span> Bull Spread Utilidades</h3>
 <table style="width:100%;">
 <colgroup>
 <col width="29%" />
@@ -459,7 +469,7 @@ g8  </code></pre></div>
 </table>
 </div>
 <div id="funcion-bull-spread" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Función Bull Spread</h3>
+<h3><span class="header-section-number">5.2.2</span> Función Bull Spread</h3>
 <p>Comenzamos contruyendo la estructura de la estrategia:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bullspread.call &lt;-<span class="st"> </span><span class="cf">function</span>(S,K1,K2,precio1,precio2){
   
@@ -491,7 +501,7 @@ g8  </code></pre></div>
 } </code></pre></div>
 </div>
 <div id="posicion-call-larga-corta-para-el-bull-spread-call" class="section level3">
-<h3><span class="header-section-number">6.2.3</span> Posición call Larga &amp; Corta Para el Bull Spread Call</h3>
+<h3><span class="header-section-number">5.2.3</span> Posición call Larga &amp; Corta Para el Bull Spread Call</h3>
 <p>Para ilustrar calculamos las dos call (larga y corta):</p>
 <p>Es la misma función vista anteriormente, solo que en vez de tener una columna llamada “periodo” ahora será “stock”, conceptualmente es lo mismo, pero facilita para graficar:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Posición larga en call</span>
@@ -507,7 +517,7 @@ short.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(
 } </code></pre></div>
 </div>
 <div id="construccion-de-la-bull-spread-call" class="section level3">
-<h3><span class="header-section-number">6.2.4</span> Construcción de la Bull Spread Call</h3>
+<h3><span class="header-section-number">5.2.4</span> Construcción de la Bull Spread Call</h3>
 <p>En el Global Environment vemos el objeto `bull.spread``, que tiene los stock (<span class="math inline">\(S_t\)</span>), payoff y profit.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bull.spread &lt;-<span class="st"> </span><span class="kw">bullspread.call</span>(<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">3</span>,<span class="dv">1</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extraemos la St</span>
@@ -519,7 +529,7 @@ long.call &lt;-<span class="st"> </span><span class="kw">long.callpayoff</span>(
 short.call &lt;-<span class="st"> </span><span class="kw">short.callpayoff</span>(s,<span class="dv">35</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
 </div>
 <div id="grafico-bull-spread-call" class="section level3">
-<h3><span class="header-section-number">6.2.5</span> Gráfico Bull Spread Call</h3>
+<h3><span class="header-section-number">5.2.5</span> Gráfico Bull Spread Call</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(bull.spread[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>,]) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(long.call<span class="op">$</span>stock[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],long.call<span class="op">$</span>profit[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>),<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>
                                              ,<span class="dt">size=</span><span class="dv">1</span>) 
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(short.call<span class="op">$</span>stock[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],short.call<span class="op">$</span>profit[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>),<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) 
@@ -529,10 +539,10 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">name =</span> <span class="st">&quot; &quot;</span>,<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Call larga&quot;</span>, <span class="st">&quot;Bull Spread&quot;</span>, <span class="st">&quot;Call corta&quot;</span>),<span class="dt">values =</span>                                      <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>=<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>=<span class="st">&quot;green&quot;</span>,<span class="st">&quot;red&quot;</span> =<span class="st"> &quot;red&quot;</span>))
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>) 
 g1 </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-23-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-89-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="con-libreria-la-bull-spread-call" class="section level3">
-<h3><span class="header-section-number">6.2.6</span> Con librería la Bull Spread Call</h3>
+<h3><span class="header-section-number">5.2.6</span> Con librería la Bull Spread Call</h3>
 <p>Una librería útil para construir estratégias es la librería <code>FinancialMath</code>, recuerden <code>install.packages(&quot;FinancialMath&quot;)</code> y luego <code>library(&quot;FinancialMath&quot;)</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con librería</span>
 <span class="co"># bull.call(S,K1,K2,r,t,price1,price2,plot=FALSE)</span>
@@ -546,15 +556,15 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 </blockquote>
 </div>
 <div id="con-libreria-el-grafico-bull-spread-call" class="section level3">
-<h3><span class="header-section-number">6.2.7</span> Con librería El gráfico Bull Spread Call</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="403.2" style="display: block; margin: auto;" /></p>
+<h3><span class="header-section-number">5.2.7</span> Con librería El gráfico Bull Spread Call</h3>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-90-1.png" width="403.2" style="display: block; margin: auto;" /></p>
 </div>
 <div id="payoff-inferior-bull-spread-call-de-la-libreria" class="section level3">
-<h3><span class="header-section-number">6.2.8</span> Payoff inferior Bull Spread Call de la Librería</h3>
+<h3><span class="header-section-number">5.2.8</span> Payoff inferior Bull Spread Call de la Librería</h3>
 <p>Los payoff inferiores deberían ser igual a -2:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-25">Table 6.1: </span>Bull Spread Call</caption>
+<caption><span id="tab:unnamed-chunk-91">Table 5.1: </span>Bull Spread Call</caption>
 <thead>
 <tr class="header">
 <th align="right">Stock Price</th>
@@ -566,32 +576,32 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 <tr class="odd">
 <td align="right">0</td>
 <td align="right">0</td>
-<td align="right">-2.000001</td>
+<td align="right">-2</td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="right">0</td>
-<td align="right">-2.000001</td>
+<td align="right">-2</td>
 </tr>
 <tr class="odd">
 <td align="right">12</td>
 <td align="right">0</td>
-<td align="right">-2.000001</td>
+<td align="right">-2</td>
 </tr>
 <tr class="even">
 <td align="right">18</td>
 <td align="right">0</td>
-<td align="right">-2.000001</td>
+<td align="right">-2</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="payoff-superior-bull-spread-call-de-la-libreria" class="section level3">
-<h3><span class="header-section-number">6.2.9</span> Payoff superior Bull Spread Call de la Librería</h3>
+<h3><span class="header-section-number">5.2.9</span> Payoff superior Bull Spread Call de la Librería</h3>
 <p>Los payoff inferiores deberían ser igual a 3:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 6.2: </span>Bull Spread Call</caption>
+<caption><span id="tab:unnamed-chunk-92">Table 5.2: </span>Bull Spread Call</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -605,34 +615,34 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 <td>11</td>
 <td align="right">47</td>
 <td align="right">5</td>
-<td align="right">2.999999</td>
+<td align="right">3</td>
 </tr>
 <tr class="even">
 <td>12</td>
 <td align="right">53</td>
 <td align="right">5</td>
-<td align="right">2.999999</td>
+<td align="right">3</td>
 </tr>
 <tr class="odd">
 <td>13</td>
 <td align="right">59</td>
 <td align="right">5</td>
-<td align="right">2.999999</td>
+<td align="right">3</td>
 </tr>
 <tr class="even">
 <td>14</td>
 <td align="right">65</td>
 <td align="right">5</td>
-<td align="right">2.999999</td>
+<td align="right">3</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="black-scholes" class="section level2">
-<h2><span class="header-section-number">6.3</span> Black &amp; Scholes</h2>
+<h2><span class="header-section-number">5.3</span> Black &amp; Scholes</h2>
 <div id="black-scholes-de-la-formula-a-una-funcion" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> Black &amp; Scholes: de la formula a una función</h3>
+<h3><span class="header-section-number">5.3.1</span> Black &amp; Scholes: de la formula a una función</h3>
 <p>Las Formulas de Black Scholes y Merton para los precios de las opciones de compra y de venta europeas sobre acciones que <strong>no pagan dividendos</strong> son:</p>
 <p>Formulas de Valuación Black,Scholes &amp; Merton</p>
 <ul>
@@ -646,7 +656,7 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 </ul>
 </div>
 <div id="black-scholes-ejercicio" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Black &amp; Scholes: Ejercicio</h3>
+<h3><span class="header-section-number">5.3.2</span> Black &amp; Scholes: Ejercicio</h3>
 <p>Uso de la formula en R:</p>
 <p>El precio de las acciones después de seis meses a partir de la expiración de una opción es de 42, el precio de ejercicio de la opción es de 40, la tasa de interés libre de riesgo es de 10% anual y la volatilidad es de 20% anual. Esto Significa:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Parámetros</span>
@@ -657,10 +667,10 @@ T &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</spa
 sigma &lt;-<span class="st"> </span><span class="fl">0.2</span></code></pre></div>
 </div>
 <div id="black-scholes-funcion" class="section level3">
-<h3><span class="header-section-number">6.3.3</span> Black &amp; Scholes: Función</h3>
+<h3><span class="header-section-number">5.3.3</span> Black &amp; Scholes: Función</h3>
 <p>Construimos la función basándonos en la formula:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bs.opm &lt;-<span class="st"> </span><span class="cf">function</span>(S,K,T,riskfree,sigma,type){
-  d1&lt;-(<span class="kw">log</span>(S<span class="op">/</span>K)<span class="op">+</span>(riskfree<span class="op">+</span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>T)<span class="op">/</span>(sigma <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(T))
+  d1&lt;-(<span class="kw">log</span>(S<span class="op">/</span>K)<span class="op">+</span>(riskfree<span class="fl">+0.5</span> <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>T)<span class="op">/</span>(sigma <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(T))
   d2&lt;-d1<span class="op">-</span>sigma <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(T)
   <span class="cf">if</span>(type<span class="op">==</span><span class="st">&quot;Call&quot;</span>){
     opt.val&lt;-S <span class="op">*</span><span class="st"> </span><span class="kw">pnorm</span>(d1)<span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>riskfree <span class="op">*</span><span class="st"> </span>T) <span class="op">*</span><span class="st"> </span><span class="kw">pnorm</span>(d2)
@@ -673,14 +683,14 @@ sigma &lt;-<span class="st"> </span><span class="fl">0.2</span></code></pre></di
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la call</span>
 C &lt;-<span class="st"> </span><span class="kw">bs.opm</span>(<span class="dt">S =</span> S0, <span class="dt">K =</span> K, <span class="dt">T =</span> T, <span class="dt">riskfree =</span> r, <span class="dt">sigma =</span> sigma, <span class="dt">type =</span> <span class="st">&quot;Call&quot;</span> ) 
 C</code></pre></div>
-<pre><code>## [1] 4.759422</code></pre>
+<pre><code>## [1] 4.759</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la put</span>
 C &lt;-<span class="st"> </span><span class="kw">bs.opm</span>(<span class="dt">S =</span> S0, <span class="dt">K =</span> K, <span class="dt">T =</span> T, <span class="dt">riskfree =</span> r, <span class="dt">sigma =</span> sigma, <span class="dt">type =</span> <span class="st">&quot;Put&quot;</span> )
 C</code></pre></div>
-<pre><code>## [1] 0.8085994</code></pre>
+<pre><code>## [1] 0.8086</code></pre>
 </div>
 <div id="black-scholes-ahora-con-librerias" class="section level3">
-<h3><span class="header-section-number">6.3.4</span> Black &amp; Scholes: Ahora con librerías</h3>
+<h3><span class="header-section-number">5.3.4</span> Black &amp; Scholes: Ahora con librerías</h3>
 <p>La librería que se utilizará para usa BS es <code>fOptions</code>, recordar el <code>install.packages(&quot;fOptions&quot;)</code> y posterior <code>library(&quot;fOptions&quot;)</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fOptions&quot;</span>) </code></pre></div>
 <p>La función de la librería es <code>GBSOption()</code>:</p>
@@ -688,16 +698,16 @@ C</code></pre></div>
 <p>En <code>TypeFlag</code>, va “c” para call y “p” para put, tener presente que deberán seleccionar un <code>b</code> que es el <em>annualized cost-of-carry rate</em>, si no se especifica, debe ser igual a r.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con libreria call</span>
 <span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)<span class="op">@</span>price</code></pre></div>
-<pre><code>## [1] 4.759423</code></pre>
+<pre><code>## [1] 4.759</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con libreria put</span>
 <span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)<span class="op">@</span>price</code></pre></div>
 <pre><code>## [1] 0.8086</code></pre>
 </div>
 </div>
 <div id="black-scholes-con-datos-reales" class="section level2">
-<h2><span class="header-section-number">6.4</span> Black &amp; Scholes con Datos Reales</h2>
+<h2><span class="header-section-number">5.4</span> Black &amp; Scholes con Datos Reales</h2>
 <div id="black-scholes-con-datos-reales-pasos" class="section level3">
-<h3><span class="header-section-number">6.4.1</span> Black &amp; Scholes con Datos Reales: Pasos</h3>
+<h3><span class="header-section-number">5.4.1</span> Black &amp; Scholes con Datos Reales: Pasos</h3>
 <p>Una manera de trabajar con datos reales directo usando R, es:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Usar las funcion <code>getOptionChain</code> de la librería <code>quantmod</code>. Seleccionar las call y put para la fecha de valuación (recomiendo en objetos separados).</p></li>
@@ -708,7 +718,7 @@ C</code></pre></div>
 </ol>
 </div>
 <div id="parte-a" class="section level3">
-<h3><span class="header-section-number">6.4.2</span> Parte a</h3>
+<h3><span class="header-section-number">5.4.2</span> Parte a</h3>
 <p>Imaginemos que es 31 de mayo del 2018 y queremos valorar las opciones call y put de <a href="https://www.oracle.com/index.html">Oracle</a> con vencimiento al 17 de Agosto del 2018. Para comenzar usamos la función <code>getOptionChain()</code> de la librería <code>quantmod</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">opciones &lt;-<span class="st"> </span><span class="kw">getOptionChain</span>(<span class="st">&quot;ORCL&quot;</span>,<span class="dt">Exp=</span><span class="st">&quot;2018-12-21&quot;</span>)
 
@@ -716,7 +726,7 @@ calls &lt;-<span class="st"> </span>opciones<span class="op">$</span>calls[,<spa
 puts  &lt;-<span class="st"> </span>opciones<span class="op">$</span>puts[,<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>)] <span class="co"># Nos quedamos con las columnas del 1 al 2 y del 4 al 6.</span></code></pre></div>
 </div>
 <div id="parte-b" class="section level3">
-<h3><span class="header-section-number">6.4.3</span> Parte b</h3>
+<h3><span class="header-section-number">5.4.3</span> Parte b</h3>
 <p>Como debemos obtener el precio de cierre para el 31 de mayo del 2018 y a su vez el histórico de tres años para la volatilidad usamos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Al 31 de mayo la valuación, 31 de mayo del 2015 fue domingo, por ende, usamos el viernes 29</span>
 <span class="kw">getSymbols</span>(<span class="st">&quot;ORCL&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2015-05-29&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-06-01&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre></div>
@@ -730,7 +740,7 @@ puts  &lt;-<span class="st"> </span>opciones<span class="op">$</span>puts[,<span
 precio &lt;-<span class="st"> </span><span class="kw">tail</span>(orcl<span class="op">$</span>ORCL.Adjusted,<span class="dv">1</span>)</code></pre></div>
 </div>
 <div id="parte-c-y-d" class="section level3">
-<h3><span class="header-section-number">6.4.4</span> Parte c y d</h3>
+<h3><span class="header-section-number">5.4.4</span> Parte c y d</h3>
 <p>Con la función <code>getSymbols</code> usamos la fuente de la FRED y extraemos la rf con <code>subset</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(<span class="st">&quot;DGS3MO&quot;</span>,<span class="dt">src =</span><span class="st">&quot;FRED&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-06-01&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;DGS3MO&quot;</code></pre>
@@ -743,7 +753,7 @@ TTM &lt;-<span class="st"> </span><span class="kw">as.numeric</span>((expiracion
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vol.hist &lt;-<span class="st"> </span><span class="kw">sd</span>(orcl<span class="op">$</span>ret)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">252</span>)</code></pre></div>
 </div>
 <div id="parte-e" class="section level3">
-<h3><span class="header-section-number">6.4.5</span> Parte e</h3>
+<h3><span class="header-section-number">5.4.5</span> Parte e</h3>
 <p>Vemos el precio a la fecha la valuación y seleccionamos aquellas cercana a estar <em>at the money</em>, tanto put como call.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bs.call &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">           </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Strike <span class="op">==</span><span class="st"> </span><span class="dv">45</span> <span class="op">|</span><span class="st"> </span>Strike <span class="op">==</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -754,18 +764,18 @@ bs.put &lt;-<span class="st"> </span>puts <span class="op">%&gt;%</span><span cl
 <span class="st">          </span><span class="kw">select</span>(Strike,Last,Bid,Ask)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># call</span>
 <span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
-<pre><code>## [1] 1.720309</code></pre>
+<pre><code>## [1] 1.72</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># put</span>
 <span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
-<pre><code>## [1] 3.259375</code></pre>
+<pre><code>## [1] 3.259</code></pre>
 </div>
 </div>
 <div id="arbol-binomial" class="section level2">
-<h2><span class="header-section-number">6.5</span> Árbol Binomial</h2>
+<h2><span class="header-section-number">5.5</span> Árbol Binomial</h2>
 <p>Generalización</p>
 <p>Una generalización cuando queremos realizar un árbol con dos pasos:</p>
 <ul>
@@ -776,13 +786,13 @@ bs.put &lt;-<span class="st"> </span>puts <span class="op">%&gt;%</span><span cl
 <li><p>No obstante, en términos del modelo, <span class="math inline">\(u = e^{\sigma \sqrt{\Delta t}}\)</span> y <span class="math inline">\(d = e^{-\sigma \sqrt{\Delta t}} = \frac{1}{u}\)</span>.</p></li>
 </ul>
 <div id="ejercicio-1" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Ejercicio</h3>
+<h3><span class="header-section-number">5.5.1</span> Ejercicio</h3>
 <p>Considere una call europea a dos años con precio de strike de 52 en una acción cuyo precio es 50. Suponga que existen <em>two time steps</em> en un año, y en cada <em>time steps</em> el precio se mueve 30%. La tasa de interes libre de riesgo es 5%.</p>
 <p>La librería a usar será de nuevo <code>fOptions</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fOptions&quot;</span>)</code></pre></div>
 </div>
 <div id="call-europea" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Call europea</h3>
+<h3><span class="header-section-number">5.5.2</span> Call europea</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Europea </span>
 CRRTree =<span class="st"> </span><span class="kw">BinomialTreeOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;ce&quot;</span>, <span class="dt">S =</span> <span class="dv">50</span>, <span class="dt">X =</span> <span class="dv">52</span>, <span class="dt">Time =</span> <span class="dv">2</span>, <span class="dt">r =</span> <span class="fl">0.05</span>, <span class="dt">b =</span> <span class="fl">0.05</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>, <span class="dt">n =</span> <span class="dv">2</span>)
 CRRTree</code></pre></div>
@@ -790,25 +800,40 @@ CRRTree</code></pre></div>
 <span class="st">title(main = &quot;</span>Arbol Binomial Opción&quot;)</code></pre></div>
 </div>
 <div id="call-europea-grafico" class="section level3">
-<h3><span class="header-section-number">6.5.3</span> Call europea gráfico</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-42-1.png" width="576" style="display: block; margin: auto;" /></p>
+<h3><span class="header-section-number">5.5.3</span> Call europea gráfico</h3>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-108-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="call-americana" class="section level3">
-<h3><span class="header-section-number">6.5.4</span> Call americana</h3>
+<h3><span class="header-section-number">5.5.4</span> Call americana</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Americana</span>
-CRRTree.<span class="dv">1</span> =<span class="st"> </span><span class="kw">BinomialTreeOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;ca&quot;</span>, <span class="dt">S =</span> <span class="dv">50</span>, <span class="dt">X =</span> <span class="dv">52</span>, <span class="dt">Time =</span> <span class="dv">2</span>, <span class="dt">r =</span> <span class="fl">0.05</span>, <span class="dt">b =</span> <span class="fl">0.05</span>, 
+CRRTree<span class="fl">.1</span> =<span class="st"> </span><span class="kw">BinomialTreeOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;ca&quot;</span>, <span class="dt">S =</span> <span class="dv">50</span>, <span class="dt">X =</span> <span class="dv">52</span>, <span class="dt">Time =</span> <span class="dv">2</span>, <span class="dt">r =</span> <span class="fl">0.05</span>, <span class="dt">b =</span> <span class="fl">0.05</span>, 
                                <span class="dt">sigma =</span> <span class="fl">0.3</span>, <span class="dt">n =</span> <span class="dv">2</span>)
-CRRTree.<span class="dv">1</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BinomialTreePlot</span>(CRRTree.<span class="dv">1</span>, <span class="dt">dy =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>), <span class="dt">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;valores Opción&quot;) </span>
+CRRTree<span class="fl">.1</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BinomialTreePlot</span>(CRRTree<span class="fl">.1</span>, <span class="dt">dy =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>), <span class="dt">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;valores Opción&quot;) </span>
 <span class="st">title(main = &quot;</span>Arbol Binomial Opción&quot;)</code></pre></div>
 </div>
 <div id="call-americana-grafico" class="section level3">
-<h3><span class="header-section-number">6.5.5</span> Call americana gráfico</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-44-1.png" width="576" style="display: block; margin: auto;" /></p>
+<h3><span class="header-section-number">5.5.5</span> Call americana gráfico</h3>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-110-1.png" width="576" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
@@ -818,13 +843,13 @@ CRRTree.<span class="dv">1</span></code></pre></div>
 
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
