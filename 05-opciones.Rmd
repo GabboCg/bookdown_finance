@@ -139,3 +139,112 @@ g4 <- g4 + scale_x_continuous(breaks = round(seq(min(payoff.longput$periodo), ma
 g4 <- g4 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 g4
 ```
+
+### Posición corta en call: Payoff & Profit
+
+EL rendimiento para el tenedor de una posición corta en una opción de compra europea es:
+
+Payoff opción call corta:
+
+$$
+\text{payoff} = -\text{max}(S_t - k,0) = \text{min}(k - S_t,0)
+$$
+
+Profit opción call corta:
+
+$$
+\text{profit} = \text{payoff} + v*e^{-r*t}
+$$
+
+Construimos la función: 
+
+```{r,eval=TRUE,echo=TRUE}
+ short.callpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmin(k-s,0),"periodo" = s) %>% 
+    mutate("profit" = payoff + v*exp(-r*t))
+} 
+```
+
+```{r,eval=TRUE,echo=TRUE}
+payoff.shortcall <- short.callpayoff(s,100,5,0,0)
+```
+
+Gráfico posición corta en call 
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g5 <- ggplot(payoff.shortcall) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g5 <- g5 + theme_bw()+ ggtitle("Payoff de una Option Call") + labs(subtitle = "Posicion Corta en Call")
+g5 <- g5 + scale_x_continuous(limits=c(70, 130)) + scale_y_continuous(limits=c(-30, 0)) + 
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g5
+```
+
+Para corroborar el gráfico ver la figura 9.3 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+Gráfico posición corta en call: 
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g6 <- ggplot(payoff.shortcall) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + 
+      xlab("Tiempo de Expiracion") + ylab("Profit")
+g6 <- g6 + theme_bw() + ggtitle("Profit de una Option Call") + labs(subtitle = "Posicion Corta en Call") 
+g6 <- g6 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g6 <- g6 + scale_x_continuous(breaks = round(seq(min(payoff.shortcall$periodo), max(payoff.shortcall$periodo), by =                 10),1),limits=c(70, 130)) + scale_y_continuous(breaks = round(seq(min(payoff.shortcall$profit),                           max(payoff.shortcall$profit), by = 10),1),limits = c(limits=c(-30, 5))) 
+g6 <- g6 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g6
+```
+
+### Posición corta en put: Payoff & Profit
+
+EL rendimiento para el tenedor de una posición corta en una opción de venta europea es:
+
+Payoff opción put corta:
+$$
+\text{payoff} = -\text{max}(k - S_t,0) = \text{min}(S_t - k,0)
+$$
+
+Profit opción put corta:
+
+$$
+\text{profit} = \text{payoff} + v*e^{-r*t}
+$$
+
+Construimos la función: 
+
+```{r,eval=TRUE,echo=TRUE}
+short.putpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmin(s-k,0),"periodo" = s) %>% 
+    mutate("profit" = payoff + v*exp(-r*t))
+}
+
+```
+
+```{r,eval=TRUE,echo=TRUE}
+payoff.shortput <- short.putpayoff(s,70,7,0,0)
+```
+
+Gráfico posición corta en call:
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g7 <- ggplot(payoff.shortput) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g7 <- g7 + theme_bw() + ggtitle("Payoff de una Option Put") + labs(subtitle = "Posicion Corta en Put")
+g7 <- g7 + scale_x_continuous(limits=c(40, 100)) + scale_y_continuous(limits=c(-30, 0)) + 
+      theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())
+g7
+```
+
+Para corroborar el gráfico ver la figura 9.4 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g8 <- ggplot(payoff.shortput) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Profit")
+g8 <- g8 + theme_bw() + ggtitle("Profit de una Option Put") + labs(subtitle = "Posicion Corta en Put") 
+g8 <- g8 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g8 <- g8 + scale_x_continuous(breaks = round(seq(min(payoff.shortput$periodo), max(payoff.shortput$periodo), by =                   10),1),limits=c(40, 100)) + scale_y_continuous(breaks = round(seq(min(payoff.shortput$profit),                           max(payoff.shortput$profit), by = 10),1),limits = c(limits=c(-30, 7))) 
+g8 <- g8 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) 
+g8  
+```
+
+## Estrategias
