@@ -282,7 +282,7 @@ t10yr_yield <- t10yr.df %>%
 t10yr_yield <- as.numeric(t10yr_yield$DGS10)*0.01  
 ``` 
 
-### Duración 
+### Duración (Bono Bullet o Americano)
 
 Existen dos Duraciones, la de Macaulay y modificada (o de Hicks), las que miden sensibilidad del precio ante cambios de la yield. Dos bonos con la misma duración tendrá el mismo cambio en precio estimado.
 
@@ -512,5 +512,78 @@ Mientras que para la convexidad se tiene lo siguiente:
 ```
 
 Donde se observa que los resultados guardan una diferencia mucho mayor cuando se examina el efecto en el precio de una variación significativa en la tasa de interés
+
+## Apéndice 
+
+### Bono Frances
+
+El precio del Bono Frances es dístinto al Bono Bullet, dado que amortiza mediante una renta constante de $n$ cuotas.
+
+$$
+cuota =  C_{0} \times \frac{i \times (1+i)^{n}}{(1+i)^{n}-1}
+$$
+donde:
+
+* $C_{0}$ = Principañ
+* $n$ = Duración de la operación en meses, trimestres, semestres o años.
+* $i$ = Tasa de interés.
+
+En R la función sería:
+
+```{r, eval = TRUE, echo = TRUE}
+    precio_frances <- function(p,tc,t,y){
+      
+      cuota <- p*(tc*(1+tc)^(t))/((1+tc)^(t) - 1)
+      
+      pago <- c(rep(cuota, t))
+      pago <- as.data.frame(pago)
+      pago$t <- as.numeric(rownames(pago))
+      pago$factor_desc <- 1 / (1 + y)^(pago$t)
+      pago$valor_prese <- pago$factor_desc*pago$pago
+      sum(pago$valor_prese)
+    }
+```
+
+Para calcular la duración y convexidad cambia y no podemos usar la formula mostrada con anterioridad:
+
+1. Duración Bono Frances:
+
+$$
+D = \frac{\sum_{t=1}^{n} C_{t} t (1+r)^{-t}}{\sum_{t=1}^{n} C_{t} (1+r)^{-t}}
+$$
+
+```{r}
+    duracion_frances <- function(p,tc,t,y){
+      
+      cuota <- p*(tc*(1+tc)^(t))/((1+tc)^(t) - 1)
+      
+      pago <- c(rep(cuota, t))
+      pago <- as.data.frame(pago)
+      pago$t <- as.numeric(rownames(pago))
+      pago$arriba <- pago$pago*pago$t*(1+y)^{-pago$t}
+      pago$abajo <- pago$pago*(1+y)^{-pago$t}
+      duracion <- sum(pago$arriba)/sum(pago$abajo)
+      
+      print(duracion)
+    }
+```
+
+2. Convexidad Bono Frances:
+
+```{r}
+     convexidad_frances <- function(p,tc,t,y,precio){
+    
+       # rep returns a vector with value = p * r and times = ttm -1
+       cuota <- p*(tc*(1+tc)^(t))/((1+tc)^(t) - 1)
+      
+       pago <- c(rep(cuota, t))
+       pago <- as.data.frame(pago)
+       pago$t <- as.numeric(rownames(pago))
+       pago$factor_desc <- 1 / (1 + y)^(pago$t)
+       pago$valor_prese <- pago$factor_desc*pago$pago*((pago$t)^2 + pago$t)
+       print(sum(pago$valor_prese)*(1/(precio*(1+y)^2)))
+    }
+```
+
 
 ## Recursos del capítulo 

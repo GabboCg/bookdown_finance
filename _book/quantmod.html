@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introducción a las finanzas quantitativas</title>
   <meta name="description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Introducción a las finanzas quantitativas" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-09-24">
+<meta name="date" content="2018-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="portafolio.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
@@ -58,36 +59,62 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -117,10 +144,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Partes de RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>1.3</b> <em>Scripts</em></a></li>
-<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#por-que-esto-es-util"><i class="fa fa-check"></i><b>1.4.1</b> ¿Por qué esto es útil?</a></li>
-<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#como-crear-un-projecto"><i class="fa fa-check"></i><b>1.4.2</b> ¿Cómo crear un projecto?</a></li>
-</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.5</b> <em>Packages</em></a><ul>
 <li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
 </ul></li>
@@ -167,14 +191,17 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="4.5" data-path="bonos.html"><a href="bonos.html#trabajando-con-yields-reales"><i class="fa fa-check"></i><b>4.5</b> Trabajando con yields reales</a></li>
 <li class="chapter" data-level="4.6" data-path="bonos.html"><a href="bonos.html#duracion-y-convexidad-de-un-bono"><i class="fa fa-check"></i><b>4.6</b> Duración y Convexidad de un Bono</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="bonos.html"><a href="bonos.html#extracion-de-la-yield"><i class="fa fa-check"></i><b>4.6.1</b> Extración de la yield</a></li>
-<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion"><i class="fa fa-check"></i><b>4.6.2</b> Duración</a></li>
+<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion-bono-bullet-o-americano"><i class="fa fa-check"></i><b>4.6.2</b> Duración (Bono Bullet o Americano)</a></li>
 <li class="chapter" data-level="4.6.3" data-path="bonos.html"><a href="bonos.html#duracion-con-libreria"><i class="fa fa-check"></i><b>4.6.3</b> Duración con librería</a></li>
 <li class="chapter" data-level="4.6.4" data-path="bonos.html"><a href="bonos.html#convexidad"><i class="fa fa-check"></i><b>4.6.4</b> Convexidad</a></li>
 <li class="chapter" data-level="4.6.5" data-path="bonos.html"><a href="bonos.html#convexidad-con-libreria"><i class="fa fa-check"></i><b>4.6.5</b> Convexidad con librería:</a></li>
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
 <li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="bonos.html"><a href="bonos.html#bono-frances"><i class="fa fa-check"></i><b>4.9.1</b> Bono Frances</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.10</b> Recursos del capítulo</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>5</b> Opciones, Derivados y Futuros</a><ul>
 <li class="chapter" data-level="5.1" data-path="options.html"><a href="options.html#call-put"><i class="fa fa-check"></i><b>5.1</b> Call &amp; Put</a><ul>
@@ -244,25 +271,26 @@ code > span.in { color: #008000; } /* Information */
 <div id="que-es-quantmod" class="section level2">
 <h2><span class="header-section-number">2.1</span> ¿Que es quantmod?</h2>
 <p>Un entorno rápido, donde los operadores cuantitativos pueden explorar y construir modelos de negociación rápida y limpiamente. A través de la función getSymbols podemos extraer datos financieros desde varias fuentes: Google Finance, Yahoo Finance, Federal Reserve Bank of St. Louis FRED (más de 11,000 series !!!) y Oanda. Incluso desde fuentes propias: MySQL , R (Rdata) y Comma Separated Value files (csv).</p>
-<p>No es el paquete definitivo dado que se complementa con otros, tales como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más usadas en el mercado y usan todas las propiedades que hacen al lenguaje R útil para realizar análisis de datos<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
+<p>No es el paquete definitivo dado que se complementa con otros, tales como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más usadas en el mercado y usan todas las propiedades que hacen al lenguaje R útil para realizar análisis de datos<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 <div id="obtencion-de-datos" class="section level2">
 <h2><span class="header-section-number">2.2</span> Obtención de Datos</h2>
 <p>Para comenzar, como todo paquete en R se debe instalar</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Instalación package</span>
-<span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Instalación package</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>)</code></pre>
 <p>Una vez que esté instalado, creamos nuestro script usando <code>ctrl/cmd + shift + n</code> y lo “llamamos” con</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Cargamos &quot;quantmod&quot;</span>
-<span class="kw">library</span>(<span class="st">&quot;quantmod&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Cargamos &quot;quantmod&quot;</span>
+<span class="kw">library</span>(<span class="st">&quot;quantmod&quot;</span>)</code></pre>
 <blockquote>
-<p>HINT: con <code>ctrl + R</code> en windows/Linux y <code>cmd + R</code> en MAC OS agregamos más rapido comentarios (sección) en Rstudio.</p>
+<p>HINT: con <code>ctrl + R</code> en windows/Linux y <code>cmd + R</code> en MAC OS agregamos más rapido comentarios
+(sección) en Rstudio.</p>
 </blockquote>
-<p><strong>quantmod</strong> provee una función para descargar datos desde fuentes externas. Esta función se llama <code>getSymbols</code>, para mayor información escribir en la linea de comandos <code>?getSymbols</code><a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>. Por defecto, se crea un objeto en el workspace (<em>Global Environment</em>) con el nombre del ticker/nemotécnico seleccionado. Imaginemos por un momento que necesitamos analizar el S&amp;P 500 desde el 2010 hasta la fecha con periocidad diaria. Lo primero que debemos hacer es pensar desde que fuente vamos a descargar los datos, como es un índice accionario se recomienda usar <em>yahoo finance</em>, luego buscar el nemotécnico, en este caso es “^GSPC”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(<span class="st">&quot;^GSPC&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2010-01-01&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2010-07-30&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre></div>
+<p><strong>quantmod</strong> provee una función para descargar datos desde fuentes externas. Esta función se llama <code>getSymbols</code>, para mayor información escribir en la linea de comandos <code>?getSymbols</code><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. Por defecto, se crea un objeto en el workspace (<em>Global Environment</em>) con el nombre del ticker/nemotécnico seleccionado. Imaginemos por un momento que necesitamos analizar el S&amp;P 500 desde el 2010 hasta la fecha con periocidad diaria. Lo primero que debemos hacer es pensar desde que fuente vamos a descargar los datos, como es un índice accionario se recomienda usar <em>yahoo finance</em>, luego buscar el nemotécnico, en este caso es “^GSPC”.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(<span class="st">&quot;^GSPC&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2010-01-01&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2010-07-30&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;GSPC&quot;</code></pre>
 <div id="que-hizo-la-funcion-getsymbols" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> ¿Qué hizo la función <code>getSymbols</code>?</h3>
-<p>La función <code>getSymbols</code> se construye basicamente de cinco opciones<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>:</p>
+<p>La función <code>getSymbols</code> se construye basicamente de cinco opciones<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>:</p>
 <ol style="list-style-type: decimal">
 <li>El ticker/nemotécnico, eg. ^GSPC.</li>
 <li><code>src</code>, que es la abreviación de “source”, eg. yahoo, FRED…</li>
@@ -280,23 +308,24 @@ code > span.in { color: #008000; } /* Information */
 <p>Aún no introducimos la librería <code>ggplot2</code>, sin embargo, <code>quantmod</code> también nos permite graficar.</p>
 <div id="chartseries" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> <code>chartSeries</code></h3>
-<p>Para graficar basta con escribir el nombre del objeto con clase (<code>class</code>) xts, en nuestro caso es <code>GSPC</code> que representa al Standard and Poor 500. Si escribimos <code>TA = NULL</code>, <code>charSeries</code> no mostrará el volume<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chartSeries</span>(GSPC, <span class="dt">TA=</span><span class="ot">NULL</span>)</code></pre></div>
+<p>Para graficar basta con escribir el nombre del objeto con clase (<code>class</code>) xts, en nuestro caso es <code>GSPC</code> que representa al Standard and Poor 500. Si escribimos <code>TA = NULL</code>, <code>charSeries</code> no mostrará el volume<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chartSeries</span>(GSPC, <span class="dt">TA=</span><span class="ot">NULL</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-11-1.png" alt="Gráfico con chartSeries con TA = NULL" width="75%" />
 <p class="caption">
 Figure 2.1: Gráfico con chartSeries con TA = NULL
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chartSeries</span>(GSPC, <span class="dt">TA=</span><span class="ot">NULL</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chartSeries</span>(GSPC, <span class="dt">TA=</span><span class="ot">NULL</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-12-1.png" alt="Gráfico con chartSeries sin TA = NULL" width="75%" />
 <p class="caption">
 Figure 2.2: Gráfico con chartSeries sin TA = NULL
 </p>
 </div>
-<p>Pero cuando las series son muy largas, podemos ver tendencias pero dificulta ver cambios importantes a nivel de análisis técnico.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chartSeries</span>(GSPC, <span class="dt">subset =</span> <span class="st">&quot;last 3 months&quot;</span>)</code></pre></div>
+<p>Pero cuando las series son muy largas, podemos ver tendencias pero dificulta ver cambios
+importantes a nivel de análisis técnico.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chartSeries</span>(GSPC, <span class="dt">subset =</span> <span class="st">&quot;last 3 months&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" alt="Los últimos 3 meses de GSPC" width="75%" />
 <p class="caption">
@@ -317,9 +346,9 @@ Figure 2.3: Los últimos 3 meses de GSPC
 <li>Un conjunto de aesthetic mappings entre variables y propiedades de visualización.</li>
 <li>Al menos una layer que describe la observación, son usualmente creadas con la función geom_*</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
-<p>A continuación usaremos la base que viene pre cargada con R cuando lo instalamos, que es <code>cars</code><a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre>
+<p>A continuación usaremos la base que viene pre cargada con R cuando lo instalamos, que es <code>cars</code><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" alt="Ejemplo 1 usando ggplot2" width="75%" />
 <p class="caption">
@@ -336,8 +365,8 @@ Figure 2.4: Ejemplo 1 usando ggplot2
 <div id="color-tamano-forma-y-otros-atributos-del-aesthetic" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> Color, tamaño, forma y otros atributos del <em>aesthetic</em></h3>
 <p>Se debe usar otro aesthetics como <code>colour</code>, <code>shape</code> y <code>size</code> (ggplot acepta los nombres americanos como británicos)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, cty, <span class="dt">colour =</span> class)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, cty, <span class="dt">colour =</span> class)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" alt="Ejemplo 2 usando ggplot2" width="75%" />
 <p class="caption">
@@ -348,14 +377,14 @@ Figure 2.5: Ejemplo 2 usando ggplot2
 <li>Como se puede ver, se creo una guía con los valores, leyenda, así podemos “leer” el gráfico.</li>
 <li>Si se quiere aesthetic para valores fijos, sin scaling:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>))</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" alt="Ejemplo 3 usando ggplot2" width="75%" />
 <p class="caption">
 Figure 2.6: Ejemplo 3 usando ggplot2
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-17-2.png" alt="Ejemplo 3 usando ggplot2" width="75%" />
 <p class="caption">
@@ -363,9 +392,9 @@ Figure 2.6: Ejemplo 3 usando ggplot2
 </p>
 </div>
 <p>Ejercicios:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> class)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> class)
 <span class="kw">aes</span>(displ, hwy, <span class="dt">shape =</span> drv)
-<span class="kw">aes</span>(displ, hwy, <span class="dt">size =</span> cyl)</code></pre></div>
+<span class="kw">aes</span>(displ, hwy, <span class="dt">size =</span> cyl)</code></pre>
 <ul>
 <li>Se recomienda usar <code>colour</code> y <code>shape</code> con variables categóricas.<br />
 </li>
@@ -374,11 +403,11 @@ Figure 2.6: Ejemplo 3 usando ggplot2
 </div>
 <div id="sp-500-con-ggplot2" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> S&amp;P 500 con <code>ggplot2</code></h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gspc &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(GSPC)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gspc) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="kw">index</span>(gspc),GSPC.Adjusted))
+<pre class="sourceCode r"><code class="sourceCode r">gspc &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(GSPC)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gspc) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="kw">index</span>(gspc),GSPC.Adjusted))
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;S&amp;P 500&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Desde Enero 2010 a 2018&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Fecha&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()
-g1</code></pre></div>
+g1</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" alt="Standard and Poor 500 usando ggplot2" width="75%" />
 <p class="caption">
@@ -390,39 +419,40 @@ Figure 2.7: Standard and Poor 500 usando ggplot2
 <div id="multiples-datos" class="section level2">
 <h2><span class="header-section-number">2.5</span> Multiples Datos</h2>
 <p>A continuación trabajaremos con las acciones de Oracle, Nvidia, IBM y AMD, comenzamos con crear un objeto con los nombres de los tickers</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tickers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ORCL&quot;</span>,<span class="st">&quot;AMD&quot;</span>,<span class="st">&quot;IBM&quot;</span>,<span class="st">&quot;NVDA&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">tickers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ORCL&quot;</span>,<span class="st">&quot;AMD&quot;</span>,<span class="st">&quot;IBM&quot;</span>,<span class="st">&quot;NVDA&quot;</span>)</code></pre>
 <p>descargamos los datos con las características requeridas, que son las mismas que usamos anteriormente con S&amp;P 500</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(tickers, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2010-01-01&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-07-30&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(tickers, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2010-01-01&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-07-30&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;ORCL&quot; &quot;AMD&quot;  &quot;IBM&quot;  &quot;NVDA&quot;</code></pre>
 <p>Acá deben tener mucha atención:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list &lt;-<span class="st"> </span><span class="kw">lapply</span>(tickers, <span class="cf">function</span>(x) <span class="kw">Cl</span>(<span class="kw">get</span>(x)))
-precio.cierre &lt;-<span class="st"> </span><span class="kw">do.call</span>(merge,list)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">list &lt;-<span class="st"> </span><span class="kw">lapply</span>(tickers, <span class="cf">function</span>(x) <span class="kw">Cl</span>(<span class="kw">get</span>(x)))
+precio.cierre &lt;-<span class="st"> </span><span class="kw">do.call</span>(merge,list)</code></pre>
 <div id="retornos" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Retornos</h3>
 <p>La formula para calcular (log) retornos es</p>
 <p><span class="math display">\[
 r_t = log(1 + R_t) = log(\frac{P_t}{P_{t-1}}) = p_t - p_{t-1}
-\]</span> donde <span class="math inline">\(p_t = log(P_t)\)</span> es llamado “log price”.</p>
+\]</span>
+donde <span class="math inline">\(p_t = log(P_t)\)</span> es llamado “log price”.</p>
 <p>Ahora pasamos a construir el retorno.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">retornos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">apply</span>(precio.cierre, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">Delt</span>(x, <span class="dt">type =</span> <span class="st">&quot;log&quot;</span>)),
+<pre class="sourceCode r"><code class="sourceCode r">retornos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">apply</span>(precio.cierre, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">Delt</span>(x, <span class="dt">type =</span> <span class="st">&quot;log&quot;</span>)),
                        <span class="dt">fecha =</span> <span class="kw">index</span>(precio.cierre)) <span class="op">%&gt;%</span>
 <span class="st">            </span><span class="kw">rename</span>(<span class="dt">orcl =</span> ORCL.Close, <span class="dt">amd =</span> AMD.Close, <span class="dt">ibm =</span> IBM.Close, <span class="dt">nvda =</span> NVDA.Close) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">            </span><span class="kw">na.omit</span>() </code></pre></div>
+<span class="st">            </span><span class="kw">na.omit</span>() </code></pre>
 </div>
 <div id="retornos-acumulados" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> Retornos Acumulados</h3>
 <p>Si graficamos los retornos no será muy descriptivo, una forma es trabajar con su acumulado. Con la misma lógica usamos la función <code>cumsum()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acumulados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">apply</span>(retornos[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">cumsum</span>(x)), <span class="dt">fecha =</span> <span class="kw">index</span>(precio.cierre[<span class="op">-</span><span class="dv">1</span>]))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">acumulados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">apply</span>(retornos[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">cumsum</span>(x)), <span class="dt">fecha =</span> <span class="kw">index</span>(precio.cierre[<span class="op">-</span><span class="dv">1</span>]))</code></pre>
 <div id="grafico-retornos-acumulados" class="section level4">
 <h4><span class="header-section-number">2.5.2.1</span> Gráfico retornos acumulados</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;reshape2&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">reshape &lt;-<span class="st"> </span><span class="kw">melt</span>(acumulados, <span class="dt">id.vars =</span> <span class="st">&quot;fecha&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(reshape) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(fecha,value, <span class="dt">color =</span> variable))
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;reshape2&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">reshape &lt;-<span class="st"> </span><span class="kw">melt</span>(acumulados, <span class="dt">id.vars =</span> <span class="st">&quot;fecha&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(reshape) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(fecha,value, <span class="dt">color =</span> variable))
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Retornos Acumulados&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Oracle, AMD, IBM y Nvidia&quot;</span>)
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Fecha&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Retornos Acumulados&quot;</span>)
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="st">&quot;Tickers&quot;</span>, <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;orange&quot;</span>))
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)
-g2</code></pre></div>
+g2</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
 <img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" alt="Retornos Acumulados de los tickers" width="75%" />
 <p class="caption">
@@ -435,9 +465,9 @@ Figure 2.8: Retornos Acumulados de los tickers
 <div id="estadistica-descriptiva" class="section level2">
 <h2><span class="header-section-number">2.6</span> Estadística Descriptiva</h2>
 <p>Existe muchas formas de obtener la estadística descriptiva en R, un librería es <code>fBasics</code>, la que a su vez contiene test de normalidad.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fBasics&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summary &lt;-<span class="st"> </span><span class="kw">basicStats</span>(retornos[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])[<span class="kw">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Stdev&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Variance&quot;</span>,
-                                       <span class="st">&quot;Maximum&quot;</span>, <span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;Skewness&quot;</span>,<span class="st">&quot;Kurtosis&quot;</span>),]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fBasics&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">summary &lt;-<span class="st"> </span><span class="kw">basicStats</span>(retornos[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])[<span class="kw">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Stdev&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Variance&quot;</span>,
+                                       <span class="st">&quot;Maximum&quot;</span>, <span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;Skewness&quot;</span>,<span class="st">&quot;Kurtosis&quot;</span>),]</code></pre>
 </div>
 <div id="ratio-de-sharpe" class="section level2">
 <h2><span class="header-section-number">2.7</span> Ratio de Sharpe</h2>
@@ -447,7 +477,7 @@ SR = \frac{E(R_i) - r_f}{\sigma_i}
 \]</span></p>
 <p>Donde <span class="math inline">\(E(R_i) = \mu_i\)</span> es el retorno del portafolio <span class="math inline">\(i\)</span>, <span class="math inline">\(r_f\)</span> la tasa libre de riesgo y <span class="math inline">\(\sigma_i\)</span> la desviaciòn estandar del portafolio <span class="math inline">\(i\)</span>. Si asumimos como ejercicio que no diversificamos y “construimos” cuatro portafolios con el 100% es invertido en cada uno de los activos.</p>
 <p>Para realizar el cálculo del ratio de Sharpe (SR) para Oracle</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SR_orcl &lt;-<span class="st"> </span>(<span class="kw">mean</span>(retornos<span class="op">$</span>orcl) <span class="op">-</span><span class="st"> </span><span class="fl">0.0000</span> )<span class="op">/</span><span class="kw">sd</span>(retornos<span class="op">$</span>orcl)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">SR_orcl &lt;-<span class="st"> </span>(<span class="kw">mean</span>(retornos<span class="op">$</span>orcl) <span class="op">-</span><span class="st"> </span><span class="fl">0.0000</span> )<span class="op">/</span><span class="kw">sd</span>(retornos<span class="op">$</span>orcl)</code></pre>
 <p>con <code>mean(retornos$orcl)</code> vamos a obtener el promedio de la primera columna del objeto <code>retornos</code> que es Oracle (en el <code>data.frame</code> la columna se llama orcl, si tuviese otro nombre como por ejemplo <code>perrito</code>, entonces hubiese sido <code>mean(retornos$perrito)</code>), si quisieramos AMD debería ser <code>amd</code> y asì sucesivamente. El 0.0000 sería la tasa libre de riesgo que la asumimos mensual y <code>sd(retornos[1])</code> nos calcula la desviación estandar. Dado que poseemos 4 activos con sus respectivos retornos, deberiamos construir cuatro objetos que partan con <code>SR</code>.</p>
 </div>
 <div id="test-de-jarquebera" class="section level2">
@@ -458,7 +488,7 @@ SR = \frac{E(R_i) - r_f}{\sigma_i}
 JB = n{\widehat{Sk}^2 /6 + (\widehat{KUr} - 3)^2 /24}
 \]</span></p>
 <p>El test se encuentra en varias librerías, una de ellas es <code>fBasics</code> que deberíamos tener instalada y cargada. Para obtener los resultados del test para Oracle</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">jarqueberaTest</span>(retornos<span class="op">$</span>orcl)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">jarqueberaTest</span>(retornos<span class="op">$</span>orcl)</code></pre>
 <p>Para los demàs activos hay que solo cambiar por el nombre de la columna correspondiente.</p>
 </div>
 <div id="recursos-del-capitulo" class="section level2">
@@ -469,11 +499,11 @@ JB = n{\widehat{Sk}^2 /6 + (\widehat{KUr} - 3)^2 /24}
 <div class="footnotes">
 <hr />
 <ol start="5">
-<li id="fn5"><p>Proximamente incluire el tidyquant<a href="quantmod.html#fnref5">↩</a></p></li>
-<li id="fn6"><p>No solo funcióna con <code>getSymbols</code>, si no que con todas las funciones de distintas librerias, basta con ante poner <code>?</code> y luego el nombre la función<a href="quantmod.html#fnref6">↩</a></p></li>
-<li id="fn7"><p>Por el momento solo trabajaremos con estas opciones, exiten más.<a href="quantmod.html#fnref7">↩</a></p></li>
-<li id="fn8"><p><code>TA</code> proviene de <em>Technical Analysis</em><a href="quantmod.html#fnref8">↩</a></p></li>
-<li id="fn9"><p>Esta base es muy común en los software estadísticos y presenta datos de autos.<a href="quantmod.html#fnref9">↩</a></p></li>
+<li id="fn5"><p>Proximamente incluire el tidyquant<a href="quantmod.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>No solo funcióna con <code>getSymbols</code>, si no que con todas las funciones de distintas librerias, basta con ante poner <code>?</code> y luego el nombre la función<a href="quantmod.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>Por el momento solo trabajaremos con estas opciones, exiten más.<a href="quantmod.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p><code>TA</code> proviene de <em>Technical Analysis</em><a href="quantmod.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p>Esta base es muy común en los software estadísticos y presenta datos de autos.<a href="quantmod.html#fnref9" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -528,8 +558,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

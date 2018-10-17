@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introducción a las finanzas quantitativas</title>
   <meta name="description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Introducción a las finanzas quantitativas" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-09-24">
+<meta name="date" content="2018-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="sobre-el-autor.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
@@ -58,36 +59,62 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -117,10 +144,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Partes de RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>1.3</b> <em>Scripts</em></a></li>
-<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#por-que-esto-es-util"><i class="fa fa-check"></i><b>1.4.1</b> ¿Por qué esto es útil?</a></li>
-<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#como-crear-un-projecto"><i class="fa fa-check"></i><b>1.4.2</b> ¿Cómo crear un projecto?</a></li>
-</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.5</b> <em>Packages</em></a><ul>
 <li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
 </ul></li>
@@ -167,14 +191,17 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="4.5" data-path="bonos.html"><a href="bonos.html#trabajando-con-yields-reales"><i class="fa fa-check"></i><b>4.5</b> Trabajando con yields reales</a></li>
 <li class="chapter" data-level="4.6" data-path="bonos.html"><a href="bonos.html#duracion-y-convexidad-de-un-bono"><i class="fa fa-check"></i><b>4.6</b> Duración y Convexidad de un Bono</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="bonos.html"><a href="bonos.html#extracion-de-la-yield"><i class="fa fa-check"></i><b>4.6.1</b> Extración de la yield</a></li>
-<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion"><i class="fa fa-check"></i><b>4.6.2</b> Duración</a></li>
+<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion-bono-bullet-o-americano"><i class="fa fa-check"></i><b>4.6.2</b> Duración (Bono Bullet o Americano)</a></li>
 <li class="chapter" data-level="4.6.3" data-path="bonos.html"><a href="bonos.html#duracion-con-libreria"><i class="fa fa-check"></i><b>4.6.3</b> Duración con librería</a></li>
 <li class="chapter" data-level="4.6.4" data-path="bonos.html"><a href="bonos.html#convexidad"><i class="fa fa-check"></i><b>4.6.4</b> Convexidad</a></li>
 <li class="chapter" data-level="4.6.5" data-path="bonos.html"><a href="bonos.html#convexidad-con-libreria"><i class="fa fa-check"></i><b>4.6.5</b> Convexidad con librería:</a></li>
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
 <li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="bonos.html"><a href="bonos.html#bono-frances"><i class="fa fa-check"></i><b>4.9.1</b> Bono Frances</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.10</b> Recursos del capítulo</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>5</b> Opciones, Derivados y Futuros</a><ul>
 <li class="chapter" data-level="5.1" data-path="options.html"><a href="options.html#call-put"><i class="fa fa-check"></i><b>5.1</b> Call &amp; Put</a><ul>
@@ -237,15 +264,15 @@ code > span.in { color: #008000; } /* Information */
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">Introducción a las finanzas quantitativas</h1>
-<h3 class="subtitle"><em>Aplicaciones &amp; ejemplos usando R</em></h3>
-<h4 class="author"><em>Gabriel Cabrera G.</em></h4>
-<h4 class="date"><em>2018-09-24</em></h4>
+<h2 class="subtitle"><em>Aplicaciones &amp; ejemplos usando R</em></h2>
+<p class="author"><em>Gabriel Cabrera G.</em></p>
+<p class="date"><em>2018-10-17</em></p>
 </div>
 <div id="prefacio" class="section level1 unnumbered">
 <h1>Prefacio</h1>
 <p>Este es un apunte en proceso pensado en el curso de Finanzas I de Ingeniería Comercial de la Universidad de Chile, las aplicaciones en R son pensados con un enfoque pedagógico y cualquier comentario o sugerencias son bienvenidas.</p>
 <p>La información de la sesión de R cuando se compila este apunte es la siguiente:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
 <pre><code>## R version 3.4.4 (2018-03-15)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 18.04.1 LTS
@@ -273,19 +300,19 @@ code > span.in { color: #008000; } /* Information */
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.18     rstudioapi_0.7   knitr_1.20      
-##  [4] bindr_0.1.1      magrittr_1.5     tidyselect_0.2.4
-##  [7] munsell_0.5.0    colorspace_1.3-2 R6_2.2.2        
-## [10] rlang_0.2.1      stringr_1.3.1    plyr_1.8.4      
-## [13] dplyr_0.7.6      tools_3.4.4      grid_3.4.4      
-## [16] gtable_0.2.0     xfun_0.3         htmltools_0.3.6 
-## [19] yaml_2.2.0       lazyeval_0.2.1   assertthat_0.2.0
-## [22] digest_0.6.16    rprojroot_1.3-2  tibble_1.4.2    
-## [25] bookdown_0.7     crayon_1.3.4     bindrcpp_0.2.2  
-## [28] purrr_0.2.5      ggplot2_3.0.0    evaluate_0.11   
-## [31] glue_1.3.0       rmarkdown_1.10   stringi_1.2.4   
-## [34] compiler_3.4.4   pillar_1.3.0     backports_1.1.2 
-## [37] scales_1.0.0     pkgconfig_2.0.1</code></pre>
+##  [1] Rcpp_0.12.19     rstudioapi_0.8   magrittr_1.5    
+##  [4] bindr_0.1.1      knitr_1.20       tidyselect_0.2.5
+##  [7] munsell_0.5.0    colorspace_1.3-2 R6_2.3.0        
+## [10] rlang_0.2.2      stringr_1.3.1    plyr_1.8.4      
+## [13] dplyr_0.7.6      tools_3.4.4      packrat_0.4.9-3 
+## [16] grid_3.4.4       gtable_0.2.0     xfun_0.3        
+## [19] htmltools_0.3.6  yaml_2.2.0       lazyeval_0.2.1  
+## [22] rprojroot_1.3-2  digest_0.6.18    assertthat_0.2.0
+## [25] tibble_1.4.2     bookdown_0.7.21  crayon_1.3.4    
+## [28] bindrcpp_0.2.2   purrr_0.2.5      ggplot2_3.0.0   
+## [31] glue_1.3.0       evaluate_0.12    rmarkdown_1.10  
+## [34] stringi_1.2.4    compiler_3.4.4   pillar_1.3.0    
+## [37] scales_1.0.0     backports_1.1.2  pkgconfig_2.0.2</code></pre>
 
 </div>
             </section>
@@ -340,8 +367,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

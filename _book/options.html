@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introducción a las finanzas quantitativas</title>
   <meta name="description" content="Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Introducción a las finanzas quantitativas" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2018-09-24">
+<meta name="date" content="2018-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
@@ -58,36 +59,62 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -117,10 +144,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#partes-de-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Partes de RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#scripts"><i class="fa fa-check"></i><b>1.3</b> <em>Scripts</em></a></li>
-<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#por-que-esto-es-util"><i class="fa fa-check"></i><b>1.4.1</b> ¿Por qué esto es útil?</a></li>
-<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#como-crear-un-projecto"><i class="fa fa-check"></i><b>1.4.2</b> ¿Cómo crear un projecto?</a></li>
-</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#proyectos"><i class="fa fa-check"></i><b>1.4</b> Proyectos</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.5</b> <em>Packages</em></a><ul>
 <li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#tidyverse"><i class="fa fa-check"></i><b>1.5.1</b> <em>tidyverse</em></a></li>
 </ul></li>
@@ -167,14 +191,17 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="4.5" data-path="bonos.html"><a href="bonos.html#trabajando-con-yields-reales"><i class="fa fa-check"></i><b>4.5</b> Trabajando con yields reales</a></li>
 <li class="chapter" data-level="4.6" data-path="bonos.html"><a href="bonos.html#duracion-y-convexidad-de-un-bono"><i class="fa fa-check"></i><b>4.6</b> Duración y Convexidad de un Bono</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="bonos.html"><a href="bonos.html#extracion-de-la-yield"><i class="fa fa-check"></i><b>4.6.1</b> Extración de la yield</a></li>
-<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion"><i class="fa fa-check"></i><b>4.6.2</b> Duración</a></li>
+<li class="chapter" data-level="4.6.2" data-path="bonos.html"><a href="bonos.html#duracion-bono-bullet-o-americano"><i class="fa fa-check"></i><b>4.6.2</b> Duración (Bono Bullet o Americano)</a></li>
 <li class="chapter" data-level="4.6.3" data-path="bonos.html"><a href="bonos.html#duracion-con-libreria"><i class="fa fa-check"></i><b>4.6.3</b> Duración con librería</a></li>
 <li class="chapter" data-level="4.6.4" data-path="bonos.html"><a href="bonos.html#convexidad"><i class="fa fa-check"></i><b>4.6.4</b> Convexidad</a></li>
 <li class="chapter" data-level="4.6.5" data-path="bonos.html"><a href="bonos.html#convexidad-con-libreria"><i class="fa fa-check"></i><b>4.6.5</b> Convexidad con librería:</a></li>
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
 <li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="bonos.html"><a href="bonos.html#bono-frances"><i class="fa fa-check"></i><b>4.9.1</b> Bono Frances</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.10</b> Recursos del capítulo</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>5</b> Opciones, Derivados y Futuros</a><ul>
 <li class="chapter" data-level="5.1" data-path="options.html"><a href="options.html#call-put"><i class="fa fa-check"></i><b>5.1</b> Call &amp; Put</a><ul>
@@ -240,8 +267,8 @@ code > span.in { color: #008000; } /* Information */
 <blockquote>
 <p>IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.</p>
 </blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)
-<span class="kw">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;quantmod&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)
+<span class="kw">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;quantmod&quot;</span>)</code></pre>
 <div id="call-put" class="section level2">
 <h2><span class="header-section-number">5.1</span> Call &amp; Put</h2>
 <p>A modo de resumen, existen cuatro tipos de posiciones en las opciones:</p>
@@ -252,8 +279,8 @@ code > span.in { color: #008000; } /* Information */
 <li>Posición corta en una opción de venta (put)</li>
 </ol>
 <p>Simulamos nuestro <span class="math inline">\(S_t\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Valores para el ejemplo</span>
-s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">130</span>,<span class="dt">by=</span><span class="dv">10</span>) <span class="co"># Precio </span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Valores para el ejemplo</span>
+s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">130</span>,<span class="dt">by=</span><span class="dv">10</span>) <span class="co"># Precio </span></code></pre>
 <ul>
 <li>Para la call usamos: v (precio de la call) = $5, precio de ejercicio (k) = 100.</li>
 <li>Para la put usamos: v (precio de la put) = $7, precio de ejercicio (k) = 70.</li>
@@ -265,64 +292,67 @@ s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</
 <p><span class="math display">\[
 \text{payoff} = \text{max}(S_t - k,0)
 \]</span></p>
-<p>Profit opción call larga <span class="math display">\[
+<p>Profit opción call larga
+<span class="math display">\[
 \text{profit} = \text{payoff} - v*e^{-r*t}
 \]</span></p>
 <p>Construimos la función:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
+<pre class="sourceCode r"><code class="sourceCode r">long.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
     <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmax</span>(<span class="dv">0</span>,s<span class="op">-</span>k), <span class="st">&quot;periodo&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">-</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">payoff.longcall &lt;-<span class="st"> </span><span class="kw">long.callpayoff</span>(s,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">payoff.longcall &lt;-<span class="st"> </span><span class="kw">long.callpayoff</span>(s,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre>
 <p>Gráfico posición larga en call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Call&quot;</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Call&quot;</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span>                 <span class="kw">element_blank</span>())
-g1</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-71-1.png" width="384" style="display: block; margin: auto;" /></p>
+g1</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-74-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.1 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico profit posición larga en call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Profit de una Option Call&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Call&quot;</span>) 
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>)
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longcall<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longcall<span class="op">$</span>periodo), <span class="dt">by =</span>                   <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longcall<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.longcall<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))) 
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-g2</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-72-1.png" width="384" style="display: block; margin: auto;" /></p>
+g2</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-larga-en-put-payoff-profit" class="section level3">
 <h3><span class="header-section-number">5.1.2</span> Posición larga en put: Payoff &amp; Profit</h3>
 <p>EL rendimiento para el tenedor de una opción larga en una opción de venta europea:</p>
-<p>Payoff opción put larga: <span class="math display">\[
+<p>Payoff opción put larga:
+<span class="math display">\[
 \text{payoff} = \text{max}(k - S_t,0)
 \]</span></p>
-<p>Profit opción put larga: <span class="math display">\[
+<p>Profit opción put larga:
+<span class="math display">\[
 \text{profit} = \text{payoff} - v*e^{-r*t}
 \]</span></p>
 <p>Construimos la función:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long.putpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
+<pre class="sourceCode r"><code class="sourceCode r">long.putpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
     <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmax</span>(k<span class="op">-</span>s,<span class="dv">0</span>), <span class="st">&quot;periodo&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">-</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">payoff.longput &lt;-<span class="st"> </span><span class="kw">long.putpayoff</span>(s,<span class="dv">70</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">payoff.longput &lt;-<span class="st"> </span><span class="kw">long.putpayoff</span>(s,<span class="dv">70</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre>
 <p>Gráfico posición larga en put</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Put&quot;</span>)
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>))  <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span>                  <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-g3</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="384" style="display: block; margin: auto;" /></p>
+g3</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.2 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico posición larga en put:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.longput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Profit de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Put&quot;</span>) 
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>)
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longput<span class="op">$</span>periodo), <span class="dt">by =</span>                     <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>profit),                            <span class="kw">max</span>(payoff.longput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">7</span>, <span class="dv">30</span>))) 
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-g4</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-76-1.png" width="384" style="display: block; margin: auto;" /></p>
+g4</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-corta-en-call-payoff-profit" class="section level3">
 <h3><span class="header-section-number">5.1.3</span> Posición corta en call: Payoff &amp; Profit</h3>
@@ -336,34 +366,35 @@ g4</code></pre></div>
 \text{profit} = \text{payoff} + v*e^{-r*t}
 \]</span></p>
 <p>Construimos la función:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> short.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
+<pre class="sourceCode r"><code class="sourceCode r"> short.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
     <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmin</span>(k<span class="op">-</span>s,<span class="dv">0</span>),<span class="st">&quot;periodo&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">+</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
-} </code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">payoff.shortcall &lt;-<span class="st"> </span><span class="kw">short.callpayoff</span>(s,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
+} </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">payoff.shortcall &lt;-<span class="st"> </span><span class="kw">short.callpayoff</span>(s,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre>
 <p>Gráfico posición corta en call</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g5 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g5 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
 g5 &lt;-<span class="st"> </span>g5 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Call&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Corta en Call&quot;</span>)
 g5 &lt;-<span class="st"> </span>g5 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-g5</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="384" style="display: block; margin: auto;" /></p>
+g5</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.3 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico posición corta en call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g6 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r">g6 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortcall) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Profit de una Option Call&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Corta en Call&quot;</span>) 
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>)
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortcall<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.shortcall<span class="op">$</span>periodo), <span class="dt">by =</span>                 <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortcall<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.shortcall<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">5</span>))) 
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-g6</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-80-1.png" width="384" style="display: block; margin: auto;" /></p>
+g6</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-corta-en-put-payoff-profit" class="section level3">
 <h3><span class="header-section-number">5.1.4</span> Posición corta en put: Payoff &amp; Profit</h3>
 <p>EL rendimiento para el tenedor de una posición corta en una opción de venta europea es:</p>
-<p>Payoff opción put corta: <span class="math display">\[
+<p>Payoff opción put corta:
+<span class="math display">\[
 \text{payoff} = -\text{max}(k - S_t,0) = \text{min}(S_t - k,0)
 \]</span></p>
 <p>Profit opción put corta:</p>
@@ -371,27 +402,27 @@ g6</code></pre></div>
 \text{profit} = \text{payoff} + v*e^{-r*t}
 \]</span></p>
 <p>Construimos la función:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">short.putpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
+<pre class="sourceCode r"><code class="sourceCode r">short.putpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
     <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmin</span>(s<span class="op">-</span>k,<span class="dv">0</span>),<span class="st">&quot;periodo&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">+</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">payoff.shortput &lt;-<span class="st"> </span><span class="kw">short.putpayoff</span>(s,<span class="dv">70</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">payoff.shortput &lt;-<span class="st"> </span><span class="kw">short.putpayoff</span>(s,<span class="dv">70</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre>
 <p>Gráfico posición corta en call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g7 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g7 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> payoff), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Payoff&quot;</span>)
 g7 &lt;-<span class="st"> </span>g7 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Corta en Put&quot;</span>)
 g7 &lt;-<span class="st"> </span>g7 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(),<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-g7</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="384" style="display: block; margin: auto;" /></p>
+g7</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-86-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.4 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g8 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">g8 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Profit de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Corta en Put&quot;</span>) 
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>)
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.shortput<span class="op">$</span>periodo), <span class="dt">by =</span>                   <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortput<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.shortput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">7</span>))) 
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>()) 
-g8  </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="384" style="display: block; margin: auto;" /></p>
+g8  </code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-87-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="estrategias" class="section level2">
@@ -407,7 +438,7 @@ g8  </code></pre></div>
 <p>Este se crea mediante la adquisición de una opción de compra europea sobre una acción, con cierto precio de ejercicio, y la venta de una opción de compra europea sobre la misma acción con un precio de ejercicio más alto. Ambas opciones tienen la misma fecha de expiración.</p>
 <div id="bull-spread-utilidades" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Bull Spread Utilidades</h3>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col width="29%" />
 <col width="28%" />
@@ -471,7 +502,7 @@ g8  </code></pre></div>
 <div id="funcion-bull-spread" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Función Bull Spread</h3>
 <p>Comenzamos contruyendo la estructura de la estrategia:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bullspread.call &lt;-<span class="st"> </span><span class="cf">function</span>(S,K1,K2,precio1,precio2){
+<pre class="sourceCode r"><code class="sourceCode r">bullspread.call &lt;-<span class="st"> </span><span class="cf">function</span>(S,K1,K2,precio1,precio2){
   
   <span class="cf">if</span>(K1<span class="op">&gt;=</span>S) <span class="kw">stop</span>(<span class="st">&quot;K1 debe ser menor a S.&quot;</span>)
   <span class="cf">if</span>(S<span class="op">&gt;=</span>K2) <span class="kw">stop</span>(<span class="st">&quot;K2 debe ser mayor a S.&quot;</span>)
@@ -498,13 +529,13 @@ g8  </code></pre></div>
   
   data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(stock,payoff,profit)
   <span class="kw">return</span>(data)
-} </code></pre></div>
+} </code></pre>
 </div>
 <div id="posicion-call-larga-corta-para-el-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Posición call Larga &amp; Corta Para el Bull Spread Call</h3>
 <p>Para ilustrar calculamos las dos call (larga y corta):</p>
 <p>Es la misma función vista anteriormente, solo que en vez de tener una columna llamada “periodo” ahora será “stock”, conceptualmente es lo mismo, pero facilita para graficar:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Posición larga en call</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Posición larga en call</span>
 long.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
   <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmax</span>(<span class="dv">0</span>,s<span class="op">-</span>k), <span class="st">&quot;stock&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">-</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
@@ -514,23 +545,23 @@ long.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s
 short.callpayoff &lt;-<span class="st"> </span><span class="cf">function</span>(s,k,v,r,t){
   <span class="kw">data.frame</span>(<span class="st">&quot;payoff&quot;</span> =<span class="st"> </span><span class="kw">pmin</span>(k<span class="op">-</span>s,<span class="dv">0</span>),<span class="st">&quot;stock&quot;</span> =<span class="st"> </span>s) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;profit&quot;</span> =<span class="st"> </span>payoff <span class="op">+</span><span class="st"> </span>v<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>r<span class="op">*</span>t))
-} </code></pre></div>
+} </code></pre>
 </div>
 <div id="construccion-de-la-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Construcción de la Bull Spread Call</h3>
 <p>En el Global Environment vemos el objeto `bull.spread``, que tiene los stock (<span class="math inline">\(S_t\)</span>), payoff y profit.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bull.spread &lt;-<span class="st"> </span><span class="kw">bullspread.call</span>(<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">3</span>,<span class="dv">1</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extraemos la St</span>
+<pre class="sourceCode r"><code class="sourceCode r">bull.spread &lt;-<span class="st"> </span><span class="kw">bullspread.call</span>(<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">3</span>,<span class="dv">1</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extraemos la St</span>
 s &lt;-<span class="st"> </span>bull.spread<span class="op">$</span>stock
 
 <span class="co"># Call larga</span>
 long.call &lt;-<span class="st"> </span><span class="kw">long.callpayoff</span>(s,<span class="dv">30</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>)
 <span class="co"># Call corta</span>
-short.call &lt;-<span class="st"> </span><span class="kw">short.callpayoff</span>(s,<span class="dv">35</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre></div>
+short.call &lt;-<span class="st"> </span><span class="kw">short.callpayoff</span>(s,<span class="dv">35</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</code></pre>
 </div>
 <div id="grafico-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.5</span> Gráfico Bull Spread Call</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(bull.spread[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>,]) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(long.call<span class="op">$</span>stock[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],long.call<span class="op">$</span>profit[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>),<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(bull.spread[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>,]) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(long.call<span class="op">$</span>stock[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],long.call<span class="op">$</span>profit[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>),<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>
                                              ,<span class="dt">size=</span><span class="dv">1</span>) 
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(short.call<span class="op">$</span>stock[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],short.call<span class="op">$</span>profit[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>),<span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) 
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(bull.spread<span class="op">$</span>stock[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],bull.spread<span class="op">$</span>profit[<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>],<span class="dt">color =</span> <span class="st">&quot;green&quot;</span>),<span class="dt">size=</span><span class="dv">1</span>)
@@ -538,18 +569,18 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>,<span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">name =</span> <span class="st">&quot; &quot;</span>,<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Call larga&quot;</span>, <span class="st">&quot;Bull Spread&quot;</span>, <span class="st">&quot;Call corta&quot;</span>),<span class="dt">values =</span>                                      <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>=<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>=<span class="st">&quot;green&quot;</span>,<span class="st">&quot;red&quot;</span> =<span class="st"> &quot;red&quot;</span>))
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>) 
-g1 </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-89-1.png" width="384" style="display: block; margin: auto;" /></p>
+g1 </code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-92-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="con-libreria-la-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.6</span> Con librería la Bull Spread Call</h3>
 <p>Una librería útil para construir estratégias es la librería <code>FinancialMath</code>, recuerden <code>install.packages(&quot;FinancialMath&quot;)</code> y luego <code>library(&quot;FinancialMath&quot;)</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con librería</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con librería</span>
 <span class="co"># bull.call(S,K1,K2,r,t,price1,price2,plot=FALSE)</span>
  
 <span class="kw">library</span>(<span class="st">&quot;FinancialMath&quot;</span>)
 
-bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span class="dv">31</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="fl">0.0000001</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>)</code></pre></div>
+bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span class="dv">31</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="fl">0.0000001</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>)</code></pre>
 <p>Otras funciones son, bear.call(),<code>straddle()</code>,strangle(),butterfly.spread().</p>
 <blockquote>
 <p>NB: Es importante que el <span class="math inline">\(S_t\)</span> debe estar entre <span class="math inline">\(k_1\)</span> y <span class="math inline">\(k_2\)</span>. Deben incluir una tasa de interés y un T, pero si no se especifica, agreguen una cerca a cero.</p>
@@ -557,14 +588,14 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 </div>
 <div id="con-libreria-el-grafico-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.7</span> Con librería El gráfico Bull Spread Call</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-90-1.png" width="403.2" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-93-1.png" width="403.2" style="display: block; margin: auto;" /></p>
 </div>
 <div id="payoff-inferior-bull-spread-call-de-la-libreria" class="section level3">
 <h3><span class="header-section-number">5.2.8</span> Payoff inferior Bull Spread Call de la Librería</h3>
 <p>Los payoff inferiores deberían ser igual a -2:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-91">Table 5.1: </span>Bull Spread Call</caption>
+<caption><span id="tab:unnamed-chunk-94">Table 5.1: </span>Bull Spread Call</caption>
 <thead>
 <tr class="header">
 <th align="right">Stock Price</th>
@@ -599,9 +630,9 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 <div id="payoff-superior-bull-spread-call-de-la-libreria" class="section level3">
 <h3><span class="header-section-number">5.2.9</span> Payoff superior Bull Spread Call de la Librería</h3>
 <p>Los payoff inferiores deberían ser igual a 3:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-92">Table 5.2: </span>Bull Spread Call</caption>
+<caption><span id="tab:unnamed-chunk-95">Table 5.2: </span>Bull Spread Call</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -659,17 +690,17 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 <h3><span class="header-section-number">5.3.2</span> Black &amp; Scholes: Ejercicio</h3>
 <p>Uso de la formula en R:</p>
 <p>El precio de las acciones después de seis meses a partir de la expiración de una opción es de 42, el precio de ejercicio de la opción es de 40, la tasa de interés libre de riesgo es de 10% anual y la volatilidad es de 20% anual. Esto Significa:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Parámetros</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Parámetros</span>
 S0 &lt;-<span class="st"> </span><span class="dv">42</span>
 K &lt;-<span class="st"> </span><span class="dv">40</span>
 r &lt;-<span class="st"> </span><span class="fl">0.1</span>
 T &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>
-sigma &lt;-<span class="st"> </span><span class="fl">0.2</span></code></pre></div>
+sigma &lt;-<span class="st"> </span><span class="fl">0.2</span></code></pre>
 </div>
 <div id="black-scholes-funcion" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Black &amp; Scholes: Función</h3>
 <p>Construimos la función basándonos en la formula:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bs.opm &lt;-<span class="st"> </span><span class="cf">function</span>(S,K,T,riskfree,sigma,type){
+<pre class="sourceCode r"><code class="sourceCode r">bs.opm &lt;-<span class="st"> </span><span class="cf">function</span>(S,K,T,riskfree,sigma,type){
   d1&lt;-(<span class="kw">log</span>(S<span class="op">/</span>K)<span class="op">+</span>(riskfree<span class="fl">+0.5</span> <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>T)<span class="op">/</span>(sigma <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(T))
   d2&lt;-d1<span class="op">-</span>sigma <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(T)
   <span class="cf">if</span>(type<span class="op">==</span><span class="st">&quot;Call&quot;</span>){
@@ -679,28 +710,28 @@ sigma &lt;-<span class="st"> </span><span class="fl">0.2</span></code></pre></di
     opt.val&lt;-K <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>riskfree <span class="op">*</span><span class="st"> </span>T) <span class="op">*</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span>d2)<span class="op">-</span>S <span class="op">*</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span>d1)
   }
   opt.val
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la call</span>
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la call</span>
 C &lt;-<span class="st"> </span><span class="kw">bs.opm</span>(<span class="dt">S =</span> S0, <span class="dt">K =</span> K, <span class="dt">T =</span> T, <span class="dt">riskfree =</span> r, <span class="dt">sigma =</span> sigma, <span class="dt">type =</span> <span class="st">&quot;Call&quot;</span> ) 
-C</code></pre></div>
+C</code></pre>
 <pre><code>## [1] 4.759</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la put</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para la put</span>
 C &lt;-<span class="st"> </span><span class="kw">bs.opm</span>(<span class="dt">S =</span> S0, <span class="dt">K =</span> K, <span class="dt">T =</span> T, <span class="dt">riskfree =</span> r, <span class="dt">sigma =</span> sigma, <span class="dt">type =</span> <span class="st">&quot;Put&quot;</span> )
-C</code></pre></div>
+C</code></pre>
 <pre><code>## [1] 0.8086</code></pre>
 </div>
 <div id="black-scholes-ahora-con-librerias" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> Black &amp; Scholes: Ahora con librerías</h3>
 <p>La librería que se utilizará para usa BS es <code>fOptions</code>, recordar el <code>install.packages(&quot;fOptions&quot;)</code> y posterior <code>library(&quot;fOptions&quot;)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fOptions&quot;</span>) </code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fOptions&quot;</span>) </code></pre>
 <p>La función de la librería es <code>GBSOption()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot; &quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot; &quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)</code></pre>
 <p>En <code>TypeFlag</code>, va “c” para call y “p” para put, tener presente que deberán seleccionar un <code>b</code> que es el <em>annualized cost-of-carry rate</em>, si no se especifica, debe ser igual a r.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con libreria call</span>
-<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)<span class="op">@</span>price</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con libreria call</span>
+<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)<span class="op">@</span>price</code></pre>
 <pre><code>## [1] 4.759</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con libreria put</span>
-<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)<span class="op">@</span>price</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Con libreria put</span>
+<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> S0, <span class="dt">X =</span> K, <span class="dt">Time =</span> T, <span class="dt">r =</span> r, <span class="dt">b =</span> r, <span class="dt">sigma =</span> sigma)<span class="op">@</span>price</code></pre>
 <pre><code>## [1] 0.8086</code></pre>
 </div>
 </div>
@@ -712,7 +743,8 @@ C</code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Usar las funcion <code>getOptionChain</code> de la librería <code>quantmod</code>. Seleccionar las call y put para la fecha de valuación (recomiendo en objetos separados).</p></li>
 <li><p>Usar la función <code>getSymbols</code> de la librería <code>quantmod</code> para elegir el ticker correspondiente, calcular el retorno y extraer el precio a la fecha que se está haciendo la valuación.</p></li>
-<li><p>“Construimos”&quot; la fecha de expiración y valuación, esto nos permite calcular el <span class="math inline">\(T\)</span> a través de: <span class="math inline">\(\frac{\text{expiración - valuación}}{365}\)</span>. La tasa libre de riesgo se puede obtener de FRED usando la 3-Month Constant Maturity Treasury yield (debe ser la fecha de valuación, un único valor).</p></li>
+<li><p>“Construimos”&quot; la fecha de expiración y valuación, esto nos permite calcular el <span class="math inline">\(T\)</span> a través de: <span class="math inline">\(\frac{\text{expiración - valuación}}{365}\)</span>. La tasa libre de riesgo se puede obtener de FRED usando la 3-Month Constant Maturity Treasury
+yield (debe ser la fecha de valuación, un único valor).</p></li>
 <li><p>Para la volatilidad se puede usar la desviación estándar de los últimos 3 años multiplicado por 252, esto se hace para anualizarlo.</p></li>
 <li><p>Finalmente seleccionamos las que están cerca al <em>at the money</em> y usamos Black &amp; Scholes, por librería o bien la función que creamos.</p></li>
 </ol>
@@ -720,58 +752,58 @@ C</code></pre></div>
 <div id="parte-a" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Parte a</h3>
 <p>Imaginemos que es 31 de mayo del 2018 y queremos valorar las opciones call y put de <a href="https://www.oracle.com/index.html">Oracle</a> con vencimiento al 17 de Agosto del 2018. Para comenzar usamos la función <code>getOptionChain()</code> de la librería <code>quantmod</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">opciones &lt;-<span class="st"> </span><span class="kw">getOptionChain</span>(<span class="st">&quot;ORCL&quot;</span>,<span class="dt">Exp=</span><span class="st">&quot;2018-12-21&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">opciones &lt;-<span class="st"> </span><span class="kw">getOptionChain</span>(<span class="st">&quot;ORCL&quot;</span>,<span class="dt">Exp=</span><span class="st">&quot;2018-12-21&quot;</span>)
 
 calls &lt;-<span class="st"> </span>opciones<span class="op">$</span>calls[,<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>)] <span class="co"># Nos quedamos con las columnas del 1 al 2 y del 4 al 6.</span>
-puts  &lt;-<span class="st"> </span>opciones<span class="op">$</span>puts[,<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>)] <span class="co"># Nos quedamos con las columnas del 1 al 2 y del 4 al 6.</span></code></pre></div>
+puts  &lt;-<span class="st"> </span>opciones<span class="op">$</span>puts[,<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>)] <span class="co"># Nos quedamos con las columnas del 1 al 2 y del 4 al 6.</span></code></pre>
 </div>
 <div id="parte-b" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Parte b</h3>
 <p>Como debemos obtener el precio de cierre para el 31 de mayo del 2018 y a su vez el histórico de tres años para la volatilidad usamos:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Al 31 de mayo la valuación, 31 de mayo del 2015 fue domingo, por ende, usamos el viernes 29</span>
-<span class="kw">getSymbols</span>(<span class="st">&quot;ORCL&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2015-05-29&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-06-01&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Al 31 de mayo la valuación, 31 de mayo del 2015 fue domingo, por ende, usamos el viernes 29</span>
+<span class="kw">getSymbols</span>(<span class="st">&quot;ORCL&quot;</span>, <span class="dt">from =</span> <span class="st">&quot;2015-05-29&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-06-01&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;ORCL&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">orcl &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(ORCL) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># a data.frame </span>
+<pre class="sourceCode r"><code class="sourceCode r">orcl &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(ORCL) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># a data.frame </span>
 <span class="st">        </span><span class="kw">mutate</span>(<span class="dt">ret =</span> <span class="kw">log</span>(ORCL.Adjusted<span class="op">/</span><span class="kw">lag</span>(ORCL.Adjusted))) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># construimos el retorno</span>
 <span class="st">        </span><span class="kw">select</span>(ORCL.Adjusted,ret) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Seleccionamos el retorno y precio de ajuste</span>
 <span class="st">        </span><span class="kw">na.omit</span>() <span class="co"># por el NA que se produce del retorno</span>
 
 <span class="co"># extraemos el precio a la fecha que nos piden</span>
-precio &lt;-<span class="st"> </span><span class="kw">tail</span>(orcl<span class="op">$</span>ORCL.Adjusted,<span class="dv">1</span>)</code></pre></div>
+precio &lt;-<span class="st"> </span><span class="kw">tail</span>(orcl<span class="op">$</span>ORCL.Adjusted,<span class="dv">1</span>)</code></pre>
 </div>
 <div id="parte-c-y-d" class="section level3">
 <h3><span class="header-section-number">5.4.4</span> Parte c y d</h3>
 <p>Con la función <code>getSymbols</code> usamos la fuente de la FRED y extraemos la rf con <code>subset</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(<span class="st">&quot;DGS3MO&quot;</span>,<span class="dt">src =</span><span class="st">&quot;FRED&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-06-01&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getSymbols</span>(<span class="st">&quot;DGS3MO&quot;</span>,<span class="dt">src =</span><span class="st">&quot;FRED&quot;</span>, <span class="dt">to =</span> <span class="st">&quot;2018-06-01&quot;</span>, <span class="dt">periodicity =</span> <span class="st">&quot;daily&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;DGS3MO&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">subset</span>(DGS3MO[<span class="st">&quot;2018-05-31&quot;</span>]))<span class="op">*</span><span class="fl">0.01</span> 
+<pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">subset</span>(DGS3MO[<span class="st">&quot;2018-05-31&quot;</span>]))<span class="op">*</span><span class="fl">0.01</span> 
 
 expiracion.date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2018-08-17&quot;</span>)
 valuacion.date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2018-06-01&quot;</span>)
-TTM &lt;-<span class="st"> </span><span class="kw">as.numeric</span>((expiracion.date<span class="op">-</span>valuacion.date)<span class="op">/</span><span class="dv">365</span>)</code></pre></div>
+TTM &lt;-<span class="st"> </span><span class="kw">as.numeric</span>((expiracion.date<span class="op">-</span>valuacion.date)<span class="op">/</span><span class="dv">365</span>)</code></pre>
 <p>Extraemos del objeto orcl y calculamos su desviación estándar, luego se multiplica por 252.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vol.hist &lt;-<span class="st"> </span><span class="kw">sd</span>(orcl<span class="op">$</span>ret)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">252</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">vol.hist &lt;-<span class="st"> </span><span class="kw">sd</span>(orcl<span class="op">$</span>ret)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">252</span>)</code></pre>
 </div>
 <div id="parte-e" class="section level3">
 <h3><span class="header-section-number">5.4.5</span> Parte e</h3>
 <p>Vemos el precio a la fecha la valuación y seleccionamos aquellas cercana a estar <em>at the money</em>, tanto put como call.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bs.call &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r">bs.call &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">           </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Strike <span class="op">==</span><span class="st"> </span><span class="dv">45</span> <span class="op">|</span><span class="st"> </span>Strike <span class="op">==</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">           </span><span class="kw">select</span>(Strike,Last,Bid,Ask)
 
 bs.put &lt;-<span class="st"> </span>puts <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">          </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Strike <span class="op">==</span><span class="st"> </span><span class="dv">45</span> <span class="op">|</span><span class="st"> </span>Strike <span class="op">==</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">          </span><span class="kw">select</span>(Strike,Last,Bid,Ask)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># call</span>
-<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
-<pre><code>## [1] 1.72</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
+<span class="st">          </span><span class="kw">select</span>(Strike,Last,Bid,Ask)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># call</span>
+<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
+<pre><code>## [1] 1.534</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># put</span>
-<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># put</span>
+<span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre></div>
-<pre><code>## [1] 3.259</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
+<pre><code>## [1] 3.446</code></pre>
 </div>
 </div>
 <div id="arbol-binomial" class="section level2">
@@ -789,32 +821,32 @@ bs.put &lt;-<span class="st"> </span>puts <span class="op">%&gt;%</span><span cl
 <h3><span class="header-section-number">5.5.1</span> Ejercicio</h3>
 <p>Considere una call europea a dos años con precio de strike de 52 en una acción cuyo precio es 50. Suponga que existen <em>two time steps</em> en un año, y en cada <em>time steps</em> el precio se mueve 30%. La tasa de interes libre de riesgo es 5%.</p>
 <p>La librería a usar será de nuevo <code>fOptions</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fOptions&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;fOptions&quot;</span>)</code></pre>
 </div>
 <div id="call-europea" class="section level3">
 <h3><span class="header-section-number">5.5.2</span> Call europea</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Europea </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Europea </span>
 CRRTree =<span class="st"> </span><span class="kw">BinomialTreeOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;ce&quot;</span>, <span class="dt">S =</span> <span class="dv">50</span>, <span class="dt">X =</span> <span class="dv">52</span>, <span class="dt">Time =</span> <span class="dv">2</span>, <span class="dt">r =</span> <span class="fl">0.05</span>, <span class="dt">b =</span> <span class="fl">0.05</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>, <span class="dt">n =</span> <span class="dv">2</span>)
-CRRTree</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BinomialTreePlot</span>(CRRTree, <span class="dt">dy =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>), <span class="dt">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;valores Opción&quot;) </span>
-<span class="st">title(main = &quot;</span>Arbol Binomial Opción&quot;)</code></pre></div>
+CRRTree</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BinomialTreePlot</span>(CRRTree, <span class="dt">dy =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>), <span class="dt">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;valores Opción&quot;) </span>
+<span class="st">title(main = &quot;</span>Arbol Binomial Opción&quot;)</code></pre>
 </div>
 <div id="call-europea-grafico" class="section level3">
 <h3><span class="header-section-number">5.5.3</span> Call europea gráfico</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-108-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-111-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="call-americana" class="section level3">
 <h3><span class="header-section-number">5.5.4</span> Call americana</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Americana</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Americana</span>
 CRRTree<span class="fl">.1</span> =<span class="st"> </span><span class="kw">BinomialTreeOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;ca&quot;</span>, <span class="dt">S =</span> <span class="dv">50</span>, <span class="dt">X =</span> <span class="dv">52</span>, <span class="dt">Time =</span> <span class="dv">2</span>, <span class="dt">r =</span> <span class="fl">0.05</span>, <span class="dt">b =</span> <span class="fl">0.05</span>, 
                                <span class="dt">sigma =</span> <span class="fl">0.3</span>, <span class="dt">n =</span> <span class="dv">2</span>)
-CRRTree<span class="fl">.1</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BinomialTreePlot</span>(CRRTree<span class="fl">.1</span>, <span class="dt">dy =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>), <span class="dt">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;valores Opción&quot;) </span>
-<span class="st">title(main = &quot;</span>Arbol Binomial Opción&quot;)</code></pre></div>
+CRRTree<span class="fl">.1</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BinomialTreePlot</span>(CRRTree<span class="fl">.1</span>, <span class="dt">dy =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>), <span class="dt">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;valores Opción&quot;) </span>
+<span class="st">title(main = &quot;</span>Arbol Binomial Opción&quot;)</code></pre>
 </div>
 <div id="call-americana-grafico" class="section level3">
 <h3><span class="header-section-number">5.5.5</span> Call americana gráfico</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-110-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-113-1.png" width="576" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -886,8 +918,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
