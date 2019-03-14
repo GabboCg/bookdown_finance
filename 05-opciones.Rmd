@@ -536,7 +536,7 @@ Imaginemos que es 31 de mayo del 2018 y queremos valorar las opciones call y put
 
 
 ```{r,eval=TRUE,echo=TRUE,message=FALSE}
-opciones <- getOptionChain("ORCL",Exp="2018-12-21")
+opciones <- getOptionChain("ORCL",Exp="2021-01-15")
 
 calls <- opciones$calls[,c(1:2,4:6)] # Nos quedamos con las columnas del 1 al 2 y del 4 al 6.
 puts  <- opciones$puts[,c(1:2,4:6)] # Nos quedamos con las columnas del 1 al 2 y del 4 al 6.

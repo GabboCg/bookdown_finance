@@ -1,0 +1,1926 @@
+--- 
+title: "Introducción a las finanzas quantitativas"
+subtitle: "Aplicaciones & ejemplos usando R"
+author: "Gabriel Cabrera G."
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+geometry: 'margin=1in'
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+monofont: "Source Code Pro"
+# sirve para el mono font https://gist.github.com/veggiemonk/43d81e1cbab06ed8e92a
+# https://www.howtoinstall.co/es/ubuntu/xenial/pandoc-citeproc para pandoc-citeproc
+monofontoptions: "Scale=0.7"
+graphics: yes # solucinoa el problea que tengo con yihui template
+github-repo: rstudio/bookdown-demo
+description: "Esto es un apunte en proceso pensado en el curso Finanza I de Ingeniería Comercial de la Universidad de Chile"
+---
+
+```{r setup, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, formatR.indent = 2,
+  width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
+)
+
+if (!length(getOption('repos'))) options(repos = c(CRAN = 'https://cran.rstudio.com'))
+
+lapply(c('DT', 'citr', 'formatR', 'svglite'), function(pkg) {
+  if (system.file(package = pkg) == '') install.packages(pkg)
+})
+```
+
+# Prefacio {-}
+
+Este es un apunte en proceso pensado en el curso de Finanzas I de Ingeniería Comercial de la Universidad de Chile, las aplicaciones en R son pensados con un enfoque pedagógico y cualquier comentario o sugerencias son bienvenidas. 
+
+La información de la sesión de R cuando se compila este apunte es la siguiente:
+
+```{r}
+sessionInfo()
+```
+
+
+<!--chapter:end:index.Rmd-->
+
+# Sobre el Autor {-}
+
+Aún no hay mucho que decir, pero te invito a visitar mi [página web]() donde la mayoría del tiempo estoy publicando post sobre programación y/o data science con aplicaciones a las finanzas y al mundo real. 
+
+Me agradan las citas...
+
+> “It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.”
+>
+> Sir Arthur Conan Doyle
+
+<!--chapter:end:00-Author.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Introducción {#intro}
+
+Antes de comenzar tú viaje a través del lenguaje de programación R, necesitaras cuatro "herramientas" básicas para trabajar con este apunte, R (lenguaje), Rstudio(IDE^[*Integrated Development Environment*]), una megalibrería que contiene *R packages* llamada *tidyverse* y librerías extras para trabajar en finanzas^[Estas librerías las iremos cargando/utilizando a medida que avancemos en los capítulos].
+
+## R
+
+### Un poco de historia
+R es un lenguaje de programación creado por Ross Ihaka y Robert Gentleman del departamento de estadística de la universidad de Auckland en 1992 (Nueva Zelanda), teniendo su versión estable el 29 de Febrero del 2000. 
+
+### Los primeros pasos
+El primer paso es descargar R, para esto debes ir a CRAN^[Existe otra distribución de R por parte del area de *open source* de Microsoft , la ventaja de MRAN es que si bien funciona con CRAN, su objetivo va más orientado a computación en paralelo (paralleling computing)], *comprehensive R archive network*. CRAN esta compuesto por un conjunto de *mirror servers* distribuidos alrededor del mundo y se usa para compartir los *R packages*. Como recomendación no elegir un *mirror* lejano a tú posición geográfica, por ende, usa [https://cloud.r-project.org](https://cloud.r-project.org) que los seleccionará automáticamente.
+
+Como aún no instalas RStudio solo tendras el lenguaje, que puede ser ejecutado desde el *command Shell* o *prompt*, no obstante, esto es ineficiente desde el punto de vista que no tendrenmos todas las opciones que Rstudio nos entrega.
+
+```{r fig1, message=FALSE,out.width="33.3%", fig.align='center',fig.cap="logo de R",echo = FALSE}
+knitr::include_graphics("images/R_logo.png")
+```
+
+Si trabajas sin IDE veras algo como en la Figura \@ref(fig:fig2).
+
+```{r fig2, message=FALSE,out.width="50%", fig.align='center',fig.cap="R desde la terminal",echo = FALSE}
+knitr::include_graphics("images/r_propmt.png")
+```
+
+Las versiones de R cambian una vez al año, y de 2 a 3 veces con cambios pequeños, por eso es una buena idea que mantengas actualizada tu versión.
+
+## RStudio
+
+¿Qué es una IDE? IDE es el acrónimo de  *Integrated Development Environment (Entorno de Desarrollo Integrado)*. Esto quiere decir que RStudio es una aplicación que nos entrega herramientas para hacer más fácil el desarrollo de proyectos usando R y  sobre todo cuando estemos trabajando con datos.
+
+Para descargar e instalar Rstudio debes ir a [http//www.rstudio.com/download](http//www.rstudio.com/download) y seleccionar  *RStudio Desktop Open Source License* (gratuita) , cuando exista una actualización Rstudio te avisará. 
+
+Si quedó todo bien instalado, cuando abras Rstudio deberías ver algo así:
+
+```{r fig3, message=FALSE,out.width="50%", fig.align='center',fig.cap="Rstudio",echo = FALSE}
+knitr::include_graphics("images/rstudio.png")
+```
+
+> IMPORTANTE: Si te aparece algún error durante este proceso, lo más probabable es que sea por alguna configuración de tu sistema operativo. En ese caso, la mejor manera de buscar una solución es copiar el error que arroja R, pegarlo en tu motor de búsqueda favorito y ver cómo alguien que se enfrentó a eso antes lo resolvió.
+
+### Partes de RStudio
+
+¿Para qué sirven estos paneles? Comentemos primero el panel de abajo a la derecha. Si te fijas, el panel tiene varias ventanas:
+
+1. **Files** muestra el directorio (la carpeta) en la que te encuentras actualmente. En mi caso, no hay nada ahí porque por defecto RStudio me muestra el Escritorio (Desktop) y no tengo nada en él. Es posible que a ti te muestre otra carpeta (por ejemplo, Documentos).
+
+2. **Plots** es el lugar donde aparecerán los gráficos que vayas creando. No hemos hecho ninguno por ahora, así que este panel también está vacío.
+
+3. **Packages** muestra la lista de paquetes que tienes instalados en tu computador. Si recorres el panel verás que algunos tiene una marca al lado izquierdo. Eso quiere decir que el paquete está activo en ese momento (ya veremos cómo hacer eso). Solo los paquetes vinculados a R base se activan al abrir RStudio.
+
+4. **Help**, como su nombre lo indica, es la pestaña en la que podemos encontrar ayuda. Si buscamos el nombre de un paquete o de una función, RStudio nos remitirá a la documentación asociada.
+
+4. **Viewer** es el panel para ver contenido web generado por algún paquete de R (gráficos para la web o aplicaciones interactivas). Por el momento no lo utilizaremos.
+
+El panel de arriba a la derecha, por su parte, contiene el historial de funciones que hemos ejecutado (History), la opción para generar conexiones a bases de datos externas (Connections) y el Environment. Este último panel es muy importante y entender lo que nos muestra es fundamental para comprender cómo funciona R.
+
+## *Scripts*
+
+El script podemos decir que es un cuarto panel^[El tercer panel es la consola], en donde escribiras tus códigos que queremos que ejecute R, para crear un script debes:
+
+1. ir a `file > New File > R Script`
+2. Otra forma es un atajo de teclado, `control + shift + n`  (Linux/Windows) y `comando + shift + n`  (Mac OS).
+3. O bien ir a la barra superior de la ventana y seleccionar el tipo de archivo a trabajar.
+
+## Proyectos
+
+Una de las ventajas de RStudio es que permite crear "proyectos". Un projecto es un espacio o contexto de trabajo asociado a una carpeta en particular, en la que se guardan nuestro(s) script(s), archivos de datos, etc. Cuando creamos un proyecto en RStudio, se crea un tipo especial de archivo (.Rproj) que lo que hace es vincular todo lo que se encuentra dentro de esa carpeta. 
+
+###¿Por qué esto es útil? 
+
+Si parte de nuestro script, por ejemplo, implica abrir un archivo que está en la carpeta de nuestro proyecto, no necesito indicar en mi código toda la ruta del archivo: lo que hará RStudio será buscarlo en el entorno/carpeta del proyecto. Si movemos la carpeta a otro lugar de nuestro computador o la compartimos con otra persona, nuestro código seguirá funcionando, ya que el archivo .Rproj mantendrá todo unido. Si no creara un proyecto, tendría que indicar al inicio de mi script cuál es la ruta de la carpeta que ocuparé como espacio de trabajo. El problema de esa opción es que si muevo la carpeta o le cambio el nombre, tendría que volver a escribir la ruta para que todo funcione. Al crear un proyecto eso deja de ser una preocupación.
+
+###¿Cómo crear un projecto? 
+
+1. Puedes hacerlo desde el menú File > New Proyect.
+2. Lo primero que nos pregunta es si queremos crearlo en una carpeta nueva o en una ya existente. Elegiremos esta vez una carpeta nueva, así que seleccionaremos New Directory.
+3. La siguiente pregunta es qué tipo de proyecto queremos crear. En esta ocasión, elegiremos la primera: *New Project*.
+4. Finalmente, le damos un nombre al proyecto y decidimos en qué parte de nuestro computador queremos que viva la carpeta que lo contiene.
+5. Luego de apretar Create Project, RStudio se reinicia y se producen algunos cambios. El panel Files (abajo a la derecha) ahora nos muestra la carpeta de nuestro proyecto y el único archivo que hay en ella por ahora. Ese es el archivo mágico que mantiene unido todo lo que hay dentro de la carpeta. Cuando queramos volver a trabajar en nuestro proyecto, solo tenemos que abrir ese archivo.
+
+> IMPORTANTE:  RStudio ejecuta sesiones independientes de R para cada proyecto. Es decir, si tuvieras otro proyecto abierto te aparecería otro ícono, con su respectivo nombre. Esto nos permite trabajar en dos proyectos en paralelo sin que se nos mezclen los objetos del entorno, el código, los archivos, etc. Cada cosa en su lugar.
+
+
+## *Packages*
+
+Cuando instalamos R por primera vez en nuestro computador, lo que estamos instalando es lo que se conoce como "R Base", es decir, los elementos centrales del lenguaje de programación. Una de las ventajas de R es que se trata de un lenguaje extensible: la propia comunidad de usuarios puede desarrollar nuevas posibilidades para utilizarlo. La manera de compartir estos nuevos desarrollos es a través de "paquetes", que incluyen, entre otras cosas, código y datos. Una analogía que se suele utilizar para explicar esto es que R Base es un teléfono celular tal como viene de fábrica y los paquetes las apps que descargamos para que tenga más funcionalidades.
+
+Para usar las librerias ("packages") debemos usar el siguiente código:
+
+```r 
+# instala el package
+install.packages("acá va el package")
+
+# lo llama
+library("acá va el package")
+```
+
+### *tidyverse*
+
+**tidyverse** es un "megapaquete" que incluye otros paquetes en su interior. Todos los paquetes que conforman "el Tidyverse" comparten la misma visión sobre el trabajo con datos y la escritura de código. Viene a formar parte de la nueva forma de programar en R, cuyo enfoque es netamente en realizar Data Science. Algunas librerias relevantes son:
+
+1. ggplot2: Esta librería te permite realizar graficos avanzados.
+2. dplyr: Su objetivo es la manipulación de datos (filtrar, seleccionar, generar, renombrar,etc).
+3. magrittr: Contiene la denominada *pipe* ( %>% ), se explicará más adelante
+4. purrr: Para realizar iteraciones.
+5. readr: Para cargar datos en csv, lo importante que los transforma en tibble. 
+
+Para instalarlo basta escribir:
+
+```r 
+# instala el package
+install.packages("tidyverse")
+
+# lo llama
+library("tidyverse")
+```
+
+Si te vas a la pestaña de *Packages* verás que estan seleccionadas aquellas librerias que se encuentran en el tidyverse.
+
+\vspace{-27pt}
+
+## Ejemplo
+
+En este ejemplo vamos a trabajar con `gapminder`, un paquete que contiene una parte de los datos de Gapminder, una base de datos que incluye información mundial sobre población, expectativa de vida, PIB per cápita y otros. Su autor, Hans Rosling, ha hecho varias charlas [TED](https://www.ted.com/playlists/474/the_best_hans_rosling_talks_yo) que vale la pena mirar.
+
+Instalamos la librería 
+```r
+# instala el package
+install.packages("gapminder")
+```
+
+Cargamos tanto `gapminder` como `tidyverse` 
+```{r, message=FALSE} 
+# lo llama
+library("gapminder")
+library("tidyverse")
+```
+
+Calculamos el promedio de la expectativa de vida para los continentes en el 2007:
+
+```{r}
+world.data <- gapminder
+
+mean.lifeExp <- world.data %>% 
+                filter(year == 2007) %>% 
+                group_by(continent) %>%
+                summarize(mean(lifeExp))
+```
+
+```r
+mean.lifeExp
+```
+
+Lo visualizamos
+```{r, echo = FALSE}
+DT::datatable(mean.lifeExp) 
+```
+
+
+Construimos la base de datos y graficamos la evolución de la expectativa de vida para los países de America del Sur desde 1952 a 2007.
+```{r}
+world.data <- world.data %>% 
+              filter(country %in% c("Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela"))
+
+g1 <- ggplot(world.data) + geom_line(mapping = aes(year,lifeExp, colour= country), size = 1.2)
+g1 <- g1 + theme_bw() + labs(title = "Expectativa de vida para America del Sur", subtitle = "Desde 1952 a 2007", colour = "") 
+g1 <- g1 + xlab("Años") + ylab("Expectativa de vida")
+g1 <- g1 + theme(legend.position="bottom") 
+g1
+```
+
+Finalmente lo guardamos.
+```{r, message=FALSE}
+ggsave("Grafico.png")
+```
+
+<!--chapter:end:01-intro.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Quantmod  {#quantmod}
+
+
+> IMPORTATE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
+El paquete quantmod para R esta diseñado para la asistencia quantitativa de los traders en el desarrollo de sus estrategias y modelos financieros.
+
+## ¿Que es quantmod?
+
+Un entorno rápido, donde los operadores cuantitativos pueden explorar y construir modelos de negociación rápida y limpiamente. A través de la función getSymbols podemos extraer datos financieros desde varias fuentes: Google Finance, Yahoo Finance, Federal Reserve Bank of St. Louis FRED (más de 11,000 series !!!) y Oanda. Incluso desde fuentes propias: MySQL , R (Rdata) y Comma Separated Value files (csv).
+
+No es el paquete definitivo dado que se complementa con otros, tales como: TTR, zoo y xts. En lo que respecta al análisis técnico son las más usadas en el mercado y usan todas las propiedades que hacen al lenguaje R útil para realizar análisis de datos^[Proximamente incluire el tidyquant].
+
+## Obtención de Datos
+
+Para comenzar, como todo paquete en R se debe instalar
+
+```{r, message=FALSE, eval=FALSE}
+# Instalación package
+install.packages("quantmod")
+``` 
+
+Una vez que esté instalado, creamos nuestro script usando `ctrl/cmd + shift + n` y lo “llamamos” con
+
+```{r, message=FALSE}
+# Cargamos "quantmod"
+library("quantmod")
+```
+
+> HINT: con `ctrl + R` en windows/Linux y `cmd + R` en MAC OS agregamos más rapido comentarios
+(sección) en Rstudio.
+
+**quantmod** provee una función para descargar datos desde fuentes externas. Esta función se llama `getSymbols`, para mayor información escribir en la linea de comandos `?getSymbols`^[No solo funcióna con `getSymbols`, si no que con todas las funciones de distintas librerias, basta con ante poner `?` y luego el nombre la función]. Por defecto, se crea un objeto en el workspace (*Global Environment*) con el nombre del ticker/nemotécnico seleccionado. Imaginemos por un momento  que necesitamos analizar el S&P 500 desde el 2010 hasta la fecha con periocidad diaria. Lo primero que debemos hacer es pensar desde que fuente vamos a descargar los datos, como es un índice accionario se recomienda usar *yahoo finance*, luego buscar el nemotécnico, en este caso es "^GSPC".
+
+```{r, message=FALSE}
+getSymbols("^GSPC", src = "yahoo", from = "2010-01-01", to = "2010-07-30", periodicity = "daily")
+```
+
+### ¿Qué hizo la función `getSymbols`?
+
+La función `getSymbols` se construye basicamente de cinco opciones^[Por el momento solo trabajaremos con estas opciones, exiten más.]:
+
+1. El ticker/nemotécnico, eg. ^GSPC.
+2. `src`, que es la abreviación de "source", eg. yahoo, FRED...
+3. `from`, es el inicio de la fecha a descargar, tener presente que se incluye la fecha en nuestros datos.
+4. `to`, es el final del periodo para los datos, este no se incluye.
+5. `periodicity`, es la periodicidad de los datos, eg. daily, monthly o yearly, solo algunos datos se ajustan a las tres periodicidades.
+
+En el ejemplo anterior se descargo desde yahoo los datos del S&P 500 desde Enero del 2010 hasta el viernes 27 de Julio del 2018 con periodicidad diaria, construyendo un objeto en formato **xts** cuyo nombre es GSPC.
+
+```{r, echo = FALSE}
+DT::datatable(GSPC) 
+```
+
+## Graficando con `chartSeries`
+
+Aún no introducimos la librería `ggplot2`, sin embargo, `quantmod` también nos permite graficar.
+
+
+### `chartSeries`  
+
+Para graficar basta con escribir el nombre del objeto con clase (`class`) xts, en nuestro caso es `GSPC` que representa al Standard and Poor 500. Si escribimos `TA = NULL`, `charSeries` no mostrará el volume^[`TA` proviene de *Technical Analysis*]
+
+```{r, out.width="75%", fig.align='center', fig.cap="Gráfico con chartSeries con TA = NULL"}
+chartSeries(GSPC, TA=NULL)
+```
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Gráfico con chartSeries sin TA = NULL"}
+chartSeries(GSPC, TA=NULL)
+```
+
+Pero cuando las series son muy largas, podemos ver tendencias pero dificulta ver cambios
+importantes a nivel de análisis técnico.
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Los últimos 3 meses de GSPC"}
+chartSeries(GSPC, subset = "last 3 months")
+```
+
+Con el código anterior nos enfocamos solo en los tres meses anteriores.
+
+## Graficando con `ggplot2`
+
+Si bien `chartSeries` es una alternativa a `plot` o `plotly`, este no nos permite realizar gráficos que se adapten a nuestras necesidades. ¿Qué pasa si queremos graficar retornos o retornos acumulados? la opción por exelencia es `ggplot2`.
+
+### Breve introducción a `ggplot2`
+
+Todo ggplot2 plot tiene tres componentes:
+
+1. Datos
+2. Un conjunto de aesthetic mappings entre variables y propiedades de visualización.
+3. Al menos una layer que describe la observación, son usualmente creadas con la función geom_*
+
+```{r,eval=TRUE, echo=TRUE}
+library(ggplot2)
+```
+
+A continuación usaremos la base que viene pre cargada con R cuando lo instalamos, que es `cars`^[Esta base es muy común en los software estadísticos y presenta datos de autos.]
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Ejemplo 1 usando ggplot2"}
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+```
+
+Esto produce el scatterplot definido como:
+
+1. Datos: mpg
+2. Aesthetic mapping: tamaño del motor en la posición x, gasolina en la posición y.
+3. Layer: puntos.
+
+### Color, tamaño, forma y otros atributos del *aesthetic*
+
+Se debe usar otro aesthetics como `colour`, `shape` y `size` (ggplot acepta los nombres americanos como británicos)
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Ejemplo 2 usando ggplot2"}
+ggplot(mpg, aes(displ, cty, colour = class)) +
+  geom_point() 
+```
+
+- Como se puede ver, se creo una guía con los valores, leyenda, así podemos "leer" el gráfico.
+- Si se quiere aesthetic para valores fijos, sin scaling: 
+
+```{r, out.width="75%", fig.align='center', fig.cap = "Ejemplo 3 usando ggplot2"}
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
+ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+```
+
+Ejercicios:
+
+```r
+aes(displ, hwy, colour = class)
+aes(displ, hwy, shape = drv)
+aes(displ, hwy, size = cyl)
+```
+- Se recomienda usar `colour` y `shape` con variables categóricas.  
+- Mientras que size funciona bien con variables continuas.
+
+### S&P 500 con `ggplot2`
+
+```{r, eval = TRUE, echo = TRUE}
+gspc <- as.data.frame(GSPC)
+```
+
+
+```{r, eval = TRUE, echo = TRUE, out.width="75%", fig.align='center', fig.cap = "Standard and Poor 500 usando ggplot2"}
+g1 <- ggplot(gspc) + geom_line(mapping = aes(index(gspc),GSPC.Adjusted))
+g1 <- g1 + labs(title = "S&P 500", subtitle = "Desde Enero 2010 a 2018") + xlab("Fecha") + ylab("")
+g1 <- g1 + theme_bw()
+g1
+```
+
+
+## Multiples Datos
+
+A continuación trabajaremos con las acciones de Oracle, Nvidia, IBM y AMD, comenzamos con crear un objeto con los nombres de los tickers
+
+```{r, eval=TRUE, eval = TRUE}
+tickers <- c("ORCL","AMD","IBM","NVDA")
+```
+
+descargamos los datos con las características requeridas, que son las mismas que usamos anteriormente con S&P 500
+
+```{r, eval=TRUE, eval = TRUE}
+getSymbols(tickers, src = "yahoo", from = "2010-01-01", to = "2018-07-30", periodicity = "daily")
+```
+
+Acá deben tener mucha atención:
+
+```{r, eval=TRUE, eval = TRUE}
+list <- lapply(tickers, function(x) Cl(get(x)))
+precio.cierre <- do.call(merge,list)
+```
+
+### Retornos
+
+La formula para calcular (log) retornos es
+
+$$
+r_t = log(1 + R_t) = log(\frac{P_t}{P_{t-1}}) = p_t - p_{t-1}
+$$
+donde $p_t = log(P_t)$ es llamado "log price".
+
+Ahora pasamos a construir el retorno.
+
+```{r, eval = TRUE, echo = TRUE}
+retornos <- data.frame(apply(precio.cierre, 2, function(x) Delt(x, type = "log")),
+                       fecha = index(precio.cierre)) %>%
+            rename(orcl = ORCL.Close, amd = AMD.Close, ibm = IBM.Close, nvda = NVDA.Close) %>% 
+            na.omit() 
+```
+
+### Retornos Acumulados 
+
+Si graficamos los retornos no será muy descriptivo, una forma es trabajar con su acumulado. Con la misma lógica usamos la función `cumsum()`. 
+
+```{r}
+acumulados <- data.frame(apply(retornos[1:4], 2, function(x) cumsum(x)), fecha = index(precio.cierre[-1]))
+```
+
+#### Gráfico retornos acumulados
+
+```{r, eval=TRUE, echo = TRUE, warning=FALSE, message=FALSE}
+library("reshape2")
+```
+
+
+```{r, eval=TRUE, echo = TRUE}
+reshape <- melt(acumulados, id.vars = "fecha")
+```
+
+```{r, eval = TRUE, echo = TRUE, out.width="75%", fig.align='center', fig.cap = "Retornos Acumulados de los tickers"}
+g2 <- ggplot(reshape) + geom_line(mapping = aes(fecha,value, color = variable))
+g2 <- g2 + labs(title = "Retornos Acumulados", subtitle = "Oracle, AMD, IBM y Nvidia")
+g2 <- g2 + theme_bw() + xlab("Fecha") + ylab("Retornos Acumulados")
+g2 <- g2 + scale_color_manual("Tickers", values = c("red","blue","green","orange"))
+g2 <- g2 + theme(legend.position = "bottom")
+g2
+```
+
+
+## Estadística Descriptiva
+
+Existe muchas formas de obtener la estadística descriptiva en R, un librería es `fBasics`, la que a su vez contiene test de normalidad.
+
+```r
+library("fBasics")
+```
+
+```r
+summary <- basicStats(retornos[1:4])[c("Mean", "Stdev", "Median", "Minimum", "Variance",
+                                       "Maximum", "nobs","Skewness","Kurtosis"),]
+```
+
+
+## Ratio de Sharpe 
+
+EL ratio de Sharpe es una medida de desempeño para portafolios, el que se define como
+
+$$
+SR = \frac{E(R_i) - r_f}{\sigma_i}
+$$
+
+Donde $E(R_i) = \mu_i$ es el retorno del portafolio $i$, $r_f$ la tasa libre de riesgo y $\sigma_i$ la desviaciòn estandar del portafolio $i$. Si asumimos como ejercicio que no diversificamos y "construimos" cuatro portafolios con el 100% es invertido en cada uno de los activos. 
+
+Para realizar el cálculo del ratio de Sharpe (SR) para Oracle
+
+```r
+SR_orcl <- (mean(retornos$orcl) - 0.0000 )/sd(retornos$orcl)
+```
+
+con `mean(retornos$orcl)` vamos a obtener el promedio de la primera columna del objeto `retornos` que es Oracle (en el `data.frame` la columna se llama orcl, si tuviese otro nombre como por ejemplo `perrito`, entonces hubiese sido `mean(retornos$perrito)`), si quisieramos AMD debería ser `amd` y asì sucesivamente. El 0.0000 sería la tasa libre de riesgo que la asumimos mensual y `sd(retornos[1])` nos calcula la desviación estandar. Dado que poseemos 4 activos con sus respectivos retornos, deberiamos construir cuatro objetos que partan con `SR`. 
+
+## Test de JarqueBera 
+
+El test de jarque-bera  usa los coeficientes de la  *skewness* y *kurtosis* de la muestra y se usa para testar normalidad. Otros test comunes son el de Anderson–Darling, Cramér–von Mises, y Kolmogorov–Smirnov.
+
+En resumen compara que la *skewness* sea 0 y la *kurtosis* sea 3 bajo normalidad.
+
+$$
+JB = n{\widehat{Sk}^2 /6 + (\widehat{KUr} - 3)^2 /24}
+$$
+
+El test se encuentra en varias librerías, una de ellas es `fBasics` que deberíamos tener instalada y cargada. Para obtener los resultados del test para Oracle 
+
+```r
+jarqueberaTest(retornos$orcl)
+```
+
+Para los demàs activos hay que solo cambiar por el nombre de la columna correspondiente.
+
+## Recursos del capítulo
+
+[https://www.dropbox.com/s/mie1ap3hbil8p2i/beamer_t1.pdf?dl=1](Presentación)
+
+
+
+
+
+
+<!--chapter:end:02-quantmod.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Introducción a teoría de portafolio {#portafolio}
+
+> IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
+## Librería IntroCompFinR
+
+Para la teoría de portfolio vamos a utilzar la librería IntroCompFinR (**Intro** to **Comp**utational **Fin**ance in **R**) creado por el profesor Eric Zivot. 
+
+1. Debemos instalar primero las librerías que utiliza IntroCompFinR:
+
+```r 
+if(!require("pacman")) install.packages("pacman")
+p_load("PerformanceAnalytics","quadprog","xts")
+```
+2. Ya instaladas las dependencias, descargamos IntroCompFinR :
+
+```r 
+install.packages("IntroCompFinR", repos="http://R-Forge.R-project.org")
+```
+
+### Funciones útiles de IntroCompFinR 
+
+ Funciones            | Descripciones                                                |
+|---------------------|--------------------------------------------------------------|
+| getPortfolio        | Crea un portafolio (objeto)                                  |
+| globalMin.portfolio | Computa el portafolio de mímina varianza                     |
+| efficient.portfolio | Computa el portafolio de mímina varianza sujeto a un retorno |
+| tangency.portfolio  | Computa el portafolio tangente                               |
+| efficient.frontier  | Computa la frontera eficiente                                |
+
+## Cargando la librería y la base de datos
+
+Una vez la instalada la librería, procedemos a cargarla en conjunto con aquellas que utilizaremos en esta ayudantía:
+
+```{r chunk3, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+if(!require("pacman")) install.packages("pacman")
+p_load("IntroCompFinR","readxl","tidyverse")
+```
+
+Como ya está cargado `readxl` cargamos el archivo **stocks.xlsx**, que ya posee los retornos^[si quieren replicarlo vean los videos].
+
+```{r chunk4, eval=TRUE, echo = TRUE}
+# acá están los retornos ya calculados, para replicarlos vean el apunte
+stocks <- read_xlsx("datasets/stocks.xlsx")
+```
+
+Considerando tres activos riesgosos (Starbucks, Nordstrom y Microsoft), definimos un vector columna $3x1$ el que tendrá los retornos y los pesos:
+
+$$
+\mathbf{R} = 
+\begin{pmatrix}
+    R_{a}  \\
+    R_{b}  \\
+    R_{c} 
+\end{pmatrix}
+,
+\mathbf{x} =
+\begin{pmatrix}
+    x_{a} \\
+    x_{b} \\
+    x_{c}
+\end{pmatrix}
+$$
+
+El vector de retornos esperados es:
+
+$$
+E[\mathbf{R}] = E 
+\begin{bmatrix} 
+\begin{pmatrix}
+    R_{a}  \\
+    R_{b}  \\
+    R_{c} 
+\end{pmatrix}
+\end{bmatrix}
+    = 
+\begin{pmatrix}
+  E[R_{a}]  \\
+  E[R_{b}]  \\
+  E[R_{c}] 
+\end{pmatrix}
+    =
+\begin{pmatrix}
+    \mu_{a}  \\
+    \mu_{b}  \\
+    \mu_{c} 
+\end{pmatrix}
+    =
+\mathbf{\mu}
+$$
+
+La matriz $3x3$ de varianza y covarianza de los retornos es:
+
+$$
+var[\mathbf{R}] = 
+\begin{pmatrix}
+    \sigma^2_{a} & \sigma_{ab}  & \sigma_{ac} \\
+    \sigma_{ab}  & \sigma^2_{b} & \sigma_{bc} \\
+    \sigma_{ac}  & \sigma_{bc}  &  \sigma^2_{c}  
+\end{pmatrix}
+    =
+\Sigma
+$$
+
+Notar que la matriz de covarianza  es simétrica ($\Sigma = \Sigma^{'}$).
+
+Para construir las matrices anteriores en R:
+
+```{r chunk5, echo=TRUE, eval=TRUE, message=FALSE}
+# Promedio
+mean <- apply(stocks[2:4], 2 , function(x) mean(x)) 
+# Desviación Estandar
+sd   <- apply(stocks[2:4], 2 , function(x) sd(x))
+# Covarianza
+cov  <- cov(stocks[2:4])   
+```
+
+
+
+
+
+<!--chapter:end:03-portafolio.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+  df_print: kable
+---
+
+# Renta Fija {#bonos}
+
+> IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
+```{r, eval = TRUE, echo = TRUE, message=FALSE, warning=FALSE}
+if(!require("pacman")) install.packages("pacman")
+p_load("tidyverse", "quantmod")
+```
+
+
+## Precio de un Bono
+
+El precio de un bono se calcula como:
+
+$$
+P_{B} = \sum_{t=1}^{T} \frac{C}{(1+r)^t} + \frac{\text{ValorNominal}}{(1+r)^t}
+$$
+
+Donde:
+
+* $P_B$: Precio del Bono
+* $C_t$: Pago interéses o cupones
+* $T$  : Números de períodos o madurez
+* $r$  : Tasa de descuento o yield-to-maturity semi-anual
+
+Consideremos el siguiente ejercicio: 
+
+Calcular el precio de un bono con pago de cupón semestral, Madurez 25 años, Tasa cupón 6.5%, Yield semi-anual de 6.9% y Valor nominal de 100.
+
+Para desarrollar el ejercicio, debemos construir por "parte"" los componentes de nuestro bono.
+
+1. Construimos tanto la tasa cupón como la *Yield semi-anual*.
+
+```{r}
+tc <- 0.065
+y  <- 0.069
+```
+2. Construimos un vector con los valores de los cupones más el principal
+
+
+```{r}
+pago <- c(rep(tc*100/2,49),(100 + tc*100/2))
+```
+
+
+tanto ``tc``, ``r`` y ``pago`` se encontraran en *Values* del *global environment*, en tipo ``numeric``. ``c`` es una función generica para crear vectores, ``rep`` hace una repetición de ``tc*100/2`` 49 veces y el numero 50, es igual al principal más ``tc*100/2``. Recordar que como es semi-anual se divide por 2 el valor nominal de 100.
+
+3. Para poder trabajar con nuestra base de datos, transformamos nuestro vector ``pago`` que está en forma ``numeric`` a ``data frame``. 
+
+
+```{r}
+pago <- as.data.frame(pago)
+```
+
+
+Ahora existe un objeto con una estructura de datos ``data frame`` en nuestro global environment. Nuestro nuevo objeto ``pago`` se podría haber llamado de cualquier forma.
+
+## Dos formas de hacer lo mismo
+
+Ya construido nuestro objeto ``pago`` veremos que en **R** existen muchas formas de hacer lo mismo:
+
+1. Al principio del capítulo cargamos la libreria ``tidyverse``, está nos permitirá trabajar con un "megapaquete" que incluye otros paquetes en su interior (ggplot2, dplyr, magittr, entre otros). Todos los paquetes que conforman "el Tidyverse" comparten la misma visión sobre el trabajo con datos y la escritura de código. Si vamos a la pestaña packages y escribimos ``dplyr`` veremos que está activo, pero nunca lo "llamamos", esto se debe a ``tidyverse`` lo hizo por nosotros.
+
+
+```{r, eval = TRUE, echo = TRUE}
+pago1 <- pago %>% 
+         mutate(t1 = as.numeric(index(pago)),factor_desc = 1/(1+y/2)^(t1),
+                val_present = pago*factor_desc) %>% 
+         summarise(sum(val_present)) %>% 
+         rename(`Precio Bono` = `sum(val_present)`)
+
+pago1
+```
+
+
+El precio del bono es `r pago1`.
+
+2. La otra forma es: 
+
+```{r, eval =TRUE, echi = TRUE, message=FALSE}
+# replicamos el objeto
+pago2 <- pago
+
+pago2$t2 <- as.numeric(rownames(pago2))
+
+# Calculamos el factor de descuento
+pago2$factor_desc <- 1 / (1 + y/2)^(pago2$t2)
+# Calculamos el valor presente
+pago2$val_present <-  pago2$factor_desc*pago2$pago
+# Calculamos el precio
+sum(pago2$val_present)
+```
+
+
+Como es de esperarse obtenemos el mismo precio del bono, `r sum(pago2$val_present)`.
+
+## Funciones 
+
+Dominar por completo las funciones en R lleva practica y dedicación, no obstante, la dificultad que utilizaremos en este capítulo es baja y es un buen ejemplo practico para comenzar.
+
+Toda función en R, tiene tres partes.
+
+1. El `body()`, el código dentro de la función.
+2. El `formals()`, la lista de argumentos que controlan como puedes llamar la función.
+3. El `environment()`, el "mapa" de la locación de las variables de la función.
+
+A continuación vamos a crear un función que permita calcular el cuadrado de cualquier número:
+
+```{r}
+
+f <- function(x){
+    x^2
+}
+
+```
+
+Para obtener el cuadrado de 2 y de 4: 
+
+```{r}
+f(2)
+
+f(4)
+```
+
+En el ejemplo anterior el `formals()` de `f`:
+
+```{r}
+formals(f)
+```
+
+el `body()` de `f`: 
+
+```{r}
+body(f)
+```
+
+y el `environment()` de `f`:
+
+```{r}
+environment(f)
+```
+
+Ya visto una breve introducción a funciones en R, procedemos a construir una función  que nos permitirá valorizar cualquier bono que **pague cupones iguales**:
+
+```{r, eval = TRUE, echo = TRUE}
+# p: valor nominal; tc: tasa cupón; t: madurez; y: yield to maturity
+precio.bono <- function(p,tc,t,y){
+  pago   <- c(rep(tc*p, t - 1),p*(1 + tc))
+  pago   <- as.data.frame(pago)
+  pago$t <- as.numeric(rownames(pago))
+  pago$factor_desc <- 1 / (1 + y)^(pago$t)
+  pago$valor_prese <- pago$factor_desc*pago$pago
+  sum(pago$valor_prese)
+}
+```
+
+```{r, eval = TRUE, echo = TRUE}
+precio.bono(100,0.065/2,50,0.069/2)
+```
+
+Usando el mismo ejemplo de la sección anterior, obtenermos un precio igual a `r precio.bono(100,0.065/2,50,0.069/2)`.
+
+## Relación precio del Bono y Yield
+
+### Valorización
+
+Ahora utilizando la función ``precio.bono`` valorizaremos un bono con las siguientes características:
+
+* Principal : 100
+* Tasa Cupón: 5%
+* Madurez: 10 años
+* Yield: 4.29%
+
+```{r, eval = TRUE, echo = TRUE}
+# Valoramos el siguiente Bono
+precio.bono(p = 100, tc = 0.05, t = 10, y = 0.0429)
+```
+
+### Construcción yields
+
+Se contruirá una secuencia de yields:
+
+```{r, eval = TRUE, echo = TRUE}
+# Cosntruimos yields 
+yields <- seq(0.02, 0.4, 0.01)
+```
+
+La función ``seq`` generá una secuencia. En este caso parte del 0.02 hasta el 0.4 pero con intervalos de 0.01.
+
+```{r, eval = TRUE, echo = TRUE}
+# Convertimos yields a data frame como antes 
+yields <- as.data.frame(yields)
+```
+
+### Loops 
+
+```{r, eval = TRUE, echo = TRUE}
+# Calaculamos el precio del bono para distintas yields
+for (i in 1:nrow(yields)) {
+  yields$precio[i] <- precio.bono(100, 0.10, 20, yields$yields[i])  
+}
+```
+### Graficando 
+
+Una manera de visualizar datos es usar ggplot2, se recomienda que añadan por parte lo que desean en su gráfico.
+
+```{r, eval = TRUE, echo = TRUE, fig.cap = "Relación Bono vs Yield", fig.align='center'}
+# Graficamos con ggplot2
+g1 <- ggplot(data = yields,aes(x = yields*100, y = precio)) + geom_line(size = 1.5, color = "red") 
+g1 <- g1 + geom_point(size = 3, color = "red")
+g1 <- g1 + ggtitle("Relación inversa:", subtitle = "Precio del Bono vs Yield")
+g1 <- g1 + xlab("Yield (%)") + ylab("Precio del bono") 
+g1 <- g1 + geom_ribbon(aes(ymin = 0, ymax = pmax(precio,0)), fill="pink", col="red", alpha=0.5) 
+g1 <- g1 + theme_bw() 
+g1 <- g1 + theme(panel.border = element_rect(colour = "black", fill = NA, size = .5),
+                 panel.grid.major = element_line(colour = "#d3d3d3"))    
+g1
+```
+
+```r
+# Guarmados gráfico
+ggsave("retorno-yield.png",width = 8.5, height = 4.5, dpi = 300)
+```
+
+## Trabajando con yields reales
+
+quantmod es uno de las librerías más ocupadas en R para extraer datos financieros, te permite graficar, realizar análisis técnico, calcular retornos (``Delt(x)``), etc. Aunque las series son descargadas con estructura xts, la podemos transformar a data frame. A continuación descargaremos la yield de los bonos del tesoro de Estados Unidos a 10 años:
+
+```{r, eval = TRUE, echo = TRUE, message= FALSE}
+t10yr <- getSymbols(Symbols = "DGS10", src = "FRED", auto.assign = FALSE)
+
+t10yr <- subset(t10yr["2000-01-01/2018-04-17"])
+```
+
+Con la función `subset` extramos una parte de los datos, especificamente desde 2000-01-01 hasta 2018-04-17. Luego graficamos usando la función `chartSeries` de `quantmod`. Tener cuidado con la función, dado que solo funciona con extensión xts.
+
+```{r, eval = TRUE, echo = TRUE, fig.cap = "yield del tesoro de los Estados Unidos con chartSeries", fig.align = "center"}
+# Grafico con chartSeries de quantmod solo funciona con xts
+chartSeries(t10yr,  theme = "white")
+```
+
+En caso que se quiera graficar usando `ggplot2`:
+
+```{r, eval = TRUE, echo = TRUE, fig.cap = "yield del tesoro de los Estados Unidos con ggplot2", fig.align = "center"}
+t10yr.df <- as.data.frame(t10yr)
+
+t10yr.df <- t10yr.df %>% 
+            mutate(fecha = as.Date(rownames(t10yr.df))) %>% 
+            na.omit()
+
+g3 <- ggplot(data = t10yr.df,aes(x = fecha , y = DGS10)) + geom_line(size = 1, color = "green")
+g3 <- g3 + ggtitle("10-Year US Treasury Yields", subtitle = "Desde 2000-01-01 hasta 2018-04-17")
+g3 <- g3 + ylab("Fecha") +xlab("Yield(%)") 
+g3 <- g3 + theme_bw() + theme(panel.border = element_rect(colour = "black", fill = NA, size = .5),
+                              panel.grid.major = element_line(colour = "#d3d3d3"))
+g3
+```
+
+```r
+# Guarmados gráfico
+ggsave("treasury-yields.png",width = 8.5, height = 4.5, dpi = 300)
+```
+
+## Duración y Convexidad de un Bono
+
+### Extración de la yield
+
+La función `subset` permite extraer una parte de tu base según un criterio como vimos con anterioridad. En el código presentado a continuación, extraemos un valor de la yield para una fecha en especifico, 2017-03-03 y luego la dividimos por 100.
+
+```{r, eval = TRUE, echo = TRUE}
+# Extraemos un valor en específico
+t10yr_yield <- t10yr.df %>% 
+               subset(fecha == "2017-03-03") 
+
+t10yr_yield <- as.numeric(t10yr_yield$DGS10)*0.01  
+``` 
+
+### Duración (Bono Bullet o Americano)
+
+Existen dos Duraciones, la de Macaulay y modificada (o de Hicks), las que miden sensibilidad del precio ante cambios de la yield. Dos bonos con la misma duración tendrá el mismo cambio en precio estimado.
+
+**Macaulay**:
+
+$$
+\text{Duracion de Macaulay} =\bigg[ \frac{1 + y}{y} - \frac{1+y + [n \cdot (c - y)]}{[ c\cdot((1+y)^n - 1)]+y} \bigg]
+$$
+
+**Modificada**:
+
+$$
+\text{Duracion Modificada} = \text{Duracion de Macaulay}/(1+y)
+$$
+**Aproximación Duración Modificada**:
+
+$$
+Aprox.Dur.Mod.= \frac{MV_{-}-MV_{+}}{2 \cdot \Delta y \cdot MV_{0}}
+$$
+
+
+#### Duración Macaulay 
+
+Como ya presentamos la formula de la duración de Macaulay, la construimos como una función.
+
+```{r, eval = TRUE, echo = TRUE}
+# duracion de Macaulay
+macaulay <- function(y,n,c,t,T){
+         mac <- (1 + y)/y - (1+y+(n*(c-y)))/(c*((1+y)^n -1) + y)
+         print(mac)
+} 
+```
+
+Usandola con la yield extraida:
+
+```{r, eval = TRUE, echo = TRUE}
+macaulay <- macaulay(t10yr_yield,10,0.03)
+```
+
+#### Duración Modificada
+
+La aplicación de la duración modificada es directa.
+
+```{r, eval = TRUE, echo = TRUE}
+# duración modificada
+modificada <- macaulay/(1+t10yr_yield)
+modificada 
+```
+
+#### Aproximación Duración Modificada
+
+Una aproximación a la  duración Modificada se puede obtener como:
+
+```{r, eval = TRUE, echo = TRUE}
+# Para la aproximación de la duración modificada
+precio.arriba <- precio.bono(p = 100, tc = 0.03, t = 10, y = t10yr_yield + 0.01)
+precio        <- precio.bono(p = 100, tc = 0.03, t = 10, y = t10yr_yield)
+precio.abajo  <- precio.bono(p = 100, tc = 0.03, t = 10, y = t10yr_yield - 0.01)
+
+``` 
+
+Uniendo los objetos creados.
+
+```{r, eval = TRUE, echo = TRUE}
+# Calculo de aproximación duración modificada
+aprox.dur.mod <- (precio.abajo - precio.arriba)/(2 * precio * 0.01)
+aprox.dur.mod
+``` 
+
+Así obtenemos una diferencia de `r aprox.dur.mod -  modificada`.
+
+### Duración con librería
+
+Una librería útil para calcular las duraciones como la convexidad (en la siguiente secciòn) es `derivmkts`. Si no estamos usando la librería `pacman` recordar:
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("derivmkts")
+library("derivmkts")
+```
+
+
+```{r, eval = TRUE, echo = TRUE}
+# Con librerias
+p_load("derivmkts")
+
+# Duración moficada 
+duration(precio, 3, 10, 100, 1, modified = TRUE)
+
+# Duración Macaulay
+duration(precio, 3, 10, 100, 1, modified = FALSE)
+``` 
+
+Si escribimos `modified = TRUE`, la función `duration` computa la duración modificada, por otro lado, si `modified = FALSE` obtenemos la duración de Macaulay. Losa valores son los mismo obtenidos sin librería.
+
+### Convexidad
+
+La convexidad es la segunda derivada de la curva de rendimiento y es màs precisa que la duración cuando el cambio de la *yield* es màs "grande". Esto es porque la duración es la línea tangente en el punto calculado de la curva de rendimientos, el problema es que a medida que nos alejamos por la curva de rendimientos la distancia entre la curva y esa línea calculada se vuelve cada vez más grande.
+
+
+$$
+\text{Convexidad} = \frac{1}{P \times (1+y)^2} \sum_{t=1}^{T} \bigg[ \frac{CF_{t}}{(1 + y)^t } (t^2 + t) \bigg]
+$$
+
+Donde: 
+
+* $P$ : Precio Bono.
+* $y$ : *yield to maturity*.
+* $T$ : Madurez en años.
+* $CF_{t}$ : *Cash flow* en el tiempo $t$.
+
+
+```{r, eval = TRUE, echo = TRUE}
+# Calculamos medida de convexidad
+convexidad <- (precio.arriba + precio.abajo  - 2 * precio)/(precio * (0.01)^2)
+convexidad
+``` 
+
+#### Aproximación Convexidad
+
+La aproximación a la convexidad se puede obtener usando:
+
+$$
+\text{Aproximacion Convexidad} = \frac{MV_{-}+MV_{+}-2*MV_{0}}{MV_{0}*\Delta y^2}
+$$
+
+donde: 
+
+* $MV_{0}$ : Precio del Bono.
+* $MV_{-}$ : Precio del Bono cuando la tasa de interes aumenta.
+* $MV_{+}$ : Precio del Bono cuando la tasa de interes disminuye.
+* $\Delta y$ : Cambio en la tasa de interes.
+
+### Convexidad con librería:
+
+La función `convexity` de la librería `derivmkts` permite calcular la convexidad.
+
+```{r, eval = TRUE, echo = TRUE}
+convexity(precio, 3, 10, 100, 1)
+```
+
+## Efecto Dolar
+
+El efecto dolar no es más que la suma del cambio (*dollar change*) del precio del bono ante un cambio marginal de la *yield*, tanto para la duración como la convexidad.
+
+$$
+\text{Efecto Dolar} = \Delta P_{duration} + \Delta P_{convexity}  
+$$
+Donde: 
+
+$$
+\text{Duration Dollar Change} = -D \times \Delta y \times P = \Delta P_{duration}
+$$
+
+Donde:
+
+* $D$ : Duración.
+* $\Delta y$ : Cambio en la *yield*.
+* $P$ : Precio Bono.
+
+$$
+\text{Convexity Dollar Change} = 0.5 \times C \times (\Delta y)^2 \times P = \Delta P_{convexity}  
+$$
+Donde:
+
+* $C$ : Convexidad.
+* $(\Delta y)^2$ : Cambio en la *yield* al cuadrado.
+* $P$ : Precio Bono.
+
+## Ejercicio
+
+1. **Duración y Convexidad**
+
+Un portfolio manager de renta fija nacional ha invertido en un bono a cuatro años de ENERSIS. El instrumento cuenta con una tasa cupón anual de 3 % y un valor nominal de US $100 millones. Adicionalmente sabe que actualmente la tasa de descuento TIR anual es del 8 %. Debido a un aumento en el nivel de precios, el portfolio manager se encuentra preocupado por un eventual incremento en la tasa de interés que fija el Banco Central, por lo tanto recurre a Ud. para que lo asesore ante este posible escenario de alza de tasas.
+
+a. Calcule la duración y convexidad de este bono.
+
+Calculamos el precio del bono:
+
+```{r}
+precio <- precio.bono(p = 100, tc = 0.03, t = 4, y = 0.08)
+```
+
+La duración es: 
+
+```{r}
+duration_mac <- duration(precio, 3, 4, 100, 1, modified = FALSE)
+duration_mac
+```
+```{r}
+duration_mod <- duration(precio, 3, 4, 100, 1, modified = TRUE)
+duration_mod
+```
+
+La convexidad es: 
+
+```{r}
+convexity <- convexity(precio, 3, 4, 100, 1)
+```
+
+b. Utilizando la duración, calcule cuánto bajará de precio el bono ante un aumento de la TIR del 1 % y ante un aumento del 10%. Cómo cambia el resultado anterior si se utiliza convexidad.
+
+Si la variación es de 1 %, la regla de la duración entrega los siguientes resultados:
+
+```{r}
+-duration_mod*0.01
+```
+
+Si la variación es de 1 %, la regla de la convexidad entrega los siguientes
+resultados:
+
+```{r}
+-duration_mod*0.01 + 0.5*convexity*(0.01)^2
+```
+Se observa que para variaciones pequeñas ambas medidas entregan resultados muy similares
+
+Por otro lado, si la variación en la TIR es de 10 % la regla de duración arroja
+los siguientes resultados:
+
+```{r}
+-duration_mod*0.1
+```
+
+Mientras que para la convexidad se tiene lo siguiente:
+
+```{r}
+-duration_mod*0.1 + 0.5*convexity*(0.1)^2
+```
+
+Donde se observa que los resultados guardan una diferencia mucho mayor cuando se examina el efecto en el precio de una variación significativa en la tasa de interés
+
+## Apéndice 
+
+### Bono Frances
+
+El precio del Bono Frances es dístinto al Bono Bullet, dado que amortiza mediante una renta constante de $n$ cuotas.
+
+$$
+cuota =  C_{0} \times \frac{i \times (1+i)^{n}}{(1+i)^{n}-1}
+$$
+donde:
+
+* $C_{0}$ = Principañ
+* $n$ = Duración de la operación en meses, trimestres, semestres o años.
+* $i$ = Tasa de interés.
+
+En R la función sería:
+
+```{r, eval = TRUE, echo = TRUE}
+    precio_frances <- function(p,tc,t,y){
+      
+      cuota <- p*(tc*(1+tc)^(t))/((1+tc)^(t) - 1)
+      
+      pago <- c(rep(cuota, t))
+      pago <- as.data.frame(pago)
+      pago$t <- as.numeric(rownames(pago))
+      pago$factor_desc <- 1 / (1 + y)^(pago$t)
+      pago$valor_prese <- pago$factor_desc*pago$pago
+      sum(pago$valor_prese)
+    }
+```
+
+Para calcular la duración y convexidad cambia y no podemos usar la formula mostrada con anterioridad:
+
+1. Duración Bono Frances:
+
+$$
+D = \frac{\sum_{t=1}^{n} C_{t} t (1+r)^{-t}}{\sum_{t=1}^{n} C_{t} (1+r)^{-t}}
+$$
+
+```{r}
+    duracion_frances <- function(p,tc,t,y){
+      
+      cuota <- p*(tc*(1+tc)^(t))/((1+tc)^(t) - 1)
+      
+      pago <- c(rep(cuota, t))
+      pago <- as.data.frame(pago)
+      pago$t <- as.numeric(rownames(pago))
+      pago$arriba <- pago$pago*pago$t*(1+y)^{-pago$t}
+      pago$abajo <- pago$pago*(1+y)^{-pago$t}
+      duracion <- sum(pago$arriba)/sum(pago$abajo)
+      
+      print(duracion)
+    }
+```
+
+2. Convexidad Bono Frances:
+
+```{r}
+     convexidad_frances <- function(p,tc,t,y,precio){
+    
+       # rep returns a vector with value = p * r and times = ttm -1
+       cuota <- p*(tc*(1+tc)^(t))/((1+tc)^(t) - 1)
+      
+       pago <- c(rep(cuota, t))
+       pago <- as.data.frame(pago)
+       pago$t <- as.numeric(rownames(pago))
+       pago$factor_desc <- 1 / (1 + y)^(pago$t)
+       pago$valor_prese <- pago$factor_desc*pago$pago*((pago$t)^2 + pago$t)
+       print(sum(pago$valor_prese)*(1/(precio*(1+y)^2)))
+    }
+```
+
+
+## Recursos del capítulo 
+
+<!--chapter:end:04-Bonos.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Opciones, Derivados y Futuros {#options}
+
+> IMPORTANTE: Aún no está del todo listo el formato en pdf, por lo que recomiendo verlo online.
+
+```{r,echo = TRUE, results='hide', message= "FALSE", warning="FALSE"}
+if(!require("pacman")) install.packages("pacman")
+p_load("tidyverse","quantmod")
+```
+
+
+## Call & Put
+
+A modo de resumen, existen cuatro tipos de posiciones en las opciones:
+
+1. Posición larga en una opción de compra (call)
+2. Posición larga en una opción de venta (put)
+3. Posición corta en una opción de compra (call)
+4. Posición corta en una opción de venta (put)
+
+Simulamos nuestro $S_t$:
+
+```{r,echo=TRUE}
+# Valores para el ejemplo
+s <- seq(0,130,by=10) # Precio 
+```
+
+- Para la call usamos: v (precio de la call) = $5, precio de ejercicio (k) = 100.
+- Para la put usamos: v (precio de la put) = $7, precio de ejercicio (k) = 70. 
+
+### Posición Larga en Call: Payoff & Profit
+
+EL rendimiento proveniente de una opción larga en una opción de compra europea es:
+
+Payoff opción call larga
+ 
+$$
+\text{payoff} = \text{max}(S_t - k,0)
+$$
+
+Profit opción call larga
+$$
+\text{profit} = \text{payoff} - v*e^{-r*t}
+$$
+
+Construimos la función:
+
+```{r,echo = TRUE,eval=TRUE}
+long.callpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmax(0,s-k), "periodo" = s) %>% 
+    mutate("profit" = payoff - v*exp(-r*t))
+}
+```
+
+```{r,echo = TRUE}
+payoff.longcall <- long.callpayoff(s,100,5,0,0)
+```
+
+Gráfico posición larga en call: 
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g1 <- ggplot(payoff.longcall) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g1 <- g1 + theme_bw() + ggtitle("Payoff de una Option Call")
+g1 <- g1 + labs(subtitle = "Posicion Larga en Call")
+g1 <- g1 + scale_x_continuous(limits=c(70, 130)) + theme(panel.grid.major = element_blank(), panel.grid.minor =                 element_blank())
+g1
+```
+
+Para corroborar el gráfico ver la figura 9.1 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+
+Gráfico profit posición larga en call:
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g2 <- ggplot(payoff.longcall) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Profit")
+g2 <- g2 + theme_bw() + ggtitle("Profit de una Option Call") + labs(subtitle = "Posicion Larga en Call") 
+g2 <- g2 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g2 <- g2 + scale_x_continuous(breaks = round(seq(min(payoff.longcall$periodo), max(payoff.longcall$periodo), by =                   10),1),limits=c(70, 130)) + scale_y_continuous(breaks = round(seq(min(payoff.longcall$profit),                           max(payoff.longcall$profit), by = 10),1),limits = c(limits=c(-5, 30))) 
+g2 <- g2 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g2
+```
+
+### Posición larga en put: Payoff & Profit
+
+EL rendimiento para el tenedor de una opción larga en una opción de venta europea:
+
+Payoff opción put larga:
+$$
+\text{payoff} = \text{max}(k - S_t,0)
+$$
+
+
+Profit opción put larga:
+$$
+\text{profit} = \text{payoff} - v*e^{-r*t}
+$$
+
+
+Construimos la función:
+
+```{r,echo=TRUE,eval=TRUE}
+long.putpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmax(k-s,0), "periodo" = s) %>% 
+    mutate("profit" = payoff - v*exp(-r*t))
+}
+```
+
+```{r,echo=TRUE,eval=TRUE}
+payoff.longput <- long.putpayoff(s,70,7,0,0)
+```
+
+Gráfico posición larga en put
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g3 <- ggplot(payoff.longput) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g3 <- g3 + theme_bw() + ggtitle("Payoff de una Option Put") + labs(subtitle = "Posicion Larga en Put")
+g3 <- g3 + scale_x_continuous(limits=c(40, 100)) + scale_y_continuous(limits=c(0, 30))  + theme(panel.grid.major =                  element_blank(), panel.grid.minor = element_blank())
+g3
+```
+
+Para corroborar el gráfico ver la figura 9.2 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+Gráfico posición larga en put:
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g4 <- ggplot(payoff.longput) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Profit")
+g4 <- g4 + theme_bw() + ggtitle("Profit de una Option Put") + labs(subtitle = "Posicion Larga en Put") 
+g4 <- g4 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g4 <- g4 + scale_x_continuous(breaks = round(seq(min(payoff.longput$periodo), max(payoff.longput$periodo), by =                     10),1),limits=c(40, 100)) + scale_y_continuous(breaks = round(seq(min(payoff.longput$profit),                            max(payoff.longput$profit), by = 10),1),limits = c(limits=c(-7, 30))) 
+g4 <- g4 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g4
+```
+
+### Posición corta en call: Payoff & Profit
+
+EL rendimiento para el tenedor de una posición corta en una opción de compra europea es:
+
+Payoff opción call corta:
+
+$$
+\text{payoff} = -\text{max}(S_t - k,0) = \text{min}(k - S_t,0)
+$$
+
+Profit opción call corta:
+
+$$
+\text{profit} = \text{payoff} + v*e^{-r*t}
+$$
+
+Construimos la función: 
+
+```{r,eval=TRUE,echo=TRUE}
+ short.callpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmin(k-s,0),"periodo" = s) %>% 
+    mutate("profit" = payoff + v*exp(-r*t))
+} 
+```
+
+```{r,eval=TRUE,echo=TRUE}
+payoff.shortcall <- short.callpayoff(s,100,5,0,0)
+```
+
+Gráfico posición corta en call 
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g5 <- ggplot(payoff.shortcall) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g5 <- g5 + theme_bw()+ ggtitle("Payoff de una Option Call") + labs(subtitle = "Posicion Corta en Call")
+g5 <- g5 + scale_x_continuous(limits=c(70, 130)) + scale_y_continuous(limits=c(-30, 0)) + 
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g5
+```
+
+Para corroborar el gráfico ver la figura 9.3 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+Gráfico posición corta en call: 
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g6 <- ggplot(payoff.shortcall) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + 
+      xlab("Tiempo de Expiracion") + ylab("Profit")
+g6 <- g6 + theme_bw() + ggtitle("Profit de una Option Call") + labs(subtitle = "Posicion Corta en Call") 
+g6 <- g6 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g6 <- g6 + scale_x_continuous(breaks = round(seq(min(payoff.shortcall$periodo), max(payoff.shortcall$periodo), by =                 10),1),limits=c(70, 130)) + scale_y_continuous(breaks = round(seq(min(payoff.shortcall$profit),                           max(payoff.shortcall$profit), by = 10),1),limits = c(limits=c(-30, 5))) 
+g6 <- g6 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+g6
+```
+
+### Posición corta en put: Payoff & Profit
+
+EL rendimiento para el tenedor de una posición corta en una opción de venta europea es:
+
+Payoff opción put corta:
+$$
+\text{payoff} = -\text{max}(k - S_t,0) = \text{min}(S_t - k,0)
+$$
+
+Profit opción put corta:
+
+$$
+\text{profit} = \text{payoff} + v*e^{-r*t}
+$$
+
+Construimos la función: 
+
+```{r,eval=TRUE,echo=TRUE}
+short.putpayoff <- function(s,k,v,r,t){
+    data.frame("payoff" = pmin(s-k,0),"periodo" = s) %>% 
+    mutate("profit" = payoff + v*exp(-r*t))
+}
+
+```
+
+```{r,eval=TRUE,echo=TRUE}
+payoff.shortput <- short.putpayoff(s,70,7,0,0)
+```
+
+Gráfico posición corta en call:
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g7 <- ggplot(payoff.shortput) + geom_line(aes(x = periodo, y = payoff), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Payoff")
+g7 <- g7 + theme_bw() + ggtitle("Payoff de una Option Put") + labs(subtitle = "Posicion Corta en Put")
+g7 <- g7 + scale_x_continuous(limits=c(40, 100)) + scale_y_continuous(limits=c(-30, 0)) + 
+      theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())
+g7
+```
+
+Para corroborar el gráfico ver la figura 9.4 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).
+
+Para efecto de académicos restringimos la escala del eje x e y (dimensión).
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g8 <- ggplot(payoff.shortput) + geom_line(aes(x = periodo, y = profit), colour="red", size=1.5) + xlab("Tiempo de Expiracion") + ylab("Profit")
+g8 <- g8 + theme_bw() + ggtitle("Profit de una Option Put") + labs(subtitle = "Posicion Corta en Put") 
+g8 <- g8 + geom_hline(yintercept=0, linetype="dashed",color = "blue", size=1.5)
+g8 <- g8 + scale_x_continuous(breaks = round(seq(min(payoff.shortput$periodo), max(payoff.shortput$periodo), by =                   10),1),limits=c(40, 100)) + scale_y_continuous(breaks = round(seq(min(payoff.shortput$profit),                           max(payoff.shortput$profit), by = 10),1),limits = c(limits=c(-30, 7))) 
+g8 <- g8 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) 
+g8  
+```
+
+## Estrategias
+
+
+Una estrategia de negociación de diferenciales implica tomar una posición en dos o más opciones del mismo tipo (dos o más opciones de compra o dos o más opciones de venta). Las más conocidas son:
+
+- *Diferenciales Alcistas (bull spreads)*  
+- Diferenciales bajistas (bear spreads)
+- Estrategias con opciones de tipo mariposa (butterfly spread)
+
+**Diferenciales Alcistas (bull spreads)**:
+
+Este se crea mediante la adquisición de una opción de compra europea sobre una acción, con cierto precio de ejercicio, y la venta de una opción de compra europea sobre la misma acción con un precio de ejercicio más alto. Ambas opciones tienen la misma fecha de expiración.
+
+
+### Bull Spread Utilidades 
+
+| Intervalo variación precio acción | Beneficio derivado de call larga | Beneficio derivado de call corta | Beneficio total |
+|:---------------------------------:|:--------------------------------:|:--------------------------------:|:---------------:|
+| $S_t \leq K_1$                    | 0                                |               0                  |         0       |
+| $K_1 < S_t < K_2$                 | $S_t - K_1$                      |               0                  |   $S_t - K_1$   |
+| $S_t \geq K_2$                    | $S_t - K_1$                      |          $K_2 - S_t$             |   $K_2 - K_1$   |
+
+
+Ejemplo Bull Spread:
+
+Un inversionista adquiere en 3 una opción de compra a tres meses con un precio de ejercicio de 30, y vende en 1 un opción de compra a tres meses con un precio de ejercicio de 35. El beneficio derivado de esta estrategia de diferencial alcista es de 5 si el precio de la acción está por arriba de 35, y de cero si está por debajo de 30. Si el precio de la acción se encuentra  entre 30 y 35, el beneficio es la cantidad en la cual el precio de ejercicio excede de 30. El costo de la estrategia es 3 - 1 = 2. Por lo tanto, la utilidad es:
+
+| Intervalo variación precio acción | Utilidad       | 
+|:---------------------------------:|:--------------:|
+| $S_t \leq 30$                     | -2             |              
+| $30 < S_t < 35$                   | $S_t - 32$     |      
+| $S_t \geq 35$                     | +3             |
+
+### Función Bull Spread 
+
+Comenzamos contruyendo la estructura de la estrategia:
+
+
+```{r,eval=TRUE,echo=TRUE, size = "tiny"}
+bullspread.call <- function(S,K1,K2,precio1,precio2){
+  
+  if(K1>=S) stop("K1 debe ser menor a S.")
+  if(S>=K2) stop("K2 debe ser mayor a S.")
+  
+  #larga
+  callP1 = precio1
+  #corto
+  callP2 = precio2
+  
+  stock=unique(round(seq(0,K1,length.out=6)))
+  stock=c(stock,round(seq(K1,K2,length.out=4)))
+  stock=c(stock,round(seq(K2,K2+K1,length.out=6)))
+  stock=unique(stock)
+  payoff=rep(0,length(stock))
+  profit=rep(0,length(stock))
+  
+  
+  for(i in 1:length(stock)){
+    if(stock[i]<=K1) payoff[i]=0
+    if(stock[i]>=K2) payoff[i]=K2-K1
+    if(stock[i]<K2 & stock[i]>K1) payoff[i]=stock[i]-K1
+    profit[i]=payoff[i]+(callP2-callP1)
+  }
+  
+  data <- data.frame(stock,payoff,profit)
+  return(data)
+} 
+```
+
+### Posición call Larga & Corta Para el Bull Spread Call
+
+Para ilustrar calculamos las dos call (larga y corta):
+
+Es la misma función vista anteriormente, solo que en vez de tener una columna llamada "periodo" ahora será "stock", conceptualmente es lo mismo, pero facilita para graficar:
+
+```{r,echo=TRUE}
+# Posición larga en call
+long.callpayoff <- function(s,k,v,r,t){
+  data.frame("payoff" = pmax(0,s-k), "stock" = s) %>% 
+    mutate("profit" = payoff - v*exp(-r*t))
+}
+
+# Posición corta en call
+short.callpayoff <- function(s,k,v,r,t){
+  data.frame("payoff" = pmin(k-s,0),"stock" = s) %>% 
+    mutate("profit" = payoff + v*exp(-r*t))
+} 
+
+```
+
+### Construcción de la Bull Spread Call
+
+En el Global Environment vemos el objeto `bull.spread``, que tiene los stock ($S_t$), payoff y profit.
+
+```{r,eval=TRUE}
+bull.spread <- bullspread.call(32,30,35,3,1)
+```
+
+```{r,echo=TRUE}
+# Extraemos la St
+s <- bull.spread$stock
+
+# Call larga
+long.call <- long.callpayoff(s,30,3,0,0)
+# Call corta
+short.call <- short.callpayoff(s,35,1,0,0)
+```
+
+### Gráfico Bull Spread Call
+
+```{r,fig.width=4,fig.height=2.75,fig.align='center',warning=FALSE}
+g1 <- ggplot(bull.spread[4:10,]) + geom_line(aes(long.call$stock[4:10],long.call$profit[4:10],color = "blue"),linetype="dashed"
+                                             ,size=1) 
+g1 <- g1 + geom_line(aes(short.call$stock[4:10],short.call$profit[4:10], color = "red"),linetype="dashed",size=1) 
+g1 <- g1 + geom_line(aes(bull.spread$stock[4:10],bull.spread$profit[4:10],color = "green"),size=1)
+g1 <- g1 + ggtitle("Estrategia Bull Spreads") + xlab("stock") + ylab("Profit") + theme_bw()
+g1 <- g1 + geom_hline(yintercept=0, linetype="dashed",color = "orange", size=1)
+g1 <- g1 + scale_color_manual(name = " ",labels = c("Call larga", "Bull Spread", "Call corta"),values =                                      c("blue"="blue","green"="green","red" = "red"))
+g1 <- g1 + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),legend.position="bottom") 
+g1 
+```
+
+### Con librería la Bull Spread Call
+
+Una librería útil para construir estratégias es la librería `FinancialMath`, recuerden `install.packages("FinancialMath")` y luego `library("FinancialMath")`:  
+
+```r
+# Con librería
+# bull.call(S,K1,K2,r,t,price1,price2,plot=FALSE)
+ 
+library("FinancialMath")
+
+bull.call <- bull.call(31,30,35,0.0000001,3,3,1,plot=TRUE)
+
+```
+
+Otras funciones son, bear.call(),`straddle()`,strangle(),butterfly.spread().
+
+> NB: Es importante que el $S_t$ debe estar entre $k_1$ y $k_2$. Deben incluir una tasa de interés y un T, pero si no se especifica, agreguen una cerca a cero. 
+
+### Con librería El gráfico Bull Spread Call
+
+```{r,eval=TRUE,echo=FALSE,fig.width=4.2,fig.height=2.85, fig.align='center'}
+library("FinancialMath")
+
+bull.call <- bull.call(31,30,35,0.0000001,5,3,1,plot=TRUE)
+
+```
+
+
+### Payoff inferior Bull Spread Call de la Librería
+
+Los payoff inferiores deberían ser igual a -2:
+
+```r
+head(bull.call$Payoff,4)
+```
+
+```{r,eval=TRUE,echo=FALSE,fig.align='center'}
+knitr::kable(head(bull.call$Payoff,4),caption = "Bull Spread Call")
+# Ver las demás estrategias en la librería
+```
+
+### Payoff superior Bull Spread Call de la Librería
+
+Los payoff inferiores deberían ser igual a 3:
+
+```r
+tail(bull.call$Payoff,4)
+```
+
+```{r,eval=TRUE,echo=FALSE,fig.align='center'}
+knitr::kable(tail(bull.call$Payoff,4),caption = "Bull Spread Call")
+# Ver las demás estrategias en la librería
+```
+
+## Black & Scholes
+
+
+### Black & Scholes: de la formula a una función
+
+Las Formulas de Black Scholes y Merton para los precios de las opciones de compra y de venta europeas sobre acciones que **no pagan dividendos** son:
+
+Formulas de Valuación Black,Scholes \& Merton
+
+
+- $c  = S_0 N(d_1) - K e^{-rt} N(d_2)$
+- $p = K e^{-rt} N(-d_2) - S_0 N(-d_1)$
+
+donde:
+
+- $d_1 = \frac{ln(S_0/K) + (r + \sigma^2 / 2)T}{\sigma \sqrt{T}}$ \\
+- $d_2 = \frac{ln(S_0/K) + (r - \sigma^2 / 2)T}{\sigma \sqrt{T}} = d_1 - \sigma \sqrt{T}$
+
+### Black & Scholes: Ejercicio
+
+Uso de la formula en R: 
+
+El precio de las acciones después de seis meses a partir de la expiración de una opción es de 42, el precio de ejercicio de la opción es de 40, la tasa de interés libre de riesgo es de 10\% anual y la volatilidad es de 20\% anual. Esto Significa:
+
+
+```{r,echo=TRUE}
+# Parámetros
+S0 <- 42
+K <- 40
+r <- 0.1
+T <- 1/2
+sigma <- 0.2
+```
+
+### Black & Scholes: Función
+
+Construimos la función basándonos en la formula:
+
+```{r,echo=TRUE}
+bs.opm <- function(S,K,T,riskfree,sigma,type){
+  d1<-(log(S/K)+(riskfree+0.5 * sigma^2) * T)/(sigma * sqrt(T))
+  d2<-d1-sigma * sqrt(T)
+  if(type=="Call"){
+    opt.val<-S * pnorm(d1)-K * exp(-riskfree * T) * pnorm(d2)
+  }
+  if(type=="Put"){
+    opt.val<-K * exp(-riskfree * T) * pnorm(-d2)-S * pnorm(-d1)
+  }
+  opt.val
+}
+```
+
+```{r,eval=TRUE,echo = TRUE}
+# Para la call
+C <- bs.opm(S = S0, K = K, T = T, riskfree = r, sigma = sigma, type = "Call" ) 
+C
+```
+
+```{r,eval=TRUE,echo = TRUE}
+# Para la put
+C <- bs.opm(S = S0, K = K, T = T, riskfree = r, sigma = sigma, type = "Put" )
+C
+```
+
+### Black & Scholes: Ahora con librerías
+
+La librería que se utilizará para usa BS es `fOptions`, recordar el `install.packages("fOptions")` y posterior `library("fOptions")`.
+
+```{r,echo=TRUE,eval=TRUE,message=FALSE}
+library("fOptions") 
+```
+
+La función de la librería es `GBSOption()`:
+
+```r
+GBSOption(TypeFlag = " ", S = S0, X = K, Time = T, r = r, b = r, sigma = sigma)
+```
+
+En `TypeFlag`, va "c" para call y "p" para put, tener presente que deberán seleccionar un `b` que es el *annualized cost-of-carry rate*, si no se especifica, debe ser igual a r.
+
+```{r,echo=TRUE,eval=TRUE}
+# Con libreria call
+GBSOption(TypeFlag = "c", S = S0, X = K, Time = T, r = r, b = r, sigma = sigma)@price
+```
+
+```{r,echo=TRUE,eval=TRUE}
+# Con libreria put
+GBSOption(TypeFlag = "p", S = S0, X = K, Time = T, r = r, b = r, sigma = sigma)@price
+```
+
+## Black & Scholes con Datos Reales
+
+### Black & Scholes con Datos Reales: Pasos
+
+Una manera de trabajar con datos reales directo usando R, es:
+
+a. Usar las funcion `getOptionChain` de la librería `quantmod`. Seleccionar las call y put para la fecha de valuación (recomiendo    en objetos separados).
+
+b. Usar la función `getSymbols` de la librería `quantmod` para elegir el ticker correspondiente, calcular el retorno y extraer       el precio a la fecha que se está haciendo la valuación.
+
+c. "Construimos"" la fecha de expiración y valuación, esto nos permite calcular el $T$ a través de: $\frac{\text{expiración - valuación}}{365}$. La tasa libre de riesgo se puede obtener de FRED usando la 3-Month Constant Maturity Treasury
+yield (debe ser la fecha de valuación, un único valor).
+
+d. Para la volatilidad se puede usar la desviación estándar de los últimos 3 años multiplicado por 252, esto se hace para            anualizarlo.
+
+e. Finalmente seleccionamos las que están cerca al *at the money* y usamos Black & Scholes, por librería o bien la función que creamos.
+
+### Parte a
+
+Imaginemos que es 31 de mayo del 2018 y queremos valorar las opciones call y put de [Oracle](https://www.oracle.com/index.html) con vencimiento al 17 de Agosto del 2018. Para comenzar usamos la función `getOptionChain()` de la librería `quantmod`:  
+
+
+```{r,eval=TRUE,echo=TRUE,message=FALSE}
+opciones <- getOptionChain("ORCL",Exp="2021-01-15")
+
+calls <- opciones$calls[,c(1:2,4:6)] # Nos quedamos con las columnas del 1 al 2 y del 4 al 6.
+puts  <- opciones$puts[,c(1:2,4:6)] # Nos quedamos con las columnas del 1 al 2 y del 4 al 6.
+```
+
+### Parte b
+
+Como debemos obtener el precio de cierre para el 31 de mayo del 2018 y a su vez el histórico de tres años para la volatilidad usamos:  
+
+```{r,eval=TRUE,echo=TRUE,message=FALSE}
+# Al 31 de mayo la valuación, 31 de mayo del 2015 fue domingo, por ende, usamos el viernes 29
+getSymbols("ORCL", from = "2015-05-29", to = "2018-06-01", periodicity = "daily")
+
+orcl <- as.data.frame(ORCL) %>%  # a data.frame 
+        mutate(ret = log(ORCL.Adjusted/lag(ORCL.Adjusted))) %>%  # construimos el retorno
+        select(ORCL.Adjusted,ret) %>% # Seleccionamos el retorno y precio de ajuste
+        na.omit() # por el NA que se produce del retorno
+
+# extraemos el precio a la fecha que nos piden
+precio <- tail(orcl$ORCL.Adjusted,1)
+```
+
+### Parte c y d
+
+Con la función `getSymbols` usamos la fuente de la FRED y extraemos la rf con `subset`.  
+
+```{r,eval=TRUE,echo=TRUE,message=FALSE}
+getSymbols("DGS3MO",src ="FRED", to = "2018-06-01", periodicity = "daily")
+
+rf <- as.numeric(subset(DGS3MO["2018-05-31"]))*0.01 
+
+expiracion.date <- as.Date("2018-08-17")
+valuacion.date <- as.Date("2018-06-01")
+TTM <- as.numeric((expiracion.date-valuacion.date)/365)
+```
+
+Extraemos del objeto orcl y calculamos su desviación estándar, luego se multiplica por 252.
+
+```{r,eval=TRUE,echo=TRUE}
+vol.hist <- sd(orcl$ret)*sqrt(252)
+```
+
+### Parte e
+
+Vemos el precio a la fecha la valuación y seleccionamos aquellas cercana a estar *at the money*, tanto put como call.
+
+```{r,eval=TRUE,echo=TRUE}
+
+bs.call <- calls %>% 
+           dplyr::filter(Strike == 45 | Strike == 50) %>% 
+           select(Strike,Last,Bid,Ask)
+
+bs.put <- puts %>% 
+          dplyr::filter(Strike == 45 | Strike == 50) %>% 
+          select(Strike,Last,Bid,Ask)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# call
+GBSOption(TypeFlag = "c", S = precio, X = 45, Time = TTM, r = rf, b = rf, sigma = vol.hist)@price
+GBSOption(TypeFlag = "c", S = precio, X = 50, Time = TTM, r = rf, b = rf, sigma = vol.hist)@price
+
+# put
+GBSOption(TypeFlag = "p", S = precio, X = 45, Time = TTM, r = rf, b = rf, sigma = vol.hist)@price
+GBSOption(TypeFlag = "p", S = precio, X = 50, Time = TTM, r = rf, b = rf, sigma = vol.hist)@price
+```
+
+## Árbol Binomial
+
+Generalización
+
+Una generalización cuando queremos realizar un árbol con dos pasos:
+
+- $p = \frac{e^{r \Delta t} - d}{u - d}$
+- $f_u =  e^{-r \Delta t} [pf_{uu} + (1-p) f_{ud}]$
+- $f_d =  e^{-r \Delta t} [pf_{ud} + (1-p) f_{dd}]$
+- $f   =  e^{-r \Delta t} [pf_{u} + (1-p) f_{d}] = e^{-2r \Delta t} [p^2 f_{uu} + 2p(1-p) f_{ud} + (1-p)^2 f_{dd}]$ esto último solo cuando es una opción europea.
+
+- No obstante, en términos del modelo, $u = e^{\sigma \sqrt{\Delta t}}$ y $d = e^{-\sigma \sqrt{\Delta t}} = \frac{1}{u}$.
+
+### Ejercicio
+
+Considere una call europea a dos años con precio de strike de 52 en una acción cuyo precio es 50. Suponga que existen *two time steps* en un año, y en cada *time steps* el precio se mueve 30\%. La tasa de interes libre de riesgo es 5\%.
+
+La librería a usar será de nuevo `fOptions`. 
+
+```{r,eval=TRUE,echo=TRUE}
+library("fOptions")
+```
+
+
+### Call europea 
+
+```{r,eval=TRUE,echo=TRUE,fig.align='center',fig.height=3.4,fig.width=6.2,results='hide'}
+# Europea 
+CRRTree = BinomialTreeOption(TypeFlag = "ce", S = 50, X = 52, Time = 2, r = 0.05, b = 0.05, sigma = 0.3, n = 2)
+CRRTree
+```
+
+```r
+BinomialTreePlot(CRRTree, dy = 1, cex = 0.8, ylim = c(-6, 7), xlab = "n", ylab = "valores Opción") 
+title(main = "Arbol Binomial Opción")
+```
+
+### Call europea gráfico
+
+```{r,eval=TRUE,echo=FALSE,fig.align='center',fig.height=3,fig.width=6,results='hide'}
+BinomialTreePlot(CRRTree, dy = 1, cex = 0.8, ylim = c(-6, 7), xlab = "n", ylab = "valores Opción") 
+title(main = "Arbol Binomial Opción")
+```
+
+### Call americana 
+
+```{r,eval=TRUE,echo=TRUE,fig.align='center',fig.height=3.4,fig.width=6.2,results='hide'}
+# Americana
+CRRTree.1 = BinomialTreeOption(TypeFlag = "ca", S = 50, X = 52, Time = 2, r = 0.05, b = 0.05, 
+                               sigma = 0.3, n = 2)
+CRRTree.1
+```
+
+```r
+BinomialTreePlot(CRRTree.1, dy = 1, cex = 0.8, ylim = c(-6, 7), xlab = "n", ylab = "valores Opción") 
+title(main = "Arbol Binomial Opción")
+```
+
+### Call americana gráfico
+
+
+```{r,eval=TRUE,echo=FALSE,fig.align='center',fig.height=3,fig.width=6,results='hide'}
+BinomialTreePlot(CRRTree.1, dy = 1, cex = 0.8, ylim = c(-6, 7), xlab = "n", ylab = "valores Opción") 
+title(main = "Arbol Binomial Opción")
+```
+
+<!--chapter:end:05-opciones.Rmd-->
+
