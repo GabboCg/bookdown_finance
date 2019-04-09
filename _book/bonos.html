@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2019-03-14">
+<meta name="date" content="2019-04-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,6 +171,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="2.7" data-path="quantmod.html"><a href="quantmod.html#ratio-de-sharpe"><i class="fa fa-check"></i><b>2.7</b> Ratio de Sharpe</a></li>
 <li class="chapter" data-level="2.8" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>2.8</b> Test de JarqueBera</a></li>
 <li class="chapter" data-level="2.9" data-path="quantmod.html"><a href="quantmod.html#recursos-del-capitulo"><i class="fa fa-check"></i><b>2.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="2.10" data-path="quantmod.html"><a href="quantmod.html#apendice"><i class="fa fa-check"></i><b>2.10</b> Apéndice</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="quantmod.html"><a href="quantmod.html#retorno-y-retorno-acumulado"><i class="fa fa-check"></i><b>2.10.1</b> Retorno y retorno acumulado</a></li>
+<li class="chapter" data-level="2.10.2" data-path="quantmod.html"><a href="quantmod.html#graficar-retorno-acumulado"><i class="fa fa-check"></i><b>2.10.2</b> Graficar retorno acumulado</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="portafolio.html"><a href="portafolio.html"><i class="fa fa-check"></i><b>3</b> Introducción a teoría de portafolio</a><ul>
 <li class="chapter" data-level="3.1" data-path="portafolio.html"><a href="portafolio.html#libreria-introcompfinr"><i class="fa fa-check"></i><b>3.1</b> Librería IntroCompFinR</a><ul>
@@ -198,7 +202,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
 <li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice-1"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
 <li class="chapter" data-level="4.9.1" data-path="bonos.html"><a href="bonos.html#bono-frances"><i class="fa fa-check"></i><b>4.9.1</b> Bono Frances</a></li>
 </ul></li>
 <li class="chapter" data-level="4.10" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.10</b> Recursos del capítulo</a></li>
@@ -421,8 +425,8 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.border =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="ot">NA</span>, <span class="dt">size =</span> <span class="fl">.5</span>),
                  <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;#d3d3d3&quot;</span>))    
 g1</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-45-1.png" alt="Relación Bono vs Yield" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-53"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-53-1.png" alt="Relación Bono vs Yield" width="672" />
 <p class="caption">
 Figure 4.1: Relación Bono vs Yield
 </p>
@@ -440,8 +444,8 @@ t10yr &lt;-<span class="st"> </span><span class="kw">subset</span>(t10yr[<span c
 <p>Con la función <code>subset</code> extramos una parte de los datos, especificamente desde 2000-01-01 hasta 2018-04-17. Luego graficamos usando la función <code>chartSeries</code> de <code>quantmod</code>. Tener cuidado con la función, dado que solo funciona con extensión xts.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Grafico con chartSeries de quantmod solo funciona con xts</span>
 <span class="kw">chartSeries</span>(t10yr,  <span class="dt">theme =</span> <span class="st">&quot;white&quot;</span>)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-47"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-47-1.png" alt="yield del tesoro de los Estados Unidos con chartSeries" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-55"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-55-1.png" alt="yield del tesoro de los Estados Unidos con chartSeries" width="672" />
 <p class="caption">
 Figure 4.2: yield del tesoro de los Estados Unidos con chartSeries
 </p>
@@ -459,8 +463,8 @@ g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> <
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.border =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="ot">NA</span>, <span class="dt">size =</span> <span class="fl">.5</span>),
                               <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;#d3d3d3&quot;</span>))
 g3</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-48-1.png" alt="yield del tesoro de los Estados Unidos con ggplot2" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-56"></span>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-56-1.png" alt="yield del tesoro de los Estados Unidos con ggplot2" width="672" />
 <p class="caption">
 Figure 4.3: yield del tesoro de los Estados Unidos con ggplot2
 </p>
@@ -650,7 +654,7 @@ los siguientes resultados:</p>
 <pre><code>## [1] -0.2724</code></pre>
 <p>Donde se observa que los resultados guardan una diferencia mucho mayor cuando se examina el efecto en el precio de una variación significativa en la tasa de interés</p>
 </div>
-<div id="apendice" class="section level2">
+<div id="apendice-1" class="section level2">
 <h2><span class="header-section-number">4.9</span> Apéndice</h2>
 <div id="bono-frances" class="section level3">
 <h3><span class="header-section-number">4.9.1</span> Bono Frances</h3>

@@ -26,6 +26,11 @@ Para comenzar, como todo paquete en R se debe instalar
 install.packages("quantmod")
 ``` 
 
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+library("tidyverse")
+```
+
+
 Una vez que esté instalado, creamos nuestro script usando `ctrl/cmd + shift + n` y lo “llamamos” con
 
 ```{r, message=FALSE}
@@ -276,7 +281,109 @@ Para los demàs activos hay que solo cambiar por el nombre de la columna corresp
 
 [Presentación](https://www.dropbox.com/s/mie1ap3hbil8p2i/beamer_t1.pdf?dl=1)
 
+## Apéndice
 
+Existe más de una forma de calcular los retornos y retornos acumulados. A 
+continuación cargaremos una base que contiene los precios al cierre desde 
+Enero del 2013 hasta Diciembre del 2018 con periodicidad mensual de las 
+siguientes empresas tecnológicas:
 
+* Facebook (FB)
+* Amazon (AMZN)
+* Apple (AAPL)
+* Netflix (NFLX)
+* Google (GOOG)
 
+Ahora en adelante FAANG.
 
+La base de datos se encuentran almacenada en Dropbox en el siguiente enlace
+
+* https://www.dropbox.com/s/tjqvs9w16al1jl2/FAANG.csv?dl=1
+
+Como tiene una extensión csv, utilizamos:
+
+```{r, message=FALSE}
+FAANG <- read_csv("https://www.dropbox.com/s/tjqvs9w16al1jl2/FAANG.csv?dl=1")
+```
+
+De esta manera podemos descargarla inmediatamente desde dropbox a nuestra 
+sesión en RStudio. 
+
+La base de `FAANG` contiene las siguientes observaciones.
+
+```{r, echo=FALSE, warning=FALSE}
+DT::datatable(FAANG %>% mutate_at(vars("AAPL", "AMZN", "FB", "GOOG", "NFLX"), 
+  funs(round(.,2))), class = 'cell-border stripe')
+```
+
+### Retorno y retorno acumulado 
+
+La forma en que calcularemos el retorno logarítmico es siguiendo la formula 
+presentado durante el capítulo:
+
+$$
+r_t = log(1 + R_t) = log(\frac{P_t}{P_{t-1}}) = p_t - p_{t-1}
+$$
+
+Como tenemos la fecha (`date`) y el resto de las columnas con los precios, una 
+forma es crear una objeto con tres columnas, fecha (date), symbol (tickers) y 
+precios (`prices`).
+
+```{r, echo=FALSE}
+DT::datatable(FAANG %>% gather(symbol, prices, -date) %>% mutate_at(vars("prices"), 
+  funs(round(.,2))), class = 'cell-border stripe')
+```
+
+<p>
+
+Lo anterior se logra utilizando `gather(symbol, prices, -date)`, luego
+agrupamos por symbol por medio de `group_by(symbol)`  y creamos el retorno 
+`mutate(returns = log(prices/lag(prices)))`. Como tendremos `NA` usamos 
+`filter(!is.na(returns))`, finalmente eliminamos la columna `price` y 
+extendemos el objeto de tal forma de tener la fecha (`date`)
+y las columnas restantes sea el retorno correspondiente a cada tickers 
+(`symbol`), `spread(symbol, returns)`. Todo lo anterior se resume en el 
+siguiente código:
+
+```{r}
+# retornos 
+FAANG_returns <- FAANG %>% 
+  gather(symbol, prices, -date) %>% 
+  group_by(symbol) %>% 
+  mutate(returns = log(prices/lag(prices))) %>% 
+  filter(!is.na(returns)) %>% 
+  select(-prices) %>% 
+  spread(symbol, returns)
+```
+
+```{r, echo=FALSE}
+DT::datatable(FAANG_returns %>% mutate_at(vars("AAPL", "AMZN", "FB", "GOOG", "NFLX"), 
+  funs(round(.,4))), class = 'cell-border stripe')
+```
+
+<p>
+
+La lógica para los retornos acumulados es el mismo, pero ahora no debemos 
+trabajar con el objeto `FAANG`, sino con `FAANG_returns`.
+
+```{r}
+FAANG_acum <- FAANG_returns %>% 
+  gather(symbol, returns, -date) %>% 
+  group_by(symbol) %>% 
+  mutate(returns_acum = cumsum(returns)) %>% 
+  select(-returns) %>% 
+  spread(symbol, returns_acum)
+```
+
+### Graficar retorno acumulado
+
+```{r}
+FAANG_acum %>% 
+  gather(symbol, returns_acum, -date) %>% 
+  ggplot(aes(y = returns_acum, x = date, color = symbol)) + 
+  geom_line(size = 1.5) + 
+  labs(title = "Retornos Acumulados", subtitle = "FAANG", color = "") +
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") 
+```
+   

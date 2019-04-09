@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2019-03-14">
+<meta name="date" content="2019-04-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,6 +171,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="2.7" data-path="quantmod.html"><a href="quantmod.html#ratio-de-sharpe"><i class="fa fa-check"></i><b>2.7</b> Ratio de Sharpe</a></li>
 <li class="chapter" data-level="2.8" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>2.8</b> Test de JarqueBera</a></li>
 <li class="chapter" data-level="2.9" data-path="quantmod.html"><a href="quantmod.html#recursos-del-capitulo"><i class="fa fa-check"></i><b>2.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="2.10" data-path="quantmod.html"><a href="quantmod.html#apendice"><i class="fa fa-check"></i><b>2.10</b> Apéndice</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="quantmod.html"><a href="quantmod.html#retorno-y-retorno-acumulado"><i class="fa fa-check"></i><b>2.10.1</b> Retorno y retorno acumulado</a></li>
+<li class="chapter" data-level="2.10.2" data-path="quantmod.html"><a href="quantmod.html#graficar-retorno-acumulado"><i class="fa fa-check"></i><b>2.10.2</b> Graficar retorno acumulado</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="portafolio.html"><a href="portafolio.html"><i class="fa fa-check"></i><b>3</b> Introducción a teoría de portafolio</a><ul>
 <li class="chapter" data-level="3.1" data-path="portafolio.html"><a href="portafolio.html#libreria-introcompfinr"><i class="fa fa-check"></i><b>3.1</b> Librería IntroCompFinR</a><ul>
@@ -198,7 +202,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
 <li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice-1"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
 <li class="chapter" data-level="4.9.1" data-path="bonos.html"><a href="bonos.html#bono-frances"><i class="fa fa-check"></i><b>4.9.1</b> Bono Frances</a></li>
 </ul></li>
 <li class="chapter" data-level="4.10" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.10</b> Recursos del capítulo</a></li>
@@ -308,7 +312,7 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Call&quot;</span>)
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span>                 <span class="kw">element_blank</span>())
 g1</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-74-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.1 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico profit posición larga en call:</p>
@@ -318,7 +322,7 @@ g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> <
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longcall<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longcall<span class="op">$</span>periodo), <span class="dt">by =</span>                   <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longcall<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.longcall<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))) 
 g2 &lt;-<span class="st"> </span>g2 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g2</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-larga-en-put-payoff-profit" class="section level3">
 <h3><span class="header-section-number">5.1.2</span> Posición larga en put: Payoff &amp; Profit</h3>
@@ -342,7 +346,7 @@ g2</code></pre>
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Payoff de una Option Put&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Posicion Larga en Put&quot;</span>)
 g3 &lt;-<span class="st"> </span>g3 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>))  <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span>                  <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g3</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-86-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.2 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico posición larga en put:</p>
@@ -352,7 +356,7 @@ g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> <
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.longput<span class="op">$</span>periodo), <span class="dt">by =</span>                     <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.longput<span class="op">$</span>profit),                            <span class="kw">max</span>(payoff.longput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">7</span>, <span class="dv">30</span>))) 
 g4 &lt;-<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g4</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-87-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-corta-en-call-payoff-profit" class="section level3">
 <h3><span class="header-section-number">5.1.3</span> Posición corta en call: Payoff &amp; Profit</h3>
@@ -377,7 +381,7 @@ g5 &lt;-<span class="st"> </span>g5 <span class="op">+</span><span class="st"> <
 g5 &lt;-<span class="st"> </span>g5 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g5</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-90-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.3 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <p>Gráfico posición corta en call:</p>
@@ -388,7 +392,7 @@ g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> <
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortcall<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.shortcall<span class="op">$</span>periodo), <span class="dt">by =</span>                 <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">130</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortcall<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.shortcall<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">5</span>))) 
 g6 &lt;-<span class="st"> </span>g6 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g6</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-91-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="posicion-corta-en-put-payoff-profit" class="section level3">
 <h3><span class="header-section-number">5.1.4</span> Posición corta en put: Payoff &amp; Profit</h3>
@@ -413,7 +417,7 @@ g7 &lt;-<span class="st"> </span>g7 <span class="op">+</span><span class="st"> <
 g7 &lt;-<span class="st"> </span>g7 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(),<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
 g7</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-86-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Para corroborar el gráfico ver la figura 9.4 (capítulo 9) del libro Introducción a los Mercados de Futuros y Opciones (octava edición).</p>
 <p>Para efecto de académicos restringimos la escala del eje x e y (dimensión).</p>
 <pre class="sourceCode r"><code class="sourceCode r">g8 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(payoff.shortput) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> periodo, <span class="dt">y =</span> profit), <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Tiempo de Expiracion&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Profit&quot;</span>)
@@ -422,7 +426,7 @@ g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> <
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortput<span class="op">$</span>periodo), <span class="kw">max</span>(payoff.shortput<span class="op">$</span>periodo), <span class="dt">by =</span>                   <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">round</span>(<span class="kw">seq</span>(<span class="kw">min</span>(payoff.shortput<span class="op">$</span>profit),                           <span class="kw">max</span>(payoff.shortput<span class="op">$</span>profit), <span class="dt">by =</span> <span class="dv">10</span>),<span class="dv">1</span>),<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">7</span>))) 
 g8 &lt;-<span class="st"> </span>g8 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>()) 
 g8  </code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-87-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="estrategias" class="section level2">
@@ -570,7 +574,7 @@ g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> <
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">name =</span> <span class="st">&quot; &quot;</span>,<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Call larga&quot;</span>, <span class="st">&quot;Bull Spread&quot;</span>, <span class="st">&quot;Call corta&quot;</span>),<span class="dt">values =</span>                                      <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>=<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>=<span class="st">&quot;green&quot;</span>,<span class="st">&quot;red&quot;</span> =<span class="st"> &quot;red&quot;</span>))
 g1 &lt;-<span class="st"> </span>g1 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>) 
 g1 </code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-92-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-100-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="con-libreria-la-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.6</span> Con librería la Bull Spread Call</h3>
@@ -588,14 +592,14 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 </div>
 <div id="con-libreria-el-grafico-bull-spread-call" class="section level3">
 <h3><span class="header-section-number">5.2.7</span> Con librería El gráfico Bull Spread Call</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-93-1.png" width="403.2" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-101-1.png" width="403.2" style="display: block; margin: auto;" /></p>
 </div>
 <div id="payoff-inferior-bull-spread-call-de-la-libreria" class="section level3">
 <h3><span class="header-section-number">5.2.8</span> Payoff inferior Bull Spread Call de la Librería</h3>
 <p>Los payoff inferiores deberían ser igual a -2:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-94">Table 5.1: </span>Bull Spread Call</caption>
+<caption><span id="tab:unnamed-chunk-102">Table 5.1: </span>Bull Spread Call</caption>
 <thead>
 <tr class="header">
 <th align="right">Stock Price</th>
@@ -632,7 +636,7 @@ bull.call &lt;-<span class="st"> </span><span class="kw">bull.call</span>(<span 
 <p>Los payoff inferiores deberían ser igual a 3:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bull.call<span class="op">$</span>Payoff,<span class="dv">4</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-95">Table 5.2: </span>Bull Spread Call</caption>
+<caption><span id="tab:unnamed-chunk-103">Table 5.2: </span>Bull Spread Call</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -833,7 +837,7 @@ CRRTree</code></pre>
 </div>
 <div id="call-europea-grafico" class="section level3">
 <h3><span class="header-section-number">5.5.3</span> Call europea gráfico</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-111-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-119-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="call-americana" class="section level3">
 <h3><span class="header-section-number">5.5.4</span> Call americana</h3>
@@ -846,7 +850,7 @@ CRRTree<span class="fl">.1</span></code></pre>
 </div>
 <div id="call-americana-grafico" class="section level3">
 <h3><span class="header-section-number">5.5.5</span> Call americana gráfico</h3>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-113-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-121-1.png" width="576" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

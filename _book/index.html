@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2019-03-14">
+<meta name="date" content="2019-04-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,6 +171,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="2.7" data-path="quantmod.html"><a href="quantmod.html#ratio-de-sharpe"><i class="fa fa-check"></i><b>2.7</b> Ratio de Sharpe</a></li>
 <li class="chapter" data-level="2.8" data-path="quantmod.html"><a href="quantmod.html#test-de-jarquebera"><i class="fa fa-check"></i><b>2.8</b> Test de JarqueBera</a></li>
 <li class="chapter" data-level="2.9" data-path="quantmod.html"><a href="quantmod.html#recursos-del-capitulo"><i class="fa fa-check"></i><b>2.9</b> Recursos del capítulo</a></li>
+<li class="chapter" data-level="2.10" data-path="quantmod.html"><a href="quantmod.html#apendice"><i class="fa fa-check"></i><b>2.10</b> Apéndice</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="quantmod.html"><a href="quantmod.html#retorno-y-retorno-acumulado"><i class="fa fa-check"></i><b>2.10.1</b> Retorno y retorno acumulado</a></li>
+<li class="chapter" data-level="2.10.2" data-path="quantmod.html"><a href="quantmod.html#graficar-retorno-acumulado"><i class="fa fa-check"></i><b>2.10.2</b> Graficar retorno acumulado</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="portafolio.html"><a href="portafolio.html"><i class="fa fa-check"></i><b>3</b> Introducción a teoría de portafolio</a><ul>
 <li class="chapter" data-level="3.1" data-path="portafolio.html"><a href="portafolio.html#libreria-introcompfinr"><i class="fa fa-check"></i><b>3.1</b> Librería IntroCompFinR</a><ul>
@@ -198,7 +202,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="bonos.html"><a href="bonos.html#efecto-dolar"><i class="fa fa-check"></i><b>4.7</b> Efecto Dolar</a></li>
 <li class="chapter" data-level="4.8" data-path="bonos.html"><a href="bonos.html#ejercicio"><i class="fa fa-check"></i><b>4.8</b> Ejercicio</a></li>
-<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
+<li class="chapter" data-level="4.9" data-path="bonos.html"><a href="bonos.html#apendice-1"><i class="fa fa-check"></i><b>4.9</b> Apéndice</a><ul>
 <li class="chapter" data-level="4.9.1" data-path="bonos.html"><a href="bonos.html#bono-frances"><i class="fa fa-check"></i><b>4.9.1</b> Bono Frances</a></li>
 </ul></li>
 <li class="chapter" data-level="4.10" data-path="bonos.html"><a href="bonos.html#recursos-del-capitulo-1"><i class="fa fa-check"></i><b>4.10</b> Recursos del capítulo</a></li>
@@ -266,7 +270,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <h1 class="title">Introducción a las finanzas quantitativas</h1>
 <h2 class="subtitle"><em>Aplicaciones &amp; ejemplos usando R</em></h2>
 <p class="author"><em>Gabriel Cabrera G.</em></p>
-<p class="date"><em>2019-03-14</em></p>
+<p class="date"><em>2019-04-09</em></p>
 </div>
 <div id="prefacio" class="section level1 unnumbered">
 <h1>Prefacio</h1>
@@ -300,18 +304,18 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.0       rstudioapi_0.8   bindr_0.1.1     
-##  [4] knitr_1.20       magrittr_1.5     tidyselect_0.2.5
-##  [7] munsell_0.5.0    colorspace_1.3-2 R6_2.3.0        
-## [10] rlang_0.3.1      stringr_1.3.1    plyr_1.8.4      
-## [13] dplyr_0.7.8      tools_3.4.4      grid_3.4.4      
-## [16] gtable_0.2.0     xfun_0.3         htmltools_0.3.6 
-## [19] yaml_2.2.0       lazyeval_0.2.1   assertthat_0.2.0
-## [22] digest_0.6.18    tibble_1.4.2     bookdown_0.9    
-## [25] crayon_1.3.4     bindrcpp_0.2.2   purrr_0.3.0     
-## [28] ggplot2_3.1.0    glue_1.3.0.9000  evaluate_0.12   
-## [31] rmarkdown_1.11   stringi_1.2.4    compiler_3.4.4  
-## [34] pillar_1.3.0     scales_1.0.0     pkgconfig_2.0.2</code></pre>
+##  [1] Rcpp_1.0.1       rstudioapi_0.8   knitr_1.22      
+##  [4] magrittr_1.5     tidyselect_0.2.5 munsell_0.5.0   
+##  [7] colorspace_1.3-2 R6_2.4.0         rlang_0.3.3     
+## [10] stringr_1.4.0    plyr_1.8.4       dplyr_0.8.0.1   
+## [13] tools_3.4.4      grid_3.4.4       gtable_0.2.0    
+## [16] xfun_0.6         htmltools_0.3.6  yaml_2.2.0      
+## [19] lazyeval_0.2.1   assertthat_0.2.0 digest_0.6.18   
+## [22] tibble_2.1.1     bookdown_0.9     crayon_1.3.4    
+## [25] purrr_0.3.2      ggplot2_3.1.0    glue_1.3.1      
+## [28] evaluate_0.13    rmarkdown_1.12   stringi_1.4.3   
+## [31] compiler_3.4.4   pillar_1.3.1     scales_1.0.0    
+## [34] pkgconfig_2.0.2</code></pre>
 
 </div>
             </section>
