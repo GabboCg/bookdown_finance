@@ -25,7 +25,7 @@
 <meta name="author" content="Gabriel Cabrera G.">
 
 
-<meta name="date" content="2019-04-09">
+<meta name="date" content="2019-04-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -800,14 +800,14 @@ bs.put &lt;-<span class="st"> </span>puts <span class="op">%&gt;%</span><span cl
 <span class="st">          </span><span class="kw">select</span>(Strike,Last,Bid,Ask)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># call</span>
 <span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
-<pre><code>## [1] 1.351</code></pre>
+<pre><code>## [1] 1.145</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># put</span>
 <span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">45</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GBSOption</span>(<span class="dt">TypeFlag =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">S =</span> precio, <span class="dt">X =</span> <span class="dv">50</span>, <span class="dt">Time =</span> TTM, <span class="dt">r =</span> rf, <span class="dt">b =</span> rf, <span class="dt">sigma =</span> vol.hist)<span class="op">@</span>price</code></pre>
-<pre><code>## [1] 3.629</code></pre>
+<pre><code>## [1] 3.835</code></pre>
 </div>
 </div>
 <div id="arbol-binomial" class="section level2">

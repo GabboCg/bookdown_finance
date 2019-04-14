@@ -348,7 +348,7 @@ siguiente código:
 ```{r}
 # retornos 
 FAANG_returns <- FAANG %>% 
-  gather(symbol, prices, -date) %>% 
+  gather(symbol, prices, -date) %>% # en la tarea es -Date y no -date
   group_by(symbol) %>% 
   mutate(returns = log(prices/lag(prices))) %>% 
   filter(!is.na(returns)) %>% 
