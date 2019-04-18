@@ -387,3 +387,149 @@ FAANG_acum %>%
   theme(legend.position = "bottom", legend.direction = "horizontal") 
 ```
    
+### Teoría de portafolio
+
+Vamos a obtener dos portafolios, el de mínima varianza y el portafolio 
+tangente o media-varianza (optimo).
+
+Comenzamos con cargar las funciones para calcular los portafolios.
+
+```{r, message=FALSE}
+library("IntroCompFinR")
+```
+
+Yo "llamé" la librería que instalé con anterioridad, tambíen se puede usar 
+`source("IntroCompFinR.R")` guardandolo en el mismo directorio en el que estoy
+trabajando..
+
+Debemos tener el retorno esperado (promedio), el riesgo (desviación estandar) y
+la matriz de varianza-covarianza.
+
+```{r}
+mean_FAANG <- apply(FAANG_returns[2:6], 2, mean)
+sd_FAANG <- apply(FAANG_returns[2:6], 2, sd)
+cov_FAANG <- cov(FAANG_returns[2:6])
+```
+
+#### Portafolio de mínima varianza
+
+```{r}
+port_min_var_FAANG <- globalMin.portfolio(mean_FAANG, cov_FAANG, shorts = TRUE) 
+```
+
+El retorno esperado del portafolio de mínima varianza es: 
+
+```{r}
+port_min_var_FAANG$er
+```
+
+La desviación estandar es:
+
+```{r}
+port_min_var_FAANG$sd
+```
+
+y los pesos:
+
+```{r}
+port_min_var_FAANG$weights
+```
+
+#### Portafolio tangente o media-varianza (óptimo)
+
+Necesitamos una tasa libre de riesgo, asumirémos una tasa anualizada del 3%. 
+
+```{r}
+risk_free <- 3/1200 # debe estar mensual y no anual
+```
+
+```{r}
+port_tang_FAANG <- tangency.portfolio(mean_FAANG, cov_FAANG, risk_free, shorts = TRUE) 
+```
+
+El retorno esperado del portafolio tangente es: 
+
+```{r}
+port_tang_FAANG$er
+```
+
+La desviación estandar es:
+
+```{r}
+port_tang_FAANG$sd
+```
+
+y los pesos:
+
+```{r}
+port_tang_FAANG$weights
+```
+
+### Medidas de performance 
+
+Veremos dos medidas de performance, Alpha de Jensen y Medida de Treynor, la que aplicaremos solo al último periodo 
+
+Ambos se obtienen por medio de la siguiente regresión por mínimo cuadrado ordinario.
+
+$$
+r_{p,t} - r_{f,t} = \alpha^{j}_{p} + \beta\times(r_{m,t}-r_{f,t}) + \varepsilon_{p,t}
+$$
+
+Donde $r_{p,t}$ es el retorno del portafolio (en este caso mínima varianza o tangente), $r_{m,t}$ el retorno de mercado (o benchmark), $r_{f,t}$ la tasa libre de riesgo, $\beta$ el componente de riesgo sistemático y $\alpha^{j}_{p}$ el alfa de jensen.
+
+El $\beta$ no permitirá calcular la medida de Treynor:
+
+$$
+Treynor = \frac{r_i - r_f}{\beta}
+$$
+Donde $r_i$ el valor esperado del portafolio, $r_f$ tasa libre de riesgo.
+ 
+Como es solo una ejemplo y tenemos solo una tasa libre de riesgo deberemos calcular el retorno del portafolio $r_{p,t}$ y luego restarle la tasa libre de riesgo $r_{f,t}$.
+
+En el caso del portafolio de mínima varianza debemos realizar una sumaproducto de sus pesos y el retorno en cada periodo.
+
+```{r}
+exceso_min_var <- as.matrix(FAANG_returns[2:6])%*%port_min_var_FAANG$weights - risk_free 
+```
+
+Para el portafolio tangente es el mismo procedimiento.
+
+```{r}
+exceso_tangency <- as.matrix(FAANG_returns[2:6])%*%port_tang_FAANG$weights - risk_free
+```
+
+Solo estaría faltando un benchmark, como es un ejemplo, voy a considerar Google (GOOG), que es la columna 5 de mis retornos.
+
+```{r}
+exceso_benchmark <- as.matrix(FAANG_returns[,5]) - risk_free
+```
+
+Ahora solo nos faltaría hacer la regresiòn para cada portafolio.
+
+Portafolio de minima varianza:
+```{r}
+regresion_min_var <- lm(exceso_min_var ~ exceso_benchmark)
+regresion_min_var
+```
+
+Nuestro alpha de jensen sería `r coef(regresion_min_var)[1]` y nuestra medida de Treynor 
+
+```{r}
+treynor_min_var <- (mean(exceso_min_var)/coef(regresion_min_var)[2])
+treynor_min_var
+```
+
+Para portafolio tangente:
+```{r}
+regresion_tangency <- lm(exceso_tangency ~ exceso_benchmark)
+regresion_tangency
+```
+
+Nuestro alpha de jensen sería `r coef(regresion_min_var)[1]` y nuestra medida de Treynor 
+
+```{r}
+treynor_tangency <- (mean(exceso_tangency)/coef(regresion_tangency)[2])
+treynor_tangency
+```
+
+
